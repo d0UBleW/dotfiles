@@ -139,6 +139,8 @@ fi
 bind "set completion-ignore-case on"
 export EDITOR="/usr/bin/vim"
 export XDG_CONFIG_HOME="~/.config"
+export DOTFILES="$HOME/.dotfiles"
+export STOW_FOLDERS="powershell,tmux,vim,terminator,powershell"
 export PROMPT_DIRTRIM=3
 
 # set -o vi

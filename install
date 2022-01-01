@@ -1,0 +1,14 @@
+#!/bin/bash
+
+IFS=","
+
+[[ -z $DOTFILES ]] && echo '$DOTFILES varaible uninitialized' && exit
+[[ -z $STOW_FOLDERS ]] && echo '$STOW_FOLDERS varaible uninitialized' && exit
+
+pushd $DOTFILES >/dev/null
+
+for dir in $STOW_FOLDERS; do
+    echo "Installing ${dir}"
+    stow -D ${dir}
+    stow ${dir}
+done
