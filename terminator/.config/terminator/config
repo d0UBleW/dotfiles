@@ -1,0 +1,23 @@
+[global_config]
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Monospace 14
+    foreground_color = "#00ff00"
+    show_titlebar = False
+    use_system_font = False
+  [[New Profile]]
+    cursor_color = "#aaaaaa"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

@@ -1,0 +1,69 @@
+[submodule "tmux/.tmux/plugins/tmux-sensible"]
+	path = tmux/.tmux/plugins/tmux-sensible
+	url = https://git::@github.com/tmux-plugins/tmux-sensible
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/.vim/plugged/vim-javascript-syntax"]
+	path = vim/.vim/plugged/vim-javascript-syntax
+	url = https://github.com/jelera/vim-javascript-syntax.git
+[submodule "vim/.vim/plugged/vim-sage"]
+	path = vim/.vim/plugged/vim-sage
+	url = https://github.com/petRUShka/vim-sage.git
+[submodule "vim/.vim/plugged/undotree"]
+	path = vim/.vim/plugged/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule "vim/.vim/plugged/CamelCaseMotion"]
+	path = vim/.vim/plugged/CamelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion.git
+[submodule "vim/.vim/plugged/vim-surround"]
+	path = vim/.vim/plugged/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/plugged/java-syntax.vim"]
+	path = vim/.vim/plugged/java-syntax.vim
+	url = https://github.com/uiiaoo/java-syntax.vim.git
+[submodule "vim/.vim/plugged/targets.vim"]
+	path = vim/.vim/plugged/targets.vim
+	url = https://github.com/wellle/targets.vim.git
+[submodule "vim/.vim/plugged/auto-pairs"]
+	path = vim/.vim/plugged/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "vim/.vim/plugged/vim-gutentags"]
+	path = vim/.vim/plugged/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "vim/.vim/plugged/vim-textobj-entire"]
+	path = vim/.vim/plugged/vim-textobj-entire
+	url = https://github.com/kana/vim-textobj-entire.git
+[submodule "vim/.vim/plugged/vim-fugitive"]
+	path = vim/.vim/plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/plugged/vim-commentary"]
+	path = vim/.vim/plugged/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/.vim/plugged/vim-repeat"]
+	path = vim/.vim/plugged/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/.vim/plugged/vim-textobj-user"]
+	path = vim/.vim/plugged/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "vim/.vim/plugged/vim-python-pep8-indent"]
+	path = vim/.vim/plugged/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
+[submodule "vim/.vim/plugged/vim-textobj-line"]
+	path = vim/.vim/plugged/vim-textobj-line
+	url = https://github.com/kana/vim-textobj-line.git
+[submodule "vim/.vim/plugged/vim-ps1"]
+	path = vim/.vim/plugged/vim-ps1
+	url = https://github.com/pprovost/vim-ps1.git
+[submodule "vim/.vim/plugged/python-syntax"]
+	path = vim/.vim/plugged/python-syntax
+	url = https://github.com/vim-python/python-syntax.git
+[submodule "vim/.vim/plugged/vim-matchup"]
+	path = vim/.vim/plugged/vim-matchup
+	url = https://github.com/andymass/vim-matchup.git
+[submodule "vim/.vim/plugged/onedark.vim"]
+	path = vim/.vim/plugged/onedark.vim
+	url = https://github.com/joshdick/onedark.vim.git
+[submodule "vim/.vim/plugged/gruvbox"]
+	path = vim/.vim/plugged/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

@@ -1,0 +1,317 @@
+source $VIMRUNTIME/defaults.vim
+
+" Plugin
+
+call plug#begin('~/.vim/plugged') " Installed plugins directory
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'wellle/targets.vim'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'tpope/vim-repeat'
+
+Plug 'tpope/vim-surround'
+
+Plug 'tpope/vim-commentary'
+
+" Plug 'inkarkat/vim-ReplaceWithRegister'
+
+Plug 'bkad/CamelCaseMotion'
+
+" Plug 'christoomey/vim-system-copy'
+
+" Plug 'michaeljsmith/vim-indent-object'
+
+Plug 'kana/vim-textobj-user'
+
+Plug 'kana/vim-textobj-entire'
+
+Plug 'kana/vim-textobj-line'
+
+Plug 'joshdick/onedark.vim'
+
+Plug 'uiiaoo/java-syntax.vim'
+
+Plug 'petRUShka/vim-sage'
+
+Plug 'vim-python/python-syntax'
+
+Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'Vimjas/vim-python-pep8-indent'
+
+Plug 'pprovost/vim-ps1'
+
+Plug 'mbbill/undotree'
+
+Plug 'jelera/vim-javascript-syntax'
+
+Plug 'andymass/vim-matchup'
+
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+
+
+filetype plugin indent on
+
+syntax on
+
+" colorscheme onedark
+colorscheme gruvbox
+
+
+
+let mapleader = ','
+
+let g:camelcasemotion_key = '\'
+
+let g:AutoPairsShortcutFastWrap = "<F12>"
+
+" disable matchit
+let g:loaded_matchit = 1
+
+" Cursor
+let &t_SI .= "\<Esc>[6 q"
+let &t_EI .= "\<Esc>[2 q"
+let &t_SR .= "\<Esc>[4 q"
+
+
+
+set background=dark
+set autowrite		" Automatically save before commands like :next and :make
+" set mouse=a		" Enable mouse usage (all modes)
+set t_Co=256    " Force 256 colours
+
+set termguicolors
+
+set nobackup
+set noswapfile
+
+" Disable line wrapping
+set nowrap
+
+" Avoid breaking word when line wrapping
+set linebreak
+
+" Show line break character
+"set showbreak=↪
+"set showbreak=▹
+set showbreak=…
+
+" Customize SpecialKey (tab, nbsp, trail, space) and NonText (eol, precedes, extends) characters
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,precedes:«,extends:»,space:·
+"set listchars=tab:»·,trail:·,eol:¶
+
+" Smooth backspace experience
+set backspace=indent,eol,start
+
+" Enable line numbering
+set nu rnu
+
+" Indenting
+set autoindent
+set smartindent
+
+" Tabbing
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set belloff=all
+
+set wildmenu
+set wildmode=longest:full,full
+
+" Buffer
+set hidden
+
+set incsearch
+set ignorecase
+set smartcase
+set nohlsearch
+
+set splitbelow
+set splitright
+
+set laststatus=2
+set showcmd
+
+set cursorline
+
+set signcolumn=auto
+
+set colorcolumn=79
+
+
+
+" Undo directory
+function! Tmpwatch(path, days)
+    let l:path = expand(a:path)
+    if isdirectory(l:path)
+        for file in globpath(l:path, '*', 1, 1)
+            if localtime() > getftime(file) + 86400 * a:days && delete(file) != 0
+                echo "Tmpwatch(): Error deleting '" . file . "'"
+            endif
+        endfor
+    else
+        echo "Tmpwatch(): Directory '" . l:path . "'not found"
+    endif
+endfunction
+
+if exists("+undofile")
+    if !isdirectory($HOME . '/.vim' . '/.undo')
+        call system('mkdir ' . $HOME . '/.vim' . '/.undo')
+    endif
+    set undodir=~/.vim/.undo// ",/tmp//
+    set undofile
+    set undolevels=1000
+    set undoreload=10000
+
+    call Tmpwatch(&undodir, 31)
+endif
+
+
+" NetRW
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_winsize=25
+let g:netrw_altv=1
+let g:netrw_sort_by="exten"
+
+let g:NetrwIsOpen=0
+
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+        call feedkeys("\<C-w>l")
+    endif
+endfunction
+
+" Add your own mapping. For example:
+noremap <silent> <F2> :call ToggleNetrw()<CR>
+noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
+
+" augroup ProjectDrawer
+"     autocmd!
+"     autocmd VimEnter * :Vexplore
+" augroup END
+
+
+
+" Mapping
+
+" nnoremap <Leader>L :set list!<CR>
+" nnoremap <Leader>W :set wrap!<CR>
+" nnoremap <Leader>H :set hlsearch!<CR>
+" nnoremap <Leader>T :set expandtab!<CR>
+
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <CR> o<Esc>
+nnoremap <leader>u :UndotreeToggle<CR>
+
+nnoremap <Space>h <C-w>h
+nnoremap <Space>j <C-w>j
+nnoremap <Space>k <C-w>k
+nnoremap <Space>l <C-w>l
+
+nnoremap Y y$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
+nnoremap <silent> <C-j> :m +1<CR>==
+nnoremap <silent> <C-k> :m -2<CR>==
+inoremap <silent> <C-j> <esc>mz:m +1<CR>==`za
+inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
+
+inoremap jkq <Esc>
+
+" Search Replace
+nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
+
+" Toggle Line numbering
+nnoremap <Silent> <Leader>n :exec &nu==&rnu? "set nu!" : "set rnu!"<CR>
+
+cnoremap <C-a> <Home>
+cnoremap <c-e> <End>
+
+
+
+" Skeleton Templates
+
+" function! Java_Skel()
+"     0r $HOME/.vim/templates/skeleton.java
+"     s/FILENAME/\=expand("%:t:r")
+"     normal! 4jA
+" endfunction
+
+" if has("autocmd")
+"     augroup templates
+"         au!
+"         au BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+"         au BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+"         au BufNewFile *.java call Java_Skel()
+"     augroup end
+" endif
+
+
+
+" Misc
+
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+    set grepformat^=%f:%l:%c:%m
+endif
+
+" augroup vimrc_colours
+"     au!
+
+"     " autocmd ColorScheme * highlight SpecialKey guifg=#56b6c2 guibg=#3e4452
+"     autocmd ColorScheme * highlight SpecialKey guifg=orange guibg=gray
+"     autocmd ColorScheme * hi NonText ctermfg=7 guifg=#abb2bf
+" augroup END
+
+hi SpecialKey guifg=#83a958 guibg=#3c3836
+" hi CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#2a2a2a
+" hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE
+" hi CursorLineNr term=bold cterm=bold ctermfg=lightblue gui=bold guifg=lightblue
+
+
+
+" augroup vimrcEx
+"     au!
+
+"     " For all text files set 'textwidth' to 78 characters or use `gq` to break
+"     " line
+"     autocmd FileType text setlocal textwidth=78
+" augroup END
+
+" " WSL yank support
+" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+" if executable(s:clip)
+"     augroup WSLYank
+"         autocmd!
+"         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+"     augroup END
+" endif
+
+
