@@ -1,6 +1,7 @@
 alias readme.md='vim README.md'
 alias src='source ~/.bashrc'
 alias fcd='cd $(dirname `fzf`)'
+alias fzfo='vim $(fzf)'
 alias cfvrc='vim ~/.vim/vimrc'
 alias cfbrc='vim ~/.bashrc'
 alias cfal='vim ~/.bash_aliases'

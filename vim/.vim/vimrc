@@ -223,7 +223,7 @@ noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
 " nnoremap <Leader>T :set expandtab!<CR>
 
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <CR> o<Esc>
+nnoremap <Space><CR> o<Esc>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nnoremap <Space>h <C-w>h
