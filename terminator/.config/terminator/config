@@ -14,7 +14,7 @@
     font = Monospace 14
     foreground_color = "#00ff00"
     show_titlebar = False
-    scrollbar_position = hidden
+    scrollback_infinite = True
     use_system_font = False
   [[New Profile]]
     cursor_color = "#aaaaaa"
