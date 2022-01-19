@@ -5,6 +5,7 @@
   title_transmit_bg_color = "#be5046"
   always_split_with_profile = True
 [keybindings]
+  layout_launcher = ""
 [profiles]
   [[default]]
     background_darkness = 0.9
