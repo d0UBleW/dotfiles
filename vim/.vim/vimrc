@@ -234,6 +234,9 @@ nnoremap <Space>j <C-w>j
 nnoremap <Space>k <C-w>k
 nnoremap <Space>l <C-w>l
 
+nnoremap <silent> <Tab> :tabnext<CR>
+nnoremap <silent> <S-Tab> :tabprevious<CR>
+
 nnoremap Y y$
 nnoremap n nzzzv
 nnoremap N Nzzzv
