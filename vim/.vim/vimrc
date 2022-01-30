@@ -63,7 +63,7 @@ syntax on
 " colorscheme onedark
 colorscheme gruvbox
 
-
+let g:python_highlight_all = 1
 
 let mapleader = ','
 
