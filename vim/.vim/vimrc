@@ -1,3 +1,5 @@
+set nocp
+
 source $VIMRUNTIME/defaults.vim
 
 " Plugin
@@ -76,6 +78,9 @@ let g:loaded_matchit = 1
 
 " matchup + surround
 let g:matchup_surround_enabled = 1
+
+" vim-python/python-syntax
+let g:python_highlight_all = 1
 
 " Cursor
 let &t_SI .= "\<Esc>[6 q"
@@ -311,13 +316,13 @@ hi SpecialKey guifg=#83a958 guibg=#3c3836
 "     autocmd FileType text setlocal textwidth=78
 " augroup END
 
-" " WSL yank support
-" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-" if executable(s:clip)
-"     augroup WSLYank
-"         autocmd!
-"         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-"     augroup END
-" endif
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
 
 
