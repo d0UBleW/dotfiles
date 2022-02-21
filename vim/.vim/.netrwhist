@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/doublew/.dotfiles/.git'
 let g:netrw_dirhist_2='/mnt/c/Users/LEGION.LAPTOP-HVMBBO3R/OneDrive - Asia Pacific University/Documents/My Documents/Misc/JavaScript/programmer-zaman-now/scripts'
 let g:netrw_dirhist_1='/home/doublew/Documents/freecodecamp/python-api-dev/app'
 let g:netrw_dirhist_0='/home/doublew/Documents/freecodecamp/python-api-dev'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_7='/home/doublew/Documents/freecodecamp/python-api-dev/app'
 let g:netrw_dirhist_6='/home/doublew/Documents/freecodecamp/python-api-dev'
 let g:netrw_dirhist_5='/home/doublew/Documents/freecodecamp/python-api-dev/app'
 let g:netrw_dirhist_4='/home/doublew/Documents/freecodecamp/python-api-dev'
-let g:netrw_dirhist_3='/home/doublew/Documents/freecodecamp/python-api-dev/app'
