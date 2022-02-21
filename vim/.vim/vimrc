@@ -79,6 +79,9 @@ let g:loaded_matchit = 1
 " matchup + surround
 let g:matchup_surround_enabled = 1
 
+" vim-python/python-syntax
+let g:python_highlight_all = 1
+
 " Cursor
 let &t_SI .= "\<Esc>[6 q"
 let &t_EI .= "\<Esc>[2 q"

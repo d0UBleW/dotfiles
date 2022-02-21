@@ -23,6 +23,7 @@ $	vim/.vim/plugged/vim-matchup/test/new/test-core/test_pos.vim	/^normal! \$$/;"	
 3Gyil	vim/.vim/plugged/vim-textobj-user/t/keep-marks.vim	/^      normal 3Gyil$/;"	m
 3gg	vim/.vim/plugged/vim-textobj-entire/t/jumplist.vim	/^    normal! 3gg$/;"	m
 4gg	vim/.vim/plugged/vim-textobj-entire/t/jumplist.vim	/^    normal! 4gg$/;"	m
+5	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^/;"	f	function:__init__
 5gg	vim/.vim/plugged/vim-textobj-entire/t/jumplist.vim	/^    normal! 5gg$/;"	m
 5gg9|	vim/.vim/plugged/vim-textobj-entire/t/mark.vim	/^    normal! 5gg9|$/;"	m
 6gg	vim/.vim/plugged/vim-textobj-entire/t/jumplist.vim	/^    normal! 6gg$/;"	m
@@ -300,7 +301,6 @@ HTMLHotFix	vim/.vim/plugged/vim-matchup/test/issues/8/hotfix.vim	/^function! HTM
 HasATagFileOrTagEnvChanged	vim/.vim/autoload/omni/cpp/complete.vim	/^function! s:HasATagFileOrTagEnvChanged()$/;"	f
 HasOpt	vim/.vim/plugged/vim-fugitive/autoload/fugitive.vim	/^function! s:HasOpt(args, ...) abort$/;"	f
 HasTagEnvChanged	vim/.vim/autoload/omni/cpp/complete.vim	/^function! s:HasTagEnvChanged()$/;"	f
-Hello	vim/.vim/.undo/%home%doublew%Documents%hackerrank%cpp%hello-world%b.c	/^    puts")5Å_–/;"	v
 HiLink	vim/.vim/plugged/python-syntax/syntax/python.vim	/^        command -nargs=+ HiLink hi def link <args>$/;"	c
 HiLink	vim/.vim/plugged/python-syntax/syntax/python.vim	/^        command -nargs=+ HiLink hi link <args>$/;"	c
 HiLink	vim/.vim/plugged/vim-javascript-syntax/syntax/javascript.vim	/^		command -nargs=+ HiLink hi def link <args>$/;"	c
@@ -576,6 +576,9 @@ VADER_DIR	vim/.vim/plugged/vim-matchup/test/new/test-vader/Makefile	/^VADER_DIR 
 VersionCheck	vim/.vim/plugged/vim-fugitive/autoload/fugitive.vim	/^function! s:VersionCheck() abort$/;"	f
 WinShellEsc	vim/.vim/plugged/vim-fugitive/autoload/fugitive.vim	/^function! s:WinShellEsc(arg) abort$/;"	f
 XVFB_ERRORFILE	vim/.vim/plugged/vim-python-pep8-indent/Makefile	/^test_docker: XVFB_ERRORFILE:=\/dev\/null$/;"	m
+__init__	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher-2.py	/^/;"	f
+__init__	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^/;"	f
+__init__	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^VimüUnDoÂ/;"	f
 _handleOldOptions	vim/.vim/plugged/vim-gutentags/autoload/gutentags/ctags.vim	/^function! s:_handleOldOptions() abort$/;"	f
 _map	vim/.vim/plugged/vim-textobj-user/autoload/textobj/user.vim	/^function! s:_map(map_commands, forced_p, lhs, rhs)$/;"	f
 _move	vim/.vim/plugged/vim-textobj-user/t/move.vim	/^function! s:_move(type)$/;"	f
@@ -753,7 +756,6 @@ dobufread	vim/.vim/autoload/plug.vim	/^function! s:dobufread(names)$/;"	f
 dosurround	vim/.vim/plugged/vim-surround/plugin/surround.vim	/^function! s:dosurround(...) " {{{1$/;"	f
 ds	vim/.vim/plugged/vim-surround/plugin/surround.vim	/^  nmap ds  <Plug>Dsurround$/;"	m
 dummy	vim/.vim/plugged/vim-matchup/test/issues/3/test.sql	/^create or replace function dummy()$/;"	f
-eL	vim/.vim/.undo/%home%doublew%Documents%hackerrank%cpp%hello-world%b.c	/^VimüUnDoÂ/;"	v
 effcol	vim/.vim/plugged/vim-matchup/autoload/matchup/delim.vim	/^function! s:effcol(expr)$/;"	f
 effline	vim/.vim/plugged/vim-matchup/autoload/matchup/delim.vim	/^function! s:effline(expr)$/;"	f
 ensure_match_popup	vim/.vim/plugged/vim-matchup/autoload/matchup/matchparen.vim	/^function! s:ensure_match_popup() abort " {{{1$/;"	f
@@ -1136,6 +1138,7 @@ g:vimtex_matchparen_enabled	vim/.vim/plugged/vim-matchup/plugin/matchup.vim	/^  
 gc	vim/.vim/plugged/vim-commentary/plugin/commentary.vim	/^  nmap gc  <Plug>Commentary$/;"	m
 gc	vim/.vim/plugged/vim-commentary/plugin/commentary.vim	/^  omap gc  <Plug>Commentary$/;"	m
 gcc	vim/.vim/plugged/vim-commentary/plugin/commentary.vim	/^  nmap gcc <Plug>CommentaryLine$/;"	m
+gcd	vim/.vim/.undo/%home%doublew%Documents%ctf%create%solve.py	/^VimüUnDoÂ/;"	f
 gcu	vim/.vim/plugged/vim-commentary/plugin/commentary.vim	/^  nmap gcu <Plug>Commentary<Plug>Commentary$/;"	m
 generate_wildignore_options	vim/.vim/plugged/vim-gutentags/autoload/gutentags/ctags.vim	/^function! s:generate_wildignore_options() abort$/;"	f
 get	vim/.vim/plugged/vim-matchup/lua/treesitter-matchup/third-party/lru.lua	/^    local function get(_, key)$/;"	f
@@ -1152,6 +1155,7 @@ get_delim_multi	vim/.vim/plugged/vim-matchup/autoload/matchup/delim.vim	/^functi
 get_match_words	vim/.vim/plugged/vim-matchup/after/ftplugin/tex_matchup.vim	/^function! s:get_match_words()$/;"	f
 get_matching_delims	vim/.vim/plugged/vim-matchup/autoload/matchup/delim.vim	/^function! s:get_matching_delims(down, stopline) dict abort " {{{1$/;"	f
 get_node_at_pos	vim/.vim/plugged/vim-matchup/lua/treesitter-matchup/syntax.lua	/^local function get_node_at_pos(cursor)$/;"	f
+get_posts	vim/.vim/.undo/%home%doublew%Documents%freecodecamp%python-api-dev%app%main.py	/^/;"	f
 getchar	vim/.vim/plugged/targets.vim/autoload/targets/sources/argument.vim	/^function! s:getchar()$/;"	f
 getchar	vim/.vim/plugged/vim-surround/plugin/surround.vim	/^function! s:getchar()$/;"	f
 geteffline	vim/.vim/plugged/vim-matchup/autoload/matchup/delim.vim	/^function! s:geteffline(expr)$/;"	f
@@ -1230,6 +1234,7 @@ hasLegacySettings	vim/.vim/plugged/targets.vim/autoload/targets/mappings.vim	/^f
 hasPrefix	vim/.vim/plugged/targets.vim/autoload/targets.vim	/^function! s:hasPrefix(str, prefix)$/;"	f
 has_plugin	vim/.vim/plugged/vim-matchup/after/ftplugin/tex_matchup.vim	/^function! s:has_plugin(plug)$/;"	f
 hash_match	vim/.vim/autoload/plug.vim	/^function! s:hash_match(a, b)$/;"	f
+header	vim/.vim/.undo/%mnt%c%Users%LEGION.LAPTOP-HVMBBO3R%OneDrive - Asia Pacific University%Documents%My Documents%Misc%Portswigger-WebAcademy%authentication-vulnerabilities%passwords-based%solve.py	/^header = {ı/;"	v
 health#targets#check	vim/.vim/plugged/targets.vim/autoload/health/targets.vim	/^function! health#targets#check() abort$/;"	f
 highlight_background	vim/.vim/plugged/vim-matchup/autoload/matchup/matchparen.vim	/^function! s:highlight_background(corrlist) " {{{1$/;"	f
 highlight_surrounding	vim/.vim/plugged/vim-matchup/autoload/matchup/matchparen.vim	/^function! s:highlight_surrounding(insertmode, current) " {{{1$/;"	f
@@ -1467,6 +1472,11 @@ nearest_test	vim/.vim/plugged/vim-sage/autoload/test/sage/pytest.vim	/^function!
 new	vim/.vim/plugged/undotree/autoload/undotree.vim	/^function! s:new(obj) abort$/;"	f
 new_result	vim/.vim/plugged/vim-textobj-user/t/old-property-names.vim	/^    let new_result = @0$/;"	v
 new_window	vim/.vim/autoload/plug.vim	/^function! s:new_window()$/;"	f
+next_5	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^/;"	f
+next_coeff	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^/;"	f
+next_n	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^/;"	f
+next_n	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^/;"	f	function:.next_5
+next_nk	vim/.vim/.undo/%home%doublew%Documents%ctf%create%my-finest-cipher.py	/^/;"	f
 no_cvr_prefinal_lazy_t	vim/.vim/plugged/vim-matchup/test/issues/69/template.cpp	/^    >::type no_cvr_prefinal_lazy_t;$/;"	t	file:
 node.Init	vim/.vim/plugged/undotree/autoload/undotree.vim	/^function! s:node.Init() abort$/;"	f
 nomatchparen	vim/.vim/plugged/vim-matchup/test/issues/7/augroup.vim	/^augroup nomatchparen$/;"	a
@@ -2407,6 +2417,7 @@ update	vim/.vim/autoload/plug.vim	/^function! s:update(force, names)$/;"	f
 update_cached_matches	vim/.vim/plugged/vim-matchup/lua/treesitter-matchup/third-party/query.lua	/^  local function update_cached_matches(bufnr, changed_tick, query_group)$/;"	f
 update_finish	vim/.vim/autoload/plug.vim	/^function! s:update_finish()$/;"	f
 update_impl	vim/.vim/autoload/plug.vim	/^function! s:update_impl(pull, force, args) abort$/;"	f
+update_post	vim/.vim/.undo/%home%doublew%Documents%freecodecamp%python-api-dev%app%main.py	/^/;"	f
 update_python	vim/.vim/autoload/plug.vim	/^function! s:update_python()$/;"	f
 update_ruby	vim/.vim/autoload/plug.vim	/^function! s:update_ruby()$/;"	f
 update_tags	vim/.vim/plugged/vim-gutentags/autoload/gutentags.vim	/^function! s:update_tags(bufno, module, write_mode, queue_mode) abort$/;"	f
