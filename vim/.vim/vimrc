@@ -246,8 +246,8 @@ vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
 vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
 nnoremap <silent> <C-j> :m +1<CR>==
 nnoremap <silent> <C-k> :m -2<CR>==
-inoremap <silent> <C-j> <esc>mz:m +1<CR>==`za
-inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
+" inoremap <silent> <C-j> <esc>mz:m +1<CR>==`za
+" inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
 
 inoremap jkq <Esc>
 

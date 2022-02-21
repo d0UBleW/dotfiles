@@ -1,7 +1,6 @@
 [global_config]
   focus = system
   window_state = maximise
-  borderless = False
   title_transmit_bg_color = "#be5046"
   always_split_with_profile = True
 [keybindings]
@@ -17,8 +16,6 @@
     show_titlebar = False
     scrollback_infinite = True
     use_system_font = False
-  [[New Profile]]
-    cursor_color = "#aaaaaa"
   [[theone]]
     background_color = "#272B33"
     background_darkness = 0.95
@@ -29,6 +26,24 @@
     foreground_color = "#abb2c0"
     show_titlebar = False
     palette = "#272b33:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2c0:#272b33:#e5c07b:#5c6370:#828997:#abb2bf:#c678dd:#abb2bf:#abb2c0"
+    use_system_font = False
+  [[Solarized Light]]
+    background_color = "#fdf6e3"
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Monospace Bold 14
+    foreground_color = "#657b83"
+    show_titlebar = False
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+  [[Gruvbox Light]]
+    background_color = "#fbf1c7"
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Monospace Bold 14
+    foreground_color = "#3c3836"
+    show_titlebar = False
+    palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
     use_system_font = False
 [layouts]
   [[default]]

@@ -1151,6 +1151,7 @@ gcc	vim/.vim/plugged/vim-commentary/plugin/commentary.vim	/^  nmap gcc <Plug>Com
 gcu	vim/.vim/plugged/vim-commentary/plugin/commentary.vim	/^  nmap gcu <Plug>Commentary<Plug>Commentary$/;"	m
 generate_wildignore_options	vim/.vim/plugged/vim-gutentags/autoload/gutentags/ctags.vim	/^function! s:generate_wildignore_options() abort$/;"	f
 get	vim/.vim/plugged/vim-matchup/lua/treesitter-matchup/third-party/lru.lua	/^    local function get(_, key)$/;"	f
+getAnnoyingPrime	vim/.vim/.undo/%home%d0UBleW%ctf%dice%22%crypto%baby-rsa%a.py	/^/;"	f
 getFactories	vim/.vim/plugged/targets.vim/autoload/targets.vim	/^function! s:getFactories(trigger)$/;"	f
 getGruvColor	vim/.vim/plugged/gruvbox/autoload/lightline/colorscheme/gruvbox.vim	/^function! s:getGruvColor(group)$/;"	f
 getKeyAsStr	vim/.vim/plugged/targets.vim/autoload/targets.vim	/^function! s:getKeyAsStr()$/;"	f
