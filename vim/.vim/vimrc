@@ -93,6 +93,13 @@ set autowrite		" Automatically save before commands like :next and :make
 " set mouse=a		" Enable mouse usage (all modes)
 set t_Co=256    " Force 256 colours
 
+" onehalflight requires `set t_Co=256`
+" colorscheme onehalfdark
+colorscheme onehalflight
+" colorscheme onedark
+" colorscheme gruvbox
+
+
 set termguicolors
 
 " colorscheme onedark
@@ -235,7 +242,7 @@ noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
 " nnoremap <Leader>T :set expandtab!<CR>
 
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <Space><CR> o<Esc>
+nnoremap <Leader><CR> o<Esc>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nnoremap <Space>h <C-w>h
@@ -299,7 +306,6 @@ endif
 
 " augroup vimrc_colours
 "     au!
-
 "     " autocmd ColorScheme * highlight SpecialKey guifg=#56b6c2 guibg=#3e4452
 "     autocmd ColorScheme * highlight SpecialKey guifg=orange guibg=gray
 "     autocmd ColorScheme * hi NonText ctermfg=7 guifg=#abb2bf
@@ -314,7 +320,6 @@ hi SpecialKey guifg=#83a958 guibg=#3c3836
 
 " augroup vimrcEx
 "     au!
-
 "     " For all text files set 'textwidth' to 78 characters or use `gq` to break
 "     " line
 "     autocmd FileType text setlocal textwidth=78
@@ -328,5 +333,3 @@ if executable(s:clip)
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
-
-
