@@ -1,2 +1,4 @@
 vim/.vim/.undo/
 tmux/.tmux/resurrect/
+tags
+vim/.vim/.netrwhist
