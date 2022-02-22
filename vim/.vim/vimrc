@@ -102,6 +102,11 @@ colorscheme onehalflight
 
 set termguicolors
 
+" colorscheme onedark
+" colorscheme gruvbox
+colorscheme onehalflight
+
+
 set nobackup
 set noswapfile
 
