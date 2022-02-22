@@ -56,9 +56,9 @@ Plug 'morhetz/gruvbox'
 
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
+Plug 'lifepillar/vim-solarized8'
+
 call plug#end()
-
-
 
 filetype plugin indent on
 
@@ -88,16 +88,17 @@ let &t_SR .= "\<Esc>[4 q"
 
 
 
-set background=dark
+set background=light
 set autowrite		" Automatically save before commands like :next and :make
 " set mouse=a		" Enable mouse usage (all modes)
-set t_Co=256    " Force 256 colours
+" set t_Co=256    " Force 256 colours
 
 set termguicolors
 
 " colorscheme onedark
 " colorscheme gruvbox
-colorscheme onehalflight
+" colorscheme onehalflight
+colorscheme solarized8
 
 
 set nobackup
@@ -328,5 +329,3 @@ if executable(s:clip)
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
-
-
