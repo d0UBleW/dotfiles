@@ -52,6 +52,8 @@ Plug 'andymass/vim-matchup'
 
 Plug 'morhetz/gruvbox'
 
+Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+
 call plug#end()
 
 
@@ -59,9 +61,6 @@ call plug#end()
 filetype plugin indent on
 
 syntax on
-
-" colorscheme onedark
-colorscheme gruvbox
 
 let g:python_highlight_all = 1
 
@@ -90,6 +89,11 @@ set autowrite		" Automatically save before commands like :next and :make
 set t_Co=256    " Force 256 colours
 
 set termguicolors
+
+" colorscheme onedark
+" colorscheme gruvbox
+colorscheme onehalflight
+
 
 set nobackup
 set noswapfile
