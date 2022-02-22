@@ -73,3 +73,6 @@
 [submodule "vim/.vim/plugged/vim-solarized8"]
 	path = vim/.vim/plugged/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "vim/.vim/plugged/onehalf"]
+	path = vim/.vim/plugged/onehalf
+	url = https://github.com/sonph/onehalf.git
