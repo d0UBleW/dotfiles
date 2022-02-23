@@ -62,7 +62,7 @@
     [[[child1]]]
       type = Terminal
       parent = window0
-      profile = theone
+      profile = Solarized Dark
       command = neofetch; bash
       directory = ""
 [plugins]
