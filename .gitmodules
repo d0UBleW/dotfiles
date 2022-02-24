@@ -76,3 +76,6 @@
 [submodule "vim/.vim/plugged/onehalf"]
 	path = vim/.vim/plugged/onehalf
 	url = https://github.com/sonph/onehalf.git
+[submodule "vim/.vim/plugged/supertab"]
+	path = vim/.vim/plugged/supertab
+	url = https://github.com/ervandew/supertab.git

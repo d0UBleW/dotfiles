@@ -58,6 +58,8 @@ Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'lifepillar/vim-solarized8'
 
+Plug 'ervandew/supertab'
+
 call plug#end()
 
 filetype plugin indent on
@@ -168,6 +170,8 @@ set signcolumn=auto
 
 set colorcolumn=79
 
+set completeopt-=preview
+set completeopt+=menuone
 
 
 " Undo directory
@@ -277,6 +281,8 @@ nnoremap <Silent> <Leader>n :exec &nu==&rnu? "set nu!" : "set rnu!"<CR>
 cnoremap <C-a> <Home>
 cnoremap <c-e> <End>
 
+" https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
 " Skeleton Templates
