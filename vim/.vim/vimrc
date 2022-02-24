@@ -60,6 +60,8 @@ Plug 'lifepillar/vim-solarized8'
 
 Plug 'ervandew/supertab'
 
+Plug 'xavierd/clang_complete'
+
 call plug#end()
 
 filetype plugin indent on
