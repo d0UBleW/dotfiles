@@ -1,30 +1,17 @@
-" ============================================================
-"
-" This file is a part of the omnicppcomplete plugin for vim
-"
-" Copyright (C) 2006-2012 by Vissale Neang<fromtonrouge at gmail dot com>
-"
-" This program is free software; you can redistribute it and/or
-" modify it under the terms of the GNU General Public License as
-" published by the Free Software Foundation; either version 2 of
-" the License or (at your option) version 3 or any later version
-"
-" This program is distributed in the hope that it will be useful,
-" but WITHOUT ANY WARRANTY; without even the implied warranty of
-" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-" GNU General Public License for more details.
-"
-" You should have received a copy of the GNU General Public License
-" along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"
-" ============================================================
-" OmniCppComplete initialization
-" call omni#cpp#complete#Init()
-
 let &makeprg = 'g++ -Wall -Wextra -std=c++17 % -o %<'
 
 nnoremap <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
 
-nnoremap <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --languages=c++ .<CR>
+nnoremap <C-F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c++ .<CR>
 
-set tags+=~/.vim/tags/systags
+" set tags+=~/.vim/tags/systags
+
+set tags+=~/.vim/tags/cpp_src
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
