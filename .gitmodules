@@ -79,3 +79,6 @@
 [submodule "vim/.vim/plugged/supertab"]
 	path = vim/.vim/plugged/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "vim/.vim/plugged/clang_complete"]
+	path = vim/.vim/plugged/clang_complete
+	url = https://github.com/xavierd/clang_complete
