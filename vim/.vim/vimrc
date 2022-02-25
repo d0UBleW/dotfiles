@@ -60,7 +60,9 @@ Plug 'lifepillar/vim-solarized8'
 
 Plug 'ervandew/supertab'
 
-Plug 'xavierd/clang_complete'
+" Plug 'xavierd/clang_complete'
+
+Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 
@@ -171,6 +173,7 @@ set cursorline
 set signcolumn=auto
 
 set colorcolumn=79
+set signcolumn
 
 set completeopt-=preview
 set completeopt+=menuone
@@ -273,6 +276,7 @@ nnoremap <silent> <C-k> :m -2<CR>==
 " inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
 
 inoremap jkq <Esc>
+inoremap ;; <C-o>A;
 
 " Search Replace
 nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
