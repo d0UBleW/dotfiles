@@ -87,6 +87,9 @@ let g:matchup_surround_enabled = 1
 " vim-python/python-syntax
 let g:python_highlight_all = 1
 
+" YCM
+let g:ycm_collect_identifiers_from_tags_files = 1
+
 " Cursor
 let &t_SI .= "\<Esc>[6 q"
 let &t_EI .= "\<Esc>[2 q"
@@ -96,7 +99,7 @@ let &t_SR .= "\<Esc>[4 q"
 
 set background=light
 set autowrite		" Automatically save before commands like :next and :make
-" set mouse=a		" Enable mouse usage (all modes)
+set mouse=n
 " set t_Co=256    " Force 256 colours
 
 " onehalflight requires `set t_Co=256`
@@ -170,10 +173,8 @@ set showcmd
 
 set cursorline
 
-set signcolumn=auto
-
 set colorcolumn=79
-set signcolumn
+set signcolumn=yes
 
 set completeopt-=preview
 set completeopt+=menuone
@@ -290,6 +291,10 @@ cnoremap <c-e> <End>
 " https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" YCM
+nnoremap <silent> <Leader>jd :YcmCompleter GoToDefinition<CR>
+nnoremap <silent> <Leader>fi :YcmCompleter FixIt<CR>
+
 
 " Skeleton Templates
 
@@ -299,14 +304,14 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "     normal! 4jA
 " endfunction
 
-" if has("autocmd")
-"     augroup templates
-"         au!
-"         au BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
-"         au BufNewFile *.html 0r ~/.vim/templates/skeleton.html
-"         au BufNewFile *.java call Java_Skel()
-"     augroup end
-" endif
+if has("autocmd")
+    augroup templates
+        au!
+        " au BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+        au BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+        " au BufNewFile *.java call Java_Skel()
+    augroup end
+endif
 
 
 

@@ -1,7 +1,7 @@
 " OmniCppComplete initialization
 " call omni#cpp#complete#Init()
 
-" set tags+=~/.vim/tags/systags
+set tags+=~/.vim/tags/systags
 
 " let g:AutoPairsMapCR = 0
 " imap <silent><CR> <CR><Plug>AutoPairsReturn
@@ -14,4 +14,4 @@ let &makeprg = 'gcc -Wall -Wextra % -o %<'
 nnoremap <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
 nnoremap <silent> <F10> :!%:p:r<CR>
 
-nnoremap <C-F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c .<CR>
+nnoremap <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c --langmap=c:.c.h .<CR>
