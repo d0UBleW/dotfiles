@@ -64,6 +64,10 @@ Plug 'ervandew/supertab'
 
 Plug 'ycm-core/YouCompleteMe'
 
+Plug 'vim-pandoc/vim-pandoc'
+
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
 call plug#end()
 
 filetype plugin indent on
@@ -276,7 +280,7 @@ nnoremap <silent> <C-k> :m -2<CR>==
 " inoremap <silent> <C-j> <esc>mz:m +1<CR>==`za
 " inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
 
-inoremap jkq <Esc>
+inoremap ;a <Esc>
 inoremap ;; <C-o>A;
 
 " Search Replace
@@ -316,6 +320,12 @@ endif
 
 
 " Misc
+
+autocmd! BufWritePost .vimrc source ~/.vimrc
+
+set autoread
+set title
+set confirm
 
 if executable('rg')
     set grepprg=rg\ --vimgrep

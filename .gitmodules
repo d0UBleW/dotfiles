@@ -85,3 +85,15 @@
 [submodule "vim/.vim/plugged/YouCompleteMe"]
 	path = vim/.vim/plugged/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe
+[submodule "https:/github.com/tmux-plugins/tmux-resurrect"]
+	path = https:/github.com/tmux-plugins/tmux-resurrect
+	url = https://github.com/sonph/onehalf.git
+[submodule "https:/github.com/ycm-core/ycmd"]
+	path = https:/github.com/ycm-core/ycmd
+	url = https://github.com/ycm-core/YouCompleteMe.git
+[submodule "vim/.vim/plugged/vim-pandoc-syntax"]
+	path = vim/.vim/plugged/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
+[submodule "vim/.vim/plugged/vim-pandoc"]
+	path = vim/.vim/plugged/vim-pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc.git
