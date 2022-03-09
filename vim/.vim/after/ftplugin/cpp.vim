@@ -25,3 +25,8 @@ set tags+=~/.vim/tags/cpp_src
 " let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 " let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 " let OmniCpp_DefaultNamespaces = ['std', '_GLIBCXX_STD']
+
+iabbrev #i #include
+iabbrev #d #define
+iabbrev cc /*<CR><CR>/<Up>
+iabbrev forl for (int i = 0; i <NUM; i++) {<CR>}<Esc><Esc>?NUM<CR>cw

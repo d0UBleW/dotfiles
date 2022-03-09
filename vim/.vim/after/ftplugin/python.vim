@@ -1,3 +1,5 @@
+nnoremap <F10> :w<CR>:!chmod +x %:p; %:p<CR>
+
 setlocal wildignore=*.pyc
 setlocal suffixesadd=.py
 
@@ -18,3 +20,4 @@ function! PyInclude(fname)
 endfunction
 
 setlocal includeexpr=PyInclude(v:fname)
+iabbrev <buffer> iff if:<left>

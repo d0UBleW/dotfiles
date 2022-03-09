@@ -68,6 +68,10 @@ Plug 'vim-pandoc/vim-pandoc'
 
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
+" Plug 'sheerun/vim-polyglot'
+
+Plug 'ap/vim-css-color'
+
 call plug#end()
 
 filetype plugin indent on
@@ -77,6 +81,7 @@ syntax on
 let g:python_highlight_all = 1
 
 let mapleader = ','
+let maplocalleader = '.'
 
 let g:camelcasemotion_key = '\'
 
@@ -259,6 +264,8 @@ noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader><CR> o<Esc>
 nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>cc :cclose<CR>
 
 nnoremap <Space>h <C-w>h
 nnoremap <Space>j <C-w>j
@@ -283,6 +290,12 @@ nnoremap <silent> <C-k> :m -2<CR>==
 inoremap ;a <Esc>
 inoremap ;; <C-o>A;
 
+function! InsertSemicolon()
+    execute "normal! mqA;\<esc>`q"
+endfunction
+
+nnoremap \; :call InsertSemicolon()<CR>
+
 " Search Replace
 nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
 
@@ -299,6 +312,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nnoremap <silent> <Leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <silent> <Leader>fi :YcmCompleter FixIt<CR>
 
+nnoremap <silent> ,/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Skeleton Templates
 
@@ -321,7 +335,26 @@ endif
 
 " Misc
 
-autocmd! BufWritePost .vimrc source ~/.vimrc
+function! QuickfixMapping()
+  " Go to the previous location and stay in the quickfix window
+    nnoremap <buffer> K :cprev<CR>zz<C-w>w
+
+    " Go to the next location and stay in the quickfix window
+    nnoremap <buffer> J :cnext<CR>zz<C-w>w
+
+    nnoremap <silent> <buffer> <localleader> q :bwipeout<CR>
+endfunction
+
+augroup quickfix_group
+  autocmd!
+
+  " Use custom keybindings
+  autocmd filetype qf call QuickfixMapping()
+augroup END
+
+autocmd filetype help nnoremap <silent> <buffer> <localleader> q :bwipeout<CR>
+
+autocmd! BufWritePost vimrc source ~/.vim/vimrc
 
 set autoread
 set title
@@ -344,6 +377,7 @@ hi SpecialKey guifg=#83a958 guibg=#3c3836
 " hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE
 " hi CursorLineNr term=bold cterm=bold ctermfg=lightblue gui=bold guifg=lightblue
 
+hi Comment cterm=NONE gui=NONE
 
 
 " augroup vimrcEx
@@ -363,3 +397,11 @@ if executable(s:clip)
 endif
 
 call togglebg#map("<F5>")
+
+" vim-pandoc bibliography auto completion
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.pandoc = ['@']
+
+let g:ycm_filetype_blacklist = {}

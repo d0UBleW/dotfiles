@@ -97,3 +97,9 @@
 [submodule "vim/.vim/plugged/vim-pandoc"]
 	path = vim/.vim/plugged/vim-pandoc
 	url = https://github.com/vim-pandoc/vim-pandoc.git
+[submodule "vim/.vim/plugged/vim-css-color"]
+	path = vim/.vim/plugged/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
+[submodule "vim/.vim/plugged/vim-polyglot"]
+	path = vim/.vim/plugged/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
