@@ -81,7 +81,7 @@ syntax on
 let g:python_highlight_all = 1
 
 let mapleader = ','
-let maplocalleader = '.'
+let maplocalleader = ';'
 
 let g:camelcasemotion_key = '\'
 
@@ -289,6 +289,9 @@ nnoremap <silent> <C-k> :m -2<CR>==
 
 inoremap ;a <Esc>
 inoremap ;; <C-o>A;
+
+" Trigger iabbrev
+inoremap <C-j> <C-]>
 
 function! InsertSemicolon()
     execute "normal! mqA;\<esc>`q"

@@ -9,10 +9,10 @@ let g:ycm_clangd_binary_path = '/usr/local/bin/clangd'
 
 let &makeprg = 'g++ -Wall -Wextra -std=c++17 % -o %<'
 
-nnoremap <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
-nnoremap <silent> <F10> :!"%:p:r"<CR>
+nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
+nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
 
-nnoremap <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c++ .<CR>
+nnoremap <buffer> <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c++ .<CR>
 
 " set tags+=~/.vim/tags/systags
 
@@ -26,7 +26,8 @@ set tags+=~/.vim/tags/cpp_src
 " let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 " let OmniCpp_DefaultNamespaces = ['std', '_GLIBCXX_STD']
 
-iabbrev #i #include
-iabbrev #d #define
-iabbrev cc /*<CR><CR>/<Up>
-iabbrev forl for (int i = 0; i <NUM; i++) {<CR>}<Esc><Esc>?NUM<CR>cw
+iabbrev <buffer> #i #include
+iabbrev <buffer> #d #define
+iabbrev <buffer> cc /*<CR><CR>/<Up>
+iabbrev <buffer> forl for (int i = 0; i <NUM; i++) {<CR>}<Esc><Esc>?NUM<CR>cw
+iabbrev <buffer> iff if (##) {<CR>}<Esc>?#<CR>nc2l
