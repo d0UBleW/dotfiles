@@ -21,3 +21,4 @@ endfunction
 
 setlocal includeexpr=PyInclude(v:fname)
 iabbrev <buffer> iff if :<left>
+iabbrev <buffer> cc '''<CR>

@@ -40,7 +40,7 @@ Plug 'petRUShka/vim-sage'
 
 Plug 'vim-python/python-syntax'
 
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'Vimjas/vim-python-pep8-indent'
 
@@ -72,19 +72,18 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 
 Plug 'ap/vim-css-color'
 
+Plug 'bfrg/vim-cpp-modern'
+
 call plug#end()
 
 filetype plugin indent on
 
 syntax on
 
-let g:python_highlight_all = 1
-
-let mapleader = ','
-let maplocalleader = ';'
-
+" Camel
 let g:camelcasemotion_key = '\'
 
+" auto-pairs
 let g:AutoPairsShortcutFastWrap = "<F12>"
 
 " disable matchit
@@ -99,30 +98,37 @@ let g:python_highlight_all = 1
 " YCM
 let g:ycm_collect_identifiers_from_tags_files = 1
 
+" vim-pandoc bibliography auto completion
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.pandoc = ['@']
+
+let g:ycm_filetype_blacklist = {}
+
 " Cursor
 let &t_SI .= "\<Esc>[6 q"
 let &t_EI .= "\<Esc>[2 q"
 let &t_SR .= "\<Esc>[4 q"
 
+let mapleader = ','
+let maplocalleader = ';'
+
 
 
 set background=light
 set autowrite		" Automatically save before commands like :next and :make
-set mouse=n
+set mouse=a
 " set t_Co=256    " Force 256 colours
-
-" onehalflight requires `set t_Co=256`
-" colorscheme onehalfdark
-colorscheme onehalflight
-" colorscheme onedark
-" colorscheme gruvbox
-
 
 set termguicolors
 
 " colorscheme onedark
 " colorscheme gruvbox
+
+" onehalflight requires `set t_Co=256`
 " colorscheme onehalflight
+
 colorscheme solarized8
 
 
@@ -185,8 +191,8 @@ set cursorline
 set colorcolumn=79
 set signcolumn=yes
 
-set completeopt-=preview
-set completeopt+=menuone
+" set completeopt-=preview
+" set completeopt+=menuone
 
 
 " Undo directory
@@ -256,16 +262,9 @@ noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
 
 " Mapping
 
-" nnoremap <Leader>L :set list!<CR>
-" nnoremap <Leader>W :set wrap!<CR>
-" nnoremap <Leader>H :set hlsearch!<CR>
-" nnoremap <Leader>T :set expandtab!<CR>
-
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader><CR> o<Esc>
 nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>co :copen<CR>
-nnoremap <leader>cc :cclose<CR>
 
 nnoremap <Space>h <C-w>h
 nnoremap <Space>j <C-w>j
@@ -287,8 +286,8 @@ nnoremap <silent> <C-k> :m -2<CR>==
 " inoremap <silent> <C-j> <esc>mz:m +1<CR>==`za
 " inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
 
-inoremap ;a <Esc>
-inoremap ;; <C-o>A;
+" inoremap ;a <Esc>
+inoremap <leader>e <C-o>A
 
 " Trigger iabbrev
 inoremap <C-j> <C-]>
@@ -309,28 +308,34 @@ cnoremap <C-a> <Home>
 cnoremap <c-e> <End>
 
 " https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " YCM
 nnoremap <silent> <Leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <silent> <Leader>fi :YcmCompleter FixIt<CR>
 
-nnoremap <silent> ,/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
 " Skeleton Templates
 
-" function! Java_Skel()
-"     0r $HOME/.vim/templates/skeleton.java
-"     s/FILENAME/\=expand("%:t:r")
-"     normal! 4jA
-" endfunction
+function! Java_Skel()
+    0r $HOME/.vim/templates/skeleton.java
+    s/FILENAME/\=expand("%:t:r")
+    " execute "normal! 1j"
+endfunction
+
+function! Header_Skel()
+    0r $HOME/.vim/templates/skeleton.h
+    let l:filename = toupper(expand("%:t:r"))
+    %s/FILENAME/\=expand(l:filename)
+    execute "normal! Gddkk"
+endfunction
 
 if has("autocmd")
     augroup templates
         au!
         " au BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
         au BufNewFile *.html 0r ~/.vim/templates/skeleton.html
-        " au BufNewFile *.java call Java_Skel()
+        au BufNewFile *.java call Java_Skel()
+        au BufNewFile *.h call Header_Skel()
     augroup end
 endif
 
@@ -345,7 +350,7 @@ function! QuickfixMapping()
     " Go to the next location and stay in the quickfix window
     nnoremap <buffer> J :cnext<CR>zz<C-w>w
 
-    nnoremap <silent> <buffer> <localleader> q :bwipeout<CR>
+    nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
 endfunction
 
 augroup quickfix_group
@@ -355,7 +360,7 @@ augroup quickfix_group
   autocmd filetype qf call QuickfixMapping()
 augroup END
 
-autocmd filetype help nnoremap <silent> <buffer> <localleader> q :bwipeout<CR>
+autocmd! filetype help nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
 
 autocmd! BufWritePost vimrc source ~/.vim/vimrc
 
@@ -368,19 +373,19 @@ if executable('rg')
     set grepformat^=%f:%l:%c:%m
 endif
 
-" augroup vimrc_colours
-"     au!
-"     " autocmd ColorScheme * highlight SpecialKey guifg=#56b6c2 guibg=#3e4452
-"     autocmd ColorScheme * highlight SpecialKey guifg=orange guibg=gray
-"     autocmd ColorScheme * hi NonText ctermfg=7 guifg=#abb2bf
-" augroup END
+augroup highlights
+    au!
+    " autocmd ColorScheme * highlight SpecialKey guifg=#56b6c2 guibg=#3e4452
+    " autocmd ColorScheme * highlight SpecialKey guifg=orange guibg=gray
+    " highlight SpecialKey guifg=#83a958 guibg=#3c3836
+    " hi NonText ctermfg=7 guifg=#abb2bf
+augroup END
 
-hi SpecialKey guifg=#83a958 guibg=#3c3836
+" hi SpecialKey guifg=#83a958 guibg=#3c3836
 " hi CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#2a2a2a
 " hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE
 " hi CursorLineNr term=bold cterm=bold ctermfg=lightblue gui=bold guifg=lightblue
 
-hi Comment cterm=NONE gui=NONE
 
 
 " augroup vimrcEx
@@ -400,11 +405,3 @@ if executable(s:clip)
 endif
 
 call togglebg#map("<F5>")
-
-" vim-pandoc bibliography auto completion
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.pandoc = ['@']
-
-let g:ycm_filetype_blacklist = {}

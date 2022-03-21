@@ -103,3 +103,6 @@
 [submodule "vim/.vim/plugged/vim-polyglot"]
 	path = vim/.vim/plugged/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "vim/.vim/plugged/vim-cpp-modern"]
+	path = vim/.vim/plugged/vim-cpp-modern
+	url = https://github.com/bfrg/vim-cpp-modern.git
