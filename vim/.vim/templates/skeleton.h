@@ -1,5 +1,5 @@
-#ifndef FILENAME_H
-#define FILENAME_H
+#ifndef FILENAME_H_INCLUDED
+#define FILENAME_H_INCLUDED
 
 
 
