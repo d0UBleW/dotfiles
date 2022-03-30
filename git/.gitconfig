@@ -1,3 +1,31 @@
 [user]
 	email = 66501624+d0UBleW@users.noreply.github.com
 	name = d0UBleW
+[core]
+	editor = /usr/bin/vim
+	autocrlf = input
+[diff]
+	tool = /usr/bin/vimdiff
+[difftool]
+	prompt = false
+[difftool "vimdiff"]
+	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+[init]
+	defaultBranch = main
+	templateDir = ~/Templates/git.git
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[alias]
+    a = "!git status --short | peco | awk '{print $2}' | xargs git add"
+    st = status
+    br = branch
+    ba = branch -a
+    d = diff
+    ci = commit
+    ca = commit -a
+    ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+    pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
