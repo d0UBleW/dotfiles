@@ -113,8 +113,8 @@ let &t_SI .= "\<Esc>[6 q"
 let &t_EI .= "\<Esc>[2 q"
 let &t_SR .= "\<Esc>[4 q"
 
-let mapleader = ','
-let maplocalleader = ';'
+let mapleader = '\'
+let maplocalleader = '|'
 
 
 
@@ -316,6 +316,11 @@ cnoremap <c-e> <End>
 nnoremap <silent> <Leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <silent> <Leader>fi :YcmCompleter FixIt<CR>
 
+" Fugitive
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gs :G<CR>
+
 " Skeleton Templates
 
 function! Java_Skel()
@@ -345,6 +350,10 @@ endif
 
 " Misc
 
+function! FugitiveMapping()
+    nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
+endfunction
+
 function! QuickfixMapping()
   " Go to the previous location and stay in the quickfix window
     nnoremap <buffer> K :cprev<CR>zz<C-w>w
@@ -360,6 +369,7 @@ augroup quickfix_group
 
   " Use custom keybindings
   autocmd filetype qf call QuickfixMapping()
+  autocmd filetype fugitive*,git call FugitiveMapping()
 augroup END
 
 autocmd! filetype help nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
@@ -371,7 +381,7 @@ set title
 set confirm
 
 if executable('rg')
-    set grepprg=rg\ --vimgrep
+    set grepprg=rg\ --vimgrep\ --no-ignore
     set grepformat^=%f:%l:%c:%m
 endif
 
