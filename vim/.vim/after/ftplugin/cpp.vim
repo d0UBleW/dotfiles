@@ -13,6 +13,7 @@ nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
 nnoremap <buffer> <silent> <S-F9> :!compile-cpp<CR>
 nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
 nnoremap <buffer> <silent> <S-F10> :!./main.out<CR>
+nnoremap <buffer> <silent> <C-F10> :!valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./main.out<CR>
 nnoremap <buffer> <silent> <leader>f zfa{
 
 nnoremap <buffer> <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c++ .<CR>
