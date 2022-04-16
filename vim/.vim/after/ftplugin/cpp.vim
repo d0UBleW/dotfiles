@@ -10,7 +10,10 @@ let g:ycm_clangd_binary_path = '/usr/local/bin/clangd'
 let &makeprg = 'g++ -Wall -Wextra -std=c++17 % -o %<'
 
 nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
+nnoremap <buffer> <silent> <S-F9> :!compile-cpp<CR>
 nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
+nnoremap <buffer> <silent> <S-F10> :!./main.out<CR>
+nnoremap <buffer> <silent> <leader>f zfa{
 
 nnoremap <buffer> <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c++ .<CR>
 
