@@ -7,14 +7,16 @@
 " let g:clang_library_path='/usr/lib/llvm-10/lib/libclang-10.so.1'
 let g:ycm_clangd_binary_path = '/usr/local/bin/clangd'
 
-let &makeprg = 'g++ -Wall -Wextra -std=c++17 % -o %<'
+let &makeprg = "g++ -Wall -Wextra -std=c++17 % -o %<"
+
+let &equalprg = "clang-format -i %"
 
 nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
 nnoremap <buffer> <silent> <S-F9> :!compile-cpp<CR>
 nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
 nnoremap <buffer> <silent> <S-F10> :!./main.out<CR>
 nnoremap <buffer> <silent> <C-F10> :!valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./main.out<CR>
-nnoremap <buffer> <silent> <leader>f zfa{
+nnoremap <buffer> <silent> <leader>F zfa{
 
 nnoremap <buffer> <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c++ .<CR>
 
@@ -32,6 +34,6 @@ set tags+=~/.vim/tags/cpp_src
 
 iabbrev <buffer> incl #include
 iabbrev <buffer> defi #define
-iabbrev <buffer> cc /*<CR><CR>/<Up>
+iabbrev <buffer> cc /**<CR><CR>/<Up>
 iabbrev <buffer> forl for (int i = 0; i <NUM; i++) {<CR>}<Esc><Esc>?NUM<CR>cw
 iabbrev <buffer> iff if (##) {<CR>}<Esc>?#<CR>nc2l

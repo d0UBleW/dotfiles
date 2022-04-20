@@ -106,3 +106,12 @@
 [submodule "vim/.vim/plugged/vim-cpp-modern"]
 	path = vim/.vim/plugged/vim-cpp-modern
 	url = https://github.com/bfrg/vim-cpp-modern.git
+[submodule "vim/.vim/plugged/vim-gitgutter"]
+	path = vim/.vim/plugged/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/.vim/plugged/vim-clang-format"]
+	path = vim/.vim/plugged/vim-clang-format
+	url = https://github.com/rhysd/vim-clang-format.git
+[submodule "vim/.vim/plugged/DoxygenToolkit.vim"]
+	path = vim/.vim/plugged/DoxygenToolkit.vim
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git

@@ -74,6 +74,12 @@ Plug 'ap/vim-css-color'
 
 Plug 'bfrg/vim-cpp-modern'
 
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'rhysd/vim-clang-format'
+
 call plug#end()
 
 filetype plugin indent on
@@ -119,6 +125,7 @@ let maplocalleader = '|'
 
 
 set background=light
+" set background=dark
 set autowrite		" Automatically save before commands like :next and :make
 set mouse=a
 " set t_Co=256    " Force 256 colours
@@ -304,7 +311,7 @@ nnoremap \; :call InsertSemicolon()<CR>
 nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
 
 " Toggle Line numbering
-nnoremap <Silent> <Leader>n :exec &nu==&rnu? "set nu!" : "set rnu!"<CR>
+nnoremap <silent> <leader>n :exec &nu==&rnu? "set nu!" : "set rnu!"<CR>
 
 cnoremap <C-a> <Home>
 cnoremap <c-e> <End>
@@ -317,8 +324,8 @@ nnoremap <silent> <Leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <silent> <Leader>fi :YcmCompleter FixIt<CR>
 
 " Fugitive
-nmap <leader>gf :diffget //2<CR>
-nmap <leader>gj :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gl :diffget //3<CR>
 nmap <leader>gs :G<CR>
 
 " Skeleton Templates
