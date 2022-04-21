@@ -95,9 +95,9 @@ __peco_change_dir () {
     PECO_RC="$XDG_CONFIG_HOME/peco/config.json"
     PECO_FLAGS="--rcfile ${PECO_RC} --initial-filter ${FILTER}"
     if [[ "$#" -ne 0 ]]; then
-        TARGET_DIR=$(find $1 -type f 2>/dev/null | peco ${PECO_FLAGS})
+        TARGET_DIR=$(find $1 -type d 2>/dev/null | peco ${PECO_FLAGS})
     else
-        TARGET_DIR=$(find $HOME -type f 2>/dev/null | peco ${PECO_FLAGS})
+        TARGET_DIR=$(find $HOME -type d 2>/dev/null | peco ${PECO_FLAGS})
     fi
     EXIT_STATUS=$?
 
