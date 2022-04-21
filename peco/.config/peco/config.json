@@ -1,0 +1,7 @@
+{
+    "OnCancel": "error",
+    "Layout": "bottom-up",
+    "InitialFilter": "SmartCase",
+    "MaxScanBufferSize": 256,
+    "Use256Color": true
+}
