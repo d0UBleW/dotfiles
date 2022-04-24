@@ -60,8 +60,6 @@ Plug 'lifepillar/vim-solarized8'
 
 Plug 'ervandew/supertab'
 
-" Plug 'xavierd/clang_complete'
-
 Plug 'ycm-core/YouCompleteMe'
 
 Plug 'vim-pandoc/vim-pandoc'
@@ -79,6 +77,8 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'rhysd/vim-clang-format'
+
+Plug 'vimpostor/vim-lumen'
 
 call plug#end()
 
@@ -123,9 +123,10 @@ let mapleader = '\'
 let maplocalleader = '|'
 
 
-
-set background=light
+let &background = strftime("%H") < 18 ? "light" : "dark"
+" set background=light
 " set background=dark
+
 set autowrite		" Automatically save before commands like :next and :make
 set mouse=a
 " set t_Co=256    " Force 256 colours
@@ -302,10 +303,16 @@ inoremap <leader>e <C-o>A
 inoremap <C-j> <C-]>
 
 function! InsertSemicolon()
-    execute "normal! mqA;\<esc>`q"
+    let line=getline('.')
+    let semi=matchstr(line, ";$")
+    if semi == ""
+        execute "normal! mqA;\<esc>`q"
+        delmarks q
+    endif
 endfunction
 
-nnoremap \; :call InsertSemicolon()<CR>
+nnoremap <silent> \; :call InsertSemicolon()<CR>
+inoremap <silent> <tab>; <C-o>:call InsertSemicolon()<CR>
 
 " Search Replace
 nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
