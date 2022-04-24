@@ -11,6 +11,7 @@ let &makeprg = "g++ -Wall -Wextra -std=c++17 % -o %<"
 
 nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
 nnoremap <buffer> <silent> <S-F9> :!compile-all<CR>
+nnoremap <buffer> <silent> <C-F9> :!compile-all -d<CR>
 nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
 nnoremap <buffer> <silent> <S-F10> :!./main.out<CR>
 nnoremap <buffer> <silent> <C-F10> :!valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./main.out<CR>
@@ -50,5 +51,5 @@ vnoremap <buffer> <leader>cf :ClangFormat<CR>
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 let g:clang_format#auto_format = 1
-let g:clang_format#code_style = "llvm"
+let g:clang_format#code_style = "Microsoft"
 let g:clang_format#auto_formatexpr = 1
