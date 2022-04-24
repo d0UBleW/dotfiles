@@ -147,3 +147,7 @@ fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(oh-my-posh init bash --config ~/.poshthemes/robbyrussel.omp.json)"
+
+if [ -f ~/.bash.d/cht.sh ]; then
+    source ~/.bash.d/cht.sh
+fi
