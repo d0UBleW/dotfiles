@@ -109,3 +109,6 @@
 [submodule "vim/.vim/plugged/DoxygenToolkit.vim"]
 	path = vim/.vim/plugged/DoxygenToolkit.vim
 	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git
+[submodule "vim/.vim/plugged/vim-lumen"]
+	path = vim/.vim/plugged/vim-lumen
+	url = https://github.com/vimpostor/vim-lumen.git
