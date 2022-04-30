@@ -80,6 +80,8 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'vimpostor/vim-lumen'
 
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
 
 filetype plugin indent on
@@ -113,6 +115,8 @@ endif
 let g:ycm_semantic_triggers.pandoc = ['@']
 
 let g:ycm_filetype_blacklist = {}
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " Cursor
 let &t_SI .= "\<Esc>[6 q"
@@ -312,7 +316,7 @@ function! InsertSemicolon()
 endfunction
 
 nnoremap <silent> \; :call InsertSemicolon()<CR>
-inoremap <silent> <tab>; <C-o>:call InsertSemicolon()<CR>
+inoremap <silent> ;<tab> <C-o>:call InsertSemicolon()<CR>
 
 " Search Replace
 nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
