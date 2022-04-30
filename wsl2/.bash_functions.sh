@@ -131,13 +131,39 @@ __peco_change_dir () {
 }
 
 __peco_open_file () {
-    declare -A FILTER_LIST=( [Fuzzy]=1 [IgnoreCase]=1 [Regexp]=1 [SmartCase]=1 [CaseSensitive]=1 )
+    # declare -A FILTER_LIST=( [Fuzzy]=1 [IgnoreCase]=1 [Regexp]=1 [SmartCase]=1 [CaseSensitive]=1 )
+    # FILTER="Fuzzy"
+    # local OPTIND=1
+    # while getopts ":f:" opts; do
+    #     case ${opts} in
+    #         f)
+    #             FILTER=${OPTARG}
+    #             ;;
+    #         :)
+    #             echo "Error: -${OPTARG} requires an argument."
+    #             ;;
+    #     esac
+    # done
+    # shift $((OPTIND - 1))
+    
+    # if ! [[ ${FILTER_LIST["${FILTER}"]} ]]; then
+    #     echo "Unknown filter"
+    #     return 1
+    # fi
+
+    FILTER_LIST="Fuzzy IgnoreCase Regexp SmartCase CaseSensitive"
     FILTER="Fuzzy"
     local OPTIND=1
-    while getopts ":f:" opts; do
+    while getopts ":f" opts; do
         case ${opts} in
             f)
-                FILTER=${OPTARG}
+                FILTER=$(echo ${FILTER_LIST} | tr ' ' '\n' | peco --prompt "FILTER")
+                if echo ${FILTER_LIST} | grep -qs ${FILTER} 2>/dev/null; then
+                    :
+                else
+                    echo "Please choose a filter"
+                    return 1
+                fi
                 ;;
             :)
                 echo "Error: -${OPTARG} requires an argument."
@@ -145,11 +171,6 @@ __peco_open_file () {
         esac
     done
     shift $((OPTIND - 1))
-    
-    if ! [[ ${FILTER_LIST["${FILTER}"]} ]]; then
-        echo "Unknown filter"
-        return 1
-    fi
 
     PECO_RC="$XDG_CONFIG_HOME/peco/config.json"
     PECO_FLAGS="--rcfile ${PECO_RC} --initial-filter ${FILTER}"
