@@ -112,3 +112,6 @@
 [submodule "vim/.vim/plugged/vim-lumen"]
 	path = vim/.vim/plugged/vim-lumen
 	url = https://github.com/vimpostor/vim-lumen.git
+[submodule "vim/.vim/plugged/indentLine"]
+	path = vim/.vim/plugged/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
