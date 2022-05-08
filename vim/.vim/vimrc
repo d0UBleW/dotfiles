@@ -18,6 +18,12 @@ Plug 'tpope/vim-surround'
 
 Plug 'tpope/vim-commentary'
 
+Plug 'tpope/vim-vinegar'
+
+Plug 'tpope/vim-unimpaired'
+
+Plug 'tpope/vim-sleuth'
+
 " Plug 'inkarkat/vim-ReplaceWithRegister'
 
 Plug 'bkad/CamelCaseMotion'
@@ -58,7 +64,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'lifepillar/vim-solarized8'
 
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 Plug 'ycm-core/YouCompleteMe'
 
@@ -82,11 +88,18 @@ Plug 'vimpostor/vim-lumen'
 
 Plug 'Yggdroot/indentLine'
 
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 filetype plugin indent on
 
 syntax on
+
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " Camel
 let g:camelcasemotion_key = '\'
@@ -117,6 +130,8 @@ let g:ycm_semantic_triggers.pandoc = ['@']
 let g:ycm_filetype_blacklist = {}
 
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+
 
 " Cursor
 let &t_SI .= "\<Esc>[6 q"
@@ -237,12 +252,18 @@ endif
 
 
 " NetRW
-let g:netrw_liststyle=3
-let g:netrw_banner=0
+" let g:netrw_liststyle=3
+" let g:netrw_banner=0
+" let g:netrw_chgwin=2
+let g:netrw_preview=1
 let g:netrw_browse_split=4
 let g:netrw_winsize=25
-let g:netrw_altv=1
-let g:netrw_sort_by="exten"
+let g:netrw_altv=0
+" let g:netrw_sort_by="exten"
+" let g:netwr_keepdir=0
+" let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
+" let g:netrw_localcopydircmd="cp -r"
+" hi! link netrwMarkFile Search
 
 let g:NetrwIsOpen=0
 
@@ -259,19 +280,50 @@ function! ToggleNetrw()
     else
         let g:NetrwIsOpen=1
         silent Lexplore
-        call feedkeys("\<C-w>l")
+        " silent Explore
+        " call feedkeys("\<C-w>p")
     endif
 endfunction
 
+" function! NetrwMapping()
+"     nmap <buffer> H u
+"     nmap <buffer> h -^
+"     nmap <buffer> l <CR>
+"     nmap <buffer> . gh
+"     nmap <buffer> P <C-w>z
+"     nmap <buffer> <Tab> mf
+"     nmap <buffer> <S-Tab> mF
+"     nmap <buffer> <leader><Tab> mu
+"     nmap <buffer> ff %:w<CR>:buffer #<CR>
+"     nmap <buffer> fe R
+"     nmap <buffer> fc mc
+"     nmap <buffer> fC mtmc
+"     nmap <buffer> fx mm
+"     nmap <buffer> fX mtmm
+"     nmap <buffer> f; mx
+"     nmap <buffer> fl :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
+"     nmap <buffer> fq :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>
+"     nmap <buffer> fd mtfq
+" endfunction
+
 " Add your own mapping. For example:
-noremap <silent> <F2> :call ToggleNetrw()<CR>
-noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
+augroup netrw_mapping
+    autocmd!
+    noremap <silent> <F2> :call ToggleNetrw()<CR>
+    " noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
+    " autocmd filetype netrw call NetrwMapping()
+augroup END
 
 " augroup ProjectDrawer
 "     autocmd!
 "     autocmd VimEnter * :Vexplore
 " augroup END
 
+autocmd FileType * let g:NetrwIsOpen=0
+autocmd FileType netrw let g:NetrwIsOpen=1
+
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) || argv()[0] == '.' |
+            \ execute "cd " . argv()[0] | enew | call ToggleNetrw() | endif
 
 
 " Mapping
