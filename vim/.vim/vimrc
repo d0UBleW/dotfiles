@@ -66,7 +66,7 @@ Plug 'lifepillar/vim-solarized8'
 
 " Plug 'ervandew/supertab'
 
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 
 Plug 'vim-pandoc/vim-pandoc'
 
@@ -117,17 +117,38 @@ let g:matchup_surround_enabled = 1
 let g:python_highlight_all = 1
 
 " YCM
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
 
-" vim-pandoc bibliography auto completion
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.pandoc = ['@']
+" " vim-pandoc bibliography auto completion
+" if !exists('g:ycm_semantic_triggers')
+"     let g:ycm_semantic_triggers = {}
+" endif
+" " let g:ycm_semantic_triggers.pandoc = ['@']
 
-let g:ycm_filetype_blacklist = {}
+" let g:ycm_semantic_triggers =  {
+"   \   'c,cpp,objc': [ 're!\w{3}', '_' ],
+"   \   'pandoc': ['@'],
+"   \ }
+
+" let g:ycm_filetype_blacklist = {}
+
+" let g:ycm_auto_hover = ''
+
+" nmap <leader>D <plug>(YCMHover)
+
+" nnoremap <silent> <leader>gr :YcmCompleter GoToReferences<CR>
+" nnoremap <silent> <leader>gd :YcmCompleter GoToDefinition<CR>
+" nnoremap <silent> <leader>gD :YcmCompleter GoToDeclaration<CR>
+" nnoremap <silent> <Leader>fi :YcmCompleter FixIt<CR>
+" nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
+" nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
+
+
+
+" indentLine
+nnoremap yo<tab> :IndentLinesToggle<CR>
 
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
@@ -322,15 +343,18 @@ augroup END
 autocmd FileType * let g:NetrwIsOpen=0
 autocmd FileType netrw let g:NetrwIsOpen=1
 
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) || argv()[0] == '.' |
-            \ execute "cd " . argv()[0] | enew | call ToggleNetrw() | endif
+autocmd VimEnter * if argc() == 1 | if isdirectory(argv()[0]) || argv()[0] == '.' |
+            \ execute "cd " . argv()[0] | enew | call ToggleNetrw() | endif | endif
 
 
 " Mapping
 
+nnoremap <Leader>sr :%s/<C-r><C-w>//g<left><left>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader><CR> o<Esc>
-nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>co :copen<CR>
+nnoremap <silent> <leader>cc :cclose<CR>
 
 nnoremap <Space>h <C-w>h
 nnoremap <Space>j <C-w>j
@@ -381,10 +405,6 @@ cnoremap <c-e> <End>
 
 " https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" YCM
-nnoremap <silent> <Leader>jd :YcmCompleter GoToDefinition<CR>
-nnoremap <silent> <Leader>fi :YcmCompleter FixIt<CR>
 
 " Fugitive
 nmap <leader>gh :diffget //2<CR>
@@ -485,5 +505,3 @@ if executable(s:clip)
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
-
-call togglebg#map("<F5>")
