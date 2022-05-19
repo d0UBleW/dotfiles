@@ -15,6 +15,10 @@ nnoremap <buffer> <silent> <C-F9> :!compile-all -d<CR>
 nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
 nnoremap <buffer> <silent> <S-F10> :!./main.out<CR>
 nnoremap <buffer> <silent> <C-F10> :!valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./main.out<CR>
+nnoremap <buffer> <silent> <leader><F9> :!ninja -C build<CR>
+nnoremap <buffer> <silent> <leader><S-F9> :!cmake -S . -B build -G Ninja && ninja -C build<CR>
+nnoremap <buffer> <silent> <leader><F10> :!./build/main.out<CR>
+
 nnoremap <buffer> <silent> <leader>F zfa{
 
 nnoremap <buffer> <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c++ .<CR>
@@ -42,7 +46,7 @@ let g:clang_format#style_options = {
             \ "IndentWidth" : 4,
             \ "PointerAlignment" : "Right",
             \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "Latest"}
 
@@ -50,6 +54,6 @@ nnoremap <buffer> <leader>cf :ClangFormat<CR>
 vnoremap <buffer> <leader>cf :ClangFormat<CR>
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
-let g:clang_format#auto_format = 1
+let g:clang_format#auto_format = 0
 let g:clang_format#code_style = "Microsoft"
-let g:clang_format#auto_formatexpr = 1
+let g:clang_format#auto_formatexpr = 0

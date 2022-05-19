@@ -1,0 +1,22 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "html",
+    "json",
+    // "cpp",
+    "python",
+    "vim"
+  ],
+  "eslint.autoFixOnSave": true,
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "sh": "shellcheck",
+    // "cpp": "cpplint",
+    "python": "pylint"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "python": ["autopep8", "black", "isort"]
+  }
+}
