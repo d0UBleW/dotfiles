@@ -32,8 +32,10 @@ export AUTOENV_ASSUME_YES=TRUE
 
 
 export GOPATH=$HOME/projects/go
+export GOROOT=/usr/local/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOROOT/bin
 export GO111MODULE=on
 export WIN=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}')
 
@@ -51,3 +53,8 @@ export PATH=$PATH:/usr/games
 # bind '"\ej":"\e[B"'
 # bind '"\ek":"\e[A"'
 # bind '"\el":"\e[C"'
+
+export CC=clang
+export CXX=clang++
+
+export PATH=$PATH:/home/doublew/.cargo/bin

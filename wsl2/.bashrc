@@ -151,3 +151,4 @@ eval "$(oh-my-posh init bash --config ~/.poshthemes/robbyrussel.omp.json)"
 if [ -f ~/.bash.d/cht.sh ]; then
     source ~/.bash.d/cht.sh
 fi
+. "$HOME/.cargo/env"
