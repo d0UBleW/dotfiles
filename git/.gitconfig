@@ -20,29 +20,31 @@
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [alias]
-    a = "!git status --short | peco | awk '{print $2}' | xargs git add"
-    st = status
-    sw = switch
-    sb = "!git branch -q | awk '{print $NF}' | peco | xargs git switch"
-    br = branch
-    ba = branch -a
-    d = diff
-    ci = commit
-    ca = commit -a
-    rb = rebase
-    ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-    pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
-    hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
-    logg = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --date=relative --decorate
-    llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
-    co = "!git logg | peco | awk '{print $1}' | xargs git checkout"
-    df = "!git logg | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}"
-    dff = "!git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs -r git diff HEAD --"
-    find = "!f() { git log --pretty=format:\"%h %cd [%cn] %s%d\" --date=relative -S'pretty' -S\"$@\" | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}; }; f"
+	a = "!git status --short | peco | awk '{print $2}' | xargs git add"
+	st = status
+	sw = switch
+	sb = "!git branch -q | awk '{print $NF}' | peco | xargs git switch"
+	br = branch
+	ba = branch -a
+	d = diff
+	ci = commit
+	ca = commit -a
+	rb = rebase
+	wt = worktree
+	wta = "!git branch -q | awk '{print $NF}' | peco | xargs git worktree add"
+	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+	hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
+	logg = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --date=relative --decorate
+	llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
+	co = "!git logg | peco | awk '{print $1}' | xargs git checkout"
+	df = "!git logg | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}"
+	dff = "!git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs -r git diff HEAD --"
+	find = "!f() { git log --pretty=format:\"%h %cd [%cn] %s%d\" --date=relative -S'pretty' -S\"$@\" | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}; }; f"
     # edit conflicted file on merge
-    edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     # add conflicted file on merge
-    add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
 [merge]
 	tool = vimdiff
