@@ -11,7 +11,7 @@ let g:ycm_clangd_binary_path = '/usr/local/bin/clangd'
 
 let &makeprg = "gcc -Wall -Wextra % -o %<"
 
-nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
+" nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
 nnoremap <buffer> <silent> <F10> :!%:p:r<CR>
 
 nnoremap <buffer> <C-F12> :w<CR>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --languages=c --langmap=c:.c.h .<CR>

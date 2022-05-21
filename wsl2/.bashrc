@@ -146,9 +146,20 @@ fi
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(oh-my-posh init bash --config ~/.poshthemes/robbyrussel.omp.json)"
+# eval "$(oh-my-posh init bash --config ~/.poshthemes/spaceship.omp.json)"
 
 if [ -f ~/.bash.d/cht.sh ]; then
     source ~/.bash.d/cht.sh
 fi
+
 . "$HOME/.cargo/env"
+
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    # GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_THEME=Solarized
+    GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ \[\033[0;33m\]\W\[\033[0;0m\]"
+    # GIT_PROMPT_END="\n\[\033[1;34m\]$(date +%H:%M)\[\033[0;0m\] $ "
+    GIT_PROMPT_END="\n❯ "
+
+    source $HOME/.bash-git-prompt/gitprompt.sh
+fi

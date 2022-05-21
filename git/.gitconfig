@@ -31,6 +31,7 @@
 	ca = commit -a
 	rb = rebase
 	wt = worktree
+	fh = fetch
 	wta = "!git branch -q | awk '{print $NF}' | peco | xargs git worktree add"
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
@@ -41,10 +42,11 @@
 	df = "!git logg | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}"
 	dff = "!git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs -r git diff HEAD --"
 	find = "!f() { git log --pretty=format:\"%h %cd [%cn] %s%d\" --date=relative -S'pretty' -S\"$@\" | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}; }; f"
-    # edit conflicted file on merge
+	# edit conflicted file on merge
 	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
-    # add conflicted file on merge
+	# add conflicted file on merge
 	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+	clone-for-worktrees = "!bash $HOME/Documents/scripts/git-clone-bare-for-worktrees.sh"
 
 [merge]
 	tool = vimdiff

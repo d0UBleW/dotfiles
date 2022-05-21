@@ -1,4 +1,6 @@
-nnoremap <buffer> <F10> :w<CR>:!chmod +x %:p; %:p<CR>
+" let b:dispatch = "python3 %"
+
+nnoremap <F10> :Start -wait=always python3 %<CR>
 
 setlocal wildignore=*.pyc
 setlocal suffixesadd=.py

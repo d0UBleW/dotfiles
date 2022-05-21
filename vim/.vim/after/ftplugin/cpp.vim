@@ -7,17 +7,19 @@
 " let g:clang_library_path='/usr/lib/llvm-10/lib/libclang-10.so.1'
 let g:ycm_clangd_binary_path = '/usr/local/bin/clangd'
 
-let &makeprg = "g++ -Wall -Wextra -std=c++17 % -o %<"
+" let &makeprg = "g++ -Wall -Wextra -std=c++17 % -o %<"
+let &makeprg = "make"
 
-nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
-nnoremap <buffer> <silent> <S-F9> :!compile-all<CR>
-nnoremap <buffer> <silent> <C-F9> :!compile-all -d<CR>
-nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
-nnoremap <buffer> <silent> <S-F10> :!./main.out<CR>
-nnoremap <buffer> <silent> <C-F10> :!valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./main.out<CR>
-nnoremap <buffer> <silent> <leader><F9> :!ninja -C build<CR>
-nnoremap <buffer> <silent> <leader><S-F9> :!cmake -S . -B build -G Ninja && ninja -C build<CR>
-nnoremap <buffer> <silent> <leader><F10> :!./build/main.out<CR>
+" nnoremap <buffer> <silent> <F9> :w<CR>:make<CR>:cwindow<CR>
+" nnoremap <buffer> <silent> <S-F9> :!compile-all<CR>
+" nnoremap <buffer> <silent> <C-F9> :!compile-all -d<CR>
+" nnoremap <buffer> <silent> <F10> :!"%:p:r"<CR>
+" nnoremap <buffer> <silent> <S-F10> :!./main.out<CR>
+" nnoremap <buffer> <silent> <C-F10> :!valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./main.out<CR>
+" nnoremap <buffer> <silent> <F9> :!ninja -C build<CR>
+" nnoremap <buffer> <silent> <S-F9> :!cmake -S . -B build/ -G Ninja && ninja -C build/<CR>
+nnoremap <buffer> <silent> <F10> :Start -wait=always ./build/main.out<CR>;
+nnoremap <buffer> <silent> <C-F10> :Start -wait=always valgrind --tool=memcheck --leak-check=full --track-origins=yes -s ./build/main.out<CR>
 
 nnoremap <buffer> <silent> <leader>F zfa{
 

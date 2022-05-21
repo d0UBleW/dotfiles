@@ -4,7 +4,7 @@ function! GetBranchName()
   if (len(l:branch_name) != 0)
     return l:branch_name[1] . " "
   endif
-  return "NO GIT "
+  return "!GIT "
 endfunction
 
 function! mystatusline#SetStatusLine()

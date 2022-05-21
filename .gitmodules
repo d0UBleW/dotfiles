@@ -136,3 +136,9 @@
 [submodule "vim/.vim/plugged/vim-rooter"]
 	path = vim/.vim/plugged/vim-rooter
 	url = https://github.com/airblade/vim-rooter.git
+[submodule "vim/.vim/plugged/vim-dispatch"]
+	path = vim/.vim/plugged/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+[submodule "vim/.vim/plugged/vim-man"]
+	path = vim/.vim/plugged/vim-man
+	url = https://github.com/vim-utils/vim-man.git

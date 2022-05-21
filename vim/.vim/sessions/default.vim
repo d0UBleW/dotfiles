@@ -8,15 +8,15 @@ inoremap <silent> <Plug>(matchup-c_g%) :call matchup#motion#insert_mode()
 imap <C-G>S <Plug>ISurround
 imap <C-G>s <Plug>Isurround
 imap <C-S> <Plug>Isurround
-inoremap <silent> <SNR>22_AutoPairsReturn =AutoPairsReturn()
-cnoremap <C-E> <End>
-cnoremap <C-A> <Home>
-inoremap <C-J> 
+inoremap <silent> <SNR>24_AutoPairsReturn =AutoPairsReturn()
 inoremap <nowait> <silent> <expr> <C-B> coc#float#has_scroll() ? "\=coc#float#scroll(0)\" : "\<Left>"
 inoremap <nowait> <silent> <expr> <C-F> coc#float#has_scroll() ? "\=coc#float#scroll(1)\" : "\<Right>"
 inoremap <silent> <expr> <C-@> coc#refresh()
 inoremap <silent> <expr> <Nul> coc#refresh()
 inoremap <expr> <S-Tab> pumvisible() ? "\" : "\"
+cnoremap <C-E> <End>
+cnoremap <C-A> <Home>
+inoremap <C-J> 
 inoremap <C-U> u
 vnoremap <nowait> <silent> <expr>  coc#float#has_scroll() ? coc#float#scroll(0) : "\"
 nnoremap <nowait> <silent> <expr>  coc#float#has_scroll() ? coc#float#scroll(0) : "\"
@@ -29,10 +29,6 @@ nnoremap <silent>  :m -2==
 vnoremap <silent>  :m '<-2gv=gv
 xmap <silent>  <Plug>(coc-range-select)
 nmap <silent>  <Plug>(coc-range-select)
-nnoremap  l l
-nnoremap  k k
-nnoremap  j j
-nnoremap  h h
 nnoremap <silent>  y :CocList -A --normal yank
 nnoremap <nowait> <silent>  p :CocListResume
 nnoremap <nowait> <silent>  s :CocList -I symbols
@@ -40,9 +36,15 @@ nnoremap <nowait> <silent>  o :CocList outline
 nnoremap <nowait> <silent>  c :CocList commands
 nnoremap <nowait> <silent>  e :CocList extensions
 nnoremap <nowait> <silent>  a :CocList diagnostics
+nnoremap  l l
+nnoremap  k k
+nnoremap  j j
+nnoremap  h h
+xnoremap # y?\V"<Del>
 omap <silent> % <Ignore><Plug>(matchup-%)
 xmap <silent> % <Plug>(matchup-%)
 nmap <silent> % <Plug>(matchup-%)
+xnoremap * y/\V"<Del>
 nmap - <Plug>VinegarUp
 nmap <p <Plug>(unimpaired-put-below-leftward)
 nmap <P <Plug>(unimpaired-put-above-leftward)
@@ -119,17 +121,6 @@ nmap <silent> \ge <Plug>CamelCaseMotion_ge
 nmap <silent> \e <Plug>CamelCaseMotion_e
 nmap <silent> \b <Plug>CamelCaseMotion_b
 nmap <silent> \w <Plug>CamelCaseMotion_w
-nmap \gs :G
-nmap \gl :diffget //3
-nmap \gh :diffget //2
-nnoremap <silent> \n :exec &nu==&rnu? "set nu!" : "set rnu!"
-nnoremap <silent> \; :call InsertSemicolon()
-nnoremap <silent> \cc :cclose
-nnoremap <silent> \co :copen
-nnoremap <silent> \u :UndotreeToggle
-nnoremap \ o
-nnoremap \cd :cd %:p:h:pwd
-nnoremap \sr :%s///g<Left><Left>
 nmap \cl <Plug>(coc-codelens-action)
 nmap \qf <Plug>(coc-fix-current)
 nmap \ac <Plug>(coc-codeaction)
@@ -138,6 +129,15 @@ xmap \a <Plug>(coc-codeaction-selected)
 nmap \f <Plug>(coc-format-selected)
 xmap \f <Plug>(coc-format-selected)
 nmap \rn <Plug>(coc-rename)
+nmap \gs :G
+nmap \gl :diffget //3
+nmap \gh :diffget //2
+nnoremap <silent> \n :exec &nu==&rnu? "set nu!" : "set rnu!"
+nnoremap <silent> \; :call InsertSemicolon()
+nnoremap <silent> \cc :cclose
+nnoremap <silent> \co :copen
+nnoremap <silent> \u :UndotreeToggle
+nnoremap \sr :%s///g<Left><Left>
 omap <silent> ]% <Plug>(matchup-]%)
 xmap <silent> ]% <Plug>(matchup-]%)
 nmap <silent> ]% <Plug>(matchup-]%)
@@ -245,7 +245,7 @@ xmap <silent> z% <Plug>(matchup-z%)
 nmap <silent> z% <Plug>(matchup-z%)
 nnoremap <nowait> <silent> zk :CocPrev
 nnoremap <nowait> <silent> zj :CocNext
-nnoremap <SNR>85_: :=v:count ? v:count : ''
+nnoremap <SNR>84_: :=v:count ? v:count : ''
 xnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 onoremap <silent> <Plug>(coc-classobj-a) :call CocAction('selectSymbolRange', v:false, '', ['Interface', 'Struct', 'Class'])
@@ -313,24 +313,24 @@ onoremap <silent> <Plug>(matchup-i%) :call matchup#text_obj#delimited(1, 0, 'd
 xnoremap <silent> <Plug>(matchup-a%) :call matchup#text_obj#delimited(0, 1, 'delim_all')
 xnoremap <silent> <Plug>(matchup-i%) :call matchup#text_obj#delimited(1, 1, 'delim_all')
 onoremap <silent> <Plug>(matchup-Z%) :call matchup#motion#op('Z%')
-xnoremap <silent> <SNR>38_(matchup-Z%) :call matchup#motion#jump_inside_prev(1)
+xnoremap <silent> <SNR>41_(matchup-Z%) :call matchup#motion#jump_inside_prev(1)
 nnoremap <silent> <Plug>(matchup-Z%) :call matchup#motion#jump_inside_prev(0)
 onoremap <silent> <Plug>(matchup-z%) :call matchup#motion#op('z%')
-xnoremap <silent> <SNR>38_(matchup-z%) :call matchup#motion#jump_inside(1)
+xnoremap <silent> <SNR>41_(matchup-z%) :call matchup#motion#jump_inside(1)
 nnoremap <silent> <Plug>(matchup-z%) :call matchup#motion#jump_inside(0)
 onoremap <silent> <Plug>(matchup-[%) :call matchup#motion#op('[%')
 onoremap <silent> <Plug>(matchup-]%) :call matchup#motion#op(']%')
-xnoremap <silent> <SNR>38_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
-xnoremap <silent> <SNR>38_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
+xnoremap <silent> <SNR>41_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
+xnoremap <silent> <SNR>41_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
 nnoremap <silent> <Plug>(matchup-[%) :call matchup#motion#find_unmatched(0, 0)
 nnoremap <silent> <Plug>(matchup-]%) :call matchup#motion#find_unmatched(0, 1)
 onoremap <silent> <Plug>(matchup-g%) :call matchup#motion#op('g%')
-xnoremap <silent> <SNR>38_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
+xnoremap <silent> <SNR>41_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
 onoremap <silent> <Plug>(matchup-%) :call matchup#motion#op('%')
-xnoremap <silent> <SNR>38_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
+xnoremap <silent> <SNR>41_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
 nnoremap <silent> <Plug>(matchup-g%) :call matchup#motion#find_matching_pair(0, 0)
 nnoremap <silent> <Plug>(matchup-%) :call matchup#motion#find_matching_pair(0, 1)
-nnoremap <silent> <expr> <SNR>38_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
+nnoremap <silent> <expr> <SNR>41_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
 nnoremap <silent> <Plug>(matchup-hi-surround) :call matchup#matchparen#highlight_surrounding()
 vnoremap <silent> <Plug>CamelCaseMotion_ige :call camelcasemotion#InnerMotion('ge',v:count1)
 vnoremap <silent> <Plug>CamelCaseMotion_ie :call camelcasemotion#InnerMotion('e',v:count1)
@@ -406,17 +406,21 @@ nnoremap <silent> <Plug>(unimpaired-next) :exe "".(v:count ? v:count : "")."ne
 nnoremap <silent> <Plug>(unimpaired-previous) :exe "".(v:count ? v:count : "")."previous"
 nmap <silent> <Plug>CommentaryUndo :echoerr "Change your <Plug>CommentaryUndo map to <Plug>Commentary<Plug>Commentary"
 nnoremap <silent> <Plug>SurroundRepeat .
-nnoremap <silent> <C-K> :m -2==
-nnoremap <silent> <C-J> :m +1==
-vnoremap <silent> <C-K> :m '<-2gv=gv
-vnoremap <silent> <C-J> :m '>+1gv=gv
-nnoremap <silent> <S-Tab> :tabprevious
+nnoremap <silent> <Plug>(Tman) :call man#get_page_from_cword('tab',        v:count)
+nnoremap <silent> <Plug>(Vman) :call man#get_page_from_cword('vertical',   v:count)
+nnoremap <silent> <Plug>(Sman) :call man#get_page_from_cword('horizontal', v:count)
+nnoremap <silent> <Plug>(Man) :call man#get_page_from_cword('horizontal', v:count)
 xmap <silent> <C-S> <Plug>(coc-range-select)
 nmap <silent> <C-S> <Plug>(coc-range-select)
 vnoremap <nowait> <silent> <expr> <C-B> coc#float#has_scroll() ? coc#float#scroll(0) : "\"
 vnoremap <nowait> <silent> <expr> <C-F> coc#float#has_scroll() ? coc#float#scroll(1) : "\"
 nnoremap <nowait> <silent> <expr> <C-B> coc#float#has_scroll() ? coc#float#scroll(0) : "\"
 nnoremap <nowait> <silent> <expr> <C-F> coc#float#has_scroll() ? coc#float#scroll(1) : "\"
+nnoremap <silent> <C-K> :m -2==
+nnoremap <silent> <C-J> :m +1==
+vnoremap <silent> <C-K> :m '<-2gv=gv
+vnoremap <silent> <C-J> :m '>+1gv=gv
+nnoremap <silent> <S-Tab> :tabprevious
 cnoremap  <Home>
 inoremap <nowait> <silent> <expr>  coc#float#has_scroll() ? "\=coc#float#scroll(0)\" : "\<Left>"
 cnoremap  <End>
@@ -430,7 +434,6 @@ inoremap <silent> <expr>  pumvisible() ? coc#_select_confirm(): "\u\\=co
 imap  <Plug>Isurround
 inoremap  u
 inoremap <silent> ;	 :call InsertSemicolon()
-inoremap \e A
 cnoreabbr <expr> C ((getcmdtype() ==# ":" && getcmdline() ==# "C")? ("CocConfig") : ("C"))
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -443,6 +446,7 @@ set confirm
 set display=truncate
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
+set fillchars=vert:‚îÇ,fold:¬∑,eob:~
 set grepformat=%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f\ \ %l%m
 set grepprg=rg\ --vimgrep\ --no-ignore
 set hidden
@@ -456,42 +460,45 @@ set listchars=tab:‚Üí\ ,eol:‚Ü≤,nbsp:‚ê£,trail:‚Ä¢,precedes:¬´,extends:¬ª,spa
 set mouse=a
 set nrformats=bin,hex
 set ruler
-set runtimepath=~/.vim,~/.vim/plugged/auto-pairs,~/.vim/plugged/targets.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-repeat,~/.vim/plugged/vim-surround,~/.vim/plugged/vim-commentary,~/.vim/plugged/vim-vinegar,~/.vim/plugged/vim-unimpaired,~/.vim/plugged/vim-sleuth,~/.vim/plugged/CamelCaseMotion,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-textobj-entire,~/.vim/plugged/vim-textobj-line,~/.vim/plugged/onedark.vim,~/.vim/plugged/java-syntax.vim,~/.vim/plugged/vim-sage,~/.vim/plugged/python-syntax,~/.vim/plugged/vim-ps1,~/.vim/plugged/undotree,~/.vim/plugged/vim-javascript-syntax,~/.vim/plugged/vim-matchup,~/.vim/plugged/gruvbox,~/.vim/plugged/onehalf/vim,~/.vim/plugged/vim-solarized8,~/.vim/plugged/vim-pandoc,~/.vim/plugged/vim-pandoc-syntax,~/.vim/plugged/vim-css-color,~/.vim/plugged/vim-cpp-modern,~/.vim/plugged/DoxygenToolkit.vim,~/.vim/plugged/vim-gitgutter,~/.vim/plugged/vim-clang-format,~/.vim/plugged/vim-lumen,~/.vim/plugged/indentLine,~/.vim/plugged/vim-devicons,~/.vim/plugged/editorconfig-vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-rooter,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim82,/usr/local/share/vim/vimfiles/after,~/.vim/plugged/vim-matchup/after,~/.vim/plugged/vim-css-color/after,~/.vim/plugged/vim-cpp-modern/after,~/.vim/plugged/indentLine/after,~/.vim/after
-set scrolloff=5
+set runtimepath=~/.vim,~/.vim/plugged/vim-man,~/.vim/plugged/auto-pairs,~/.vim/plugged/targets.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-repeat,~/.vim/plugged/vim-surround,~/.vim/plugged/vim-commentary,~/.vim/plugged/vim-vinegar,~/.vim/plugged/vim-unimpaired,~/.vim/plugged/vim-sleuth,~/.vim/plugged/vim-dispatch,~/.vim/plugged/CamelCaseMotion,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-textobj-entire,~/.vim/plugged/vim-textobj-line,~/.vim/plugged/java-syntax.vim,~/.vim/plugged/vim-sage,~/.vim/plugged/python-syntax,~/.vim/plugged/vim-ps1,~/.vim/plugged/undotree,~/.vim/plugged/vim-javascript-syntax,~/.vim/plugged/vim-matchup,~/.vim/plugged/gruvbox,~/.vim/plugged/onehalf/vim,~/.vim/plugged/vim-solarized8,~/.vim/plugged/vim-pandoc,~/.vim/plugged/vim-pandoc-syntax,~/.vim/plugged/vim-css-color,~/.vim/plugged/vim-cpp-modern,~/.vim/plugged/DoxygenToolkit.vim,~/.vim/plugged/vim-gitgutter,~/.vim/plugged/vim-clang-format,~/.vim/plugged/vim-lumen,~/.vim/plugged/indentLine,~/.vim/plugged/vim-devicons,~/.vim/plugged/editorconfig-vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-rooter,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim82,/usr/local/share/vim/vimfiles/after,~/.vim/plugged/vim-matchup/after,~/.vim/plugged/vim-css-color/after,~/.vim/plugged/vim-cpp-modern/after,~/.vim/plugged/indentLine/after,~/.vim/after
+set scrolloff=19
 set shiftwidth=4
 set showbreak=‚Ä¶
 set showcmd
+set sidescroll=1
 set smartcase
 set smartindent
 set smarttab
 set softtabstop=4
 set splitbelow
 set splitright
+set nostartofline
 set statusline=%#PmenuSel#\ %{GetBranchName()}%#StatusLine#\ %t\ %m\ %r%=%#StatusLine#\ buf:\ %n\ %y\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}]\ %c:%l/%L
 set noswapfile
+set switchbuf=uselast
 set tabstop=4
 set termguicolors
-set title
 set ttimeout
 set ttimeoutlen=100
 set undodir=~/.vim/.undo//
 set undofile
 set wildmenu
 set wildmode=longest:full,full
+set wildoptions=pum,tagfile
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/.dotfiles
+cd /mnt/c/Users/LEGION.LAPTOP-HVMBBO3R/OneDrive\ -\ Asia\ Pacific\ University/Documents/My\ Documents
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 vim/.vim/sessions/default.vim
+badd +0 ~/.inputrc
 argglobal
 %argdel
-$argadd vim/.vim/sessions/default.vim
-edit vim/.vim/sessions/default.vim
+$argadd ~/.inputrc
+edit ~/.inputrc
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -521,23 +528,11 @@ inoremap <buffer> <silent> √ª =AutoPairsMoveCharacter('{')
 inoremap <buffer> <silent> √ù =AutoPairsMoveCharacter(']')
 inoremap <buffer> <silent> √õ =AutoPairsMoveCharacter('[')
 nmap <buffer> [c <Plug>(GitGutterPrevHunk)
-vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-nnoremap <buffer> <silent> [] m':call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
-nnoremap <buffer> <silent> [[ m':call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
 nmap <buffer> \hp <Plug>(GitGutterPreviewHunk)
 nmap <buffer> \hu <Plug>(GitGutterUndoHunk)
 nmap <buffer> \hs <Plug>(GitGutterStageHunk)
 xmap <buffer> \hs <Plug>(GitGutterStageHunk)
 nmap <buffer> ]c <Plug>(GitGutterNextHunk)
-vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 noremap <buffer> <silent> <M-n> :call AutoPairsJump()
 noremap <buffer> <silent> <M-p> :call AutoPairsToggle()
 inoremap <buffer> <silent>  =AutoPairsDelete()
@@ -572,8 +567,8 @@ setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=79
 setlocal colorcolumn=79
-setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
-setlocal commentstring=\"%s
+setlocal comments=:#
+setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=inc
 setlocal conceallevel=2
@@ -590,9 +585,9 @@ setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+setlocal expandtab
+if &filetype != 'readline'
+setlocal filetype=readline
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -614,11 +609,11 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetVimIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=},=else,=cat,=finall,=END,0\\,0=\"\\\ 
+setlocal indentexpr=GetReadlineIndent()
+setlocal indentkeys=!^F,o,O,=$else,=$endif
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,#
-setlocal keywordprg=:help
+setlocal iskeyword=@,48-57,_,192-255,-
+setlocal keywordprg=
 set linebreak
 setlocal linebreak
 setlocal nolisp
@@ -646,14 +641,14 @@ setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal shiftwidth=2
+setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
 set signcolumn=yes
 setlocal signcolumn=yes
-setlocal smartindent
-setlocal softtabstop=-1
+setlocal nosmartindent
+setlocal softtabstop=4
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
@@ -663,17 +658,17 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != 'readline'
+setlocal syntax=readline
 endif
-setlocal tabstop=8
+setlocal tabstop=4
 setlocal tagcase=
 setlocal tagfunc=
 setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=78
+setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
 setlocal undofile
@@ -689,12 +684,12 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+let s:l = 16 - ((15 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 16
+normal! 018|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

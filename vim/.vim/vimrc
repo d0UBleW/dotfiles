@@ -2,9 +2,13 @@ set nocp
 
 source $VIMRUNTIME/defaults.vim
 
+runtime! ftplugin/man.vim
+
 " Plugin
 
 call plug#begin('~/.vim/plugged') " Installed plugins directory
+
+Plug 'vim-utils/vim-man'
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -24,21 +28,15 @@ Plug 'tpope/vim-unimpaired'
 
 Plug 'tpope/vim-sleuth'
 
-" Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'tpope/vim-dispatch'
 
 Plug 'bkad/CamelCaseMotion'
-
-" Plug 'christoomey/vim-system-copy'
-
-" Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'kana/vim-textobj-user'
 
 Plug 'kana/vim-textobj-entire'
 
 Plug 'kana/vim-textobj-line'
-
-Plug 'joshdick/onedark.vim'
 
 Plug 'uiiaoo/java-syntax.vim'
 
@@ -47,8 +45,6 @@ Plug 'petRUShka/vim-sage'
 Plug 'vim-python/python-syntax'
 
 " Plug 'ludovicchabant/vim-gutentags'
-
-" Plug 'Vimjas/vim-python-pep8-indent'
 
 Plug 'pprovost/vim-ps1'
 
@@ -64,15 +60,9 @@ Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'lifepillar/vim-solarized8'
 
-" Plug 'ervandew/supertab'
-
-" Plug 'ycm-core/YouCompleteMe'
-
 Plug 'vim-pandoc/vim-pandoc'
 
 Plug 'vim-pandoc/vim-pandoc-syntax'
-
-" Plug 'sheerun/vim-polyglot'
 
 Plug 'ap/vim-css-color'
 
@@ -102,23 +92,303 @@ filetype plugin indent on
 
 syntax on
 
+" Cursor
+let &t_SI .= "\<Esc>[6 q"
+let &t_EI .= "\<Esc>[2 q"
+let &t_SR .= "\<Esc>[4 q"
+
+let mapleader = '\'
+let maplocalleader = '|'
+
+let &background = strftime("%H") < 18 ? "light" : "dark"
+
+
+" Automatically save before commands like :next and :make
+set autowrite
+
+" Enable mouse in all mode
+set mouse=a
+
+" set t_Co=256    " Force 256 colours
+
+set termguicolors
+
+set nobackup
+
+set noswapfile
+
+" Disable line wrapping
+set nowrap
+
+" Avoid breaking word when line wrapping
+set linebreak
+
+" Show line break character
+set showbreak=…
+
+" Customize SpecialKey (tab, nbsp, trail, space) and NonText (eol, precedes, extends) characters
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,precedes:«,extends:»,space:·
+
+" Smooth backspace experience
+set backspace=indent,eol,start
+
+" Enable line numbering
+set nu rnu
+
+" Indenting
+set autoindent
+set smartindent
+
+" Tabbing
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set belloff=all
+
+set wildmenu
+set wildmode=longest:full,full
+set wildoptions=pum,tagfile
+
+" Buffer
+set hidden
+
+" Search
+set incsearch
+set ignorecase
+set smartcase
+set nohlsearch
+
+" Split behaviour
+set splitbelow
+set splitright
+
+set laststatus=2
+
+set showcmd
+
+set cursorline
+
+set colorcolumn=79
+
+set signcolumn=yes
+" set signcolumn=number
+
+set fillchars=vert:│,fold:·,eob:~"
+
+" Keep cursor position when doing gg, G, CTRL_D, CTRL_U, >>, << , etc.
+set nostartofline
+
+set sidescroll=1
+set scrolloff=19
+
+set switchbuf=uselast
+
+set autoread
+set confirm
+
+" onehalflight requires `set t_Co=256`
+" colorscheme onehalflight
+
+colorscheme solarized8
+
+" My Function
+
+function! InsertSemicolon()
+    let line=getline('.')
+    let semi=matchstr(line, ";$")
+    if semi == ""
+        execute "normal! mqA;\<esc>`q"
+        delmarks q
+    endif
+endfunction
+
+
+" Mapping
+
+xnoremap * y/\V<C-R>"<del><CR>
+xnoremap # y?\V<C-R>"<del><CR>
+
+nnoremap <Leader>sr :%s/<C-r><C-w>//g<left><left>
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>co :copen<CR>
+nnoremap <silent> <leader>cc :cclose<CR>
+
+nnoremap <space>h <C-w>h
+nnoremap <space>j <C-w>j
+nnoremap <space>k <C-w>k
+nnoremap <space>l <C-w>l
+
+nnoremap <silent> <Tab> :tabnext<CR>
+nnoremap <silent> <S-Tab> :tabprevious<CR>
+
+nnoremap Y y$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
+nnoremap <silent> <C-j> :m +1<CR>==
+nnoremap <silent> <C-k> :m -2<CR>==
+" inoremap <silent> <C-j> <esc>mz:m +1<CR>==`za
+" inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
+
+" Trigger iabbrev
+inoremap <C-j> <C-]>
+
+nnoremap <silent> \; :call InsertSemicolon()<CR>
+inoremap <silent> ;<tab> <C-o>:call InsertSemicolon()<CR>
+
+" Search Replace
+nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
+
+" Toggle Line numbering
+nnoremap <silent> <leader>n :exec &nu==&rnu? "set nu!" : "set rnu!"<CR>
+
+cnoremap <C-a> <Home>
+cnoremap <c-e> <End>
+
+" https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Fugitive
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gs :G<CR>
+
+" Skeleton Templates
+
+function! Java_Skel()
+    0r $HOME/.vim/templates/skeleton.java
+    s/FILENAME/\=expand("%:t:r")
+    " execute "normal! 1j"
+endfunction
+
+function! Header_Skel()
+    0r $HOME/.vim/templates/skeleton.h
+    let l:filename = toupper(expand("%:t:r"))
+    %s/FILENAME/\=expand(l:filename)
+    execute "normal! Gddkk"
+endfunction
+
+if has("autocmd")
+    augroup templates
+        au!
+        " au BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+        au BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+        au BufNewFile *.java call Java_Skel()
+        au BufNewFile *.h call Header_Skel()
+    augroup end
+endif
+
+
+
+" Misc
+
+function! QuickfixMapping()
+    " Go to the previous location and stay in the quickfix window
+    nnoremap <buffer> K :cprev<CR>zz<C-w>w
+
+    " Go to the next location and stay in the quickfix window
+    nnoremap <buffer> J :cnext<CR>zz<C-w>w
+
+    nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
+endfunction
+
+augroup quickfix_group
+  autocmd!
+
+  " Use custom keybindings
+  autocmd filetype qf call QuickfixMapping()
+augroup END
+
+augroup helpft
+    au!
+    autocmd filetype help nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
+    autocmd filetype help nnoremap <silent> <buffer> <F1> :bwipeout<CR>
+augroup END
+
+autocmd! BufWritePost vimrc source ~/.vim/vimrc
+
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-ignore
+    set grepformat^=%f:%l:%c:%m
+endif
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
+call mystatusline#SetStatusLine()
+
+" Undo directory
+function! Tmpwatch(path, days)
+    let l:path = expand(a:path)
+    if isdirectory(l:path)
+        for file in globpath(l:path, '*', 1, 1)
+            if localtime() > getftime(file) + 86400 * a:days && delete(file) != 0
+                echo "Tmpwatch(): Error deleting '" . file . "'"
+            endif
+        endfor
+    else
+        echo "Tmpwatch(): Directory '" . l:path . "'not found"
+    endif
+endfunction
+
+if exists("+undofile")
+    if !isdirectory($HOME . '/.vim' . '/.undo')
+        call system('mkdir ' . $HOME . '/.vim' . '/.undo')
+    endif
+    set undodir=~/.vim/.undo// ",/tmp//
+    set undofile
+    set undolevels=1000
+    set undoreload=10000
+
+    call Tmpwatch(&undodir, 31)
+endif
+
+
+
+
+" Plugin Config
+
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+
 
 " Camel
 let g:camelcasemotion_key = '\'
 
+
+
 " auto-pairs
 let g:AutoPairsShortcutFastWrap = "<F12>"
+
+
 
 " disable matchit
 let g:loaded_matchit = 1
 
+
+
 " matchup + surround
 let g:matchup_surround_enabled = 1
 
+
+
 " vim-python/python-syntax
 let g:python_highlight_all = 1
+
+
 
 " matchup
 let g:matchup_matchpref = { 
@@ -126,8 +396,9 @@ let g:matchup_matchpref = {
                 \ "tagnameonly": 1 
                 \ } }
 
-" CoC
 
+
+" CoC
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -276,6 +547,7 @@ call SetupCommandAbbrs('C', 'CocConfig')
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 
+
 " indentLine
 nnoremap yo<tab> :IndentLinesToggle<CR>
 
@@ -283,374 +555,9 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 
 
-" Cursor
-let &t_SI .= "\<Esc>[6 q"
-let &t_EI .= "\<Esc>[2 q"
-let &t_SR .= "\<Esc>[4 q"
-
-let mapleader = '\'
-let maplocalleader = '|'
-
-
-let &background = strftime("%H") < 18 ? "light" : "dark"
-" set background=light
-" set background=dark
-
-set autowrite		" Automatically save before commands like :next and :make
-set mouse=a
-" set t_Co=256    " Force 256 colours
-
-set termguicolors
-
-" colorscheme onedark
-" colorscheme gruvbox
-
-" onehalflight requires `set t_Co=256`
-" colorscheme onehalflight
-
-colorscheme solarized8
-
-
-set nobackup
-set noswapfile
-
-" Disable line wrapping
-set nowrap
-
-" Avoid breaking word when line wrapping
-set linebreak
-
-" Show line break character
-"set showbreak=↪
-"set showbreak=▹
-set showbreak=…
-
-" Customize SpecialKey (tab, nbsp, trail, space) and NonText (eol, precedes, extends) characters
-set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,precedes:«,extends:»,space:·
-"set listchars=tab:»·,trail:·,eol:¶
-
-" Smooth backspace experience
-set backspace=indent,eol,start
-
-" Enable line numbering
-set nu rnu
-
-" Indenting
-set autoindent
-set smartindent
-
-" Tabbing
-set smarttab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-
-set belloff=all
-
-set wildmenu
-set wildmode=longest:full,full
-
-" Buffer
-set hidden
-
-set incsearch
-set ignorecase
-set smartcase
-set nohlsearch
-
-set splitbelow
-set splitright
-
-set laststatus=2
-set showcmd
-
-set cursorline
-
-set colorcolumn=79
-set signcolumn=yes
-" set signcolumn=number
-
-" set completeopt-=preview
-" set completeopt+=menuone
-
-
-" Undo directory
-function! Tmpwatch(path, days)
-    let l:path = expand(a:path)
-    if isdirectory(l:path)
-        for file in globpath(l:path, '*', 1, 1)
-            if localtime() > getftime(file) + 86400 * a:days && delete(file) != 0
-                echo "Tmpwatch(): Error deleting '" . file . "'"
-            endif
-        endfor
-    else
-        echo "Tmpwatch(): Directory '" . l:path . "'not found"
-    endif
-endfunction
-
-if exists("+undofile")
-    if !isdirectory($HOME . '/.vim' . '/.undo')
-        call system('mkdir ' . $HOME . '/.vim' . '/.undo')
-    endif
-    set undodir=~/.vim/.undo// ",/tmp//
-    set undofile
-    set undolevels=1000
-    set undoreload=10000
-
-    call Tmpwatch(&undodir, 31)
-endif
-
-
-" NetRW
-" let g:netrw_liststyle=3
-" let g:netrw_banner=0
-" let g:netrw_chgwin=2
-" let g:netrw_preview=1
-" let g:netrw_browse_split=4
-" let g:netrw_winsize=25
-" let g:netrw_altv=0
-" let g:netrw_sort_by="exten"
-" let g:netwr_keepdir=0
-" let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
-" let g:netrw_localcopydircmd="cp -r"
-" hi! link netrwMarkFile Search
-
-let g:NetrwIsOpen=0
-
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Lexplore
-        " silent Explore
-        " call feedkeys("\<C-w>p")
-    endif
-endfunction
-
-" function! NetrwMapping()
-"     nmap <buffer> H u
-"     nmap <buffer> h -^
-"     nmap <buffer> l <CR>
-"     nmap <buffer> . gh
-"     nmap <buffer> P <C-w>z
-"     nmap <buffer> <Tab> mf
-"     nmap <buffer> <S-Tab> mF
-"     nmap <buffer> <leader><Tab> mu
-"     nmap <buffer> ff %:w<CR>:buffer #<CR>
-"     nmap <buffer> fe R
-"     nmap <buffer> fc mc
-"     nmap <buffer> fC mtmc
-"     nmap <buffer> fx mm
-"     nmap <buffer> fX mtmm
-"     nmap <buffer> f; mx
-"     nmap <buffer> fl :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
-"     nmap <buffer> fq :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>
-"     nmap <buffer> fd mtfq
-" endfunction
-
-" Add your own mapping. For example:
-augroup netrw_mapping
-    autocmd!
-    " noremap <silent> <F2> :call ToggleNetrw()<CR>
-    " noremap <silent> <leader><F2> :call ToggleNetrw()<CR>:call ToggleNetrw()<CR>
-    " autocmd filetype netrw call NetrwMapping()
-augroup END
-
-" augroup ProjectDrawer
-"     autocmd!
-"     autocmd VimEnter * :Vexplore
-" augroup END
-
-" autocmd FileType * let g:NetrwIsOpen=0
-" autocmd FileType netrw let g:NetrwIsOpen=1
-
-" autocmd VimEnter * if argc() == 1 | if isdirectory(argv()[0]) || argv()[0] == '.' |
-"             \ execute "cd " . argv()[0] | enew | call ToggleNetrw() | endif | endif
-
-
-" Mapping
-
-nnoremap <Leader>sr :%s/<C-r><C-w>//g<left><left>
-nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <Leader><CR> o<Esc>
-nnoremap <silent> <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>co :copen<CR>
-nnoremap <silent> <leader>cc :cclose<CR>
-
-nnoremap <space>h <C-w>h
-nnoremap <space>j <C-w>j
-nnoremap <space>k <C-w>k
-nnoremap <space>l <C-w>l
-
-nnoremap <silent> <Tab> :tabnext<CR>
-nnoremap <silent> <S-Tab> :tabprevious<CR>
-
-nnoremap Y y$
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
-
-vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
-vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
-nnoremap <silent> <C-j> :m +1<CR>==
-nnoremap <silent> <C-k> :m -2<CR>==
-" inoremap <silent> <C-j> <esc>mz:m +1<CR>==`za
-" inoremap <silent> <C-k> <esc>mz:m -2<CR>==`za
-
-" inoremap ;a <Esc>
-inoremap <leader>e <C-o>A
-
-" Trigger iabbrev
-inoremap <C-j> <C-]>
-
-function! InsertSemicolon()
-    let line=getline('.')
-    let semi=matchstr(line, ";$")
-    if semi == ""
-        execute "normal! mqA;\<esc>`q"
-        delmarks q
-    endif
-endfunction
-
-nnoremap <silent> \; :call InsertSemicolon()<CR>
-inoremap <silent> ;<tab> <C-o>:call InsertSemicolon()<CR>
-
-" Search Replace
-nnoremap <Leader>sr :%s/<C-r><C-w>//g<Left><Left>
-
-" Toggle Line numbering
-nnoremap <silent> <leader>n :exec &nu==&rnu? "set nu!" : "set rnu!"<CR>
-
-cnoremap <C-a> <Home>
-cnoremap <c-e> <End>
-
-" https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Fugitive
-nmap <leader>gh :diffget //2<CR>
-nmap <leader>gl :diffget //3<CR>
-nmap <leader>gs :G<CR>
-
-" Skeleton Templates
-
-function! Java_Skel()
-    0r $HOME/.vim/templates/skeleton.java
-    s/FILENAME/\=expand("%:t:r")
-    " execute "normal! 1j"
-endfunction
-
-function! Header_Skel()
-    0r $HOME/.vim/templates/skeleton.h
-    let l:filename = toupper(expand("%:t:r"))
-    %s/FILENAME/\=expand(l:filename)
-    execute "normal! Gddkk"
-endfunction
-
-if has("autocmd")
-    augroup templates
-        au!
-        " au BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
-        au BufNewFile *.html 0r ~/.vim/templates/skeleton.html
-        au BufNewFile *.java call Java_Skel()
-        au BufNewFile *.h call Header_Skel()
-    augroup end
-endif
-
-
-
-" Misc
-
-function! FugitiveMapping()
-    nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
-endfunction
-
-function! QuickfixMapping()
-  " Go to the previous location and stay in the quickfix window
-    nnoremap <buffer> K :cprev<CR>zz<C-w>w
-
-    " Go to the next location and stay in the quickfix window
-    nnoremap <buffer> J :cnext<CR>zz<C-w>w
-
-    nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
-endfunction
-
-augroup quickfix_group
-  autocmd!
-
-  " Use custom keybindings
-  autocmd filetype qf call QuickfixMapping()
-  autocmd filetype fugitive*,git call FugitiveMapping()
-augroup END
-
-augroup helpft
-    au!
-    autocmd filetype help nnoremap <silent> <buffer> <localleader>q :bwipeout<CR>
-    autocmd filetype help nnoremap <silent> <buffer> <F1> :bwipeout<CR>
-augroup END
-
-autocmd! BufWritePost vimrc source ~/.vim/vimrc
-
-
-set autoread
-set title
-set confirm
-
-if executable('rg')
-    set grepprg=rg\ --vimgrep\ --no-ignore
-    set grepformat^=%f:%l:%c:%m
-endif
-
-augroup highlights
-    au!
-    " autocmd ColorScheme * highlight SpecialKey guifg=#56b6c2 guibg=#3e4452
-    " autocmd ColorScheme * highlight SpecialKey guifg=orange guibg=gray
-    " highlight SpecialKey guifg=#83a958 guibg=#3c3836
-    " hi NonText ctermfg=7 guifg=#abb2bf
-augroup END
-
-" hi SpecialKey guifg=#83a958 guibg=#3c3836
-" hi CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#2a2a2a
-" hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE
-" hi CursorLineNr term=bold cterm=bold ctermfg=lightblue gui=bold guifg=lightblue
-
-
-
-" augroup vimrcEx
-"     au!
-"     " For all text files set 'textwidth' to 78 characters or use `gq` to break
-"     " line
-"     autocmd FileType text setlocal textwidth=78
-" augroup END
-
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
-
-augroup JSONGroup
-    autocmd!
-    autocmd filetype json let g:indentLine_setConceal=0
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-augroup END
-
+" tpope/vim-commentary
 augroup CommentaryFt
     autocmd!
     autocmd filetype json,cpp,c setlocal commentstring=\/\/\ %s
 augroup END
-
-call mystatusline#SetStatusLine()
 
