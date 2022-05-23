@@ -2,10 +2,10 @@
 	email = 66501624+d0UBleW@users.noreply.github.com
 	name = d0UBleW
 [core]
-	editor = /usr/bin/vim
+	editor = /usr/local/bin/vim
 	autocrlf = input
 [diff]
-	tool = /usr/bin/vimdiff
+	tool = /usr/local/bin/vimdiff
 [difftool]
 	prompt = false
 [difftool "vimdiff"]
