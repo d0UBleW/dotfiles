@@ -245,7 +245,7 @@ xmap <silent> z% <Plug>(matchup-z%)
 nmap <silent> z% <Plug>(matchup-z%)
 nnoremap <nowait> <silent> zk :CocPrev
 nnoremap <nowait> <silent> zj :CocNext
-nnoremap <SNR>95_: :=v:count ? v:count : ''
+nnoremap <SNR>82_: :=v:count ? v:count : ''
 xnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 onoremap <silent> <Plug>(coc-classobj-a) :call CocAction('selectSymbolRange', v:false, '', ['Interface', 'Struct', 'Class'])
@@ -489,16 +489,20 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/.dotfiles
+cd ~/.dotfiles/wsl2
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 vim/.vim/vimrc
+badd +0 cp
+badd +0 ~/.inputrc
+badd +0 .
 argglobal
 %argdel
-$argadd vim/.vim/vimrc
-edit vim/.vim/vimrc
+$argadd cp
+$argadd ~/.inputrc
+$argadd .
+edit cp
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -528,23 +532,11 @@ inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
 inoremap <buffer> <silent> Ý =AutoPairsMoveCharacter(']')
 inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
 nmap <buffer> [c <Plug>(GitGutterPrevHunk)
-vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-nnoremap <buffer> <silent> [] m':call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
-nnoremap <buffer> <silent> [[ m':call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
 nmap <buffer> \hp <Plug>(GitGutterPreviewHunk)
 nmap <buffer> \hu <Plug>(GitGutterUndoHunk)
 nmap <buffer> \hs <Plug>(GitGutterStageHunk)
 xmap <buffer> \hs <Plug>(GitGutterStageHunk)
 nmap <buffer> ]c <Plug>(GitGutterNextHunk)
-vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 noremap <buffer> <silent> <M-n> :call AutoPairsJump()
 noremap <buffer> <silent> <M-p> :call AutoPairsToggle()
 inoremap <buffer> <silent>  =AutoPairsDelete()
@@ -579,8 +571,8 @@ setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=80
 setlocal colorcolumn=80
-setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
-setlocal commentstring=\"%s
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=inc
 setlocal conceallevel=2
@@ -598,8 +590,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+if &filetype != ''
+setlocal filetype=
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -621,11 +613,11 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetVimIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=},=else,=cat,=finall,=END,0\\,0=\"\\\ 
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=:help
+setlocal keywordprg=
 set linebreak
 setlocal linebreak
 setlocal nolisp
@@ -670,8 +662,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != ''
+setlocal syntax=
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -680,7 +672,7 @@ setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=78
+setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
 setlocal undofile
@@ -696,12 +688,12 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 174 - ((13 * winheight(0) + 14) / 28)
+let s:l = 1 - ((0 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 174
-normal! 018|
+keepjumps 1
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

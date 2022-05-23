@@ -1,0 +1,16 @@
+# https://ss64.com/bash/syntax-inputrc.html
+"\eh": "\e[D"
+"\ej": "\e[B"
+"\ek": "\e[A"
+"\el": "\e[C"
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\C-j": menu-complete
+"\C-k": menu-complete-backward
+"\C-o": "> output"
+
+set completion-ignore-case on
+set meta-flag on
+set input-meta on
+set convert-meta on
+set output-meta on
