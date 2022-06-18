@@ -8,15 +8,16 @@ autoenv_disable () {
 
 __peco_select_dir ()
 {
+    PECO_FLAGS="--prompt \"DIR>\""
     if command -v fd >/dev/null 2>&1; then
-        builtin typeset DIR="$(command fd --type directory --hidden --no-ignore --exclude .git/ --color never | peco )"
+        builtin typeset DIR="$(command fd --type directory --hidden --no-ignore --exclude .git/ --color never | peco ${PECO_FLAGS} )"
     else
         builtin typeset DIR="$(
         command find \( -path '*/\.*' -o -fstype dev -o -fstype proc \) -type f -print 2> /dev/null \
             | sed 1d \
             | cut -b3- \
             | awk '{a[length($0)" "NR]=$0}END{PROCINFO["sorted_in"]="@ind_num_asc"; for(i in a) print a[i]}' - \
-            | peco
+            | peco ${PECO_FLAGS}
                     )"
     fi
 
@@ -36,19 +37,20 @@ __peco_select_dir ()
 
 __peco_select_file ()
 {
+    PECO_FLAGS="--prompt \"FILE>\""
     if command -v fd >/dev/null 2>&1; then
-        builtin typeset FILE="$(command fd --type file --full-path --hidden --no-ignore --exclude .git/ --color never . | peco)"
+        builtin typeset FILE="$(command fd --type file --full-path --hidden --no-ignore --exclude .git/ --color never . | peco ${PECO_FLAGS})"
     elif command -v rg >/dev/null 2>&1; then
-        builtin typeset FILE="$(rg --glob "" --files --hidden --no-ignore-vcs --iglob !.git/ --color never | peco)"
+        builtin typeset FILE="$(rg --glob "" --files --hidden --no-ignore-vcs --iglob !.git/ --color never | peco ${PECO_FLAGS})"
     elif command -v ag >/dev/null 2>&1; then
-        builtin typeset FILE="$(ag --files-with-matches --unrestricted --skip-vcs-ignores --ignore .git/ --nocolor -g "" | peco)"
+        builtin typeset FILE="$(ag --files-with-matches --unrestricted --skip-vcs-ignores --ignore .git/ --nocolor -g "" | peco ${PECO_FLAGS})"
     else
         builtin typeset FILE="$(
         command find \( -path '*/\.*' -o -fstype dev -o -fstype proc \) -type f -print 2> /dev/null \
             | sed 1d \
             | cut -b3- \
             | awk '{a[length($0)" "NR]=$0}END{PROCINFO["sorted_in"]="@ind_num_asc"; for(i in a) print a[i]}' - \
-            | peco
+            | peco ${PECO_FLAGS}
                     )"
     fi
 
@@ -66,10 +68,36 @@ __peco_select_file ()
     fi
 }
 
+__peco_select_history ()
+{
+    PECO_FLAGS="--prompt \"DIR>\""
+    builtin typeset HIST="$(history | cut -d ' ' -f4- | peco ${PECO_FLAGS} )"
+
+    if [[ -n $HIST ]]; then
+        builtin bind '"\er": redraw-current-line'
+        builtin bind '"\e^": magic-space'
+
+        HIST=$(printf %s "$HIST")
+
+        READLINE_LINE=${READLINE_LINE:+${READLINE_LINE:0:READLINE_POINT}}${HIST}${READLINE_LINE:+${READLINE_LINE:READLINE_POINT}}
+        READLINE_POINT=$(( READLINE_POINT + ${#HIST} ))
+    else
+        builtin bind '"\er":'
+        builtin bind '"\e^":'
+    fi
+}
+
 bind -m emacs -x '"\e\C-xf": __peco_select_dir'
 bind -m emacs '"\C-xf": "\e\C-xf\e^\er"'
+
 bind -m emacs -x '"\e\C-x\C-f": __peco_select_file'
 bind -m emacs '"\C-x\C-f": "\e\C-x\C-f\e^\er"'
+
+bind -m emacs -x '"\e\C-xr": __peco_select_history'
+bind -m emacs '"\C-xr": "\e\C-xr\e^\er"'
+
+bind -m emacs -x '"\e\C-x\C-r": __peco_select_history'
+bind -m emacs '"\C-x\C-r": "\e\C-x\C-r\e^\er"'
 
 __peco_change_dir () {
     # declare -A FILTER_LIST=( [Fuzzy]=1 [IgnoreCase]=1 [Regexp]=1 [SmartCase]=1 [CaseSensitive]=1 )
@@ -93,7 +121,7 @@ __peco_change_dir () {
     # fi
 
     FILTER_LIST="Fuzzy IgnoreCase Regexp SmartCase CaseSensitive"
-    FILTER="Fuzzy"
+    FILTER="SmartCase"
     local OPTIND=1
     while getopts ":f" opts; do
         case ${opts} in
@@ -108,6 +136,11 @@ __peco_change_dir () {
                 ;;
             :)
                 echo "Error: -${OPTARG} requires an argument."
+                return 1
+                ;;
+            *)
+                echo "Error: -${OPTARG} is not a valid option."
+                return 1
                 ;;
         esac
     done
@@ -152,7 +185,7 @@ __peco_open_file () {
     # fi
 
     FILTER_LIST="Fuzzy IgnoreCase Regexp SmartCase CaseSensitive"
-    FILTER="Fuzzy"
+    FILTER="SmartCase"
     local OPTIND=1
     while getopts ":f" opts; do
         case ${opts} in
@@ -167,6 +200,11 @@ __peco_open_file () {
                 ;;
             :)
                 echo "Error: -${OPTARG} requires an argument."
+                return 1
+                ;;
+            *)
+                echo "Error: -${OPTARG} is not a valid option."
+                return 1
                 ;;
         esac
     done

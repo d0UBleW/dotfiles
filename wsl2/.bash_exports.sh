@@ -9,7 +9,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 export PATH=$PATH:$HOME/Documents/scripts:$HOME/bin
 
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/local/bin/vim
 
 export DOTFILES="$HOME/.dotfiles"
 export STOW_FOLDERS="vim,tmux"
