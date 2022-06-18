@@ -46,6 +46,8 @@ Plug 'vim-python/python-syntax'
 
 " Plug 'ludovicchabant/vim-gutentags'
 
+Plug 'sheerun/vim-polyglot'
+
 Plug 'pprovost/vim-ps1'
 
 Plug 'mbbill/undotree'
@@ -182,12 +184,14 @@ set fillchars=vert:│,fold:·,eob:~"
 set nostartofline
 
 set sidescroll=1
-set scrolloff=19
+set scrolloff=17
 
 set switchbuf=uselast
 
 set autoread
 set confirm
+
+set conceallevel=0
 
 " onehalflight requires `set t_Co=256`
 " colorscheme onehalflight
@@ -287,6 +291,8 @@ endif
 
 
 " Misc
+
+command! BufOnly execute '%bdelete|edit #|normal `"'
 
 function! QuickfixMapping()
     " Go to the previous location and stay in the quickfix window
@@ -552,6 +558,8 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nnoremap yo<tab> :IndentLinesToggle<CR>
 
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_setConceal = 0
+let g:indentLine_conceallevel = 0
 
 
 
