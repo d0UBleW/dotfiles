@@ -1,6 +1,7 @@
 " let b:dispatch = "python3 %"
 
-nnoremap <F10> :Start -wait=always /usr/bin/python3 %<CR>
+nnoremap <F10> :Start -wait=always /usr/bin/env python3 %<CR>
+nnoremap <C-F10> :Start -wait=always /usr/bin/env python3 % 
 
 setlocal wildignore=*.pyc
 setlocal suffixesadd=.py
