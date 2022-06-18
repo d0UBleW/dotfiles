@@ -1,7 +1,14 @@
 {
-    "OnCancel": "error",
-    "Layout": "bottom-up",
-    "InitialFilter": "SmartCase",
-    "MaxScanBufferSize": 256,
-    "Use256Color": true
+  "OnCancel": "error",
+  "Layout": "bottom-up",
+  "InitialFilter": "SmartCase",
+  "MaxScanBufferSize": 256,
+  "Use256Color": true,
+  "Style": {
+    "Basic": ["on_default", "default"],
+    "SavedSelection": ["bold", "on_yellow", "white"],
+    "Selected": ["", "black", "on_white"],
+    "Query": ["default", "bold"],
+    "Matched": ["red", "on_default"]
+  }
 }
