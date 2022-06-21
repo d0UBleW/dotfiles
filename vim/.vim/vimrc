@@ -107,8 +107,11 @@ endif
 let mapleader = '\'
 let maplocalleader = '|'
 
-" let &background = strftime("%H") < 20 ? "light" : "dark"
-let &background = tolower($MODE)
+if len($MODE) > 0
+    let &background = tolower($MODE)
+else
+    let &background = strftime("%H") < 20 ? "light" : "dark"
+endif
 
 
 " Automatically save before commands like :next and :make
