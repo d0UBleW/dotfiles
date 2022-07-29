@@ -5,7 +5,7 @@
 	editor = /usr/bin/nvim
 	autocrlf = input
 [diff]
-	tool = /usr/local/bin/vimdiff
+	tool = /usr/bin/nvim -d
 [difftool]
 	prompt = false
 [difftool "vimdiff"]
