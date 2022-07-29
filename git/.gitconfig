@@ -2,7 +2,7 @@
 	email = 66501624+d0UBleW@users.noreply.github.com
 	name = d0UBleW
 [core]
-	editor = /usr/local/bin/vim
+	editor = /usr/bin/nvim
 	autocrlf = input
 [diff]
 	tool = /usr/local/bin/vimdiff
@@ -12,7 +12,6 @@
 	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
 [init]
 	defaultBranch = main
-	templateDir = ~/Templates/git.git
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential

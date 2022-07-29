@@ -7,7 +7,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 export XDG_CONFIG_HOME=$HOME/.config
 
-export PATH=$PATH:$HOME/Documents/scripts:$HOME/bin
+export PATH=$PATH:$HOME/scripts:$HOME/bin
 
 export EDITOR=/usr/local/bin/vim
 
