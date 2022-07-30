@@ -1,1 +1,1 @@
-print("hello from init.lua")
+require("doublew")
