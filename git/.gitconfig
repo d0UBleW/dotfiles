@@ -39,7 +39,7 @@
 	llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
 	co = "!git logg | peco | awk '{print $1}' | xargs git checkout"
 	df = "!git logg | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}"
-	dff = "!git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs -r git diff HEAD --"
+	dff = "!git diff --name-only HEAD | peco | xargs -r git diff HEAD --"
 	find = "!f() { git log --pretty=format:\"%h %cd [%cn] %s%d\" --date=relative -S'pretty' -S\"$@\" | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}; }; f"
 	# edit conflicted file on merge
 	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
