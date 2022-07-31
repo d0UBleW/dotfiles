@@ -1,4 +1,5 @@
 local nnoremap = require("doublew.keymap").nnoremap
+local vnoremap = require("doublew.keymap").vnoremap
 
 nnoremap("-", "<cmd>Ex<CR>")
 
@@ -11,3 +12,11 @@ nnoremap("<C-l>", "<cmd>wincmd l<CR>")
 
 nnoremap("<tab>", "<cmd>tabnext<CR>")
 nnoremap("<S-tab>", "<cmd>tabprevious<CR>")
+
+nnoremap("[b", "<cmd>bprevious<CR>")
+nnoremap("]b", "<cmd>bnext<CR>")
+
+vnoremap("<", "<gv")
+vnoremap(">", ">gv")
+
+vnoremap("<leader>p", '"_dP')

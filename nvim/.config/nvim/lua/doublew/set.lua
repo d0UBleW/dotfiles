@@ -3,6 +3,8 @@ local options = {
     guicursor = "",
     mouse = "a",
 
+    hidden = true,
+
 	clipboard = "unnamedplus",
 
 	backup = false,
