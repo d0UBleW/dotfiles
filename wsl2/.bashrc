@@ -166,3 +166,8 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
+
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+eval "$(pyenv virtualenv-init -)"

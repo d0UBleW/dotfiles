@@ -9,10 +9,10 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 export PATH=$PATH:$HOME/scripts:$HOME/bin
 
-export EDITOR=/usr/local/bin/vim
+export EDITOR=/usr/bin/nvim
 
 export DOTFILES="$HOME/.dotfiles"
-export STOW_FOLDERS="vim,tmux"
+export STOW_FOLDERS="tmux"
 
 # export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
 # export WORKON_HOME="$HOME/.virtualenvs"
@@ -58,3 +58,5 @@ export CC=clang
 export CXX=clang++
 
 export PATH=$PATH:/home/doublew/.cargo/bin
+
+export PYENV_ROOT="$HOME/.pyenv"
