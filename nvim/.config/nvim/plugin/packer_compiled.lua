@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["nvim-solarized-lua"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-solarized-lua",
+    url = "https://github.com/ishan9299/nvim-solarized-lua"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/packer.nvim",
