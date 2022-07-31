@@ -2,6 +2,7 @@
   "OnCancel": "error",
   "Layout": "bottom-up",
   "InitialFilter": "SmartCase",
+  "StickySelection": true,
   "MaxScanBufferSize": 256,
   "Use256Color": true,
   "Style": {
