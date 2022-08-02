@@ -49,6 +49,8 @@ local options = {
 
     scrolloff = 8,
     sidescrolloff = 8,
+
+    completeopt = {"menu", "menuone", "noselect"}
 }
 
 vim.opt.shortmess:append("c")

@@ -23,11 +23,21 @@ packer.init {
 }
 
 return packer.startup(function(use)
-  use "wbthomason/packer.nvim"
-  use "folke/tokyonight.nvim"
-  use "ishan9299/nvim-solarized-lua"
-  use "tpope/vim-vinegar"
-  use "mbbill/undotree"
-  use "nvim-lua/plenary.nvim"
-  use "nvim-lua/popup.nvim"
+  use("wbthomason/packer.nvim")
+
+  use("nvim-lua/plenary.nvim")
+  use("nvim-lua/popup.nvim")
+
+  use("folke/tokyonight.nvim")
+  use("ishan9299/nvim-solarized-lua")
+
+  use("tpope/vim-vinegar")
+
+  use("mbbill/undotree")
+
+  use("hrsh7th/nvim-cmp")
+  use("hrsh7th/cmp-buffer")
+  use("hrsh7th/cmp-path")
+  use("saadparwaiz1/cmp_luasnip")
+  use("L3MON4D3/LuaSnip")
 end)
