@@ -31,6 +31,8 @@ local options = {
 
 	belloff = "all",
 
+    pumheight = 10,
+
 	number = true,
 	relativenumber = true,
     signcolumn = "yes",

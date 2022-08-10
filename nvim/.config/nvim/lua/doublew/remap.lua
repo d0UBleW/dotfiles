@@ -16,6 +16,9 @@ nnoremap("<S-tab>", "<cmd>tabprevious<CR>")
 nnoremap("[b", "<cmd>bprevious<CR>")
 nnoremap("]b", "<cmd>bnext<CR>")
 
+nnoremap("co", "<cmd>copen<CR>")
+nnoremap("cc", "<cmd>cclose<CR>")
+
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
