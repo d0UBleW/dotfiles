@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 local packer_group = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = {"packer.lua"},
+    pattern = { "packer.lua" },
     command = "source <afile> | PackerSync",
     group = packer_group,
 })
@@ -23,26 +23,36 @@ packer.init {
 }
 
 return packer.startup(function(use)
-  use("wbthomason/packer.nvim")
+    use("wbthomason/packer.nvim")
 
-  use("nvim-lua/plenary.nvim")
-  use("nvim-lua/popup.nvim")
+    use("nvim-lua/plenary.nvim")
+    use("nvim-lua/popup.nvim")
 
-  use("folke/tokyonight.nvim")
-  use("ishan9299/nvim-solarized-lua")
+    use("folke/tokyonight.nvim")
+    use("ishan9299/nvim-solarized-lua")
 
-  use("tpope/vim-vinegar")
+    use("tpope/vim-vinegar")
 
-  use("mbbill/undotree")
+    use("mbbill/undotree")
 
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-path")
-  use("saadparwaiz1/cmp_luasnip")
-  use("L3MON4D3/LuaSnip")
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-nvim-lua")
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("saadparwaiz1/cmp_luasnip")
+    use("L3MON4D3/LuaSnip")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-nvim-lua")
 
-  use("neovim/nvim-lspconfig")
-  use("williamboman/nvim-lsp-installer")
+    use("neovim/nvim-lspconfig")
+    use("williamboman/nvim-lsp-installer")
+
+    use("nvim-telescope/telescope.nvim")
+    use("nvim-telescope/telescope-media-files.nvim")
+
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+    }
+    use("p00f/nvim-ts-rainbow")
+    use("nvim-treesitter/playground")
 end)

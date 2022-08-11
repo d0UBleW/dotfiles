@@ -1,4 +1,10 @@
 vim.opt.background = "light"
+
+local t = os.date("*t").hour
+if t >= 20 then
+    vim.opt.background = "dark"
+end
+
 -- vim.g.tokyonight_transparent_sidebar = true
 -- vim.g.tokyonight_transparent = true
 

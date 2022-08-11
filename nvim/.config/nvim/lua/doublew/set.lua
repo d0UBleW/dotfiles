@@ -1,22 +1,22 @@
 local options = {
-	termguicolors = true,
+    termguicolors = true,
     guicursor = "",
     mouse = "a",
 
     hidden = true,
 
-	clipboard = "unnamedplus",
+    clipboard = "unnamedplus",
 
-	backup = false,
-	swapfile = false,
+    backup = false,
+    swapfile = false,
     undodir = os.getenv("HOME") .. "/.vim/undodir",
     undofile = true,
-	autowrite = true,
+    autowrite = true,
 
-	tabstop = 4,
-	softtabstop = 4,
-	shiftwidth = 4,
-	expandtab = true,
+    tabstop = 4,
+    softtabstop = 4,
+    shiftwidth = 4,
+    expandtab = true,
 
     smartindent = true,
 
@@ -29,12 +29,12 @@ local options = {
     wrap = false,
     linebreak = true,
 
-	belloff = "all",
+    belloff = "all",
 
     pumheight = 10,
 
-	number = true,
-	relativenumber = true,
+    number = true,
+    relativenumber = true,
     signcolumn = "yes",
     cursorline = true,
     colorcolumn = "80",
@@ -52,7 +52,9 @@ local options = {
     scrolloff = 8,
     sidescrolloff = 8,
 
-    completeopt = {"menu", "menuone", "noselect"}
+    completeopt = { "menu", "menuone", "noselect" },
+
+    laststatus = 2,
 }
 
 vim.opt.shortmess:append("c")
@@ -60,5 +62,5 @@ vim.opt.shortmess:append("c")
 vim.g.mapleader = " "
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+    vim.opt[k] = v
 end

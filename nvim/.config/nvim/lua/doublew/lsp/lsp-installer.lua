@@ -22,7 +22,7 @@ lsp_installer.on_server_ready(function(server)
 
     if server.name == "pyright" then
         local pyright_opts = require("doublew.lsp.settings.pyright")
-        opts = vim.tbl.deep_extend("force", pyright_opts, opts)
+        opts = vim.tbl_deep_extend("force", pyright_opts, opts)
     end
 
     server:setup(opts)
