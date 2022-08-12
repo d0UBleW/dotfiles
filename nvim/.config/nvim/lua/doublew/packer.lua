@@ -28,6 +28,9 @@ return packer.startup(function(use)
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
 
+    use("ThePrimeagen/git-worktree.nvim")
+    use("ThePrimeagen/harpoon")
+
     use("folke/tokyonight.nvim")
     -- use("ishan9299/nvim-solarized-lua")
     use("shaunsingh/solarized.nvim")
@@ -67,4 +70,6 @@ return packer.startup(function(use)
     use("JoosepAlviste/nvim-ts-context-commentstring")
 
     use("TimUntersberger/neogit")
+
+    use("kylechui/nvim-surround")
 end)

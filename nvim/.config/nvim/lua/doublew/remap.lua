@@ -14,8 +14,11 @@ nnoremap("<leader>j", "<cmd>wincmd j<CR>")
 nnoremap("<leader>k", "<cmd>wincmd k<CR>")
 nnoremap("<leader>l", "<cmd>wincmd l<CR>")
 
-nnoremap("<leader><tab>", "<cmd>tabnext<CR>")
-nnoremap("<S-tab>", "<cmd>tabprevious<CR>")
+-- nnoremap("<leader><tab>", "<cmd>tabnext<CR>")
+-- nnoremap("<S-tab>", "<cmd>tabprevious<CR>")
+nnoremap("<S-l>", "<cmd>tabnext<CR>")
+nnoremap("<S-h>", "<cmd>tabprevious<CR>")
+nnoremap("te", "<cmd>tabedit<CR>")
 
 nnoremap("[b", "<cmd>bprevious<CR>")
 nnoremap("]b", "<cmd>bnext<CR>")
