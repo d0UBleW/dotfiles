@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
+  neogit = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
+  },
   ["neosolarized.nvim"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/neosolarized.nvim",
