@@ -29,7 +29,12 @@ return packer.startup(function(use)
     use("nvim-lua/popup.nvim")
 
     use("folke/tokyonight.nvim")
-    use("ishan9299/nvim-solarized-lua")
+    -- use("ishan9299/nvim-solarized-lua")
+    use("shaunsingh/solarized.nvim")
+    use {
+        "svrana/neosolarized.nvim",
+        requires = { "tjdevries/colorbuddy.nvim" }
+    }
 
     use("tpope/vim-vinegar")
 
@@ -55,4 +60,9 @@ return packer.startup(function(use)
     }
     use("p00f/nvim-ts-rainbow")
     use("nvim-treesitter/playground")
+
+    use("windwp/nvim-autopairs")
+
+    use("numToStr/Comment.nvim")
+    use("JoosepAlviste/nvim-ts-context-commentstring")
 end)

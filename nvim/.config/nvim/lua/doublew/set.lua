@@ -1,6 +1,8 @@
 local options = {
+    title = true,
+
     termguicolors = true,
-    guicursor = "",
+    guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
     mouse = "a",
 
     hidden = true,
@@ -19,6 +21,7 @@ local options = {
     expandtab = true,
 
     smartindent = true,
+    autoindent = true,
 
     hlsearch = false,
     incsearch = true,
@@ -28,6 +31,7 @@ local options = {
 
     wrap = false,
     linebreak = true,
+    breakindent = true,
 
     belloff = "all",
 
@@ -55,6 +59,15 @@ local options = {
     completeopt = { "menu", "menuone", "noselect" },
 
     laststatus = 2,
+    confirm = true,
+    showcmd = true,
+
+    winblend = 0,
+    wildoptions = "pum",
+    pumblend = 5,
+
+    inccommand = "split",
+    backspace = "start,eol,indent",
 }
 
 vim.opt.shortmess:append("c")
@@ -64,3 +77,5 @@ vim.g.mapleader = " "
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
+
+vim.cmd("set nostartofline")
