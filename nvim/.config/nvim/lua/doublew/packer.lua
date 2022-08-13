@@ -53,6 +53,8 @@ return packer.startup(function(use)
     use("onsails/lspkind-nvim")
     use("neovim/nvim-lspconfig")
     use("williamboman/nvim-lsp-installer")
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
 
     use("nvim-telescope/telescope.nvim")
     use("nvim-telescope/telescope-media-files.nvim")
@@ -81,4 +83,6 @@ return packer.startup(function(use)
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
+
+    use("norcalli/nvim-colorizer.lua")
 end)
