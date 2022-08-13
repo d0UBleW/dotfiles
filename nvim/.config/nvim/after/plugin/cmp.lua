@@ -4,6 +4,12 @@ if not cmp_status_ok then
     return
 end
 
+local lspkind_status, lspkind = pcall(require, "lspkind")
+
+if not lspkind_status then
+    return
+end
+
 local luasnip_status_ok, luasnip = pcall(require, "luasnip")
 
 if not luasnip_status_ok then
@@ -15,39 +21,11 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local kind_icons = {
-    Text = "",
-    Method = "m",
-    Function = "",
-    Constructor = "",
-    Field = "",
-    Variable = "",
-    Class = "",
-    Interface = "",
-    Module = "",
-    Property = "",
-    Unit = "",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "",
-    Event = "",
-    Operator = "",
-    TypeParameter = "",
-}
-
 cmp.setup({
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
-        end
+        end,
     },
     mapping = {
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -75,10 +53,10 @@ cmp.setup({
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
         ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<C-e>"] = cmp.mapping {
+        ["<C-e>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
-        },
+        }),
     },
 
     sources = cmp.config.sources({
@@ -91,17 +69,20 @@ cmp.setup({
 
     formatting = {
         fields = { "kind", "abbr", "menu" },
-        format = function(entry, vim_item)
-            vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-            vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                nvim_lua = "[Lua]",
-                luasnip = "[LuaSnip]",
-                buffer = "[Buffer]",
-                path = "[Path]",
-            })[entry.source.name]
-            return vim_item
-        end,
+        format = lspkind.cmp_format({
+            mode = "symbol",
+            maxwidth = 50,
+            before = function(entry, vim_item)
+                vim_item.menu = ({
+                    nvim_lsp = "[LSP]",
+                    nvim_lua = "[Lua]",
+                    luasnip = "[LuaSnip]",
+                    buffer = "[Buffer]",
+                    path = "[Path]",
+                })[entry.source.name]
+                return vim_item
+            end,
+        }),
     },
 
     confirm_opts = {

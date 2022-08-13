@@ -32,6 +32,8 @@ nnoremap("<leader>tf", "<cmd>Telescope find_files<CR>")
 nnoremap("<leader>tg", "<cmd>Telescope git_files<CR>")
 nnoremap("<leader>ts", "<cmd>Telescope live_grep<CR>")
 
+nnoremap("<leader>fm", "<cmd>Format<CR>")
+
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
