@@ -28,9 +28,10 @@ nnoremap("cc", "<cmd>cclose<CR>")
 
 nnoremap("<F5>", "<cmd>lua require('doublew.toggle').toggle_bg()<CR>")
 
-nnoremap("<leader>tf", "<cmd>Telescope find_files<CR>")
+nnoremap("<leader>tf", "<cmd>Telescope find_files hidden=true<CR>")
 nnoremap("<leader>tg", "<cmd>Telescope git_files<CR>")
 nnoremap("<leader>ts", "<cmd>Telescope live_grep<CR>")
+nnoremap("<leader><S-t>", ":Telescope ")
 
 nnoremap("<leader>fm", "<cmd>Format<CR>")
 
