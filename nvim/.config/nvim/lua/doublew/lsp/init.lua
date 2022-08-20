@@ -17,6 +17,46 @@ local function config(_config)
 end
 
 lspconfig.jsonls.setup(config(require("doublew.lsp.settings.jsonls")))
+
 lspconfig.sumneko_lua.setup(config(require("doublew.lsp.settings.sumneko_lua")))
+
 lspconfig.pyright.setup(config(require("doublew.lsp.settings.pyright")))
+
 lspconfig.tsserver.setup(config(require("doublew.lsp.settings.tsserver")))
+
+lspconfig.solargraph.setup(config())
+
+lspconfig.clangd.setup(config())
+
+lspconfig.ansiblels.setup(config())
+
+lspconfig.bashls.setup(config())
+
+lspconfig.cssls.setup(config())
+
+lspconfig.eslint.setup(config())
+
+lspconfig.gopls.setup(config({
+	cmd = { "gopls", "serve" },
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+}))
+
+lspconfig.rust_analyzer.setup(config({
+	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+	--[[
+    settings = {
+        rust = {
+            unstable_features = true,
+            build_on_save = false,
+            all_features = true,
+        },
+    }
+    --]]
+}))
