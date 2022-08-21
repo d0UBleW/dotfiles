@@ -22,6 +22,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.rubocop,
 		formatting.markdownlint,
+		formatting.prettierd,
 		formatting.rustfmt.with({
 			extra_args = function(params)
 				local Path = require("plenary.path")
@@ -41,6 +42,7 @@ null_ls.setup({
 		}),
 
 		diagnostics.flake8,
+		diagnostics.yamllint,
 		diagnostics.markdownlint,
 		diagnostics.rubocop,
 		diagnostics.eslint_d.with({
