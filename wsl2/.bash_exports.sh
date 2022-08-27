@@ -63,6 +63,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/William
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
+export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 # export PATH=$PATH:/mnt/c/Windows/System32/
 # export PATH="$PATH:/mnt/c/ProgramData/Microsoft/Windows/Hyper-V/"
 export VAGRANT_DEFAULT_PROVIDER=hyperv
+# export VAGRANT_DEFAULT_PROVIDER=virtualbox
+export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
