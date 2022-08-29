@@ -1,6 +1,12 @@
-local nnoremap = require("doublew.keymap").nnoremap
-local vnoremap = require("doublew.keymap").vnoremap
-local cmap = require("doublew.keymap").cmap
+local status_ok_km, keymap = pcall(require, "doublew.keymap")
+
+if not status_ok_km then
+	return
+end
+
+local nnoremap = keymap.nnoremap
+local vnoremap = keymap.vnoremap
+local cmap = keymap.cmap
 
 cmap("<C-a>", "<home>")
 cmap("<C-e>", "<end>")
@@ -20,9 +26,6 @@ nnoremap("<S-l>", "<cmd>tabnext<CR>")
 nnoremap("<S-h>", "<cmd>tabprevious<CR>")
 nnoremap("te", "<cmd>tabedit<CR>")
 
-nnoremap("[b", "<cmd>bprevious<CR>")
-nnoremap("]b", "<cmd>bnext<CR>")
-
 nnoremap("co", "<cmd>copen<CR>")
 nnoremap("cc", "<cmd>cclose<CR>")
 
@@ -31,7 +34,7 @@ nnoremap("<F5>", "<cmd>lua require('doublew.toggle').toggle_bg()<CR>")
 nnoremap("<leader>tf", "<cmd>Telescope find_files hidden=true<CR>")
 nnoremap("<leader>tg", "<cmd>Telescope git_files<CR>")
 nnoremap("<leader>ts", "<cmd>Telescope live_grep<CR>")
-nnoremap("<leader><S-t>", ":Telescope ")
+nnoremap("<leader>T", ":Telescope ")
 
 nnoremap("<leader>fm", "<cmd>Format<CR>")
 

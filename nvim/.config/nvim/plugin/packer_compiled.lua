@@ -264,6 +264,11 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-unimpaired"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
+    url = "https://github.com/tpope/vim-unimpaired"
+  },
   ["vim-vinegar"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/vim-vinegar",

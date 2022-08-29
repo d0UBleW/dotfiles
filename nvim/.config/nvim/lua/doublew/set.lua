@@ -74,8 +74,14 @@ vim.opt.shortmess:append("c")
 
 vim.g.mapleader = " "
 
+vim.g.netrw_bufsettings = "noma nomod nu rnu nowrap ro nobl"
+
+vim.g.CommandTPreferredImplementation = "lua"
+
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
 vim.cmd("set nostartofline")
+
+vim.cmd("command! W w !sudo -S tee % > /dev/null")
