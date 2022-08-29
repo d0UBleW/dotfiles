@@ -29,7 +29,7 @@ nnoremap("te", "<cmd>tabedit<CR>")
 nnoremap("co", "<cmd>copen<CR>")
 nnoremap("cc", "<cmd>cclose<CR>")
 
-nnoremap("<F5>", "<cmd>lua require('doublew.toggle').toggle_bg()<CR>")
+--[[ nnoremap("<F5>", "<cmd>lua require('doublew.toggle').toggle_bg()<CR>") ]]
 
 nnoremap("<leader>tf", "<cmd>Telescope find_files hidden=true<CR>")
 nnoremap("<leader>tg", "<cmd>Telescope git_files<CR>")

@@ -84,4 +84,4 @@ end
 
 vim.cmd("set nostartofline")
 
-vim.cmd("command! W w !sudo -S tee % > /dev/null")
+vim.cmd([[ command! W execute 'lua require("doublew.sudo.write")("!")' ]])
