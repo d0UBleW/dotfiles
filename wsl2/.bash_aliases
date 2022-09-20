@@ -1,5 +1,6 @@
 alias vim="nvim"
 alias cfvrc="vim $HOME/.vim/vimrc"
+alias cfnvim="vim $HOME/.dotfiles/nvim/.config/nvim"
 alias cfbrc="vim $HOME/.bashrc"
 alias src="source $HOME/.bashrc; bind -f $HOME/.inputrc"
 alias cfal="vim $HOME/.bash_aliases"

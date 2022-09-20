@@ -71,7 +71,7 @@ __peco_select_file ()
 __peco_select_history ()
 {
     PECO_FLAGS="--prompt \"DIR>\""
-    builtin typeset HIST="$(history | cut -d ' ' -f4- | peco ${PECO_FLAGS} )"
+    builtin typeset HIST="$(history | cut -d ' ' -f4- | sort | uniq | peco ${PECO_FLAGS} )"
 
     if [[ -n $HIST ]]; then
         builtin bind '"\er": redraw-current-line'
