@@ -16,3 +16,15 @@ require("doublew.prettier")
 require("doublew.lualine")
 require("doublew.colorizer")
 require("doublew.trouble")
+
+local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
+
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = { "*.yaml", "*.yml" },
+	callback = function()
+		if vim.fn.search("hosts:|tasks", "nw") then
+			vim.api.nvim_command("set ft=yaml.ansible")
+		end
+	end,
+	group = ansible_group,
+})

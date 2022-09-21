@@ -18,7 +18,7 @@ null_ls.setup({
 		end
 	end,
 	sources = {
-		--[[ formatting.black.with({ extra_args = { "--fast" } }), ]]
+		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		formatting.rubocop,
 		formatting.markdownlint,
