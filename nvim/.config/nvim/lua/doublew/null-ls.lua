@@ -68,6 +68,9 @@ null_ls.setup({
 		}),
 
 		diagnostics.flake8,
+		diagnostics.ansiblelint.with({
+			filetype = { "yaml.ansible" },
+		}),
 		diagnostics.yamllint,
 		diagnostics.markdownlint,
 		diagnostics.rubocop,
