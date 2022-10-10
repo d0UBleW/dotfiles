@@ -16,6 +16,7 @@ require("doublew.prettier")
 require("doublew.lualine")
 require("doublew.colorizer")
 require("doublew.trouble")
+require("doublew.cursor")
 
 local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
 
@@ -27,4 +28,18 @@ vim.api.nvim_create_autocmd("BufRead", {
 		end
 	end,
 	group = ansible_group,
+})
+
+local code_act_group = vim.api.nvim_create_augroup("CodeAction", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	pattern = "*",
+	callback = function()
+		local status_ok, code_action = pcall(require, "code_action_utils")
+		if not status_ok then
+			return
+		end
+
+		code_action.code_action_listener()
+	end,
+	group = code_act_group,
 })
