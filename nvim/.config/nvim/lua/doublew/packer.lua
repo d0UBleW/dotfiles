@@ -85,6 +85,8 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
+	use("kyazdani42/nvim-web-devicons")
+
 	use("norcalli/nvim-colorizer.lua")
 
 	use("tpope/vim-unimpaired")
