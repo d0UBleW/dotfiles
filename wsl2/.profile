@@ -33,3 +33,5 @@ eval "$(pyenv init -)"
 powershell.exe -c "Get-NetIPInterface | where {\$_.InterfaceAlias -eq 'vEthernet (WSL)' -or \$_.InterfaceAlias -eq 'vEthernet (Default Switch)' -or \$_.InterfaceAlias -eq 'vEthernet (vNAT)'} | Set-NetIPInterface -Forwarding Enabled 2> \$null"
 
 if [ -e /home/doublew/.nix-profile/etc/profile.d/nix.sh ]; then . /home/doublew/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+eval "$(direnv hook bash)"

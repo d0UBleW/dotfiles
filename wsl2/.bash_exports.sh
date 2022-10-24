@@ -60,6 +60,7 @@ export CXX=clang++
 export PATH=$PATH:/home/doublew/.cargo/bin
 
 export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/William
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1

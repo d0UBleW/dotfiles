@@ -34,6 +34,7 @@ nnoremap("cc", "<cmd>cclose<CR>")
 nnoremap("<leader>tf", "<cmd>Telescope find_files hidden=true<CR>")
 nnoremap("<leader>tg", "<cmd>Telescope git_files<CR>")
 nnoremap("<leader>ts", "<cmd>Telescope live_grep<CR>")
+nnoremap("<leader>tp", "<cmd>Telescope projects<CR>")
 nnoremap("<leader>T", "<cmd>Telescope<CR>")
 
 nnoremap("<leader>fm", "<cmd>Format<CR>")

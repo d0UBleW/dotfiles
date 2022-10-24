@@ -5,6 +5,7 @@ end
 
 telescope.load_extension("media_files")
 telescope.load_extension("projects")
+telescope.load_extension("project")
 
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
@@ -99,6 +100,7 @@ telescope.setup({
 			filetypes = { "png", "webp", "jpg", "jpeg" },
 			find_cmd = "rg", -- find command (defaults to `fd`)
 		},
+		projects = {},
 		-- Your extension configuration goes here:
 		-- extension_name = {
 		--   extension_config_key = value,

@@ -57,6 +57,7 @@ return packer.startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 
 	use("nvim-telescope/telescope.nvim")
+	use("nvim-telescope/telescope-project.nvim")
 	use("nvim-telescope/telescope-media-files.nvim")
 
 	use({
@@ -96,10 +97,6 @@ return packer.startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
-	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup({})
-		end,
-	})
+	use("ahmedkhalf/project.nvim")
+	use("lukas-reineke/indent-blankline.nvim")
 end)
