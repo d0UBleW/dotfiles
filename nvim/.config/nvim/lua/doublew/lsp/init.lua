@@ -36,6 +36,8 @@ lspconfig.cssls.setup(config())
 
 lspconfig.eslint.setup(config())
 
+lspconfig.dockerls.setup(config())
+
 lspconfig.gopls.setup(config({
 	cmd = { "gopls", "serve" },
 	settings = {
