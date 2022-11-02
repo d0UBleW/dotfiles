@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 	pattern = { "*.yaml", "*.yml" },
 	callback = function()
 		--[[ if vim.fn.search("hosts:\\|tasks:", "nw") > 0 then ]]
-		if vim.fn.search("tasks:", "nw") > 0 then
+		if vim.fn.search("ansible.", "nw") > 0 then
 			vim.api.nvim_command("set ft=yaml.ansible")
 		end
 	end,

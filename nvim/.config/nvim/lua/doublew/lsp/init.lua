@@ -34,31 +34,14 @@ lspconfig.bashls.setup(config())
 
 lspconfig.cssls.setup(config())
 
+lspconfig.cssmodules_ls.setup(config())
+
 lspconfig.eslint.setup(config())
 
 lspconfig.dockerls.setup(config())
 
-lspconfig.gopls.setup(config({
-	cmd = { "gopls", "serve" },
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-		},
-	},
-}))
+lspconfig.tailwindcss.setup(config())
 
-lspconfig.rust_analyzer.setup(config({
-	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-	--[[
-    settings = {
-        rust = {
-            unstable_features = true,
-            build_on_save = false,
-            all_features = true,
-        },
-    }
-    --]]
-}))
+lspconfig.gopls.setup(config(require("doublew.lsp.settings.gopls")))
+
+lspconfig.rust_analyzer.setup(config(require("doublew.lsp.settings.rust_analyzer")))
