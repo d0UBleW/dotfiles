@@ -44,4 +44,6 @@ lspconfig.tailwindcss.setup(config())
 
 lspconfig.gopls.setup(config(require("doublew.lsp.settings.gopls")))
 
+lspconfig.golangci_lint_ls.setup(config())
+
 lspconfig.rust_analyzer.setup(config(require("doublew.lsp.settings.rust_analyzer")))

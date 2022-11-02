@@ -6,6 +6,7 @@ end
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
+local code_actions = null_ls.builtins.code_actions
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
@@ -49,6 +50,9 @@ null_ls.setup({
 			filetype = { "md" },
 		}),
 		formatting.prettierd,
+		formatting.gofumpt,
+		formatting.goimports,
+		formatting.goimports_reviser,
 		formatting.rustfmt.with({
 			extra_args = function(params)
 				local Path = require("plenary.path")
@@ -78,5 +82,8 @@ null_ls.setup({
 			diagnostics_format = "[eslint] #{m}\n{#{c}}",
 		}),
 		diagnostics.shellcheck,
+		diagnostics.golangci_lint,
+
+		code_actions.refactoring,
 	},
 })
