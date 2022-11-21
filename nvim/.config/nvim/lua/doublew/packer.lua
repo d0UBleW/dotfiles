@@ -56,9 +56,14 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 
-	use("nvim-telescope/telescope.nvim")
-	use("nvim-telescope/telescope-project.nvim")
-	use("nvim-telescope/telescope-media-files.nvim")
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-telescope/telescope-project.nvim" },
+			{ "nvim-telescope/telescope-media-files.nvim" },
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		},
+	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter",

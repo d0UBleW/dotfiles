@@ -274,6 +274,11 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/solarized.nvim",
     url = "https://github.com/shaunsingh/solarized.nvim"
   },
+  ["telescope-live-grep-args.nvim"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
+    url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
+  },
   ["telescope-media-files.nvim"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",

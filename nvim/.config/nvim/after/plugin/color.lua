@@ -33,7 +33,13 @@ vim.opt.background = "dark"
 vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_transparent = true
 
+local time = os.date("*t").hour
 local scheme = "tokyonight"
+if time > -1 then
+	scheme = scheme .. "-storm"
+else
+	scheme = scheme .. "-day"
+end
 -- local scheme = "solarized"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. scheme)

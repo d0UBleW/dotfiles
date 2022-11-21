@@ -47,9 +47,12 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.rubocop,
 		formatting.markdownlint.with({
+			extra_args = { "--disable", "MD014" },
 			filetype = { "md" },
 		}),
-		formatting.prettierd,
+		formatting.prettierd.with({
+			--[[ disabled_filetypes = { "md", "markdown" }, ]]
+		}),
 		formatting.gofumpt,
 		formatting.goimports,
 		formatting.goimports_reviser,
@@ -76,7 +79,9 @@ null_ls.setup({
 			filetype = { "yaml.ansible" },
 		}),
 		diagnostics.yamllint,
-		diagnostics.markdownlint,
+		diagnostics.markdownlint.with({
+			extra_args = { "--disable", "MD014" },
+		}),
 		diagnostics.rubocop,
 		diagnostics.eslint_d.with({
 			diagnostics_format = "[eslint] #{m}\n{#{c}}",

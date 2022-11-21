@@ -40,7 +40,7 @@ lspconfig.eslint.setup(config())
 
 lspconfig.dockerls.setup(config())
 
-lspconfig.tailwindcss.setup(config())
+lspconfig.tailwindcss.setup(config(require("doublew.lsp.settings.tailwindcss")))
 
 lspconfig.gopls.setup(config(require("doublew.lsp.settings.gopls")))
 
