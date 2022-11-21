@@ -138,7 +138,7 @@ if [ -z $VIRTUAL_ENV ]; then
     : # no op
 else
     source $VIRTUAL_ENV/bin/activate
-    autoenv_enable
+    # autoenv_enable
 fi
 
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
@@ -156,19 +156,23 @@ if [ -f ~/.cargo/env ]; then
     source ~/.cargo/env
 fi
 
-if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
-    # GIT_PROMPT_ONLY_IN_REPO=1
-    GIT_PROMPT_THEME=Solarized
-    # GIT_PROMPT_START="[_LAST_COMMAND_INDICATOR_\[\033[0;0m\]] \[\033[0;33m\]\W\[\033[0;0m\]"
-    GIT_PROMPT_START="\[\033[0;33m\]\W\[\033[0;0m\]"
-    [ -n "${IN_NIX_SHELL}" ] && GIT_PROMPT_START="${GIT_PROMPT_START} (nix-shell)"
-    # GIT_PROMPT_END="\n\[\033[1;34m\]$(date +%H:%M)\[\033[0;0m\] $ "
-    GIT_PROMPT_END="\n❯ "
+# if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+#     # GIT_PROMPT_ONLY_IN_REPO=1
+#     GIT_PROMPT_THEME=Solarized
+#     # GIT_PROMPT_START="[_LAST_COMMAND_INDICATOR_\[\033[0;0m\]] \[\033[0;33m\]\W\[\033[0;0m\]"
+#     GIT_PROMPT_START="\[\033[0;33m\]\W\[\033[0;0m\]"
+#     [ -n "${IN_NIX_SHELL}" ] && GIT_PROMPT_START="${GIT_PROMPT_START} (nix-shell)"
+#     # GIT_PROMPT_END="\n\[\033[1;34m\]$(date +%H:%M)\[\033[0;0m\] $ "
+#     GIT_PROMPT_END="\n❯ "
+#
+#     source $HOME/.bash-git-prompt/gitprompt.sh
+# fi
 
-    source $HOME/.bash-git-prompt/gitprompt.sh
-fi
+eval "$(/home/doublew/.nix-profile/bin/starship init bash)"
 
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 eval "$(pyenv virtualenv-init -)"
+
+eval "$(/home/doublew/.nix-profile/bin/direnv hook bash)"

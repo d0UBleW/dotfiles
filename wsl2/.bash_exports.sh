@@ -14,22 +14,8 @@ export EDITOR=/usr/bin/nvim
 export DOTFILES="$HOME/.dotfiles"
 export STOW_FOLDERS="tmux"
 
-# export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
-# export WORKON_HOME="$HOME/.virtualenvs"
-# source ~/.local/bin/virtualenvwrapper.sh
-
 export AUTOENV_ENABLE_LEAVE=TRUE
 export AUTOENV_ASSUME_YES=TRUE
-
-# eval "$(mcfly init bash)"
-# export MCFLY_LIGHT=TRUE
-# export MCFLY_KEY_SCHEME=vim
-# export MCFLY_FUZZY=2
-# export MCFLY_RESULTS=50
-# export MCFLY_INTERFACE_VIEW=BOTTOM
-# export MCFLY_RESULTS_SORT=LAST_RUN
-# export MCFLY_DISABLE_MENU=TRUE
-
 
 export GOPATH=$HOME/projects/go
 export GOROOT=/usr/local/go
@@ -43,8 +29,6 @@ export WIN=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}')
 export WASMER_DIR="/home/doublew/.wasmer"
 
 export NVM_DIR="$HOME/.config/nvm"
-
-# export LIMBION_DOWNLOADS="/mnt/c/Users/LEGION.LAPTOP-HVMBBO3R/Downloads"
 
 export PATH=$PATH:/home/doublew/.cabal/bin
 export PATH=$PATH:/usr/games
