@@ -176,3 +176,5 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 eval "$(/home/doublew/.nix-profile/bin/direnv hook bash)"
+
+[ -s "$XDG_CONFIG_HOME/starship/bash_completion" ] && \. "$XDG_CONFIG_HOME/starship/bash_completion"
