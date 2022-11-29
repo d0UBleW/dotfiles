@@ -59,12 +59,25 @@ function load_average() {
 }
 
 function date_time() {
-    printf "%s" "$(date +'%Y-%m-%d %H:%M:%S %Z')"
+    # printf "%s" "$(date +'%Y-%m-%d %H:%M:%S %Z')"
+    printf "%s" "$(date +'%c')"
 
+    # printf "%s" "%a, %l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d #[fg=default]"
+}
 
+function ipv4() {
+    printf "🌐 #[fg=green]%s#[default]" "$(ip address show eth0 | grep -oP '(?<=inet ).*(?= brd)')"
+}
+
+function sep() {
+    printf " | "
 }
 
 function main() {
+    ipv4
+    sep
+    date_time
+    sep
     battery_meter
 }
 
