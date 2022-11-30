@@ -60,7 +60,7 @@ function load_average() {
 
 function date_time() {
     # printf "%s" "$(date +'%Y-%m-%d %H:%M:%S %Z')"
-    printf "%s" "$(date +'%c')"
+    printf "%s" "$(date +'%H:%M:%S %d %b')"
 
     # printf "%s" "%a, %l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d #[fg=default]"
 }
@@ -70,6 +70,7 @@ function sep() {
 }
 
 function main() {
+    printf " < "
     date_time
     sep
     battery_meter
