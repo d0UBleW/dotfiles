@@ -14,6 +14,7 @@ cmap("<C-e>", "<end>")
 nnoremap("-", "<cmd>Ex<CR>")
 
 nnoremap("<leader>u", "<cmd>UndotreeToggle<CR>")
+nnoremap("<leader>w", "<cmd>set wrap!<CR>")
 
 nnoremap("<leader>h", "<cmd>wincmd h<CR>")
 nnoremap("<leader>j", "<cmd>wincmd j<CR>")

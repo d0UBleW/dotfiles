@@ -5,6 +5,6 @@ if not status_ok then
 end
 
 project_nvim.setup({
-	silent_chdir = false,
+	silent_chdir = true,
 	scope_chdir = "tab",
 })

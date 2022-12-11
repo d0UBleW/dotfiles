@@ -35,7 +35,7 @@ vim.g.tokyonight_transparent = true
 
 local time = os.date("*t").hour
 local scheme = "tokyonight"
-if time > -1 then
+if time > -18 then
 	scheme = scheme .. "-storm"
 else
 	scheme = scheme .. "-day"

@@ -44,6 +44,8 @@ null_ls.setup({
 			filetype = { "python3" },
 		}),
 
+		formatting.cmake_format,
+
 		formatting.stylua,
 		formatting.rubocop,
 		formatting.markdownlint.with({
@@ -88,6 +90,7 @@ null_ls.setup({
 		}),
 		diagnostics.shellcheck,
 		diagnostics.golangci_lint,
+		diagnostics.cmake_lint,
 
 		code_actions.refactoring,
 	},

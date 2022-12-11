@@ -24,13 +24,15 @@ lspconfig.pyright.setup(config(require("doublew.lsp.settings.pyright")))
 
 lspconfig.tsserver.setup(config(require("doublew.lsp.settings.tsserver")))
 
-lspconfig.solargraph.setup(config())
+--[[ lspconfig.solargraph.setup(config()) ]]
 
 lspconfig.clangd.setup(config())
 
 lspconfig.ansiblels.setup(config())
 
 lspconfig.bashls.setup(config())
+
+lspconfig.cmake.setup(config())
 
 lspconfig.cssls.setup(config())
 
@@ -45,5 +47,7 @@ lspconfig.tailwindcss.setup(config(require("doublew.lsp.settings.tailwindcss")))
 lspconfig.gopls.setup(config(require("doublew.lsp.settings.gopls")))
 
 lspconfig.golangci_lint_ls.setup(config())
+
+lspconfig.ruby_ls.setup(config())
 
 lspconfig.rust_analyzer.setup(config(require("doublew.lsp.settings.rust_analyzer")))

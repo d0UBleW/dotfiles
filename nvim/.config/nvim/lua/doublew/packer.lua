@@ -119,4 +119,15 @@ return packer.startup(function(use)
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	})
+
+	use({
+		"scalameta/nvim-metals",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+		},
+	})
+
+	use({
+		"mfussenegger/nvim-dap",
+	})
 end)

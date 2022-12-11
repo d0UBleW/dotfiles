@@ -19,6 +19,7 @@ require("doublew.trouble")
 require("doublew.cursor")
 require("doublew.project_nvim")
 require("doublew.indent-blankline")
+require("doublew.metals")
 
 local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
 
