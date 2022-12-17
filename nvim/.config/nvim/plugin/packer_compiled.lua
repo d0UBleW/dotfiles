@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["glance.nvim"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/glance.nvim",
+    url = "https://github.com/DNLHC/glance.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -199,6 +204,11 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -213,6 +223,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-metals",
     url = "https://github.com/scalameta/nvim-metals"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-surround"] = {
     loaded = true,
