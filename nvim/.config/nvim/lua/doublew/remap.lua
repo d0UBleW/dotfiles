@@ -68,3 +68,7 @@ nnoremap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
 nnoremap("<leader>xl", "<cmd>TroubleToggle loclist<cr>")
 nnoremap("gR", "<cmd>TroubleToggle lsp_references<cr>")
 nnoremap("<leader>gd", "<cmd>TroubleToggle lsp_definitions<cr>")
+
+vim.api.nvim_create_user_command("IDE", function(_)
+	require("doublew.ide")
+end, { desc = "Enable IDE" })
