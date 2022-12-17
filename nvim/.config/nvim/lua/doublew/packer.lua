@@ -1,4 +1,10 @@
-vim.cmd([[packadd packer.nvim]])
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local is_bootstrap = false
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	is_bootstrap = true
+	vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim" .. install_path)
+	vim.cmd([[packadd packer.nvim]])
+end
 
 local packer_group = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
@@ -17,7 +23,7 @@ end
 packer.init({
 	display = {
 		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
+			return require("packer.util").float({ border = "single" })
 		end,
 	},
 })
@@ -51,7 +57,9 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 	use("onsails/lspkind-nvim")
-	use("neovim/nvim-lspconfig")
+	use({ "neovim/nvim-lspconfig", requires = {
+		"j-hui/fidget.nvim",
+	} })
 	use("williamboman/nvim-lsp-installer")
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
@@ -64,12 +72,19 @@ return packer.startup(function(use)
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		},
 	})
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "make",
+		cond = vim.fn.executable("make") == 1,
+	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		run = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
 	})
-	use("nvim-treesitter/nvim-treesitter-context")
+	use({ "nvim-treesitter/nvim-treesitter-context", after = "nvim-treesitter" })
 	use("p00f/nvim-ts-rainbow")
 	use("nvim-treesitter/playground")
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -79,6 +94,7 @@ return packer.startup(function(use)
 	use("windwp/nvim-ts-autotag")
 
 	use("numToStr/Comment.nvim")
+	use("tpope/vim-sleuth")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	use("TimUntersberger/neogit")

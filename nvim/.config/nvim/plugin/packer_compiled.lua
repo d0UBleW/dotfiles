@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["git-worktree.nvim"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
@@ -220,8 +225,10 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-treesitter-context"] = {
+    load_after = {},
     loaded = true,
-    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    needs_bufread = false,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-ts-autotag"] = {
@@ -284,6 +291,14 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/solarized.nvim",
     url = "https://github.com/shaunsingh/solarized.nvim"
   },
+  ["telescope-fzf-native.nvim"] = {
+    cond = { true },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/opt/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
   ["telescope-live-grep-args.nvim"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
@@ -319,6 +334,11 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-sleuth"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/vim-sleuth",
+    url = "https://github.com/tpope/vim-sleuth"
+  },
   ["vim-unimpaired"] = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
@@ -332,6 +352,15 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Conditional loads
+time([[Conditional loading of telescope-fzf-native.nvim]], true)
+  require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)
+time([[Conditional loading of telescope-fzf-native.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd nvim-treesitter-context ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

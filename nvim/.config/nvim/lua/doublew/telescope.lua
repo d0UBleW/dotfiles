@@ -7,6 +7,7 @@ telescope.load_extension("media_files")
 telescope.load_extension("projects")
 telescope.load_extension("project")
 telescope.load_extension("live_grep_args")
+pcall(telescope.load_extension, "fzf")
 
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
@@ -17,6 +18,11 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
+		borderchars = {
+			prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+			results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+			preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		},
 
 		mappings = {
 			i = {

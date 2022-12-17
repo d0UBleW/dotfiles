@@ -27,7 +27,7 @@ M.setup = function()
 		float = {
 			focusable = false,
 			style = "minimal",
-			border = "rounded",
+			border = "single",
 			source = "always",
 			header = "",
 			prefix = "",
@@ -37,11 +37,11 @@ M.setup = function()
 	vim.diagnostic.config(config)
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
+		border = "single",
 	})
 
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
+		border = "single",
 	})
 end
 
@@ -66,24 +66,31 @@ local function lsp_highlight_document(client, bufnr)
 end
 
 local function lsp_keymaps(bufnr)
-	buf_nnoremap(bufnr, "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-	buf_nnoremap(bufnr, "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-	buf_nnoremap(bufnr, "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-	buf_nnoremap(bufnr, "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-	buf_inoremap(bufnr, "<C-S-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-	-- buf_nnoremap(bufnr, "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-	buf_nnoremap(bufnr, "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-	-- buf_nnoremap(bufnr, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-	-- buf_nnoremap(bufnr, "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>")
-	buf_nnoremap(bufnr, "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
-	-- buf_nnoremap(bufnr, "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>')
-	buf_nnoremap(bufnr, "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>')
-	buf_nnoremap(bufnr, "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
-	buf_nnoremap(bufnr, "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-	buf_nnoremap(bufnr, "<leader>vrn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-	buf_nnoremap(bufnr, "<leader>vrr", "<cmd>lua vim.lsp.buf.references()<CR>")
-	buf_nnoremap(bufnr, "<leader>vca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+	buf_nnoremap(bufnr, "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration " })
+	buf_nnoremap(bufnr, "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+	buf_nnoremap(bufnr, "K", vim.lsp.buf.hover, { desc = "[K] Hover " })
+	buf_nnoremap(bufnr, "gi", vim.lsp.buf.implementation, { desc = "[G]oto [I]mplementation" })
+	buf_inoremap(bufnr, "<C-S-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
+	buf_nnoremap(bufnr, "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+	buf_nnoremap(bufnr, "gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences" })
+	buf_nnoremap(bufnr, "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
+	buf_nnoremap(bufnr, "[d", "<cmd>lua vim.diagnostic.goto_prev({ border = 'single' })<CR>")
+	buf_nnoremap(bufnr, "gl", "<cmd>lua vim.diagnostic.open_float({ border = 'single' })<CR>")
+	buf_nnoremap(bufnr, "]d", "<cmd>lua vim.diagnostic.goto_next({ border = 'single' })<CR>")
+	buf_nnoremap(bufnr, "<leader>q", vim.diagnostic.setloclist)
+	buf_nnoremap(bufnr, "gds", vim.lsp.buf.document_symbol)
+	buf_nnoremap(bufnr, "gws", vim.lsp.buf.workspace_symbol)
+	--[[ buf_nnoremap(bufnr, "<leader>vrn", "<cmd>lua vim.lsp.buf.rename()<CR>") ]]
+	--[[ buf_nnoremap(bufnr, "<leader>vrr", "<cmd>lua vim.lsp.buf.references()<CR>") ]]
+	--[[ buf_nnoremap(bufnr, "<leader>vca", "<cmd>lua vim.lsp.buf.code_action()<CR>") ]]
+	-- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+		if vim.lsp.buf.format then
+			vim.lsp.buf.format({ async = true })
+		elseif vim.lsp.buf.formatting then
+			vim.lsp.buf.formatting()
+		end
+	end, { desc = "Format current buffer with LSP" })
 end
 
 M.on_attach = function(client, bufnr)
