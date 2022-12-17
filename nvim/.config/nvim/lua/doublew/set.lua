@@ -57,7 +57,7 @@ local options = {
 
 	completeopt = { "menu", "menuone", "noselect" },
 
-	laststatus = 2,
+	laststatus = 3,
 	confirm = true,
 	showcmd = true,
 
@@ -69,6 +69,7 @@ local options = {
 	backspace = "start,eol,indent",
 
 	showmode = false,
+	winbar = "%=%m %f",
 }
 
 vim.opt.shortmess:append("c")

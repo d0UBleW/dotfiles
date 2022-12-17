@@ -45,7 +45,7 @@ end
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. scheme)
 
 if not status_ok then
-	vim.notify("colorscheme " .. scheme .. " not found!")
+	vim.notify("colorscheme " .. scheme .. " not found!", "error")
 	vim.cmd("colorscheme default")
 	return
 end

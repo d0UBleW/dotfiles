@@ -23,7 +23,7 @@ end
 packer.init({
 	display = {
 		open_fn = function()
-			return require("packer.util").float({ border = "single" })
+			return require("packer.util").float({ border = "rounded" })
 		end,
 	},
 })
@@ -147,6 +147,9 @@ return packer.startup(function(use)
 		"mfussenegger/nvim-dap",
 	})
 	use("rcarriga/nvim-dap-ui")
-	use("DNLHC/glance.nvim")
 	use("rcarriga/nvim-notify")
+
+	use({ "ldelossa/nvim-ide", require = {
+		{ "DNLHC/glance.nvim" },
+	} })
 end)

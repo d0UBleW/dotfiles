@@ -27,7 +27,7 @@ M.setup = function()
 		float = {
 			focusable = false,
 			style = "minimal",
-			border = "single",
+			border = "rounded",
 			source = "always",
 			header = "",
 			prefix = "",
@@ -37,11 +37,11 @@ M.setup = function()
 	vim.diagnostic.config(config)
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "single",
+		border = "rounded",
 	})
 
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "single",
+		border = "rounded",
 	})
 end
 
@@ -74,9 +74,9 @@ local function lsp_keymaps(bufnr)
 	buf_nnoremap(bufnr, "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 	buf_nnoremap(bufnr, "gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences" })
 	buf_nnoremap(bufnr, "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
-	buf_nnoremap(bufnr, "[d", "<cmd>lua vim.diagnostic.goto_prev({ border = 'single' })<CR>")
-	buf_nnoremap(bufnr, "gl", "<cmd>lua vim.diagnostic.open_float({ border = 'single' })<CR>")
-	buf_nnoremap(bufnr, "]d", "<cmd>lua vim.diagnostic.goto_next({ border = 'single' })<CR>")
+	buf_nnoremap(bufnr, "[d", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>")
+	buf_nnoremap(bufnr, "gl", "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<CR>")
+	buf_nnoremap(bufnr, "]d", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>")
 	buf_nnoremap(bufnr, "<leader>q", vim.diagnostic.setloclist)
 	buf_nnoremap(bufnr, "gds", vim.lsp.buf.document_symbol)
 	buf_nnoremap(bufnr, "gws", vim.lsp.buf.workspace_symbol)

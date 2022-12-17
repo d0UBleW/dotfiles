@@ -129,11 +129,6 @@ _G.packer_plugins = {
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["glance.nvim"] = {
-    loaded = true,
-    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/glance.nvim",
-    url = "https://github.com/DNLHC/glance.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -208,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-ide"] = {
+    loaded = true,
+    path = "/home/doublew/.local/share/nvim/site/pack/packer/start/nvim-ide",
+    url = "https://github.com/ldelossa/nvim-ide"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
