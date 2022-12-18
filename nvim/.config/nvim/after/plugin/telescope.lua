@@ -126,3 +126,46 @@ telescope.setup({
 		-- please take a look at the readme of the extension you want to configure
 	},
 })
+
+local no_preview = function()
+	return require("telescope.themes").get_dropdown({
+		borderchars = {
+			{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+			prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+			results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+			preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		},
+		winblend = 10,
+		width = 0.8,
+		previewer = false,
+		--[[ prompt_title = false, ]]
+	})
+end
+
+local nnoremap = require("doublew.keymap").nnoremap
+local builtin = require("telescope.builtin")
+
+nnoremap("<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
+nnoremap("<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+nnoremap("<leader>/", function()
+	builtin.current_buffer_fuzzy_find(no_preview())
+end, { desc = "[/] Fuzzily search in current buffer" })
+
+nnoremap("<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+
+nnoremap("<leader>sh", function()
+	builtin.help_tags(no_preview())
+end, { desc = "[S]earch [H]elp" })
+
+nnoremap("<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+
+nnoremap("<leader>sd", function()
+	builtin.diagnostics(no_preview())
+end, { desc = "[S]earch [D]iagnostics" })
+
+nnoremap("<leader>sg", builtin.git_files)
+nnoremap("<leader>ts", "<cmd>Telescope live_grep<CR>")
+nnoremap("<leader>tp", "<cmd>Telescope projects<CR>")
+nnoremap("<leader>T", "<cmd>Telescope<CR>")
+nnoremap("<leader>sds", builtin.lsp_document_symbols, { desc = "[S]earch [D]ocument [S]ymbols" })
+nnoremap("<leader>sws", builtin.lsp_workspace_symbols, { desc = "[S]earch [W]orkspace [S]ymbols" })
