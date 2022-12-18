@@ -5,26 +5,6 @@ require("doublew.remap")
 require("doublew.packer")
 require("doublew.lsp")
 
---[[ require("doublew.telescope") ]]
---[[ require("doublew.treesitter") ]]
---[[ require("doublew.treesitter-context") ]]
---[[ require("doublew.autopairs") ]]
---[[ require("doublew.autotag") ]]
---[[ require("doublew.comment") ]]
---[[ require("doublew.neogit") ]]
---[[ require("doublew.gitsigns") ]]
---[[ require("doublew.surround") ]]
---[[ require("doublew.null-ls") ]]
---[[ require("doublew.prettier") ]]
---[[ require("doublew.lualine") ]]
---[[ require("doublew.colorizer") ]]
---[[ require("doublew.trouble") ]]
---[[ require("doublew.project_nvim") ]]
---[[ require("doublew.indent-blankline") ]]
---[[ require("doublew.metals") ]]
---[[ require("doublew.fidget") ]]
---[[ require("doublew.ide") ]]
-
 local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
 
 vim.api.nvim_create_autocmd("BufRead", {
