@@ -8,15 +8,24 @@ local nnoremap = keymap.nnoremap
 local vnoremap = keymap.vnoremap
 local cmap = keymap.cmap
 
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+nnoremap("k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+nnoremap("j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 cmap("<C-a>", "<home>")
 cmap("<C-e>", "<end>")
 
-nnoremap("-", "<cmd>Ex<CR>")
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
 
-nnoremap("<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Toggle [U]ndotree" })
+vnoremap("<C-j>", "J")
+vnoremap("J", ":m '>+1<CR>gv=gv")
+vnoremap("K", ":m '<-2<CR>gv=gv")
+
+nnoremap("-", vim.cmd.Ex)
+
+nnoremap("<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle [U]ndotree" })
 nnoremap("<leader>w", "<cmd>set wrap!<CR>", { desc = "Toggle [W]rap" })
 
 nnoremap("<leader>h", "<cmd>wincmd h<CR>")
@@ -24,16 +33,20 @@ nnoremap("<leader>j", "<cmd>wincmd j<CR>")
 nnoremap("<leader>k", "<cmd>wincmd k<CR>")
 nnoremap("<leader>l", "<cmd>wincmd l<CR>")
 
--- nnoremap("<leader><tab>", "<cmd>tabnext<CR>")
--- nnoremap("<S-tab>", "<cmd>tabprevious<CR>")
 nnoremap("<S-l>", "<cmd>tabnext<CR>")
 nnoremap("<S-h>", "<cmd>tabprevious<CR>")
 nnoremap("te", "<cmd>tabedit<CR>")
 
 nnoremap("co", "<cmd>copen<CR>")
 nnoremap("cc", "<cmd>cclose<CR>")
+nnoremap("cn", "<cmd>cnext<CR>")
+nnoremap("cp", "<cmd>cprev<CR>")
 
---[[ nnoremap("<F5>", "<cmd>lua require('doublew.toggle').toggle_bg()<CR>") ]]
+--[[ nnoremap("<leader>j", "<cmd>lprev<CR>zz") ]]
+--[[ nnoremap("<leader>k", "<cmd>lnext<CR>zz") ]]
+
+nnoremap("<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>")
+nnoremap("<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 nnoremap("<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 nnoremap("<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
@@ -54,7 +67,7 @@ nnoremap("<leader>T", "<cmd>Telescope<CR>")
 nnoremap("<leader>sds", require("telescope.builtin").lsp_document_symbols, { desc = "[S]earch [D]ocument [S]ymbols" })
 nnoremap("<leader>sws", require("telescope.builtin").lsp_workspace_symbols, { desc = "[S]earch [W]orkspace [S]ymbols" })
 
-nnoremap("<leader>fm", "<cmd>Format<CR>")
+--[[ nnoremap("<leader>fm", "<cmd>Format<CR>") ]]
 
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
