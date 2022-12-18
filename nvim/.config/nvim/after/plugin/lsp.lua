@@ -4,7 +4,7 @@ if not status_ok then
 	return
 end
 
-require("doublew.lsp.mason")
+--[[ require("doublew.lsp.mason") ]]
 require("doublew.lsp.handlers").setup()
 
 local opts = {
