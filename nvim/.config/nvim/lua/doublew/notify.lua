@@ -11,3 +11,7 @@ notify.setup({
 })
 
 vim.notify = require("notify")
+
+local nnoremap = require("doublew.keymap").nnoremap
+
+nnoremap("<leader>nd", notify.dismiss)
