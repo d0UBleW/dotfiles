@@ -3,3 +3,4 @@ tags
 tmux/.tmux/resurrect/
 vim/.vim/.netrwhist
 vim/.vim/sessions/default.vim
+*~

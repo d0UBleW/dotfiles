@@ -1,0 +1,9 @@
+eshell/
+places
+transient/
+auto-save-list/
+elpa/
+games/
+ido.last*
+tutorial/
+.emacs.d/.emacs.d

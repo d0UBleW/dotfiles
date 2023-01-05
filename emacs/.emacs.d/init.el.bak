@@ -1,0 +1,71 @@
+(package-initialize)
+
+(load "~/.emacs.d/emacs.rc/rc.el")
+
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (package-refresh-contents)
+
+
+(setq inhibit-startup-screen t)
+
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(column-number-mode 1)
+(recentf-mode 1)
+
+(setq use-dialog-box nil)
+(setq global-auto-revert-non-file-buffers t)
+
+;; (global-display-line-numbers-mode 1)
+(global-hl-line-mode 1)
+(global-auto-revert-mode 1)
+
+(defun nolinum ()
+  (global-linum-mode 0)
+  )
+
+(add-hook 'org-mode-hook 'nolinum)
+(add-hook 'eshell-mode-hook 'nolinum)
+
+
+(save-place-mode 1)
+
+(set-face-attribute 'default nil
+		    :font "Iosevka Term-14")
+
+(require 'ido)
+(ido-mode t)
+
+(unless (package-installed-p 'evil) (package-install 'evil))
+(setq evil-default-state 'emacs)
+(setq evil-undo-system 'undo-redo)
+(require 'evil)
+(evil-mode 1)
+
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(gruber-darker))
+ '(custom-safe-themes
+   '("7923541211298e4fd1db76c388b1d2cb10f6a5c853c3da9b9c46a02b7f78c882" default))
+ '(package-selected-packages
+   '(nasm-mode evil-org evil magit org smex gruber-darker-theme)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
