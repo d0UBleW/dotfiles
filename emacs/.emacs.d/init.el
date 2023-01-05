@@ -19,11 +19,13 @@
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
+(recentf-mode 1)
+(setq ring-bell-function 'ignore)
 
 (setq global-auto-revert-non-file-buffers t)
-(global-auto-revert-mode 1)
+; (global-auto-revert-mode 1)
 
-(setq user-emacs-directory (expand-file-name "~/.cache/emcas/")
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
       url-history-file (expand-file-name "url/history" user-emacs-directory))
 
 (rc/require 'no-littering)
@@ -146,6 +148,7 @@
       (concat dired-omit-files "\\|^\\..+$"))
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh")
+(global-set-key (kbd "C-RET") 'dired-up-directory)
 
 ;;; helm
 (rc/require 'helm 'helm-cmd-t 'helm-git-grep 'helm-ls-git)
