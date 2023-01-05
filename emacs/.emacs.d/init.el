@@ -20,6 +20,14 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 
+(setq global-auto-revert-non-file-buffers t)
+(global-auto-revert-mode 1)
+
+(setq user-emacs-directory (expand-file-name "~/.cache/emcas/")
+      url-history-file (expand-file-name "url/history" user-emacs-directory))
+
+(rc/require 'no-littering)
+
 (rc/require-theme 'gruber-darker)
 ;; (rc/require-theme 'zenburn)
 ;; (load-theme 'adwaita t)
