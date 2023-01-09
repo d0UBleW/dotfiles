@@ -3,6 +3,12 @@
 
 (setq org-agenda-files (list "~/Documents/Agenda/"))
 
+(require 'ox-latex)
+(require 'ox-md)
+(require 'ox-html)
+
+(setq org-src-fontify-natively t)
+
 (setq org-export-backends '(md))
 
 (defun rc/org-increment-move-counter ()

@@ -1,7 +1,7 @@
 (package-initialize)
 
 (load "~/.emacs.d/emacs.rc/rc.el")
-
+(load "~/.emacs.d/emacs.rc/clipboard-rc.el")
 (load "~/.emacs.d/emacs.rc/misc-rc.el")
 (load "~/.emacs.d/emacs.rc/org-mode-rc.el")
 (load "~/.emacs.d/emacs.rc/autocommit-rc.el")
@@ -26,7 +26,8 @@
 ; (global-auto-revert-mode 1)
 
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
-      url-history-file (expand-file-name "url/history" user-emacs-directory))
+      url-history-file (expand-file-name "url/history" user-emacs-directory)
+      recentf-save-file (expand-file-name "recentf" user-emacs-directory))
 
 (rc/require 'no-littering)
 
@@ -36,6 +37,18 @@
 
 (eval-after-load 'zenburn
   (set-face-attribute 'line-number nil :inherit 'default))
+
+;;; projectile
+(use-package projectile
+             :diminish projectile-mode
+             :config (projectile-mode)
+             :bind-keymap
+             ("C-c C-p" . projectile-command-map)
+             :init
+             (when (file-directory-p "~/projects")
+               (setq projectile-project-search-path '("~/projects")))
+             (setq projectile-switch-project-action #'projectile-dired))
+
 
 ;;; ido
 (rc/require 'smex 'ido-completing-read+)
@@ -148,7 +161,9 @@
       (concat dired-omit-files "\\|^\\..+$"))
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh")
-(global-set-key (kbd "C-RET") 'dired-up-directory)
+(defun dired-key ()
+  (local-set-key (kbd "C-<return>") 'dired-up-directory))
+(add-hook 'dired-mode-hook 'dired-key)
 
 ;;; helm
 (rc/require 'helm 'helm-cmd-t 'helm-git-grep 'helm-ls-git)
@@ -281,6 +296,7 @@
  'typescript-mode
  'rfc-mode
  'sml-mode
+ 'htmlize
  )
 
 (load "~/.emacs.shadow/shadow-rc.el" t)
@@ -328,7 +344,6 @@ compilation-error-regexp-alist-alist
  '(display-line-numbers-type 'relative)
  '(org-agenda-dim-blocked-tasks nil)
  '(org-agenda-exporter-settings '((org-agenda-tag-filter-preset (list "+personal"))))
- '(org-agenda-files nil)
  '(org-cliplink-transport-implementation 'url-el)
  '(org-enforce-todo-dependencies nil)
  '(org-modules
