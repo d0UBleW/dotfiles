@@ -20,10 +20,11 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 (recentf-mode 1)
+
 (setq ring-bell-function 'ignore)
 
 (setq global-auto-revert-non-file-buffers t)
-; (global-auto-revert-mode 1)
+;; (global-auto-revert-mode 1)
 
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
       url-history-file (expand-file-name "url/history" user-emacs-directory)
@@ -39,15 +40,17 @@
   (set-face-attribute 'line-number nil :inherit 'default))
 
 ;;; projectile
+(rc/require 'projectile)
+
 (use-package projectile
-             :diminish projectile-mode
-             :config (projectile-mode)
-             :bind-keymap
-             ("C-c C-p" . projectile-command-map)
-             :init
-             (when (file-directory-p "~/projects")
-               (setq projectile-project-search-path '("~/projects")))
-             (setq projectile-switch-project-action #'projectile-dired))
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :bind-keymap
+  ("C-c C-p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/projects")
+    (setq projectile-project-search-path '(("~/projects/" . 2))))
+  (setq projectile-switch-project-action #'projectile-dired))
 
 
 ;;; ido
@@ -172,7 +175,7 @@
 
 (global-set-key (kbd "C-c h t") 'helm-cmd-t)
 (global-set-key (kbd "C-c h g g") 'helm-git-grep)
-(global-set-key (kbd "C-c h g l") 'helm-ls-git-ls)
+(global-set-key (kbd "C-c h g l") 'helm-ls-git)
 (global-set-key (kbd "C-c h f") 'helm-find)
 (global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
 (global-set-key (kbd "C-c h r") 'helm-recentf)

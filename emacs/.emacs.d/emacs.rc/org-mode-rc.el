@@ -1,8 +1,6 @@
 (global-set-key (kbd "C-x a") 'org-agenda)
 (global-set-key (kbd "C-c C-x j") #'org-clock-jump-to-current-clock)
 
-(setq org-agenda-files (list "~/Documents/Agenda/"))
-
 (require 'ox-latex)
 (require 'ox-md)
 (require 'ox-html)
@@ -38,12 +36,41 @@
 
 (global-set-key (kbd "C-x p w") 'rc/org-kill-heading-name-save)
 
+(with-eval-after-load 'ox-latex
+(add-to-list 'org-latex-classes
+             '("org-plain-latex"
+               "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+(setq org-latex-listings 't)
+
+;;; org-agenda
+
+(setq org-agenda-files (list "~/Documents/Agenda/"))
+
 (setq org-agenda-custom-commands
       '(("u" "Unscheduled" tags "+personal-SCHEDULED={.+}-DEADLINE={.+}/!+TODO"
          ((org-agenda-sorting-strategy '(priority-down))))
         ("p" "Personal" ((agenda "" ((org-agenda-tag-filter-preset (list "+personal"))))))
         ("w" "Work" ((agenda "" ((org-agenda-tag-filter-preset (list "+work"))))))
         ))
+
+(setq org-agenda-start-with-log-mode t)
+(setq org-log-done 'time)
+(setq org-log-into-drawer t)
+(setq org-refile-targets
+      '(("Archive.org" :maxlevel . 1)
+        ("Tasks.org" :maxlevel . 1)))
+
+(advice-add 'org-refile :after 'org-save-all-org-buffers)
+
 
 ;;; org-cliplink
 
@@ -71,3 +98,4 @@
         ("K" "Cliplink capture task" entry (file "~/Documents/Agenda/Tasks.org")
          "* TODO %(org-cliplink-capture) \n  SCHEDULED: %t\n" :empty-lines 1)))
 (define-key global-map "\C-cc" 'org-capture)
+

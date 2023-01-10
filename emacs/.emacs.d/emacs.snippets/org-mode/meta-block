@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: meta-block
+# key: <mb
+# --
+
+#+TITLE: ${1:Title}
+#+AUTHOR: ${2:Author}
+#+DATE: ${3:Date}
+#+OPTIONS: ${4:toc:nil}
+#+SETUPFILE: ~/.emacs.d/latex-standard.setup
+
+$0
