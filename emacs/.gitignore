@@ -7,3 +7,6 @@ games/
 ido.last*
 tutorial/
 .emacs.d/.emacs.d
+var/
+etc/
+.last-package-update-day
