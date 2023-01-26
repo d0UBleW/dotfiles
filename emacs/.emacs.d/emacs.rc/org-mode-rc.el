@@ -37,19 +37,36 @@
 (global-set-key (kbd "C-x p w") 'rc/org-kill-heading-name-save)
 
 (with-eval-after-load 'ox-latex
-(add-to-list 'org-latex-classes
-             '("org-plain-latex"
-               "\\documentclass{article}
-           [NO-DEFAULT-PACKAGES]
-           [PACKAGES]
-           [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+  (add-to-list 'org-latex-classes
+               '("org-plain-latex"
+                 "\\documentclass{article}
+                  [NO-DEFAULT-PACKAGES]
+                  [PACKAGES]
+                  [EXTRA]"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+               '("org-apu-latex"
+                 "\\documentclass{article}
+                  [NO-DEFAULT-PACKAGES]
+                  [PACKAGES]
+                  [EXTRA]"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
 (setq org-latex-listings 't)
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!)")))
 
 ;;; org-agenda
 
@@ -58,9 +75,34 @@
 (setq org-agenda-custom-commands
       '(("u" "Unscheduled" tags "+personal-SCHEDULED={.+}-DEADLINE={.+}/!+TODO"
          ((org-agenda-sorting-strategy '(priority-down))))
+        ("A" "APU"
+         ((agenda "")
+          (tags-todo "+apu+CATEGORY=\"assignment\""
+                     ((org-agenda-overriding-header "Assignment")
+                      (org-agenda-entry-types '(:deadline))
+                      (org-agenda-ndays 7)
+                      (org-agenda-time-grid nil)))
+          (tags-todo "+apu+CATEGORY=\"fsec\""
+                     ((org-agenda-overriding-header "FSec"))))
+         ((org-agenda-sorting-strategy '(priority-down))
+          (org-agenda-ndays 1)
+          (org-deadline-warning-days 60)
+          ))
         ("p" "Personal" ((agenda "" ((org-agenda-tag-filter-preset (list "+personal"))))))
         ("w" "Work" ((agenda "" ((org-agenda-tag-filter-preset (list "+work"))))))
+        ("d" "Deadlines" agenda ""
+         ((org-agenda-entry-types '(:deadline))
+          (org-agenda-ndays 1)
+          (org-deadline-warning-days 60)
+          (org-agenda-time-grid nil)))
+        ("c" "Calendar" agenda ""
+         ((org-agenda-ndays 7)
+          (org-agenda-start-on-weekday 0)
+          (org-agenda-time-grid nil)                    
+          (org-agenda-repeating-timestamp-show-all t)
+          (org-agenda-entry-types '(:timestamp :sexp))))
         ))
+
 
 (setq org-agenda-start-with-log-mode t)
 (setq org-log-done 'time)
@@ -96,6 +138,12 @@
       '(("p" "Capture task" entry (file "~/Documents/Agenda/Tasks.org")
          "* TODO %?\n  SCHEDULED: %t\n")
         ("K" "Cliplink capture task" entry (file "~/Documents/Agenda/Tasks.org")
-         "* TODO %(org-cliplink-capture) \n  SCHEDULED: %t\n" :empty-lines 1)))
+         "* TODO %(org-cliplink-capture) \n  SCHEDULED: %t\n" :empty-lines 1)
+        ("A" "APU")
+        ("Aa" "Assignment" entry (file "~/Documents/Agenda/APU.org")
+         "* TODO %? %^G\n  %^{prompt|DEADLINE|SCHEDULED}: %^{Due date}t\n  :PROPERTIES:\n  :CATEGORY: assignment\n  :END:" :empty-lines 1 :kill-buffer t)
+        ("Af" "FSec" entry (file "~/Documents/Agenda/APU.org")
+         "* TODO %? %^G\n \n  %^{prompt|DEADLINE|SCHEDULED}: %^{Due date}t\n  :PROPERTIES:\n  :CATEGORY: fsec\n  :END:" :empty-lines 1 :kill-buffer t)
+        ))
 (define-key global-map "\C-cc" 'org-capture)
 

@@ -22,6 +22,8 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(load "~/.emacs.d/emacs.rc/rc.el")
+(load "~/.emacs.d/emacs.rc/org-mode-rc.el")
 
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -44,9 +46,10 @@
 (setq backup-directory-alist '(("." . "~/.saves")))
 
 (setq inhibit-splash-screen t
-      tab-width 4
       indent-tabs-mode nil
       compilation-scroll-output t)
+
+(setq-default tab-width 4)
 
 (setq confirm-kill-emacs 'y-or-n-p)
 
@@ -82,7 +85,7 @@
 
 (setq global-auto-revert-non-file-buffers t)
 
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold (* 100 1024 1024))
 (setq read-process-output-max (* 1024 1024))
 (setq auto-save-default nil)
 (setq make-backup-files nil)
@@ -148,17 +151,57 @@
   :config
   (load-theme 'gruber-darker t))
 
+
+(use-package all-the-icons
+  :ensure t
+  :if (display-graphic-p))
+
+;; (use-package counsel
+;;   :bind (("C-M-j" . 'counsel-switch-buffer)
+;;          :map minibuffer-local-map
+;;          ("C-r" . 'counsel-minibuffer-history))
+;;   :custom
+;;   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
+;;   :config
+;;   (counsel-mode 1))
+
+(use-package helpful
+  :commands (helpful-callable helpful-variable helpful-command helpful-key)
+  :bind
+
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-function] . helpful-callable)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-key] . helpful-key))
+
 (use-package ido-completing-read+
   :ensure t)
+
+(use-package helm
+  :ensure t)
+
+(global-set-key (kbd "C-c h t") 'helm-cmd-t)
+(global-set-key (kbd "C-c h g g") 'helm-git-grep)
+(global-set-key (kbd "C-c h g l") 'helm-ls-git)
+(global-set-key (kbd "C-c h F") 'helm-find)
+(global-set-key (kbd "C-c h f") 'helm-find-files)
+(global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
+(global-set-key (kbd "C-c h r") 'helm-recentf)
 
 (use-package ido
   :ensure t
   :config
   (setq ido-everywhere 1)
   (setq ido-enable-flex-matching 1)
+  (setq ido-use-faces nil)
   (ido-mode 1)
   (ido-everywhere 1)
   (ido-ubiquitous-mode 1))
+
+(use-package flx-ido
+  :ensure t
+  :config
+  (flx-ido-mode 1))
 
 (use-package smex
   :ensure t)
@@ -166,20 +209,22 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(use-package all-the-icons
-  :ensure t
-  :if (display-graphic-p))
-
 (use-package projectile
   :ensure t
   :config
   (projectile-mode 1)
+  :custom
+  (projectile-completion-system 'helm)
   :bind-keymap
   ("C-x p" . projectile-command-map)
   :init
   (when (file-directory-p "~/projects")
     (setq projectile-project-search-path '(("~/projects/" . 2))))
   (setq projectile-switch-project-action #'projectile-dired))
+
+;; (use-package counsel-projectile
+;;   :after projectile
+;;   :config (counsel-projectile-mode))
 
 (use-package cl-lib
   :ensure t)
@@ -207,6 +252,7 @@
   (doom-modeline-height 35)
   (doom-modeline-icon t)
   (doom-modeline-battery t)
+  (doom-modeline-indent-info t)
   (doom-modeline-time t))
 
 
@@ -237,11 +283,13 @@
   (setq yas-snippet-dirs '("~/.emacs.d/emacs.snippets/"))
   (yas-global-mode 1))
 
+(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+
 (use-package move-text
   :ensure t
   :bind
-  (("M-p" . move-text-up)
-   ("M-n" . move-text-down)))
+  (("M-P" . move-text-up)
+   ("M-N" . move-text-down)))
 
 (use-package multiple-cursors
   :ensure t
@@ -256,8 +304,8 @@
    ("C-;" . mc/skip-to-previous-like-this)))
 
 (require 'dired-x)
-(setq dired-omit-files
-      (concat dired-omit-files "\\|^\\..+$"))
+;; (setq dired-omit-files
+;;       (concat dired-omit-files "\\|^\\..+$"))
 (defun rc/dired-key()
   (local-set-key (kbd "M-<return>") 'dired-up-directory))
 ;; (add-hook 'dired-mode-hook 'dired-key)
@@ -265,7 +313,7 @@
 (use-package dired
   :ensure nil
   :commands (dired dired-jump)
-  :bind (("C-c C--" . dired-jump))
+  :bind (("C-x C-j" . dired-jump))
   :hook (dired-mode . rc/dired-key)
   :custom ((dired-listing-switches "-alh --group-directories-first")))
 
@@ -286,8 +334,12 @@
 
 (global-set-key (kbd "C-c p") 'find-file-at-point)
 
-(use-package json-mode
-  :ensure t)
+(use-package evil-nerd-commenter
+  :bind
+  ("C-M-;" . evilnc-comment-or-uncomment-lines))
+
+;; (use-package json-mode
+;;   :ensure t)
 
 (defun rc/webmode-hook ()
   (setq web-mode-enable-comment-annotation t
@@ -309,6 +361,18 @@
   :commands web-mode
   :hook (web-mode . rc/webmode-hook))
 
+
+(use-package company
+  :hook (prog-mode . company-mode)
+  :bind
+  (:map company-active-map ("<tab>" . company-complete-selection))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (defun rc/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
@@ -317,8 +381,13 @@
   :commands (lsp lsp-deferred)
   :hook ((lsp-mode . rc/lsp-mode-setup)
 	 (web-mode . lsp-deferred))
+  :bind
+  (:map lsp-mode-map ("<tab>" . company-indent-or-complete-common))
   :init
   (setq lsp-keymap-prefix "C-l")
+  :custom
+  (lsp-enable-symbol-highlighting t)
+  (lsp-signature-auto-activate nil)
   :config
   (lsp-enable-which-key-integration t)
   (setq lsp-log-io nil))
@@ -335,27 +404,16 @@
   (lsp-ui-doc-position 'bottom)
   :commands lsp-ui-mode)
 
-(use-package company
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection))
-        (:map lsp-mode-map
-         ("<tab>" . company-indent-or-complete-common))
-  :config
-  (global-company-mode t)
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
+(use-package lsp-treemacs
+  :after lsp)
 
-(use-package company-box
-  :hook (company-mode . company-box-mode))
-
+(use-package helm-lsp
+  :after lsp)
 
 (defun enable-minor-mode (my-pair)
   (if (buffer-file-name)
       (if (string-match (car my-pair) buffer-file-name)
-	  (funcall (cdr my-pair)))))
+		  (funcall (cdr my-pair)))))
 
 (use-package prettier-js
   :ensure t)
@@ -367,17 +425,63 @@
 			      '("\\.tsx?\\'" . prettier-js-mode))))
 
 
+(use-package term
+  :commands term
+  :config
+  (setq explicit-shell-file-name "bash")
+  ;;(setq explicit-zsh-args '())         ;; Use 'explicit-<shell>-args for shell-specific args
+
+  ;; Match the default Bash shell prompt.  Update this if you have a custom prompt
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
+
+(use-package eterm-256color
+  :hook (term-mode . eterm-256color-mode))
+
+(use-package vterm
+  :ensure t
+  :commands vterm
+  :config
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")  ;; Set this to match your custom shell prompt
+  (setq vterm-shell "bash")                       ;; Set this to customize the shell to launch
+  (setq vterm-max-scrollback 10000))
+
+(defun rc/configure-eshell ()
+  ;; Save command history when commands are entered
+  (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
+
+  ;; Truncate buffer for performance
+  (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
+
+  (setq eshell-history-size         10000
+        eshell-buffer-maximum-lines 10000
+        eshell-hist-ignoredups t
+        eshell-scroll-to-bottom-on-input t))
+
+(use-package eshell-git-prompt
+  :after eshell)
+
+(use-package eshell
+  :hook (eshell-first-time-mode . rc/configure-eshell)
+  :config
+
+  (with-eval-after-load 'esh-opt
+    (setq eshell-destroy-buffer-when-process-dies t)
+    (setq eshell-visual-commands '("htop" "bash" "vim")))
+
+  (eshell-git-prompt-use-theme 'robbyrussell))
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(display-line-numbers-type 'relative)
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
+ '(display-line-numbers-type 'relative)
  '(package-selected-packages
-   '(dired-open all-the-icons-dired dired-single prettier-js dired-x web-mode json-mode exec-path-from-shell expand-region company-box which-key lsp-treemacs lsp-ui lsp-mode org-bullets doom-modeline rainbow-delimiters projecilte gruber-darker yaml-mode use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode racket-mode qml-mode purescript-mode proof-general projectile powershell php-mode paredit org-cliplink no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text markdown-mode magit lua-mode kotlin-mode jinja2-mode ido-completing-read+ htmlize hindent helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode elpy dockerfile-mode dash-functional d-mode csharp-mode cmake-mode clojure-mode auto-package-update ansible ag))
+   '(evil-nerd-commenter dired-open all-the-icons-dired dired-single prettier-js dired-x web-mode json-mode exec-path-from-shell expand-region company-box which-key lsp-treemacs lsp-ui lsp-mode org-bullets doom-modeline rainbow-delimiters projecilte gruber-darker yaml-mode use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode racket-mode qml-mode purescript-mode proof-general projectile powershell php-mode paredit org-cliplink no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text markdown-mode magit lua-mode kotlin-mode jinja2-mode ido-completing-read+ htmlize hindent helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode elpy dockerfile-mode dash-functional d-mode csharp-mode cmake-mode clojure-mode auto-package-update ansible ag))
  '(whitespace-style
    '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)))
 (custom-set-faces

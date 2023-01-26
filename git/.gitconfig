@@ -4,12 +4,24 @@
 [core]
 	editor = /usr/bin/nvim
 	autocrlf = input
+	pager = delta
 [diff]
 	tool = /usr/bin/nvim -d
+	colorMoved = default
 [difftool]
 	prompt = false
-[difftool "vimdiff"]
-	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = nvim -d
+	conflictstyle = diff3
+	tool = prompt
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = true      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	line-numbers = true
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
@@ -32,7 +44,7 @@
 	wt = worktree
 	fh = fetch
 	wta = "!git branch -q | awk '{print $NF}' | peco | xargs git worktree add"
-	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+	ps = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
 	logg = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --date=relative --decorate
@@ -46,8 +58,3 @@
 	# add conflicted file on merge
 	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 	clone-for-worktrees = "!bash $HOME/Documents/scripts/git-clone-bare-for-worktrees.sh"
-
-[merge]
-	tool = vimdiff
-	conflictstyle = diff3
-	tool = prompt
