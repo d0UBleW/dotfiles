@@ -166,10 +166,13 @@
 
 (use-package helpful
   :commands (helpful-callable helpful-variable helpful-command helpful-key)
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
   :bind
-  ([remap describe-variable] . helpful-variable)
-  ([remap describe-function] . helpful-callable)
+  ([remap describe-function] . counsel-describe-function)
   ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
 (use-package ido-completing-read+
@@ -189,6 +192,46 @@
   ("C-c h r" . helm-recentf)
   ("C-c h x" . helm-M-x))
 
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :config
+  (ivy-mode 1))
+
+(use-package ivy-rich
+  :after ivy
+  :init
+  (ivy-rich-mode 1))
+
+(use-package counsel
+  :bind (("C-M-j" . 'counsel-switch-buffer)
+         :map minibuffer-local-map
+         ("C-r" . 'counsel-minibuffer-history))
+  :custom
+  (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
+  :config
+  (counsel-mode 1))
+
+(use-package ivy-prescient
+  :after counsel
+  :custom
+  (ivy-prescient-enable-filtering nil)
+  :config
+  ;; Uncomment the following line to have sorting remembered across sessions!
+  ;(prescient-persist-mode 1)
+  (ivy-prescient-mode 1))
 
 (use-package ace-window
   :ensure t
@@ -411,7 +454,10 @@
 (use-package lsp-treemacs
   :after lsp)
 
-(use-package helm-lsp
+;; (use-package helm-lsp
+;;   :after lsp)
+
+(use-package lsp-ivy
   :after lsp)
 
 (defun enable-minor-mode (my-pair)
@@ -441,8 +487,23 @@
   :ensure t
   :hook
   (python-mode . lsp-deferred)
+  :config
+  (setq python-indent-offset 4)
   :custom
   (python-shell-interpreter "python3"))
+
+;; (use-package pyenv-mode
+;;   :init
+;;   (add-to-list 'exec-path "~/.pyenv/shims")
+;;   (setenv "WORKON_HOME" "~/.pyenv/versions/")
+;;   :config
+;;   (pyenv-mode))
+
+(use-package pyvenv
+  :ensure t
+  :init
+  (setenv "WORKON_HOME" "~/.pyenv/versions/"))
+
 
 (use-package term
   :commands term
@@ -499,7 +560,7 @@
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(display-line-numbers-type 'relative)
  '(package-selected-packages
-   '(python-mode dap-mode helm-swoop edit-indirect evil-nerd-commenter dired-open all-the-icons-dired dired-single prettier-js dired-x web-mode json-mode exec-path-from-shell expand-region company-box which-key lsp-treemacs lsp-ui lsp-mode org-bullets doom-modeline rainbow-delimiters projecilte gruber-darker yaml-mode use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode racket-mode qml-mode purescript-mode proof-general projectile powershell php-mode paredit org-cliplink no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text markdown-mode magit lua-mode kotlin-mode jinja2-mode ido-completing-read+ htmlize hindent helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode elpy dockerfile-mode dash-functional d-mode csharp-mode cmake-mode clojure-mode auto-package-update ansible ag))
+   '(pyenv-mode lsp-ivy pyenv ivy-prescient ivy-rich yaml-mode which-key web-mode vterm visual-fill-column use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode rainbow-delimiters racket-mode qml-mode python-mode purescript-mode proof-general prettier-js powershell php-mode paredit org-cliplink org-bullets no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text magit lua-mode lsp-ui lsp-pyright kotlin-mode json-mode jinja2-mode ido-completing-read+ htmlize hindent helpful helm-swoop helm-lsp helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode flx-ido expand-region exec-path-from-shell evil-nerd-commenter eterm-256color eshell-git-prompt elpy edit-indirect doom-modeline dockerfile-mode dired-single dired-open dash-functional dap-mode d-mode csharp-mode counsel-projectile company-box cmake-mode clojure-mode auto-package-update ansible all-the-icons-dired ag))
  '(whitespace-style
    '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)))
 (custom-set-faces
