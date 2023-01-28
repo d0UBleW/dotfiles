@@ -118,7 +118,7 @@
 
 (rc/require 'org-cliplink)
 
-(global-set-key (kbd "C-x p i") 'org-cliplink)
+(global-set-key (kbd "C-x y i") 'org-cliplink)
 
 (defun rc/cliplink-task ()
   (interactive)
@@ -130,7 +130,7 @@
                           "\n  [[" url "][" title "]]")
                 (concat "* TODO " url
                         "\n  [[" url "]]"))))))
-(global-set-key (kbd "C-x p t") 'rc/cliplink-task)
+(global-set-key (kbd "C-x y t") 'rc/cliplink-task)
 
 ;;; org-capture
 

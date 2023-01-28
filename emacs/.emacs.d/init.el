@@ -7,6 +7,7 @@
 
 (add-hook 'emacs-startup-hook #'rc/display-startup-time)
 
+
 ;; Initialize package sources
 (require 'package)
 
@@ -24,6 +25,7 @@
 
 (load "~/.emacs.d/emacs.rc/rc.el")
 (load "~/.emacs.d/emacs.rc/org-mode-rc.el")
+(load "~/.emacs.d/emacs.rc/clipboard-rc.el")
 
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -46,10 +48,10 @@
 (setq backup-directory-alist '(("." . "~/.saves")))
 
 (setq inhibit-splash-screen t
-      indent-tabs-mode nil
       compilation-scroll-output t)
 
-(setq-default tab-width 4)
+(setq-default tab-width 4
+			  indent-tabs-mode nil)			  
 
 (setq confirm-kill-emacs 'y-or-n-p)
 
@@ -114,6 +116,12 @@
   (scheme-mode . rc/turn-on-paredit)
   (racket-mode . rc/turn-on-paredit))
 
+(use-package saveplace
+  :ensure t
+  :config
+  (setq-default save-place t)
+  (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
+
 ;;; Whitespace mode
 (defun rc/set-up-whitespace-handling ()
   (interactive)
@@ -156,19 +164,9 @@
   :ensure t
   :if (display-graphic-p))
 
-;; (use-package counsel
-;;   :bind (("C-M-j" . 'counsel-switch-buffer)
-;;          :map minibuffer-local-map
-;;          ("C-r" . 'counsel-minibuffer-history))
-;;   :custom
-;;   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
-;;   :config
-;;   (counsel-mode 1))
-
 (use-package helpful
   :commands (helpful-callable helpful-variable helpful-command helpful-key)
   :bind
-
   ([remap describe-variable] . helpful-variable)
   ([remap describe-function] . helpful-callable)
   ([remap describe-command] . helpful-command)
@@ -178,15 +176,24 @@
   :ensure t)
 
 (use-package helm
-  :ensure t)
+  :ensure t
+  :custom
+  (helm-split-window-inside-p t)
+  :bind
+  ("C-c h t" . helm-cmd-t)
+  ("C-c h g g" . helm-git-grep)
+  ("C-c h g l" . helm-ls-git)
+  ("C-c h F" . helm-find)
+  ("C-c h f" . helm-find-files)
+  ("C-c h a" . helm-org-agenda-files-headings)
+  ("C-c h r" . helm-recentf)
+  ("C-c h x" . helm-M-x))
 
-(global-set-key (kbd "C-c h t") 'helm-cmd-t)
-(global-set-key (kbd "C-c h g g") 'helm-git-grep)
-(global-set-key (kbd "C-c h g l") 'helm-ls-git)
-(global-set-key (kbd "C-c h F") 'helm-find)
-(global-set-key (kbd "C-c h f") 'helm-find-files)
-(global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
-(global-set-key (kbd "C-c h r") 'helm-recentf)
+
+(use-package ace-window
+  :ensure t
+  :bind
+  (("M-o" . ace-window)))
 
 (use-package ido
   :ensure t
@@ -209,22 +216,25 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-mode 1)
-  :custom
-  (projectile-completion-system 'helm)
-  :bind-keymap
-  ("C-x p" . projectile-command-map)
-  :init
-  (when (file-directory-p "~/projects")
-    (setq projectile-project-search-path '(("~/projects/" . 2))))
-  (setq projectile-switch-project-action #'projectile-dired))
+;; (use-package projectile
+;;   :ensure t
+;;   :config
+;;   (projectile-mode 1)
+;;   :custom
+;;   (projectile-completion-system 'helm)
+;;   :bind-keymap
+;;   ("C-x p" . projectile-command-map)
+;;   :init
+;;   (when (file-directory-p "~/projects")
+;;     (setq projectile-project-search-path '(("~/projects/" . 2))))
+;;   (setq projectile-switch-project-action #'projectile-dired))
 
 ;; (use-package counsel-projectile
 ;;   :after projectile
 ;;   :config (counsel-projectile-mode))
+
+(use-package project
+  :ensure t)
 
 (use-package cl-lib
   :ensure t)
@@ -269,7 +279,6 @@
   (setq which-key-idle-delay 1.5))
 
 
-
 (use-package expand-region
   :ensure t
   :bind
@@ -299,7 +308,7 @@
    ("C-<" . mc/mark-previous-like-this)
    ("C-M->" . mc/unmark-next-like-this)
    ("C-M-<" . mc/unmark-previous-like-this)
-   ("C-c C-<" . mark/mark-all-like-this)
+   ("C-c m a" . mc/mark-all-like-this)
    ("C-\"" . mc/skip-to-next-like-this)
    ("C-;" . mc/skip-to-previous-like-this)))
 
@@ -379,8 +388,9 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :hook ((lsp-mode . rc/lsp-mode-setup)
-	 (web-mode . lsp-deferred))
+  :hook
+  ((lsp-mode . rc/lsp-mode-setup)
+   (web-mode . lsp-deferred))
   :bind
   (:map lsp-mode-map ("<tab>" . company-indent-or-complete-common))
   :init
@@ -391,12 +401,6 @@
   :config
   (lsp-enable-which-key-integration t)
   (setq lsp-log-io nil))
-
-(use-package typescript-mode
-  :mode "\\.tsx?\\'"
-  :hook (typescript-mode . lsp-deferred)
-  :config
-  (setq typescript-indent-level 2))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -424,6 +428,21 @@
 			     (enable-minor-mode
 			      '("\\.tsx?\\'" . prettier-js-mode))))
 
+(use-package dap-mode)
+
+(use-package typescript-mode
+  :mode "\\.tsx?\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
+
+
+(use-package python-mode
+  :ensure t
+  :hook
+  (python-mode . lsp-deferred)
+  :custom
+  (python-shell-interpreter "python3"))
 
 (use-package term
   :commands term
@@ -471,7 +490,6 @@
   (eshell-git-prompt-use-theme 'robbyrussell))
 
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -481,7 +499,7 @@
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(display-line-numbers-type 'relative)
  '(package-selected-packages
-   '(evil-nerd-commenter dired-open all-the-icons-dired dired-single prettier-js dired-x web-mode json-mode exec-path-from-shell expand-region company-box which-key lsp-treemacs lsp-ui lsp-mode org-bullets doom-modeline rainbow-delimiters projecilte gruber-darker yaml-mode use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode racket-mode qml-mode purescript-mode proof-general projectile powershell php-mode paredit org-cliplink no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text markdown-mode magit lua-mode kotlin-mode jinja2-mode ido-completing-read+ htmlize hindent helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode elpy dockerfile-mode dash-functional d-mode csharp-mode cmake-mode clojure-mode auto-package-update ansible ag))
+   '(python-mode dap-mode helm-swoop edit-indirect evil-nerd-commenter dired-open all-the-icons-dired dired-single prettier-js dired-x web-mode json-mode exec-path-from-shell expand-region company-box which-key lsp-treemacs lsp-ui lsp-mode org-bullets doom-modeline rainbow-delimiters projecilte gruber-darker yaml-mode use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode racket-mode qml-mode purescript-mode proof-general projectile powershell php-mode paredit org-cliplink no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text markdown-mode magit lua-mode kotlin-mode jinja2-mode ido-completing-read+ htmlize hindent helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode elpy dockerfile-mode dash-functional d-mode csharp-mode cmake-mode clojure-mode auto-package-update ansible ag))
  '(whitespace-style
    '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)))
 (custom-set-faces
