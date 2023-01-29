@@ -55,6 +55,54 @@
 
 (setq confirm-kill-emacs 'y-or-n-p)
 
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump nil)
+  (setq evil-disable-insert-state-bindings t)
+  (setq evil-default-state 'emacs)
+  (setq evil-buffer-regexps '((".*" . emacs)))
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  ;; (define-key evil-insert-state-map (kbd "C-a") 'nil)
+  ;; (define-key evil-insert-state-map (kbd "C-e") 'nil)
+  (define-key evil-normal-state-map (kbd "C-a") 'nil)
+  (define-key evil-motion-state-map (kbd "C-e") 'nil)
+  (define-key evil-motion-state-map (kbd "C-y") 'nil)
+  (define-key evil-normal-state-map (kbd "C-n") 'nil)
+  (define-key evil-normal-state-map (kbd "C-p") 'nil)
+  (define-key evil-motion-state-map (kbd "C-f") 'nil)
+  (define-key evil-motion-state-map (kbd "C-b") 'nil)
+
+  ;; Use visual line motions even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
+
+(use-package evil-collection
+  :ensure t
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package general
+  :after evil
+  :config
+  (general-create-definer efs/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (efs/leader-keys
+    "t"  '(:ignore t :which-key "toggles")
+    "tt" '(counsel-load-theme :which-key "choose theme")
+    "fde" '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/Emacs.org")))))
+
+
 (defun rc/duplicate-line ()
   "Duplicate current line"
   (interactive)
@@ -492,13 +540,6 @@
   :custom
   (python-shell-interpreter "python3"))
 
-;; (use-package pyenv-mode
-;;   :init
-;;   (add-to-list 'exec-path "~/.pyenv/shims")
-;;   (setenv "WORKON_HOME" "~/.pyenv/versions/")
-;;   :config
-;;   (pyenv-mode))
-
 (use-package pyvenv
   :ensure t
   :init
@@ -546,9 +587,31 @@
 
   (with-eval-after-load 'esh-opt
     (setq eshell-destroy-buffer-when-process-dies t)
-    (setq eshell-visual-commands '("htop" "bash" "vim")))
+    (setq eshell-visual-commands '("htop" "bash" "vim" "npx")))
 
   (eshell-git-prompt-use-theme 'robbyrussell))
+
+(use-package popper
+  :ensure t ; or :straight t
+  :bind (("C-`"   . popper-toggle-latest)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          help-mode
+          compilation-mode
+          "^\\*Python\\*$"
+          "^\\*ielm\\*$"
+          "^\\*helpful.*\\*$" helpful-mode
+          "^\\*eshell.*\\*$" eshell-mode
+          "^\\*shell.*\\*$" shell-mode
+          "^\\*term.*\\*$" term-mode
+          "^\\*vterm.*\\*$" vterm-mode))
+  (popper-mode +1)
+  (popper-echo-mode +1))                ; For echo area hints
 
 
 (custom-set-variables
@@ -559,8 +622,9 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(display-line-numbers-type 'relative)
+ '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(pyenv-mode lsp-ivy pyenv ivy-prescient ivy-rich yaml-mode which-key web-mode vterm visual-fill-column use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode rainbow-delimiters racket-mode qml-mode python-mode purescript-mode proof-general prettier-js powershell php-mode paredit org-cliplink org-bullets no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text magit lua-mode lsp-ui lsp-pyright kotlin-mode json-mode jinja2-mode ido-completing-read+ htmlize hindent helpful helm-swoop helm-lsp helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode flx-ido expand-region exec-path-from-shell evil-nerd-commenter eterm-256color eshell-git-prompt elpy edit-indirect doom-modeline dockerfile-mode dired-single dired-open dash-functional dap-mode d-mode csharp-mode counsel-projectile company-box cmake-mode clojure-mode auto-package-update ansible all-the-icons-dired ag))
+   '(popper evil pyenv-mode lsp-ivy pyenv ivy-prescient ivy-rich yaml-mode which-key web-mode vterm visual-fill-column use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode rainbow-delimiters racket-mode qml-mode python-mode purescript-mode proof-general prettier-js powershell php-mode paredit org-cliplink org-bullets no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text magit lua-mode lsp-ui lsp-pyright kotlin-mode json-mode jinja2-mode ido-completing-read+ htmlize hindent helpful helm-swoop helm-lsp helm-ls-git helm-git-grep helm-cmd-t haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode flx-ido expand-region exec-path-from-shell evil-nerd-commenter eterm-256color eshell-git-prompt elpy edit-indirect doom-modeline dockerfile-mode dired-single dired-open dash-functional dap-mode d-mode csharp-mode counsel-projectile company-box cmake-mode clojure-mode auto-package-update ansible all-the-icons-dired ag))
  '(whitespace-style
    '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)))
 (custom-set-faces
