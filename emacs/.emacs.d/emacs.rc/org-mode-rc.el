@@ -1,13 +1,27 @@
 (global-set-key (kbd "C-x a") 'org-agenda)
 (global-set-key (kbd "C-c C-x j") #'org-clock-jump-to-current-clock)
 
+
 (require 'ox-latex)
 (require 'ox-md)
 (require 'ox-html)
 
+(setq org-latex-listings 'minted)
+
+;; (setq org-latex-pdf-process
+;;       '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+;;         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+;;         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
 (setq org-src-fontify-natively t)
 
-(setq org-export-backends '(md))
+(setq org-latex-pdf-process
+      (mapcar
+       (lambda (s)
+         (replace-regexp-in-string "%latex " "%latex -shell-escape " s))
+       org-latex-pdf-process))
+
+;; (setq org-export-backends '(md))
 
 (defun rc/org-increment-move-counter ()
   (interactive)
@@ -63,7 +77,6 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
-(setq org-latex-listings 't)
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!)")))

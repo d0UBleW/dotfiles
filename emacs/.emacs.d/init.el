@@ -55,52 +55,56 @@
 
 (setq confirm-kill-emacs 'y-or-n-p)
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  (setq evil-disable-insert-state-bindings t)
-  (setq evil-default-state 'emacs)
-  (setq evil-buffer-regexps '((".*" . emacs)))
-  :config
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
-  ;; (define-key evil-insert-state-map (kbd "C-a") 'nil)
-  ;; (define-key evil-insert-state-map (kbd "C-e") 'nil)
-  (define-key evil-normal-state-map (kbd "C-a") 'nil)
-  (define-key evil-motion-state-map (kbd "C-e") 'nil)
-  (define-key evil-motion-state-map (kbd "C-y") 'nil)
-  (define-key evil-normal-state-map (kbd "C-n") 'nil)
-  (define-key evil-normal-state-map (kbd "C-p") 'nil)
-  (define-key evil-motion-state-map (kbd "C-f") 'nil)
-  (define-key evil-motion-state-map (kbd "C-b") 'nil)
+;; (use-package so-long
+;;   :ensure t
+;;   :config
+;;   (global-so-long-mode 1))
 
-  ;; Use visual line motions even outside of visual-line-mode buffers
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
+;; (use-package evil
+;;   :ensure t
+;;   :init
+;;   (setq evil-want-integration t)
+;;   (setq evil-want-keybinding nil)
+;;   (setq evil-want-C-u-scroll t)
+;;   (setq evil-want-C-i-jump nil)
+;;   (setq evil-disable-insert-state-bindings t)
+;;   (setq evil-default-state 'emacs)
+;;   (setq evil-buffer-regexps '((".*" . emacs)))
+;;   :config
+;;   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+;;   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+;;   ;; (define-key evil-insert-state-map (kbd "C-a") 'nil)
+;;   ;; (define-key evil-insert-state-map (kbd "C-e") 'nil)
+;;   (define-key evil-normal-state-map (kbd "C-a") 'nil)
+;;   (define-key evil-motion-state-map (kbd "C-e") 'nil)
+;;   (define-key evil-motion-state-map (kbd "C-y") 'nil)
+;;   (define-key evil-normal-state-map (kbd "C-n") 'nil)
+;;   (define-key evil-normal-state-map (kbd "C-p") 'nil)
+;;   (define-key evil-motion-state-map (kbd "C-f") 'nil)
+;;   (define-key evil-motion-state-map (kbd "C-b") 'nil)
 
-(use-package evil-collection
-  :ensure t
-  :after evil
-  :config
-  (evil-collection-init))
+;;   ;; Use visual line motions even outside of visual-line-mode buffers
+;;   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+;;   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
-(use-package general
-  :after evil
-  :config
-  (general-create-definer efs/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
+;; (use-package evil-collection
+;;   :ensure t
+;;   :after evil
+;;   :config
+;;   (evil-collection-init))
 
-  (efs/leader-keys
-    "t"  '(:ignore t :which-key "toggles")
-    ;; "tt" '(counsel-load-theme :which-key "choose theme")
-    "fde" '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/Emacs.org")))))
+;; (use-package general
+;;   :after evil
+;;   :config
+;;   (general-create-definer efs/leader-keys
+;;     :keymaps '(normal insert visual emacs)
+;;     :prefix "SPC"
+;;     :global-prefix "C-SPC")
+
+;;   (efs/leader-keys
+;;     "t"  '(:ignore t :which-key "toggles")
+;;     ;; "tt" '(counsel-load-theme :which-key "choose theme")
+;;     "fde" '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/Emacs.org")))))
 
 
 (defun rc/duplicate-line ()
@@ -256,7 +260,7 @@
   ;; (setq vertico-resize t)
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  ;; (setq vertico-cycle t)
+  (setq vertico-cycle t)
   )
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
@@ -300,28 +304,28 @@
          ("C-c M-x" . consult-mode-command)
          ("C-c h" . consult-history)
          ("C-c k" . consult-kmacro)
-         ("C-c C-m" . consult-man)
+         ("C-c M-m" . consult-man)
          ("C-c i" . consult-info)
          ([remap Info-search] . consult-info)
          ;; C-x bindings (ctl-x-map)
-         ("C-x M-:" . consult-complex-command) ;; orig. repeat-complex-command
-         ("C-x b" . consult-buffer) ;; orig. switch-to-buffer
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
          ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-         ("C-x 5 b" . consult-buffer-other-frame) ;; orig. switch-to-buffer-other-frame
-         ("C-x r b" . consult-bookmark) ;; orig. bookmark-jump
-         ("C-x p b" . consult-project-buffer) ;; orig. project-switch-to-buffer
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
          ;; Custom M-# bindings for fast register access
          ("M-#" . consult-register-load)
-         ("M-'" . consult-register-store) ;; orig. abbrev-prefix-mark (unrelated)
+         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
          ("C-M-#" . consult-register)
          ;; Other custom bindings
-         ("M-y" . consult-yank-from-kill-ring) ;; orig. yank-pop
+         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
          ;; M-g bindings (goto-map)
          ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flymake) ;; Alternative: consult-flycheck
-         ("M-g g" . consult-goto-line)   ;; orig. goto-line
-         ("M-g M-g" . consult-goto-line) ;; orig. goto-line
-         ("M-g o" . consult-outline) ;; Alternative: consult-org-heading
+         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ;; ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ;; ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
          ("M-g m" . consult-mark)
          ("M-g k" . consult-global-mark)
          ("M-g i" . consult-imenu)
@@ -339,14 +343,14 @@
          ;; Isearch integration
          ("M-s e" . consult-isearch-history)
          :map isearch-mode-map
-         ("M-e" . consult-isearch-history) ;; orig. isearch-edit-string
-         ("M-s e" . consult-isearch-history) ;; orig. isearch-edit-string
-         ("M-s l" . consult-line) ;; needed by consult-line to detect isearch
-         ("M-s L" . consult-line-multi) ;; needed by consult-line to detect isearch
+         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
          ;; Minibuffer history
          :map minibuffer-local-map
-         ("M-s" . consult-history) ;; orig. next-matching-history-element
-         ("M-r" . consult-history)) ;; orig. previous-matching-history-element
+         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ("M-r" . consult-history))                ;; orig. previous-matching-history-element
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
@@ -400,16 +404,16 @@
   ;; By default `consult-project-function' uses `project-root' from project.el.
   ;; Optionally configure a different project root function.
   ;; There are multiple reasonable alternatives to chose from.
-;;;; 1. project.el (the default)
+  ;;;; 1. project.el (the default)
   ;; (setq consult-project-function #'consult--default-project--function)
-;;;; 2. projectile.el (projectile-project-root)
+  ;;;; 2. projectile.el (projectile-project-root)
   ;; (autoload 'projectile-project-root "projectile")
   ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-;;;; 3. vc.el (vc-root-dir)
+  ;;;; 3. vc.el (vc-root-dir)
   ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-;;;; 4. locate-dominating-file
+  ;;;; 4. locate-dominating-file
   ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-  )
+)
 
 (use-package ace-window
   :ensure t
@@ -492,6 +496,14 @@
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
+(defun rc/org-mode-visual-fill ()
+  (setq visual-fill-column-width 100
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :hook (org-mode . rc/org-mode-visual-fill))
+
 (use-package which-key
   :defer 0
   :diminish which-key-mode
@@ -536,8 +548,11 @@
 (require 'dired-x)
 ;; (setq dired-omit-files
 ;;       (concat dired-omit-files "\\|^\\..+$"))
+
 (defun rc/dired-key()
-  (local-set-key (kbd "M-<return>") 'dired-up-directory))
+  (local-set-key (kbd "M-p") 'dired-single-up-directory)
+  (local-set-key (kbd "M-n") 'dired-single-buffer))
+
 ;; (add-hook 'dired-mode-hook 'dired-key)
 
 (use-package dired
@@ -632,11 +647,9 @@
 (use-package lsp-treemacs
   :after lsp)
 
-;; (use-package helm-lsp
-;;   :after lsp)
-
-(use-package lsp-ivy
+(use-package helm-lsp
   :after lsp)
+
 
 (defun enable-minor-mode (my-pair)
   (if (buffer-file-name)
@@ -720,29 +733,6 @@
     (setq eshell-visual-commands '("htop" "bash" "vim" "npx")))
 
   (eshell-git-prompt-use-theme 'robbyrussell))
-
-(use-package popper
-  :ensure t ; or :straight t
-  :bind (("C-`"   . popper-toggle-latest)
-         ("M-`"   . popper-cycle)
-         ("C-M-`" . popper-toggle-type))
-  :init
-  (setq popper-reference-buffers
-        '("\\*Messages\\*"
-          "Output\\*$"
-          "\\*Async Shell Command\\*"
-          help-mode
-          compilation-mode
-          "^\\*Python\\*$"
-          "^\\*ielm\\*$"
-          "^\\*helpful.*\\*$" helpful-mode
-          "^\\*eshell.*\\*$" eshell-mode
-          "^\\*shell.*\\*$" shell-mode
-          "^\\*term.*\\*$" term-mode
-          "^\\*vterm.*\\*$" vterm-mode))
-  (popper-mode +1)
-  (popper-echo-mode +1))                ; For echo area hints
-
 
 (use-package marginalia
   ;; Either bind `marginalia-cycle' globally or only in the minibuffer

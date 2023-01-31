@@ -24,8 +24,8 @@
 #+LATEX_HEADER: \usepackage{hyphenat}
 #+LATEX_HEADER: \usepackage{ragged2e}
 #+LATEX_HEADER: \usepackage{subfig} % Subfigures (not needed in Org I think)
+#+LATEX_HEADER: \usepackage{minted} % Code syntax highlighting
 #+LATEX_HEADER: \usepackage{hyperref} % Links
-#+LATEX_HEADER: \usepackage{listings} % Code highlighting
 % Disables flush alighment on the right side. Personal preference.
 # #+LATEX_HEADER: \RaggedRight
 
@@ -73,11 +73,11 @@
 
 # %Subsection
 # #+LATEX_HEADER: \titleformat{\subsection} {\large}{\thesubsection}{1em}{\textbf{#1}}
-\titlespacing\subsection{0pt}{5pt}{-5pt} % left margin, space before subsection header, space after subsection header
+# #+LATEX_HEADER: \titlespacing\subsection{0pt}{5pt}{-5pt} % left margin, space before subsection header, space after subsection header
 
 # %Subsubsection
 # #+LATEX_HEADER: \titleformat{\subsubsection} {\large}{\thesubsubsection}{1em}{#1}
-\titlespacing\subsubsection{0pt}{5pt}{-5pt} % left margin, space before subsection header, space after subsection header
+# #+LATEX_HEADER: \titlespacing\subsubsection{0pt}{5pt}{-5pt} % left margin, space before subsection header, space after subsection header
 
 % QED
-$+LATEX_HEADER: \renewcommand\qedsymbol{$\square$}
+#+LATEX_HEADER: \renewcommand\qedsymbol{$\square$}
