@@ -170,8 +170,7 @@
   (clojure-mode . rc/turn-on-paredit)
   (lisp-mode . rc/turn-on-paredit)
   (common-lisp-mode . rc/turn-on-paredit)
-  (scheme-mode . rc/turn-on-paredit)
-  (racket-mode . rc/turn-on-paredit))
+  (scheme-mode . rc/turn-on-paredit))
 
 (use-package saveplace
   :ensure t
@@ -566,6 +565,8 @@
 (use-package dired-single
   :commands (dired dired-jump))
 
+(setq dired-dwim-target t)
+
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 
@@ -650,6 +651,8 @@
 (use-package helm-lsp
   :after lsp)
 
+(use-package consult-lsp
+  :ensure t)
 
 (defun enable-minor-mode (my-pair)
   (if (buffer-file-name)
@@ -679,9 +682,13 @@
   :hook
   (python-mode . lsp-deferred)
   :config
-  (setq python-indent-offset 4)
+  (setq-default python-indent-offset 4)
   :custom
-  (python-shell-interpreter "python3"))
+  (python-shell-interpreter "python3")
+  (lsp-pylsp-plugins-pycodestyle-enabled t)
+  (lsp-pylsp-plugins-pycodestyle-max-line-length 79)
+  (lsp-pylsp-plugins-autopep8-enabled t)
+  (lsp-pylsp-plugins-pydocstyle-ignore ["D100" "D101" "D102" "D103" "D107"]))
 
 (use-package pyvenv
   :ensure t
@@ -784,7 +791,7 @@
  '(display-line-numbers-type 'relative)
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(consult orderless popper evil pyenv-mode lsp-ivy pyenv yaml-mode which-key web-mode vterm visual-fill-column use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode rainbow-delimiters racket-mode qml-mode python-mode purescript-mode proof-general prettier-js powershell php-mode paredit org-cliplink org-bullets no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text magit lua-mode lsp-ui lsp-pyright kotlin-mode json-mode jinja2-mode ido-completing-read+ htmlize hindent helpful helm-lsp helm-ls-git helm-git-grep haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode flx-ido expand-region exec-path-from-shell evil-nerd-commenter eterm-256color eshell-git-prompt elpy edit-indirect doom-modeline dockerfile-mode dired-single dired-open dash-functional dap-mode d-mode csharp-mode company-box cmake-mode clojure-mode auto-package-update ansible all-the-icons-dired ag))
+   '(consult-lsp consult orderless popper evil pyenv-mode lsp-ivy pyenv yaml-mode which-key web-mode vterm visual-fill-column use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode rainbow-delimiters qml-mode python-mode purescript-mode proof-general prettier-js powershell php-mode paredit org-cliplink org-bullets no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text magit lua-mode lsp-ui lsp-pyright kotlin-mode json-mode jinja2-mode ido-completing-read+ htmlize hindent helpful helm-lsp helm-ls-git helm-git-grep haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode flx-ido expand-region exec-path-from-shell evil-nerd-commenter eterm-256color eshell-git-prompt elpy edit-indirect doom-modeline dockerfile-mode dired-single dired-open dash-functional dap-mode d-mode csharp-mode company-box cmake-mode clojure-mode auto-package-update ansible all-the-icons-dired ag))
  '(whitespace-style
    '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)))
 (custom-set-faces

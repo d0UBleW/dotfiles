@@ -7,8 +7,8 @@
 "\e[B": history-search-forward
 # "\C-j": menu-complete
 # "\C-k": menu-complete-backward
-"\e[D": menu-complete
-"\e[C": menu-complete-backward
+"\C-n": menu-complete
+"\C-p": menu-complete-backward
 "\C-o": "> output"
 
 set completion-ignore-case on

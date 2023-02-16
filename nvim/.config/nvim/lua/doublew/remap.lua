@@ -8,20 +8,16 @@ local nnoremap = keymap.nnoremap
 local vnoremap = keymap.vnoremap
 local cmap = keymap.cmap
 
-nnoremap("k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-nnoremap("j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 cmap("<C-a>", "<home>")
 cmap("<C-e>", "<end>")
+
+nnoremap("k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+nnoremap("j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
-
-vnoremap("<C-j>", "J")
-vnoremap("J", ":m '>+1<CR>gv=gv")
-vnoremap("K", ":m '<-2<CR>gv=gv")
 
 nnoremap("-", vim.cmd.Ex)
 
@@ -48,7 +44,9 @@ nnoremap("cp", "<cmd>cprev<CR>")
 nnoremap("<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>")
 nnoremap("<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true })
 
---[[ nnoremap("<leader>fm", "<cmd>Format<CR>") ]]
+vnoremap("<C-j>", "J")
+vnoremap("J", ":m '>+1<CR>gv=gv")
+vnoremap("K", ":m '<-2<CR>gv=gv")
 
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")

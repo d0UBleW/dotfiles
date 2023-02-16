@@ -116,23 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-# export LIBGL_ALWAYS_INDIRECT=1
-
-
-if [ -f ~/.config/exercism/exercism_completion.bash ]; then
-  source ~/.config/exercism/exercism_completion.bash
-fi
-
 stty -ixon
-
-if [ -f ~/.bash_exports.sh ]; then
-    source ~/.bash_exports.sh
-fi
-
-if [ -f ~/.bash_functions.sh ]; then
-    source ~/.bash_functions.sh
-fi
 
 if [ -z $VIRTUAL_ENV ]; then
     : # no op
@@ -141,19 +125,16 @@ else
     # autoenv_enable
 fi
 
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# eval "$(oh-my-posh init bash --config ~/.poshthemes/spaceship.omp.json)"
-
 if [ -f ~/.bash.d/cht.sh ]; then
     source ~/.bash.d/cht.sh
 fi
 
 if [ -f ~/.cargo/env ]; then
     source ~/.cargo/env
+fi
+
+if [ -f ~/.bash_functions.sh ]; then
+    source ~/.bash_functions.sh
 fi
 
 # if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
@@ -170,13 +151,17 @@ fi
 
 eval "$(/home/doublew/.nix-profile/bin/starship init bash)"
 
+export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-eval "$(pyenv virtualenv-init -)"
+eval "$(/home/doublew/.pyenv/bin/pyenv init -)"
+eval "$(/home/doublew/.pyenv/bin/pyenv virtualenv-init -)"
 
 eval "$(/home/doublew/.nix-profile/bin/direnv hook bash)"
 
 [ -s "$XDG_CONFIG_HOME/starship/bash_completion" ] && \. "$XDG_CONFIG_HOME/starship/bash_completion"
 
 eval "$(rbenv init - bash)"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

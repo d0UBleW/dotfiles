@@ -32,6 +32,7 @@ export NVM_DIR="$HOME/.config/nvm"
 
 export PATH=$PATH:/home/doublew/.cabal/bin
 export PATH=$PATH:/usr/games
+export PATH=$PATH:/home/doublew/.local/share/nvim/mason/bin
 
 # bind '"\eh":"\e[D"'
 # bind '"\ej":"\e[B"'
@@ -54,3 +55,9 @@ export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 # export VAGRANT_DEFAULT_PROVIDER=hyperv
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+
+export WINDOWS_HOME=/mnt/c/Users/William
+
+# export NODE_OPTIONS=--openssl-legacy-provider
+
+export GATEWAY_IP="$(awk '/nameserver/ {print $2}' /etc/resolv.conf)"
