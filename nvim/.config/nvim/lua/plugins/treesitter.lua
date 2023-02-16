@@ -8,6 +8,9 @@ return {
 				"nvim-treesitter/playground",
 			},
 			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+			},
+			{
 				"nvim-treesitter/nvim-treesitter-context",
 				config = function(_, opts)
 					require("treesitter-context").setup(opts)
@@ -91,28 +94,28 @@ return {
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 		opts = {
-			-- ensure_installed = "all",
-			ensure_installed = {
-				"bash",
-				"c",
-				"cpp",
-				"dockerfile",
-				"help",
-				"html",
-				"javascript",
-				"json",
-				"lua",
-				"markdown",
-				"markdown_inline",
-				"python",
-				"query",
-				"regex",
-				"rust",
-				"tsx",
-				"typescript",
-				"vim",
-				"yaml",
-			},
+			ensure_installed = "all",
+			--[[ ensure_installed = { ]]
+			--[[ 	"bash", ]]
+			--[[ 	"c", ]]
+			--[[ 	"cpp", ]]
+			--[[ 	"dockerfile", ]]
+			--[[ 	"help", ]]
+			--[[ 	"html", ]]
+			--[[ 	"javascript", ]]
+			--[[ 	"json", ]]
+			--[[ 	"lua", ]]
+			--[[ 	"markdown", ]]
+			--[[ 	"markdown_inline", ]]
+			--[[ 	"python", ]]
+			--[[ 	"query", ]]
+			--[[ 	"regex", ]]
+			--[[ 	"rust", ]]
+			--[[ 	"tsx", ]]
+			--[[ 	"typescript", ]]
+			--[[ 	"vim", ]]
+			--[[ 	"yaml", ]]
+			--[[ }, ]]
 			sync_install = false,
 			highlight = {
 				enable = true,
