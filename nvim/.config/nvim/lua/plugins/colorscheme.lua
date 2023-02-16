@@ -1,7 +1,6 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		lazy = true,
 		opts = function(plugin)
 			local time = os.date("*t").hour
 			vim.opt.background = "light"
@@ -28,5 +27,9 @@ return {
 				lualine_bold = false,
 			}
 		end,
+        config = function(_, opts)
+            require("tokyonight").setup(opts)
+            vim.cmd([[ colorscheme tokyonight ]])
+        end
 	},
 }

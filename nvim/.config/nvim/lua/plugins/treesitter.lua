@@ -1,6 +1,8 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		--[[ event = { "BufReadPost", "BufNewFile" }, ]]
+		lazy = true,
 		dependencies = {
 			{
 				"nvim-treesitter/playground",
@@ -89,9 +91,29 @@ return {
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 		opts = {
-			ensure_installed = "all",
+			-- ensure_installed = "all",
+			ensure_installed = {
+				"bash",
+				"c",
+				"cpp",
+				"dockerfile",
+				"help",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"query",
+				"regex",
+				"rust",
+				"tsx",
+				"typescript",
+				"vim",
+				"yaml",
+			},
 			sync_install = false,
-			ignore_install = { "" },
 			highlight = {
 				enable = true,
 				disable = { "" },

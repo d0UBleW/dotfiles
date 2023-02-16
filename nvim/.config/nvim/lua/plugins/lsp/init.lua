@@ -18,7 +18,9 @@ return {
 
 			lspconfig.jsonls.setup(config(require("plugins.lsp.settings.jsonls")))
 
-			lspconfig.sumneko_lua.setup(config(require("plugins.lsp.settings.sumneko_lua")))
+			--[[ lspconfig.sumneko_lua.setup(config(require("plugins.lsp.settings.sumneko_lua"))) ]]
+
+			lspconfig.lua_ls.setup(config())
 
 			--[[ lspconfig.pyright.setup(config(require("plugins.lsp.settings.pyright"))) ]]
 

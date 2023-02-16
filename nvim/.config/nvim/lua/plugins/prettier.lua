@@ -1,6 +1,7 @@
 return {
 	{
 		"MunifTanjim/prettier.nvim",
+		lazy = true,
 		opts = {
 			bin = "prettierd",
 			filetypes = {

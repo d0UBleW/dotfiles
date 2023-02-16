@@ -1,6 +1,7 @@
 return {
 	{
 		"L3MON4D3/LuaSnip",
+		build = "make install_jsregexp",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			config = function()
@@ -52,13 +53,14 @@ return {
 		opts = function()
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
+			local luasnip = require("luasnip")
 			return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
 				},
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						luasnip.lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({

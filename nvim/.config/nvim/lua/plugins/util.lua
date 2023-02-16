@@ -1,20 +1,13 @@
 return {
-	{ "nvim-lua/plenary.nvim" },
-	{ "nvim-lua/popup.nvim" },
-	{ "ThePrimeagen/git-worktree.nvim" },
+	{ "nvim-lua/plenary.nvim", lazy = true },
+	{ "nvim-lua/popup.nvim", lazy = true },
+	{ "ThePrimeagen/git-worktree.nvim", lazy = true },
 	{ "tpope/vim-vinegar" },
-	{ "mbbill/undotree" },
-	{ "p00f/nvim-ts-rainbow" },
-	{ "tpope/vim-sleuth" },
-	{ "tpope/vim-unimpaired" },
-	{
-		"ThePrimeagen/refactoring.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	},
-	{ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
+	{ "mbbill/undotree", event = "VeryLazy" },
+	--[[ { "p00f/nvim-ts-rainbow", event = "VeryLazy" }, ]]
+	{ "tpope/vim-sleuth", event = "VeryLazy" },
+	{ "tpope/vim-unimpaired", event = "VeryLazy" },
+	{ "weilbith/nvim-code-action-menu", lazy = true, cmd = "CodeActionMenu" },
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -24,4 +17,5 @@ return {
 			require("which-key").setup()
 		end,
 	},
+	{ "norcalli/nvim-colorizer.lua" },
 }

@@ -10,6 +10,14 @@ return {
 				build = "make",
 				cond = vim.fn.executable("make") == 1,
 			},
+			{
+				"ThePrimeagen/refactoring.nvim",
+				lazy = true,
+				dependencies = {
+					{ "nvim-lua/plenary.nvim" },
+					{ "nvim-treesitter/nvim-treesitter" },
+				},
+			},
 		},
 		opts = function()
 			local actions = require("telescope.actions")
@@ -135,6 +143,7 @@ return {
 			telescope.load_extension("project")
 			telescope.load_extension("live_grep_args")
 			telescope.load_extension("fzf")
+			telescope.load_extension("refactoring")
 			telescope.setup(opts)
 		end,
 		keys = function()
@@ -196,6 +205,10 @@ return {
 				}),
 				lazy_keymap("<leader>sws", builtin.lsp_workspace_symbols, {
 					desc = "[S]earch [W]orkspace [S]ymbols",
+				}),
+				lazy_keymap("<leader>rr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", {
+					mode = "v",
+					desc = "Refactoring",
 				}),
 			}
 		end,
