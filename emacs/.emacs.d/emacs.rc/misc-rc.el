@@ -129,7 +129,7 @@ This command does the inverse of `fill-paragraph'."
     (move-beginning-of-line 1)
     (forward-char column)))
 
-(global-set-key (kbd "C-,") 'rc/duplicate-line)
+(global-set-key (kbd "C-c M-,") 'rc/duplicate-line)
 
 ;;; A little hack which fixes a problem with meta key in fluxbox under VNC.
 (setq x-alt-keysym 'meta)
