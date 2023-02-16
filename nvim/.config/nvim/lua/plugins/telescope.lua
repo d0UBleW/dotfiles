@@ -103,6 +103,9 @@ return {
 				pickers = {
 					live_grep = {
 						previewer = false,
+						additional_args = function(opts)
+							return { "--hidden" }
+						end,
 					},
 					-- Default configuration for builtin pickers goes here:
 					-- picker_name = {
