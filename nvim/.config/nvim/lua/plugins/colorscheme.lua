@@ -5,7 +5,7 @@ return {
 			local time = os.date("*t").hour
 			vim.opt.background = "light"
 			if time > 18 then
-				vim.opt.backgrond = "dark"
+				vim.opt.background = "dark"
 			end
 			return {
 				style = "storm",
