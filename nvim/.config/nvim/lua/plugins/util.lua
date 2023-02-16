@@ -4,7 +4,6 @@ return {
 	{ "ThePrimeagen/git-worktree.nvim", lazy = true },
 	{ "tpope/vim-vinegar" },
 	{ "mbbill/undotree", event = "VeryLazy" },
-	--[[ { "p00f/nvim-ts-rainbow", event = "VeryLazy" }, ]]
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired", event = "VeryLazy" },
 	{ "weilbith/nvim-code-action-menu", lazy = true, cmd = "CodeActionMenu" },
@@ -17,5 +16,8 @@ return {
 			require("which-key").setup()
 		end,
 	},
-	{ "norcalli/nvim-colorizer.lua" },
+	{
+		"norcalli/nvim-colorizer.lua",
+		event = { "BufReadPost", "BufNewFile" },
+	},
 }

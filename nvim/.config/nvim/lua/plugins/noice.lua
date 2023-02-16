@@ -7,10 +7,20 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		opts = {
+			messages = {
+				enabled = false,
+			},
 			lsp = {
+				signature = {
+					enabled = false,
+				},
+				hover = {
+					enabled = false,
+				},
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
 				},
 			},
 			presets = {
