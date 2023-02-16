@@ -19,8 +19,7 @@ M.cnoremap = bind("c")
 local function buf_bind(op, outer_opts)
 	outer_opts = outer_opts or { noremap = true, silent = true }
 	return function(bufnr, lhs, rhs, opts)
-		opts = vim.tbl_extend("force", outer_opts, opts or { buffer = bufnr })
-		--[[ vim.api.nvim_buf_set_keymap(bufnr, op, lhs, rhs, opts) ]]
+		opts = vim.tbl_extend("force", outer_opts, opts or {}, { buffer = bufnr })
 		vim.keymap.set(op, lhs, rhs, opts)
 	end
 end
