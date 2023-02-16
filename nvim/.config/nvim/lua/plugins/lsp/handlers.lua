@@ -81,10 +81,6 @@ local function lsp_keymaps(bufnr)
 	buf_nnoremap(bufnr, "<leader>q", vim.diagnostic.setloclist)
 	buf_nnoremap(bufnr, "gds", vim.lsp.buf.document_symbol)
 	buf_nnoremap(bufnr, "gws", vim.lsp.buf.workspace_symbol)
-	--[[ buf_nnoremap(bufnr, "<leader>vrn", "<cmd>lua vim.lsp.buf.rename()<CR>") ]]
-	--[[ buf_nnoremap(bufnr, "<leader>vrr", "<cmd>lua vim.lsp.buf.references()<CR>") ]]
-	--[[ buf_nnoremap(bufnr, "<leader>vca", "<cmd>lua vim.lsp.buf.code_action()<CR>") ]]
-	-- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 		if vim.lsp.buf.format then
 			vim.lsp.buf.format({ async = true })

@@ -46,7 +46,6 @@ return packer.startup(function(use)
 	})
 
 	use("tpope/vim-vinegar")
-
 	use("mbbill/undotree")
 
 	use("hrsh7th/nvim-cmp")
@@ -123,9 +122,11 @@ return packer.startup(function(use)
 
 	use({
 		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
 		end,
+		ft = { "markdown" },
 	})
 
 	use({
@@ -152,4 +153,19 @@ return packer.startup(function(use)
 	use({ "ldelossa/nvim-ide", require = {
 		{ "DNLHC/glance.nvim" },
 	} })
+
+	use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
+
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 500
+			require("which-key").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 end)

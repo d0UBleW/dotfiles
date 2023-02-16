@@ -39,18 +39,18 @@ null_ls.setup({
 	debug = false,
 	on_attach = on_attach,
 	sources = {
-		formatting.black.with({
-			extra_args = { "--fast" },
-			filetype = { "python3" },
+		formatting.clang_format.with({
+			extra_filetypes = { "arduino" },
 		}),
-
+		formatting.autopep8.with({
+			extra_args = { "--aggressive", "--aggressive", "--aggressive" },
+		}),
 		formatting.cmake_format,
-
 		formatting.stylua,
 		formatting.rubocop,
 		formatting.markdownlint.with({
 			extra_args = { "--disable", "MD014" },
-			filetype = { "md" },
+			filetypes = { "md" },
 		}),
 		formatting.prettierd.with({
 			--[[ disabled_filetypes = { "md", "markdown" }, ]]
@@ -76,18 +76,22 @@ null_ls.setup({
 			end,
 		}),
 
+		diagnostics.clang_check.with({
+			extra_filetypes = { "arduino" },
+		}),
 		diagnostics.flake8,
+		diagnostics.mypy,
 		diagnostics.ansiblelint.with({
-			filetype = { "yaml.ansible" },
+			filetypes = { "yaml.ansible" },
 		}),
 		diagnostics.yamllint,
 		diagnostics.markdownlint.with({
 			extra_args = { "--disable", "MD014" },
 		}),
 		diagnostics.rubocop,
-		diagnostics.eslint_d.with({
-			diagnostics_format = "[eslint] #{m}\n{#{c}}",
-		}),
+		--[[ diagnostics.eslint_d.with({ ]]
+		--[[ 	diagnostics_format = "[eslint] #{m}\n{#{c}}", ]]
+		--[[ }), ]]
 		diagnostics.shellcheck,
 		diagnostics.golangci_lint,
 		diagnostics.cmake_lint,

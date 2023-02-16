@@ -1,9 +1,9 @@
 require("doublew.set")
 require("doublew.cursor")
-require("doublew.notify")
+--[[ require("doublew.notify") ]]
 require("doublew.remap")
-require("doublew.packer")
-require("doublew.lsp")
+--[[ require("doublew.packer") ]]
+--[[ require("doublew.lsp") ]]
 
 local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
 
