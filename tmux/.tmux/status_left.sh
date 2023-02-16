@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function ipv4() {
-    printf "🌐 #[fg=yellow]%s#[default]" "$(ip address show eth0 | grep -oP '(?<=inet ).*(?= brd)')"
+    printf "#[fg=yellow]%s#[default]" "$(ip address show eth0 | grep -oP '(?<=inet ).*(?= brd)')"
 }
 
 function sep() {
@@ -13,8 +13,6 @@ function session_name() {
 }
 
 function main() {
-    ipv4
-    sep
     session_name
 }
 
