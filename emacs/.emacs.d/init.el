@@ -51,6 +51,7 @@
       compilation-scroll-output t)
 
 (setq-default tab-width 4
+              c-basic-offset 4
 			  indent-tabs-mode nil)			  
 
 (setq confirm-kill-emacs 'y-or-n-p)
@@ -159,18 +160,33 @@
   :config
   (recentf-mode 1))
 
-(defun rc/turn-on-paredit()
-  (interactive)
-  (paredit-mode 1))
+;; (defun rc/turn-on-paredit()
+;;   (interactive)
+;;   (paredit-mode 1))
 
-(use-package paredit
+;; (use-package paredit
+;;   :ensure t
+;;   :hook
+;;   (emacs-lisp-mode . rc/turn-on-paredit)
+;;   (clojure-mode . rc/turn-on-paredit)
+;;   (lisp-mode . rc/turn-on-paredit)
+;;   (common-lisp-mode . rc/turn-on-paredit)
+;;   (scheme-mode . rc/turn-on-paredit))
+
+(use-package smartparens
   :ensure t
   :hook
-  (emacs-lisp-mode . rc/turn-on-paredit)
-  (clojure-mode . rc/turn-on-paredit)
-  (lisp-mode . rc/turn-on-paredit)
-  (common-lisp-mode . rc/turn-on-paredit)
-  (scheme-mode . rc/turn-on-paredit))
+  ;; (emacs-lisp-mode . smartparens-mode)
+  ;; (common-lisp-mode . smartparens-mode)
+  ;; (lisp-mode . smartparens-mode)
+  ;; (clojure-mode . smartparens-mode)
+  ;; (scheme-mode . smartparens-mode)
+  ;; (js-mode . smartparens-mode)
+  (prog-mode . smartparens-mode)
+  :config
+  (require 'smartparens-config)
+  (sp-use-smartparens-bindings)
+  (define-key smartparens-mode-map (kbd "C-M-]") 'sp-select-previous-thing-exchange))
 
 (use-package saveplace
   :ensure t
@@ -716,6 +732,9 @@
   (setq vterm-shell "bash")                       ;; Set this to customize the shell to launch
   (setq vterm-max-scrollback 10000))
 
+(use-package multi-vterm
+  :ensure t)
+
 (defun rc/configure-eshell ()
   ;; Save command history when commands are entered
   (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
@@ -791,7 +810,7 @@
  '(display-line-numbers-type 'relative)
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(consult-lsp consult orderless popper evil pyenv-mode lsp-ivy pyenv yaml-mode which-key web-mode vterm visual-fill-column use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode rainbow-delimiters qml-mode python-mode purescript-mode proof-general prettier-js powershell php-mode paredit org-cliplink org-bullets no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text magit lua-mode lsp-ui lsp-pyright kotlin-mode json-mode jinja2-mode ido-completing-read+ htmlize hindent helpful helm-lsp helm-ls-git helm-git-grep haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode flx-ido expand-region exec-path-from-shell evil-nerd-commenter eterm-256color eshell-git-prompt elpy edit-indirect doom-modeline dockerfile-mode dired-single dired-open dash-functional dap-mode d-mode csharp-mode company-box cmake-mode clojure-mode auto-package-update ansible all-the-icons-dired ag))
+   '(smartparens smartparens-config multi-vterm consult-lsp consult orderless popper evil pyenv-mode lsp-ivy pyenv yaml-mode which-key web-mode vterm visual-fill-column use-package tuareg toml-mode tide sml-mode smex scala-mode rust-mode rfc-mode rainbow-delimiters qml-mode python-mode purescript-mode proof-general prettier-js powershell php-mode paredit org-cliplink org-bullets no-littering nix-mode nim-mode nginx-mode nasm-mode multiple-cursors move-text magit lua-mode lsp-ui lsp-pyright kotlin-mode json-mode jinja2-mode ido-completing-read+ htmlize hindent helpful helm-lsp helm-ls-git helm-git-grep haskell-mode gruber-darker-theme graphviz-dot-mode go-mode glsl-mode flx-ido expand-region exec-path-from-shell evil-nerd-commenter eterm-256color eshell-git-prompt elpy edit-indirect doom-modeline dockerfile-mode dired-single dired-open dash-functional dap-mode d-mode csharp-mode company-box cmake-mode clojure-mode auto-package-update ansible all-the-icons-dired ag))
  '(whitespace-style
    '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)))
 (custom-set-faces
