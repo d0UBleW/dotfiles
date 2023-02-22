@@ -1,7 +1,8 @@
 require("doublew.set")
 require("doublew.cursor")
---[[ require("doublew.notify") ]]
 require("doublew.remap")
+--[[ require("doublew.clipboard") ]]
+require("doublew.py3nvim")
 --[[ require("doublew.packer") ]]
 --[[ require("doublew.lsp") ]]
 

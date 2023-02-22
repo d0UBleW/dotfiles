@@ -147,6 +147,10 @@ return {
 			telescope.load_extension("live_grep_args")
 			telescope.load_extension("fzf")
 			telescope.load_extension("refactoring")
+			local status_ok, _ = pcall(require, "noice")
+			if status_ok then
+				telescope.load_extension("noice")
+			end
 			telescope.setup(opts)
 		end,
 		keys = function()

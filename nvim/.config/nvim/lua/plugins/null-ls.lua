@@ -45,6 +45,7 @@ return {
 				on_attach = on_attach,
 				sources = {
 					formatting.clang_format.with({
+						extra_args = { "-style", "{IndentWidth: 4, AllowShortFunctionsOnASingleLine: Empty}" },
 						extra_filetypes = { "arduino" },
 					}),
 					formatting.autopep8.with({
@@ -93,7 +94,7 @@ return {
 					diagnostics.markdownlint.with({
 						extra_args = { "--disable", "MD014" },
 					}),
-					diagnostics.rubocop,
+					--[[ diagnostics.rubocop, ]]
 					--[[ diagnostics.eslint_d.with({ ]]
 					--[[ 	diagnostics_format = "[eslint] #{m}\n{#{c}}", ]]
 					--[[ }), ]]

@@ -4,7 +4,7 @@ return {
 		opts = function(plugin)
 			local time = os.date("*t").hour
 			vim.opt.background = "light"
-			if time > 18 then
+			if time > 18 or time < 6 then
 				vim.opt.background = "dark"
 			end
 			return {
@@ -27,9 +27,9 @@ return {
 				lualine_bold = false,
 			}
 		end,
-        config = function(_, opts)
-            require("tokyonight").setup(opts)
-            vim.cmd([[ colorscheme tokyonight ]])
-        end
+		config = function(_, opts)
+			require("tokyonight").setup(opts)
+			vim.cmd([[ colorscheme tokyonight ]])
+		end,
 	},
 }
