@@ -168,7 +168,10 @@ return {
 					--[[ prompt_title = false, ]]
 				})
 			end
-			local builtin = require("telescope.builtin")
+			local status_ok, builtin = pcall(require, "telescope.builtin")
+			if not status_ok then
+				return
+			end
 			local lazy_keymap = require("doublew.keymap").lazy_keymap
 			return {
 				lazy_keymap("<leader>?", builtin.oldfiles, {
