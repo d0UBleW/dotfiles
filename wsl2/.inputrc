@@ -7,9 +7,9 @@
 # "\e[B": history-search-forward
 # "\C-j": menu-complete
 # "\C-k": menu-complete-backward
-# "\C-n": menu-complete
-# "\C-p": menu-complete-backward
-"\C-o": "> output"
+"\C-n": menu-complete
+"\C-p": menu-complete-backward
+"\C-o": "> flag.txt"
 "\en": history-search-forward
 "\ep": history-search-backward
 
