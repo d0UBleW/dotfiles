@@ -3,7 +3,10 @@ return {
 		"TimUntersberger/neogit",
 		keys = function()
 			local lazy_keymap = require("doublew.keymap").lazy_keymap
-			local neogit = require("neogit")
+			local status_ok, neogit = pcall(require, "neogit")
+			if not status_ok then
+				return
+			end
 			return {
 				lazy_keymap("<leader>gs", function()
 					neogit.open()
