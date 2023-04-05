@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function battery_meter() {
 
     if [ "$(which acpi)" ]; then
@@ -60,7 +59,7 @@ function load_average() {
 
 function date_time() {
     # printf "%s" "$(date +'%Y-%m-%d %H:%M:%S %Z')"
-    printf "#[fg=#ffffff,bg=brightblack,bold]%s#[default]" "$(date +'%H:%M:%S %d %b')"
+    printf "#[fg=#ffffff,bg=brightblack,bold]%s#[default]" "$(date +'%d %b %H:%M:%S')"
 
     # printf "%s" "%a, %l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d #[fg=default]"
 }
@@ -68,7 +67,6 @@ function date_time() {
 function sep() {
     printf "#[fg=brightblack,nobold] #[fg=brightblack,nobold,noitalics,nounderscore]"
 }
-
 
 function main() {
     printf "#[fg=brightblack,nobold,noitalics,nounderscore]"
