@@ -9,7 +9,8 @@ function sep() {
 }
 
 function session_name() {
-    printf "#[fg=green]#S #[default]> "
+    # printf "#[fg=green]#S #[default]> "
+    printf "#[fg=brightblack]#[fg=brightwhite,bg=brightblack,bold] #S #[default]#[fg=brightblack,nobold,noitalics,nounderscore] "
 }
 
 function main() {

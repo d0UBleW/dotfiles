@@ -45,7 +45,7 @@ function battery_meter() {
             fi
 
             # Display the percentage of charge the battery has.
-            printf "%s " "${fgcolor}${icon}${batt0}${fgdefault}"
+            printf "#[bg=brightblack]%s#[default]" "${fgcolor}${icon}${batt0}${fgdefault}"
 
         fi
 
@@ -60,20 +60,22 @@ function load_average() {
 
 function date_time() {
     # printf "%s" "$(date +'%Y-%m-%d %H:%M:%S %Z')"
-    printf "%s" "$(date +'%H:%M:%S %d %b')"
+    printf "#[fg=#ffffff,bg=brightblack,bold]%s#[default]" "$(date +'%H:%M:%S %d %b')"
 
     # printf "%s" "%a, %l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d #[fg=default]"
 }
 
 function sep() {
-    printf " | "
+    printf "#[fg=brightblack,nobold] #[fg=brightblack,nobold,noitalics,nounderscore]"
 }
 
+
 function main() {
-    printf " < "
+    printf "#[fg=brightblack,nobold,noitalics,nounderscore]"
     date_time
     sep
     battery_meter
+    printf "#[fg=brightblack,nobold]"
 }
 
 # Calling the main function which will call the other functions.
