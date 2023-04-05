@@ -66,7 +66,8 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    _chroot='${debian_chroot:+($debian_chroot)}'
+    PS1="\[\e]0;${_chroot}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -153,14 +154,14 @@ eval "$(/home/doublew/.nix-profile/bin/starship init bash)"
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(/home/doublew/.pyenv/bin/pyenv init -)"
-eval "$(/home/doublew/.pyenv/bin/pyenv virtualenv-init -)"
+# eval "$(/home/doublew/.pyenv/bin/pyenv init -)"
+# eval "$(/home/doublew/.pyenv/bin/pyenv virtualenv-init -)"
 
 eval "$(/home/doublew/.nix-profile/bin/direnv hook bash)"
 
 [ -s "$XDG_CONFIG_HOME/starship/bash_completion" ] && \. "$XDG_CONFIG_HOME/starship/bash_completion"
 
-eval "$(rbenv init - bash)"
+# eval "$(rbenv init - bash)"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
