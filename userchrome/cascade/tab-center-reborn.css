@@ -26,12 +26,12 @@
 
 #tablist-wrapper,
 #pinnedtablist {
-  background: var(--uc-base-colour);
+  /* background: var(--uc-base-colour); */
 }
 
 .tab:hover,
 .tab.active {
-  background: var(--uc-highlight-colour);
+  /* background: var(--uc-highlight-colour); */
 }
 
 #tablist-wrapper .tab-title-wrapper {
