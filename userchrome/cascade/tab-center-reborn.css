@@ -82,11 +82,13 @@ body:hover #tablist-wrapper .tab-title-wrapper {
   left: -3px;
 }
 
+/*
 #pinnedtablist:not(.compact) .tab .tab-pin,
 .tab-close,
 .tab-loading-burst {
   display: none;
 }
+*/
 
 #pinnedtablist:not(.compact) .tab[data-identity-color] .tab-context {
   box-shadow: none !important;
@@ -115,4 +117,38 @@ body:hover #tablist-wrapper .tab-title-wrapper {
 }
 [data-identity-color="purple"] {
   --identity-color: var(--uc-identity-colour-purple);
+}
+
+/* @media (min-width: 20px) { */
+/*   .tab-close { */
+/*     left: 0; */
+/*     margin-left: 0px; */
+/*   } */
+/*   #tablist .tab:hover > .tab-title-wrapper { */
+/*     margin-left: 28px; */
+/*     transition: all 0.2s ease; */
+/*   } */
+/*   #tablist .tab:hover > .tab-meta-image { */
+/*     padding-left: 25px; */
+/*     transition: all 0.2s ease; */
+/*   } */
+/* } */
+
+/* hide certain items when collapsed */
+@media (max-width: 64px) {
+  /* using 64px minimum width to give the tab favicons more room during the transition */
+  .tab-close,
+  .tab-pin {
+    visibility: collapse !important;
+  }
+
+  /* hide scrollbar when sidebar is collapsed */
+  #tablist {
+    scrollbar-width: none;
+  }
+}
+
+/* center favicons within the tab */
+#tablist-wrapper.shrinked > :not(#pinnedtablist.compact) .tab-meta-image {
+  margin-left: 8px !important;
 }

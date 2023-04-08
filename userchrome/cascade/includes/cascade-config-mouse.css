@@ -79,8 +79,13 @@
 }
 
 /* Disable the Navigation Buttons */
-/* #back-button,
-#forward-button { display: none !important; } */
+#tabs-newtab-button,
+#reload-button,
+#home-button,
+#back-button,
+#forward-button {
+  display: none !important;
+}
 
 /* Disables the Tracking Protection Shield */
 /* #tracking-protection-icon-container { display: none !important; } */
@@ -112,11 +117,13 @@
 }
 
 /* Hides the Extensions Menu Icon */
-/* #unified-extensions-button { display: none !important; } */
-
-#alltabs-button {
-  margin-top: 5px !important;
+#unified-extensions-button {
+  display: none !important;
 }
+
+/* #alltabs-button { */
+/*   margin-top: 5px !important; */
+/* } */
 
 /*---+---+---+---+---+---+---+
  | T | A | B | — | B | A | R |
@@ -142,6 +149,13 @@
    *  hide: none
    */
   --show-tab-close-button-hover: -moz-inline-block;
+
+  /*  Hide the all Tabs button from the Tab Bar
+   *  possible values:
+   *  show: -moz-box
+   *  hide: none
+   */
+  --uc-show-all-tabs-button: none;
 
   /*  Left and Right "dip" of the container indicator
    *  0px equals tab width

@@ -89,6 +89,9 @@
 }
 
 /* Disable the Navigation Buttons */
+#tabs-newtab-button,
+#reload-button,
+#home-button,
 #back-button,
 #forward-button {
   display: none !important;
