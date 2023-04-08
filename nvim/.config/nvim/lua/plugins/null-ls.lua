@@ -46,7 +46,7 @@ return {
 				sources = {
 					formatting.clang_format.with({
 						extra_args = { "-style", "{IndentWidth: 4, AllowShortFunctionsOnASingleLine: Empty}" },
-						extra_filetypes = { "arduino" },
+						--[[ extra_filetypes = { "arduino" }, ]]
 					}),
 					formatting.autopep8.with({
 						extra_args = { "--aggressive", "--aggressive", "--aggressive" },
@@ -82,9 +82,10 @@ return {
 						end,
 					}),
 
-					diagnostics.clang_check.with({
-						extra_filetypes = { "arduino" },
-					}),
+					--[[ diagnostics.clang_check.with({ ]]
+					--[[ 	extra_filetypes = { "arduino" }, ]]
+					--[[ }), ]]
+					diagnostics.clang_check,
 					diagnostics.flake8,
 					diagnostics.mypy,
 					diagnostics.ansiblelint.with({
