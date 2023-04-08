@@ -1,7 +1,7 @@
 /* Some variables for quick configuration - play with numbers to find a perfect match for your setup */
 :root {
   --sidebar-width: 50px;
-  --panel-width: calc(100vw - 66px);
+  --panel-width: calc(100vw - 50px);
   --panel-hide-offset: -30px;
   --opacity-when-hidden: 0;
 }
