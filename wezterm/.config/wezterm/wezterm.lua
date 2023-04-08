@@ -29,4 +29,22 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 --[[ config.window_background_opacity = 0.95 ]]
 
+config.adjust_window_size_when_changing_font_size = false
+config.audible_bell = "Disabled"
+
+config.hide_tab_bar_if_only_one_tab = true
+
+-- Recommended to be disabled if using vim
+config.use_dead_keys = false
+
+config.use_fancy_tab_bar = false
+
+config.keys = {
+	{
+		key = "l",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ShowLauncher,
+	},
+}
+
 return config
