@@ -44,7 +44,7 @@ function battery_meter() {
             fi
 
             # Display the percentage of charge the battery has.
-            printf "#[bg=brightblack] %s #[default]" "${fgcolor}${icon}${batt0}"
+            printf "#[bg=brightblack,bold] %s #[default]" "${fgcolor}${icon}${batt0}"
 
         fi
 

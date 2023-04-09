@@ -16,6 +16,7 @@ function session_name() {
 
 function main() {
     session_name
+    printf " "
 }
 
 # Calling the main function which will call the other functions.
