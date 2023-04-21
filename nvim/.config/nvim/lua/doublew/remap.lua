@@ -11,6 +11,11 @@ local cmap = keymap.cmap
 cmap("<C-a>", "<home>")
 cmap("<C-e>", "<end>")
 
+local status_ok_toggle, toggle = pcall(require, "doublew.toggle")
+if status_ok_toggle then
+	nnoremap("<leader>mm", toggle.toggle_bg, { desc = "Toggle Light/Dark Mode" })
+end
+
 nnoremap("k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 nnoremap("j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 

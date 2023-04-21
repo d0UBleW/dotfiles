@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		opts = function(plugin)
+		opts = function(_)
 			local time = os.date("*t").hour
 			vim.opt.background = "light"
 			if time > 17 or time < 6 then
