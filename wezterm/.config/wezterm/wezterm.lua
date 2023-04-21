@@ -9,7 +9,7 @@ else
 end
 
 config.font = wezterm.font("Iosevka Term", {
-	weight = "Regular",
+	weight = "Medium",
 	stretch = "Expanded",
 	style = "Normal",
 })
@@ -31,25 +31,63 @@ config.window_background_image_hsb = {
 
 	-- You can adjust the saturation also.
 	saturation = 1.0,
-}
+} ]]
 
-config.window_background_opacity = 0.95 ]]
+--[[ config.window_padding = { ]]
+--[[ 	left = 0, ]]
+--[[ 	right = 0, ]]
+--[[ 	top = 0, ]]
+--[[ 	bottom = 0, ]]
+--[[ } ]]
+
+config.window_background_opacity = nil
 
 config.adjust_window_size_when_changing_font_size = false
 config.audible_bell = "Disabled"
 
 config.hide_tab_bar_if_only_one_tab = true
+config.switch_to_last_active_tab_when_closing_tab = true
 
 -- Recommended to be disabled if using vim
 config.use_dead_keys = false
 
 config.use_fancy_tab_bar = false
 
+wezterm.on("toggle-mode", function(window, _)
+	local overrides = window:get_config_overrides() or {}
+	if overrides.color_scheme == "tokyonight_day" then
+		overrides.color_scheme = "tokyonight_storm"
+	else
+		overrides.color_scheme = "tokyonight_day"
+	end
+	window:set_config_overrides(overrides)
+end)
+
+wezterm.on("toggle-opacity", function(window, _)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.window_background_opacity then
+		overrides.window_background_opacity = 0.85
+	else
+		overrides.window_background_opacity = nil
+	end
+	window:set_config_overrides(overrides)
+end)
+
 config.keys = {
 	{
 		key = "l",
 		mods = "CTRL|ALT",
 		action = wezterm.action.ShowLauncher,
+	},
+	{
+		key = "m",
+		mods = "CTRL|ALT",
+		action = wezterm.action.EmitEvent("toggle-mode"),
+	},
+	{
+		key = "b",
+		mods = "CTRL|ALT",
+		action = wezterm.action.EmitEvent("toggle-opacity"),
 	},
 }
 
