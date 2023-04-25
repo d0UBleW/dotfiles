@@ -100,7 +100,7 @@ return {
 				"c",
 				"cpp",
 				"dockerfile",
-				"help",
+				"vimdoc",
 				"html",
 				"javascript",
 				"json",
