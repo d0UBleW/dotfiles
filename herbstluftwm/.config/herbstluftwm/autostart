@@ -117,66 +117,17 @@ hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
 # theme
-hc attr theme.reset 1
-hc set frame_border_active_color '#c0caf5'
-hc set frame_border_normal_color '#414868'
-# hc set frame_bg_normal_color '#ff0000aa'  # only takes effect when frame_bg_transparent is off
-# hc set frame_bg_active_color '#ffffff'  # only takes effect when frame_bg_transparent is off
-hc set frame_border_width 2
-hc set frame_border_inner_width 0
-hc set frame_border_inner_color '#9ece6a'
-hc set show_frame_decorations 'focused_if_multiple'
-hc set frame_bg_transparent on
-hc set frame_transparent_width 0
-hc set frame_gap 8
+[ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm ] && \
+    source $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm
 
-hc attr theme.title_height 16
-hc attr theme.title_when 'multiple_tabs'
-hc attr theme.title_font 'Iosevka Term:pixelsize=13'
-# hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
-hc attr theme.title_depth 4  # space below the title's baseline
-hc attr theme.title_color '#c0caf5'
+# [ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_day ] && \
+#     source $HOME/.config/herbstluftwm/themes/colors/tokyonight_day
 
-hc attr theme.background_color '#ffffff'  # not sure where is the bg color
+[ -f $HOME/.config/herbstluftwm/themes/styles/single_border ] && \
+    source $HOME/.config/herbstluftwm/themes/styles/single_border
 
-# hc attr theme.border_width 8
-# hc attr theme.color '#1d202f'
-# hc attr theme.inner_color '#737aa2'
-# hc attr theme.inner_width 2
-# hc attr theme.outer_color '#545c7e'
-# hc attr theme.outer_width 2
-
-hc attr theme.border_width 2
-hc attr theme.color '#1d202f'
-hc attr theme.inner_color '#737aa2'
-hc attr theme.inner_width 0
-hc attr theme.outer_color '#545c7e'
-hc attr theme.outer_width 0
-
-# hc attr theme.tab_color '#1d202f'
-# hc attr theme.tab_outer_color '#737aa2'
-# hc attr theme.tab_outer_width 2
-hc attr theme.tab_title_color '#737aa2'
-
-# hc attr theme.active.color '#414868'
-hc attr theme.active.outer_width 2
-hc attr theme.active.outer_color '#7aa2f7'
-hc attr theme.active.title_color '#9ece6a'
-
-hc attr theme.floating.outer_width 2
-hc attr theme.floating.outer_color '#9ece6a'
-hc attr theme.floating.title_color '#1d202f'
-
-hc attr theme.urgent.color '#bb9af7'
-hc attr theme.urgent.outer_width 2
-hc attr theme.urgent.outer_color '#e0af68'
-hc attr theme.urgent.title_color '#1d202f'
-
-# copy inner color to outer_color
-# for state in active urgent normal ; do
-#     hc substitute C theme.${state}.inner_color \
-#         attr theme.${state}.outer_color C
-# done
+# [ -f $HOME/.config/herbstluftwm/themes/styles/double_border ] && \
+#     source $HOME/.config/herbstluftwm/themes/styles/double_border
 
 hc set window_gap 8
 hc set frame_padding 0
