@@ -10,7 +10,7 @@ hc set show_frame_decorations 'focused_if_multiple'
 hc set frame_bg_transparent on
 hc set frame_transparent_width 0
 
-hc attr theme.title_height 16
+hc attr theme.title_height 0
 hc attr theme.title_when 'multiple_tabs'
 hc attr theme.title_font 'Iosevka Term:pixelsize=14'
 # hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
@@ -39,6 +39,7 @@ hc attr theme.active.title_color $COLOR_FG
 hc attr theme.floating.outer_width $WIDTH
 hc attr theme.floating.outer_color $COLOR_GREEN
 hc attr theme.floating.title_color $COLOR_BLACK
+hc attr theme.floating.title_when 'always'
 
 hc attr theme.urgent.color $COLOR_MAGENTA
 hc attr theme.urgent.outer_width $WIDTH

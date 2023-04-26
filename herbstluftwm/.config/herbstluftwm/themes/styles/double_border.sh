@@ -40,6 +40,7 @@ hc attr theme.active.title_color $COLOR_FG
 hc attr theme.floating.outer_width $WIDTH
 hc attr theme.floating.outer_color $COLOR_GREEN
 hc attr theme.floating.title_color $COLOR_BLACK
+hc attr theme.floating.title_when 'always'
 
 hc attr theme.urgent.color $COLOR_MAGENTA
 hc attr theme.urgent.outer_width $WIDTH
