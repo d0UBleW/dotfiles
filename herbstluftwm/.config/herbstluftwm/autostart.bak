@@ -58,7 +58,7 @@ hc keybind $Mod-o       split   right   0.5
 hc keybind $Mod-Control-space split explode
 
 # resizing frames and floating clients
-resizestep=0.01
+resizestep=0.02
 hc keybind $Mod-Control-h       resize left +$resizestep
 hc keybind $Mod-Control-j       resize down +$resizestep
 hc keybind $Mod-Control-k       resize up +$resizestep
@@ -83,8 +83,8 @@ for i in "${!tag_names[@]}" ; do
 done
 
 # cycle through tags
-# hc keybind $Mod-period use_index +1 --skip-visible
-# hc keybind $Mod-comma  use_index -1 --skip-visible
+hc keybind $Mod-period use_index +1 --skip-visible
+hc keybind $Mod-comma  use_index -1 --skip-visible
 
 # layouting
 hc keybind $Mod-r remove
@@ -117,7 +117,8 @@ hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
 # theme
-hc attr theme.reset 1
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
 hc set frame_border_active_color '#c0caf5'
 hc set frame_border_normal_color '#414868'
 # hc set frame_bg_normal_color '#ff0000aa'  # only takes effect when frame_bg_transparent is off
@@ -125,65 +126,62 @@ hc set frame_border_normal_color '#414868'
 hc set frame_border_width 2
 hc set frame_border_inner_width 0
 hc set frame_border_inner_color '#9ece6a'
-hc set show_frame_decorations 'focused_if_multiple'
+hc set show_frame_decorations 'always'
 hc set frame_bg_transparent on
 hc set frame_transparent_width 0
 hc set frame_gap 8
 
-hc attr theme.title_height 16
-hc attr theme.title_when 'multiple_tabs'
-hc attr theme.title_font 'Iosevka Term:pixelsize=13'
+hc attr theme.title_height 15
+hc attr theme.title_when 'always'
+hc attr theme.title_font 'Iosevka Term:pixelsize=12'
 # hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
-hc attr theme.title_depth 4  # space below the title's baseline
-hc attr theme.title_color '#c0caf5'
+hc attr theme.title_depth 3  # space below the title's baseline
+hc attr theme.title_color '#000000'  # active frame active window title color
 
-hc attr theme.background_color '#ffffff'  # not sure where is the bg color
+hc attr theme.active.reset = "yes"
 
-# hc attr theme.border_width 8
-# hc attr theme.color '#1d202f'
-# hc attr theme.inner_color '#737aa2'
-# hc attr theme.inner_width 2
-# hc attr theme.outer_color '#545c7e'
-# hc attr theme.outer_width 2
+hc attr theme.floating.reset = "yes"
+hc attr theme.fullscreen.reset = "yes"
+hc attr theme.minimal.reset = "yes"
+hc attr theme.normal.reset = "yes"
+hc attr theme.tiling.reset = "yes"
 
-hc attr theme.border_width 2
-hc attr theme.color '#1d202f'
-hc attr theme.inner_color '#737aa2'
-hc attr theme.inner_width 0
-hc attr theme.outer_color '#545c7e'
-hc attr theme.outer_width 0
-
-# hc attr theme.tab_color '#1d202f'
-# hc attr theme.tab_outer_color '#737aa2'
-# hc attr theme.tab_outer_width 2
-hc attr theme.tab_title_color '#737aa2'
-
-# hc attr theme.active.color '#414868'
-hc attr theme.active.outer_width 2
-hc attr theme.active.outer_color '#7aa2f7'
-hc attr theme.active.title_color '#9ece6a'
-
-hc attr theme.floating.outer_width 2
-hc attr theme.floating.outer_color '#9ece6a'
-hc attr theme.floating.title_color '#1d202f'
-
-hc attr theme.urgent.color '#bb9af7'
-hc attr theme.urgent.outer_width 2
-hc attr theme.urgent.outer_color '#e0af68'
-hc attr theme.urgent.title_color '#1d202f'
+# hc attr theme.active.color '#7aa2f7'  # active frame active window decoration color and active tag color
+# hc attr theme.normal.color '#414868' # inactive window decoration color
+# hc attr theme.urgent.color '#e0af68'
+#
+# hc attr theme.tab_color '#1d202f'  # inactive frame inactive tab color
+# hc attr theme.active.tab_color '#1d202f'  # active frame inactive tab color
+# hc attr theme.active.tab_outer_color '#a9b1d6'  # active frame inactive tab outline color
+# hc attr theme.active.tab_title_color '#c0caf5'  # active frame inactive tab title color
+# hc attr theme.normal.title_color '#c0caf5'  # inactive frame title color
+#
+# hc attr theme.active.border_width 2  # active window
+# hc attr theme.active.inner_width 0
+# hc attr theme.normal.border_width 2  # inactive window
+# hc attr theme.normal.inner_width 0
+#
+# hc attr theme.floating.border_width 2
+# hc attr theme.floating.outer_width 0
+# hc attr theme.floating.outer_color black
+#
+# hc attr theme.active.inner_color '#9ece6a'  # active frame
+# hc attr theme.urgent.inner_color '#e0af68'
+# hc attr theme.normal.inner_color '#414868'
 
 # copy inner color to outer_color
 # for state in active urgent normal ; do
 #     hc substitute C theme.${state}.inner_color \
 #         attr theme.${state}.outer_color C
 # done
+# hc attr theme.tiling.outer_width 0
+# hc attr theme.background_color '#ff0000'
 
 hc set window_gap 8
 hc set frame_padding 0
-hc set smart_window_surroundings on
-hc set smart_frame_surroundings on
+hc set smart_window_surroundings off
+hc set smart_frame_surroundings off
 hc set mouse_recenter_gap 0
-hc set hide_covered_windows true
 
 # rules
 hc unrule -F
