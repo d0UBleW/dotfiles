@@ -11,9 +11,9 @@ hc emit_hook reload
 # picom --experimental-backends &
 
 xsetroot -solid '#5A8E3A'
-xwallpaper --focus /home/d0ublew/Downloads/void-clean.png
+nitrogen --restore
 
-TERMINAL="wezterm"
+TERMINAL="alacritty"
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -27,7 +27,8 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
-hc keybind $Mod-Shift-space spawn ~/.config/herbstluftwm/dmenu_run_hlwm
+hc keybind $Mod-Shift-o spawn $HOME/.config/herbstluftwm/dmenu_run_hlwm
+hc keybind $Mod-Shift-s spawn $HOME/.config/herbstluftwm/scripts/q3terminal.sh
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -52,8 +53,8 @@ hc keybind $Mod-Shift-l     shift right
 
 # splitting frames
 # create an empty frame at the specified direction
-hc keybind $Mod-u       split   bottom  0.5
-hc keybind $Mod-o       split   right   0.5
+hc keybind $Mod-s       split   bottom  0.5
+hc keybind $Mod-v       split   right   0.5
 # let the current frame explode into subframes
 hc keybind $Mod-Control-space split explode
 
@@ -69,7 +70,7 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-tag_names=( {1..9} 0 )
+tag_names=( {1..9} 10 )
 tag_keys=( {1..9} 0 )
 
 hc rename default "${tag_names[0]}" || true
@@ -88,7 +89,7 @@ done
 
 # layouting
 hc keybind $Mod-r remove
-hc keybind $Mod-s floating toggle
+hc keybind $Mod-f floating toggle
 hc keybind $Mod-z fullscreen toggle
 hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
 hc keybind $Mod-Shift-d set_attr clients.focus.decorated toggle
@@ -115,24 +116,31 @@ hc keybind $Mod-Tab         cycle_all +1
 hc keybind $Mod-Shift-Tab   cycle_all -1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
+hc keybind $Mod-F9 cycle_value frame_gap 0 8 16 24 32
+hc keybind $Mod-Shift-F9 cycle_value frame_gap 32 24 16 8 0
+hc keybind $Mod-F10 cycle_value window_gap 0 8 16 24 32
+hc keybind $Mod-Shift-F10 cycle_value window_gap 32 24 16 8 0
+hc keybind $Mod-F11 set smart_window_surroundings on
+hc keybind $Mod-Shift-F11 set smart_window_surroundings off
 
 # theme
-[ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm ] && \
-    source $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm
+[ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm.sh ] && \
+    source $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm.sh
 
-# [ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_day ] && \
-#     source $HOME/.config/herbstluftwm/themes/colors/tokyonight_day
+# [ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_day.sh ] && \
+#     source $HOME/.config/herbstluftwm/themes/colors/tokyonight_day.sh
 
-[ -f $HOME/.config/herbstluftwm/themes/styles/single_border ] && \
-    source $HOME/.config/herbstluftwm/themes/styles/single_border
+[ -f $HOME/.config/herbstluftwm/themes/styles/single_border.sh ] && \
+    source $HOME/.config/herbstluftwm/themes/styles/single_border.sh
 
-# [ -f $HOME/.config/herbstluftwm/themes/styles/double_border ] && \
-#     source $HOME/.config/herbstluftwm/themes/styles/double_border
+# [ -f $HOME/.config/herbstluftwm/themes/styles/double_border.sh ] && \
+#     source $HOME/.config/herbstluftwm/themes/styles/double_border.sh
 
-hc set window_gap 8
+hc set frame_gap 16
+hc set window_gap 16
 hc set frame_padding 0
 hc set smart_window_surroundings on
-hc set smart_frame_surroundings on
+hc set smart_frame_surroundings hide_gaps
 hc set mouse_recenter_gap 0
 hc set hide_covered_windows true
 
@@ -149,7 +157,7 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule fixedsize floating=on
 
-hc rule class='Firefox' --tag=9 --focus=on
+hc rule class='Firefox' --tag=10 --focus=on
 
 hc set tree_style '╾│ ├└╼─┐'
 
