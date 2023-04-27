@@ -29,9 +29,9 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 560px;
-    width: 1000;
-    border: 3px;
+    height: 540px;
+    width: 960px;
+    border: 2px;
     border-color: @border-col;
     background-color: @bg-col;
 }

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 hash herbstclient xrandr
 
@@ -6,6 +6,7 @@ print_tags() {
 	for tag in $(herbstclient tag_status "$1"); do
 		name=${tag#?}
 		state=${tag%$name}
+        name="%{A1:herbstclient use $name:}$name%{A}"
 		case "$state" in
 		'#')
 			printf '%%{R} %s %%{R}' "$name"
@@ -29,8 +30,6 @@ print_tags() {
 geom_regex='[[:digit:]]\+x[[:digit:]]\++[[:digit:]]\++[[:digit:]]\+'
 geom=$(xrandr --query | grep "^$MONITOR" | grep -o "$geom_regex")
 monitor=$(herbstclient list_monitors | grep "$geom" | cut -d: -f1)
-
-herbstclient pad 0 48 8 8 8
 
 print_tags "$monitor"
 

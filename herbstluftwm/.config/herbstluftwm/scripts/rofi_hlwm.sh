@@ -5,4 +5,4 @@ if ! command -v rofi 2>/dev/null ; then
     exit 1
 fi
 
-exec rofi -show "$@"
+exec rofi "$@"
