@@ -15,4 +15,19 @@ if vim.fn.executable("clip.exe") and not inside_tmux then
                 \   'cache_enabled': 0,
                 \ }
 	]])
+elseif vim.fn.executable("xclip") and not inside_tmux then
+	vim.cmd([[
+    let g:clipboard = {
+                \   'name': 'xclip',
+                \   'copy': {
+                \      '+': 'xclip -sel clip',
+                \      '*': 'xclip -sel clip',
+                \    },
+                \   'paste': {
+                \      '+': 'xclip -o -sel clip',
+                \      '*': 'xclip -o -sel clip',
+                \   },
+                \   'cache_enabled': 1,
+                \ }
+	]])
 end
