@@ -12,7 +12,6 @@ hc emit_hook reload
 
 $HOME/.config/polybar/launch.sh
 $HOME/.fehbg &
-# nm-applet &
 
 TERMINAL="alacritty"
 
@@ -39,7 +38,12 @@ hc keybind $Mod-Shift-o spawn $HOME/.config/herbstluftwm/scripts/rofi_hlwm.sh \
     -show drun
 
 hc keybind $Mod-Escape  spawn $HOME/.config/herbstluftwm/scripts/rofi_hlwm.sh \
-    -show power-menu -modi power-menu:/home/d0ublew/.config/rofi/rofi-power-menu
+    -show power-menu \
+    -modi power-menu:$HOME/.config/rofi/power-menu/rofi-power-menu \
+    -config $HOME/.config/rofi/power-menu/power-menu.rasi
+
+hc keybind $Mod-F5 spawn $HOME/bin/mode dark
+hc keybind $Mod-F6 spawn $HOME/bin/mode light
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -141,17 +145,14 @@ hc keybind XF86AudioLowerVolume spawn pamixer -d 1
 hc keybind XF86AudioMute spawn pamixer -t
 
 # theme
-[ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm.sh ] && \
-    source $HOME/.config/herbstluftwm/themes/colors/tokyonight_storm.sh
+[ -f $HOME/.config/herbstluftwm/themes/colors/default.sh ] && \
+    source $HOME/.config/herbstluftwm/themes/colors/default.sh
 
-# [ -f $HOME/.config/herbstluftwm/themes/colors/tokyonight_day.sh ] && \
-#     source $HOME/.config/herbstluftwm/themes/colors/tokyonight_day.sh
+[ -f $HOME/.config/herbstluftwm/themes/styles/default.sh ] && \
+    source $HOME/.config/herbstluftwm/themes/styles/default.sh
 
-[ -f $HOME/.config/herbstluftwm/themes/styles/single_border.sh ] && \
-    source $HOME/.config/herbstluftwm/themes/styles/single_border.sh
-
-# [ -f $HOME/.config/herbstluftwm/themes/styles/double_border.sh ] && \
-#     source $HOME/.config/herbstluftwm/themes/styles/double_border.sh
+# source $HOME/.config/herbstluftwm/themes/colors/tokyonight_day.sh
+# source $HOME/.config/herbstluftwm/themes/styles/single_border.sh
 
 hc set frame_gap 8
 hc set window_gap 8

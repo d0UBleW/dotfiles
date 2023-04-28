@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+[[ "$#" -eq 1 ]] && \
+sed -i "s/colors: \*.*/colors: *${1}/" \
+    $HOME/.config/alacritty/alacritty.yml

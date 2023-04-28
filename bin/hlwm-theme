@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "light" ]]; then
+    ln -sf ~/.config/herbstluftwm/themes/colors/tokyonight_day.sh \
+        ~/.config/herbstluftwm/themes/colors/default.sh
+elif [[ "$1" == "dark" ]]; then
+    ln -sf ~/.config/herbstluftwm/themes/colors/tokyonight_storm.sh \
+        ~/.config/herbstluftwm/themes/colors/default.sh
+else
+    exit 1
+fi
+
+ln -sf ~/.config/herbstluftwm/themes/styles/single_border.sh \
+    ~/.config/herbstluftwm/themes/styles/default.sh
+herbstclient reload

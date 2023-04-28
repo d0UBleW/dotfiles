@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "light" ]]; then
+    ln -sf ~/.config/rofi/light-mode.rasi \
+        ~/.config/rofi/config.rasi
+    ln -sf ~/.config/rofi/power-menu/light-mode.rasi \
+        ~/.config/rofi/power-menu/power-menu.rasi
+elif [[ "$1" == "dark" ]]; then
+    ln -sf ~/.config/rofi/dark-mode.rasi \
+        ~/.config/rofi/config.rasi
+    ln -sf ~/.config/rofi/power-menu/dark-mode.rasi \
+        ~/.config/rofi/power-menu/power-menu.rasi
+else
+    exit 1
+fi

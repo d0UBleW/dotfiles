@@ -3,10 +3,9 @@
  */
 
 configuration{
-    modi: "run,drun,window";
-    lines: 5;
+    lines: 6;
     font: "IosevkaTerm Nerd Font Mono 10";
-    show-icons: true;
+    show-icons: false;
     icon-theme: "Oranchelo";
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
@@ -29,8 +28,8 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 540px;
-    width: 960px;
+    height: 405px;
+    width: 360px;
     border: 2px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -71,7 +70,7 @@ listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
-    columns: 2;
+    columns: 1;
     background-color: @bg-col;
 }
 

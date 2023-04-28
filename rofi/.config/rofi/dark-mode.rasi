@@ -21,7 +21,7 @@ configuration{
     dpi: 144;
 }
 
-@theme "tokyonight-day"
+@theme "tokyonight-storm"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
