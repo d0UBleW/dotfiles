@@ -15,3 +15,5 @@ elif [[ "$1" == "dark" ]]; then
 else
     exit 1
 fi
+
+echo "$1" > $HOME/.theme

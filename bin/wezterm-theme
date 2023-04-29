@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+[[ "$#" -eq 1 ]] && \
+sed -i "s/^config\.color_scheme\s*=.*/config.color_scheme = \"${1}\"/" \
+    $HOME/.config/wezterm/wezterm.lua

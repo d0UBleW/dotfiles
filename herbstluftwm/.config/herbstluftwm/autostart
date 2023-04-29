@@ -27,8 +27,7 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return  spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
-# hc keybind $Mod-Shift-o spawn $HOME/.config/herbstluftwm/dmenu_run_hlwm
-hc keybind $Mod-Shift-s spawn $HOME/.config/herbstluftwm/scripts/scratchpad.sh
+hc keybind $Mod-F7      spawn $HOME/bin/toggle-theme.sh
 hc keybind $Mod-Shift-w spawn $HOME/.config/herbstluftwm/scripts/windowmenu.sh
 
 hc keybind $Mod-w       spawn $HOME/.config/herbstluftwm/scripts/rofi_hlwm.sh \
@@ -131,6 +130,7 @@ hc keybind $Mod-Tab         cycle_all +1
 hc keybind $Mod-Shift-Tab   cycle_all -1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
+
 hc keybind $Mod-F9 cycle_value frame_gap 0 8 16 24 32
 hc keybind $Mod-Shift-F9 cycle_value frame_gap 32 24 16 8 0
 hc keybind $Mod-F10 cycle_value window_gap 0 8 16 24 32
@@ -148,8 +148,11 @@ hc keybind XF86AudioMute spawn pamixer -t
 [ -f $HOME/.config/herbstluftwm/themes/colors/default.sh ] && \
     source $HOME/.config/herbstluftwm/themes/colors/default.sh
 
-[ -f $HOME/.config/herbstluftwm/themes/styles/default.sh ] && \
-    source $HOME/.config/herbstluftwm/themes/styles/default.sh
+# [ -f $HOME/.config/herbstluftwm/themes/styles/default.sh ] && \
+#     source $HOME/.config/herbstluftwm/themes/styles/default.sh
+
+[ -f $HOME/.config/herbstluftwm/themes/styles/left_border.sh ] && \
+    source $HOME/.config/herbstluftwm/themes/styles/left_border.sh
 
 # source $HOME/.config/herbstluftwm/themes/colors/tokyonight_day.sh
 # source $HOME/.config/herbstluftwm/themes/styles/single_border.sh
@@ -157,8 +160,8 @@ hc keybind XF86AudioMute spawn pamixer -t
 hc set frame_gap 8
 hc set window_gap 8
 hc set frame_padding 0
-hc set smart_window_surroundings on
-hc set smart_frame_surroundings hide_gaps
+hc set smart_window_surroundings off
+hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
 hc set hide_covered_windows true
 

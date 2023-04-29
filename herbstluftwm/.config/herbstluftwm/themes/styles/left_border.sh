@@ -15,16 +15,17 @@ hc attr theme.title_when 'multiple_tabs'
 hc attr theme.title_font 'Iosevka Term:pixelsize=14'
 # hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
 hc attr theme.title_depth 4  # space below the title's baseline
-hc attr theme.title_color $COLOR_FG
+hc attr theme.title_color $COLOR_TERMINAL_BLACK
 
 hc attr theme.background_color '#00000000'  # background when resizing
 
-hc attr theme.border_width $WIDTH
-hc attr theme.color $COLOR_DARK3
-hc attr theme.inner_color $COLOR_DARK5
+hc attr theme.border_width 0
+hc attr theme.color $COLOR_TERMINAL_BLACK
+hc attr theme.inner_color $COLOR_TERMINAL_BLACK
 hc attr theme.inner_width 0
-hc attr theme.outer_color $COLOR_DARK3
+hc attr theme.outer_color $COLOR_TERMINAL_BLACK
 hc attr theme.outer_width 0
+hc attr theme.padding_left 16
 
 hc attr theme.tab_color $COLOR_BLACK
 # hc attr theme.tab_outer_color $COLOR_DARK5
@@ -32,18 +33,19 @@ hc attr theme.tab_color $COLOR_BLACK
 hc attr theme.tab_title_color $COLOR_DARK5
 
 # hc attr theme.active.color $COLOR_TERMINAL_BLACK
-hc attr theme.active.outer_width $WIDTH
-hc attr theme.active.outer_color $COLOR_GREEN
+hc attr theme.active.inner_width 4
+hc attr theme.active.inner_color $COLOR_BLUE
 hc attr theme.active.title_color $COLOR_FG
+# hc attr theme.active.color $COLOR_BLUE
 
-hc attr theme.floating.outer_width $WIDTH
-hc attr theme.floating.outer_color $COLOR_GREEN
-hc attr theme.floating.title_color $COLOR_BLACK
+hc attr theme.floating.inner_width 4
+hc attr theme.floating.inner_color $COLOR_GREEN
+hc attr theme.floating.title_color $COLOR_TERMINAL_BLACK
 hc attr theme.floating.title_when 'always'
 
-hc attr theme.urgent.color $COLOR_MAGENTA
-hc attr theme.urgent.outer_width $WIDTH
-hc attr theme.urgent.outer_color $COLOR_YELLOW
+# hc attr theme.urgent.color $COLOR_MAGENTA
+hc attr theme.urgent.inner_width 0
+hc attr theme.urgent.inner_color $COLOR_YELLOW
 hc attr theme.urgent.title_color $COLOR_BLACK
 
 # copy inner color to outer_color

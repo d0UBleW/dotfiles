@@ -3,7 +3,7 @@ hc set frame_border_active_color $COLOR_CYAN
 hc set frame_border_normal_color $COLOR_TERMINAL_BLACK
 # hc set frame_bg_normal_color '#ff0000aa'  # only takes effect when frame_bg_transparent is off
 # hc set frame_bg_active_color '#ffffff'  # only takes effect when frame_bg_transparent is off
-hc set frame_border_width 2
+hc set frame_border_width 0
 hc set frame_border_inner_width 0
 hc set frame_border_inner_color $COLOR_GREEN
 hc set show_frame_decorations 'focused_if_multiple'
