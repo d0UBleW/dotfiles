@@ -180,6 +180,8 @@ hc rule fixedsize floating=on
 
 hc rule class='Firefox' --tag=10 --focus=on
 
+hc rule title~'nmtui.sh' floating=on floatplacement=center floating_geometry=800x600
+
 hc set tree_style '╾│ ├└╼─┐'
 
 # unlock, just to be sure
