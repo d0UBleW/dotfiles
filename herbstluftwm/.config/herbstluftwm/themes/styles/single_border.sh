@@ -17,7 +17,7 @@ hc attr theme.title_font 'Iosevka Term:pixelsize=14'
 hc attr theme.title_depth 4  # space below the title's baseline
 hc attr theme.title_color $COLOR_FG
 
-hc attr theme.background_color '#ffffff'  # background when resizing
+hc attr theme.background_color '#00000000'  # background when resizing
 
 hc attr theme.border_width $WIDTH
 hc attr theme.color $COLOR_DARK3
