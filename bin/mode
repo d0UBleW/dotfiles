@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
+echo "$1" > $HOME/.theme
+
 if [[ "$1" == "light" ]]; then
+    dunst-theme light
     alacritty-theme tokyonight-day
     rofi-theme light
     xresources-theme light
     feh --bg-fill $HOME/wallpapers/tokyoday-3.jpg
     hlwm-theme light
 elif [[ "$1" == "dark" ]]; then
+    dunst-theme dark
     alacritty-theme tokyonight-storm
     rofi-theme dark
     xresources-theme dark
@@ -16,4 +20,30 @@ else
     exit 1
 fi
 
-echo "$1" > $HOME/.theme
+pkill dunst
+
+THEME_MODE=$(cat ~/.theme | sed 's/[^ ]\+/\L\u&/g')
+ICON_DIR="/usr/share/icons/Papirus-${THEME_MODE}/symbolic/status"
+
+function get_icon {
+    echo "${ICON_DIR}/${1}.svg"
+}
+
+function notify {
+    if [[ "$THEME_MODE" == "Dark" ]]; then
+        icon=$(get_icon "night-light-symbolic")
+        msg="Dark Mode"
+    else
+        icon=$(get_icon "display-brightness-high-symbolic")
+        msg="Light Mode"
+    fi
+    notify-send \
+        -e \
+        -i ${icon} \
+        -u low \
+        -t 2000 \
+        -r 9998 \
+        "${msg}"
+}
+
+notify

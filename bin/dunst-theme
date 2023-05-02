@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "light" ]]; then
+    ln -sf ~/.config/dunst/dunstrc.d/light \
+        ~/.config/dunst/dunstrc.d/color.conf
+elif [[ "$1" == "dark" ]]; then
+    ln -sf ~/.config/dunst/dunstrc.d/dark \
+        ~/.config/dunst/dunstrc.d/color.conf
+else
+    exit 1
+fi
+
