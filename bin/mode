@@ -7,14 +7,14 @@ if [[ "$1" == "light" ]]; then
     alacritty-theme tokyonight-day
     rofi-theme light
     xresources-theme light
-    feh --bg-fill $HOME/wallpapers/tokyoday-3.jpg
+    feh --bg-fill $HOME/pictures/wallpapers/totoro-1.jpg
     hlwm-theme light
 elif [[ "$1" == "dark" ]]; then
     dunst-theme dark
     alacritty-theme tokyonight-storm
     rofi-theme dark
     xresources-theme dark
-    feh --bg-fill $HOME/wallpapers/tokyonight.jpeg
+    feh --bg-fill $HOME/pictures/wallpapers/8-bit-tokyonight.jpg
     hlwm-theme dark
 else
     exit 1

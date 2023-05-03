@@ -19,10 +19,10 @@ hc attr theme.title_color $COLOR_FG
 
 hc attr theme.background_color '#00000000'  # background when resizing
 
-hc attr theme.border_width 12
+hc attr theme.border_width 16
 hc attr theme.color $COLOR_BG
 hc attr theme.inner_color $COLOR_DARK3
-hc attr theme.inner_width 3
+hc attr theme.inner_width 4
 hc attr theme.outer_color $COLOR_TERMINAL_BLACK
 hc attr theme.outer_width 0
 
@@ -32,19 +32,19 @@ hc attr theme.tab_color $COLOR_BLACK
 hc attr theme.tab_title_color $COLOR_FG
 
 # hc attr theme.active.color $COLOR_TERMINAL_BLACK
-hc attr theme.active.inner_width 3
+hc attr theme.active.inner_width 4
 hc attr theme.active.inner_color $COLOR_BLUE
 hc attr theme.active.title_color $COLOR_FG
 # hc attr theme.active.color $COLOR_BLUE
 
-hc attr theme.floating.inner_width 3
+hc attr theme.floating.inner_width 4
 hc attr theme.floating.inner_color $COLOR_GREEN
 hc attr theme.floating.active.inner_color $COLOR_MAGENTA
 hc attr theme.floating.title_color $COLOR_FG
 hc attr theme.floating.title_when 'always'
 
 # hc attr theme.urgent.color $COLOR_MAGENTA
-hc attr theme.urgent.inner_width 3
+hc attr theme.urgent.inner_width 4
 hc attr theme.urgent.inner_color $COLOR_YELLOW
 hc attr theme.urgent.title_color $COLOR_FG
 

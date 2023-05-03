@@ -162,14 +162,16 @@ hc keybind XF86AudioMute spawn /home/d0ublew/bin/volume.sh mute
 # source $HOME/.config/herbstluftwm/themes/colors/tokyonight_day.sh
 # source $HOME/.config/herbstluftwm/themes/styles/single_border.sh
 
-hc set frame_gap 8
+hc set frame_gap 0
 hc set window_gap 8
 hc set frame_padding 0
-hc set smart_window_surroundings on
+hc set smart_window_surroundings off
 hc set smart_frame_surroundings on
 # hc set smart_frame_surroundings hide_gaps
 hc set mouse_recenter_gap 0
 hc set hide_covered_windows true
+
+hc set_layout grid
 
 # rules
 hc unrule -F
