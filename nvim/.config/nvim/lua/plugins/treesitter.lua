@@ -122,7 +122,7 @@ return {
 				disable = function(lang, bufnr)
 					return vim.api.nvim_buf_line_count(bufnr) > 3000
 				end,
-				additional_vim_regex_highlighting = true,
+				additional_vim_regex_highlighting = false,
 			},
 			incremental_selection = {
 				enable = true,
