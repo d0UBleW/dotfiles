@@ -13,15 +13,15 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-window: " 﩯  window";
-    display-Network: " 󰤨  Network";
+    display-drun: "  Apps ";
+    display-run: "  Run ";
+    display-window: " 﩯 Window ";
+    display-Network: " 󰤨 Network ";
     sidebar-mode: true;
     dpi: 144;
 }
 
-@theme "tokyonight-day"
+@theme "kanagawa-lotus"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
@@ -32,25 +32,25 @@ window {
     height: 540px;
     width: 960px;
     border: 2px;
-    border-color: @border-col;
-    background-color: @bg-col;
+    border-color: @border;
+    background-color: @bg;
 }
 
 mainbox {
-    background-color: @bg-col;
+    background-color: @bg;
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @bg-col;
+    background-color: @bg;
     border-radius: 5px;
     padding: 2px;
 }
 
 prompt {
-    background-color: @blue;
+    background-color: @fg;
     padding: 6px;
-    text-color: @bg-col;
+    text-color: @bg;
     border-radius: 3px;
     margin: 20px 0px 0px 20px;
 }
@@ -63,8 +63,8 @@ textbox-prompt-colon {
 entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
-    text-color: @fg-col;
-    background-color: @bg-col;
+    text-color: @fg;
+    background-color: @bg;
 }
 
 listview {
@@ -72,13 +72,13 @@ listview {
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
     columns: 2;
-    background-color: @bg-col;
+    background-color: @bg;
 }
 
 element {
     padding: 5px;
-    background-color: @bg-col;
-    text-color: @fg-col  ;
+    background-color: @bg;
+    text-color: @fg;
 }
 
 element-icon {
@@ -86,8 +86,8 @@ element-icon {
 }
 
 element selected {
-    background-color:  @selected-col ;
-    text-color: @fg-col2  ;
+    background-color:  @bg-sel ;
+    text-color: @fg;
 }
 
 mode-switcher {
@@ -96,13 +96,13 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @bg-col-light;
-    text-color: @grey;
+    background-color: @bg-light;
+    text-color: @fg;
     vertical-align: 0.5; 
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color: @bg-col;
-  text-color: @blue;
+  background-color: @bg;
+  text-color: @fg-sel;
 }

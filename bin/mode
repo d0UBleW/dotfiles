@@ -4,17 +4,21 @@ echo "$1" > $HOME/.theme
 
 if [[ "$1" == "light" ]]; then
     dunst-theme light
-    alacritty-theme tokyonight-day
+    # alacritty-theme tokyonight-day
+    alacritty-theme kanagawa-lotus
     rofi-theme light
     xresources-theme light
-    feh --bg-fill $HOME/pictures/wallpapers/totoro-1.jpg
+    # feh --bg-fill $HOME/pictures/wallpapers/totoro-1.jpg
+    feh --bg-scale $HOME/pictures/wallpapers/kanagawa-light.jpg
     hlwm-theme light
 elif [[ "$1" == "dark" ]]; then
     dunst-theme dark
-    alacritty-theme tokyonight-storm
+    # alacritty-theme tokyonight-storm
+    alacritty-theme kanagawa-wave
     rofi-theme dark
     xresources-theme dark
-    feh --bg-fill $HOME/pictures/wallpapers/8-bit-tokyonight.jpg
+    # feh --bg-fill $HOME/pictures/wallpapers/8-bit-tokyonight.jpg
+    feh --bg-scale $HOME/pictures/wallpapers/kanagawa-dark.jpg
     hlwm-theme dark
 else
     exit 1

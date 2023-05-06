@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 if [[ "$1" == "light" ]]; then
-    ln -sf ~/.config/xresources/tokyonight-day.Xresources ~/.Xresources
+    # ln -sf ~/.config/xresources/tokyonight-day.Xresources ~/.Xresources
+    ln -sf ~/.config/xresources/kanagawa-lotus.Xresources ~/.Xresources
 elif [[ "$1" == "dark" ]]; then
     ln -sf ~/.config/xresources/tokyonight-storm.Xresources ~/.Xresources
+    ln -sf ~/.config/xresources/kanagawa-wave.Xresources ~/.Xresources
 else
     exit 1
 fi

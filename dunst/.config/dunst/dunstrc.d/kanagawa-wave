@@ -1,0 +1,21 @@
+# vim: ft=cfg
+
+[urgency_low]
+    background = "#1f1f28"
+    foreground = "#dcd7ba"
+    highlight = "#76946a"
+    frame_color = "#dcd7ba"
+    timeout = 10
+
+[urgency_normal]
+    background = "#1f1f28"
+    foreground = "#7e9cd8"
+    highlight = "#76946a"
+    frame_color = "#dcd7ba"
+    timeout = 10
+
+[urgency_critical]
+    background = "#1f1f28"
+    foreground = "#ffa066"
+    frame_color = "#ff5d62"
+    timeout = 0

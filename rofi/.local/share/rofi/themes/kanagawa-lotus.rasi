@@ -1,0 +1,10 @@
+* {
+    bg:  #f2ecbc;
+    bg-light: #e4d794;
+    bg-sel: #b5cbd2;
+    fg: #545464;
+    fg-sel: #43436c;
+    highlight: #545464;
+    border: #545464;
+    width: 540;
+}
