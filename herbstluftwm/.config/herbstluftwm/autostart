@@ -145,9 +145,9 @@ hc keybind $Mod-Shift-F12 set_attr theme.title_height 0
 # hc keybind XF86AudioLowerVolume spawn pamixer -d 1
 # hc keybind XF86AudioMute spawn pamixer -t
 
-hc keybind XF86AudioRaiseVolume spawn /home/d0ublew/bin/volume.sh up
-hc keybind XF86AudioLowerVolume spawn /home/d0ublew/bin/volume.sh down
-hc keybind XF86AudioMute spawn /home/d0ublew/bin/volume.sh mute
+hc keybind $Mod-F3 spawn /home/d0ublew/bin/volume.sh up
+hc keybind $Mod-F2 spawn /home/d0ublew/bin/volume.sh down
+hc keybind $Mod-F1 spawn /home/d0ublew/bin/volume.sh mute
 
 # theme
 [ -f $HOME/.config/herbstluftwm/themes/colors/default.sh ] && \

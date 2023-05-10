@@ -1,77 +1,210 @@
-items:
-  - colors:
-      name: TokyoNight Storm
-      author: Folke
-      # Default colors
-      primary:
-        background: "0x24283b"
-        foreground: "0xc0caf5"
+window:
+  padding:
+    x: 16
+    y: 16
 
-      # Normal colors
-      normal:
-        black: "0x1D202F"
-        red: "0xf7768e"
-        green: "0x9ece6a"
-        yellow: "0xe0af68"
-        blue: "0x7aa2f7"
-        magenta: "0xbb9af7"
-        cyan: "0x7dcfff"
-        white: "0xa9b1d6"
+  opacity: 1.0
 
-      # Bright colors
-      bright:
-        black: "0x414868"
-        red: "0xf7768e"
-        green: "0x9ece6a"
-        yellow: "0xe0af68"
-        blue: "0x7aa2f7"
-        magenta: "0xbb9af7"
-        cyan: "0x7dcfff"
-        white: "0xc0caf5"
-
-      indexed_colors:
-        - { index: 16, color: "0xff9e64" }
-        - { index: 17, color: "0xdb4b4b" }
-  - theme: Tokyonight_Storm
-colors:
-  name: TokyoNight Day
-  author: Folke
-  # Default colors
-  primary:
-    background: '0xe1e2e7'
-    foreground: '0x3760bf'
-
-  # Normal colors
-  normal:
-    black: '0xe9e9ed'
-    red: '0xf52a65'
-    green: '0x587539'
-    yellow: '0x8c6c3e'
-    blue: '0x2e7de9'
-    magenta: '0x9854f1'
-    cyan: '0x007197'
-    white: '0x6172b0'
-
-  # Bright colors
-  bright:
-    black: '0xa1a6c5'
-    red: '0xf52a65'
-    green: '0x587539'
-    yellow: '0x8c6c3e'
-    blue: '0x2e7de9'
-    magenta: '0x9854f1'
-    cyan: '0x007197'
-    white: '0x3760bf'
-
-  indexed_colors:
-    - { index: 16, color: '0xb15c00' }
-    - { index: 17, color: '0xc64343' }
-theme: Tokyonight_Day
 font:
   normal:
-    family: JetBrainsMono Nerd Font Mono
-  size: 14.0
-shell:
-  program: /bin/bash
-  args:
-    - --login
+    family: IosevkaTerm Nerd Font
+    style: Medium
+  size: 13.0
+
+key_bindings:
+  - { key: M, mods: Control|Alt|Shift, command: { program: '/home/d0ublew/bin/alacritty-theme', args: ["tokyonight-day"] } }
+  - { key: M, mods: Control|Alt, command: { program: '/home/d0ublew/bin/alacritty-theme', args: ["tokyonight-storm"] } }
+
+schemes:
+  # Tokyo Night theme, based on both:
+  #   https://github.com/ghifarit53/tokyonight-vim
+  #   https://github.com/enkia/tokyo-night-vscode-theme
+  tokyo-night: &tokyo-night
+    # Default colors
+    primary:
+      background: '#1a1b26'
+      foreground: '#a9b1d6'
+
+    # Normal colors
+    normal:
+      black:   '#32344a'
+      red:     '#f7768e'
+      green:   '#9ece6a'
+      yellow:  '#e0af68'
+      blue:    '#7aa2f7'
+      magenta: '#ad8ee6'
+      cyan:    '#449dab'
+      white:   '#787c99'
+
+    # Bright colors
+    bright:
+      black:   '#444b6a'
+      red:     '#ff7a93'
+      green:   '#b9f27c'
+      yellow:  '#ff9e64'
+      blue:    '#7da6ff'
+      magenta: '#bb9af7'
+      cyan:    '#0db9d7'
+      white:   '#acb0d0'
+
+  tokyo-night-storm-bak: &tokyo-night-storm-bak
+    # Default colors
+    primary:
+      background: '#24283b'
+      foreground: '#a9b1d6'
+
+    # Normal colors
+    normal:
+      black:   '#32344a'
+      red:     '#f7768e'
+      green:   '#9ece6a'
+      yellow:  '#e0af68'
+      blue:    '#7aa2f7'
+      magenta: '#ad8ee6'
+      cyan:    '#449dab'
+      white:   '#9699a8'
+
+    # Bright colors
+    bright:
+      black:   '#444b6a'
+      red:     '#ff7a93'
+      green:   '#b9f27c'
+      yellow:  '#ff9e64'
+      blue:    '#7da6ff'
+      magenta: '#bb9af7'
+      cyan:    '#0db9d7'
+      white:   '#acb0d0'
+
+  # TokyoNight Alacritty Colors
+  tokyonight-day: &tokyonight-day
+    # Default colors
+    primary:
+      background: '#e1e2e7'
+      foreground: '#3760bf'
+
+    # Normal colors
+    normal:
+      black:   '#e9e9ed'
+      red:     '#f52a65'
+      green:   '#587539'
+      yellow:  '#8c6c3e'
+      blue:    '#2e7de9'
+      magenta: '#9854f1'
+      cyan:    '#007197'
+      white:   '#6172b0'
+
+    # Bright colors
+    bright:
+      black:   '#a1a6c5'
+      red:     '#f52a65'
+      green:   '#587539'
+      yellow:  '#8c6c3e'
+      blue:    '#2e7de9'
+      magenta: '#9854f1'
+      cyan:    '#007197'
+      white:   '#3760bf'
+
+    indexed_colors:
+      - { index: 16, color: '#b15c00' }
+      - { index: 17, color: '#c64343' }
+
+  # TokyoNight Alacritty Colors
+  tokyonight-storm: &tokyonight-storm
+    # Default colors
+    primary:
+      background: '#24283b'
+      foreground: '#c0caf5'
+
+    # Normal colors
+    normal:
+      black:   '#1d202f'
+      red:     '#f7768e'
+      green:   '#9ece6a'
+      yellow:  '#e0af68'
+      blue:    '#7aa2f7'
+      magenta: '#bb9af7'
+      cyan:    '#7dcfff'
+      white:   '#a9b1d6'
+
+    # Bright colors
+    bright:
+      black:   '#414868'
+      red:     '#f7768e'
+      green:   '#9ece6a'
+      yellow:  '#e0af68'
+      blue:    '#7aa2f7'
+      magenta: '#bb9af7'
+      cyan:    '#7dcfff'
+      white:   '#c0caf5'
+
+    indexed_colors:
+      - { index: 16, color: '#ff9e64' }
+      - { index: 17, color: '#db4b4b' }
+
+  kanagawa-wave: &kanagawa-wave
+    primary:
+      background: '#1f1f28'
+      foreground: '#dcd7ba'
+
+    normal:
+      black:   '#090618'
+      red:     '#c34043'
+      green:   '#76946a'
+      yellow:  '#c0a36e'
+      blue:    '#7e9cd8'
+      magenta: '#957fb8'
+      cyan:    '#6a9589'
+      white:   '#c8c093'
+
+    bright:
+      black:   '#727169'
+      red:     '#e82424'
+      green:   '#98bb6c'
+      yellow:  '#e6c384'
+      blue:    '#7fb4ca'
+      magenta: '#938aa9'
+      cyan:    '#7aa89f'
+      white:   '#dcd7ba'
+
+    selection:
+      background: '#2d4f67'
+      foreground: '#c8c093'
+
+    indexed_colors:
+      - { index: 16, color: '#ffa066' }
+      - { index: 17, color: '#ff5d62' }
+
+  kanagawa-lotus: &kanagawa-lotus
+    primary:
+      background: '#f2ecbc'
+      foreground: '#545464'
+
+    normal:
+      black:   '#1f1f28'
+      red:     '#c84053'
+      green:   '#6f894e'
+      yellow:  '#77713f'
+      blue:    '#4d699b'
+      magenta: '#b35b79'
+      cyan:    '#597b75'
+      white:   '#545464'
+
+    bright:
+      black:   '#8a8980'
+      red:     '#d7474b'
+      green:   '#6e915f'
+      yellow:  '#836f4a'
+      blue:    '#6693bf'
+      magenta: '#624c83'
+      cyan:    '#5e857a'
+      white:   '#43436c'
+
+    selection:
+      background: '#9fb5c9'
+      foreground: '#43436c'
+
+    indexed_colors:
+      - { index: 16, color: '#e98a00' }
+      - { index: 17, color: '#e82424' }
+
+colors: *tokyonight-day
