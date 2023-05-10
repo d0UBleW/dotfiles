@@ -21,7 +21,8 @@ configuration{
     dpi: 144;
 }
 
-@theme "kanagawa-lotus"
+/* @theme "kanagawa-lotus" */
+@theme "tokyonight-day"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
