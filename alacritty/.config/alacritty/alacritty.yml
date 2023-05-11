@@ -9,7 +9,7 @@ font:
   normal:
     family: IosevkaTerm Nerd Font
     style: Medium
-  size: 13.0
+  size: 14.0
 
 key_bindings:
   - { key: M, mods: Control|Alt|Shift, command: { program: '/home/d0ublew/bin/alacritty-theme', args: ["tokyonight-day"] } }

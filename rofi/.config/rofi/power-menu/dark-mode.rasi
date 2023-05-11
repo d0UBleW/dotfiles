@@ -20,7 +20,7 @@ configuration{
     dpi: 144;
 }
 
-@theme "kanagawa-wave"
+@theme "tokyonight-storm"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
