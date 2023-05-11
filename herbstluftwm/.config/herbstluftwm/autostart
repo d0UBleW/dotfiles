@@ -149,6 +149,8 @@ hc keybind $Mod-F3 spawn /home/d0ublew/bin/volume.sh up
 hc keybind $Mod-F2 spawn /home/d0ublew/bin/volume.sh down
 hc keybind $Mod-F1 spawn /home/d0ublew/bin/volume.sh mute
 
+hc keybind $Mod-Shift-F1 spawn playerctl play-pause -p spotify
+
 # theme
 [ -f $HOME/.config/herbstluftwm/themes/colors/default.sh ] && \
     source $HOME/.config/herbstluftwm/themes/colors/default.sh
@@ -186,9 +188,11 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on floatplacement=center f
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule fixedsize floating=on
 
-hc rule class='Firefox' --tag=10 --focus=on
+hc rule class='waterfox' --tag=10 --focus=on
 hc rule class='Pcmanfm' --tag=9 --focus=on
 hc rule class='sioyek' --tag=8 --focus=on
+hc rule class='discord' --tag=4 --focus=on
+hc rule class='Spotify' --tag=5 --focus=on
 
 hc rule title~'nmtui.sh' floating=on floatplacement=center floating_geometry=800x600
 

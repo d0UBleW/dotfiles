@@ -3,7 +3,7 @@
     bg-light: #a1a6c5;
     bg-sel: #e9e9ed;
     fg: #3760bf;
-    fg-sel: #9854f1;
+    fg-sel: #587539;
     highlight: #2e7de9;
     border: #2e7de9;
     width: 540;
