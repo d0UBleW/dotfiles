@@ -62,7 +62,7 @@
 (deflisten ws
   "scripts/getws")
 
-(deflisten music :initial ""
+(deflisten music :initial "-"
   "scripts/getmusic")
 
 (defpoll volume
@@ -70,8 +70,8 @@
   :initial 0
   "scripts/getvol")
 
-(defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
+(defpoll time :interval "1s"
+  "date '+%H:%M:%S %b %d, %Y'")
 
 (defwindow bar
   :monitor 0

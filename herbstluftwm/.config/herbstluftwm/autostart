@@ -192,10 +192,10 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule fixedsize floating=on
 
 hc rule class='waterfox' --tag=10 --focus=on
-hc rule class='Pcmanfm' --tag=9 --focus=on
-hc rule class='sioyek' --tag=8 --focus=on
-hc rule class='discord' --tag=4 --focus=on
-hc rule class='Spotify' --tag=5 --focus=on
+hc rule class='Spotify' --tag=9 --focus=on
+hc rule class='discord' --tag=8 --focus=on
+hc rule class='Pcmanfm' --tag=5 --focus=on
+hc rule class='sioyek' --tag=3 --focus=on
 
 hc rule title~'nmtui.sh' floating=on floatplacement=center floating_geometry=800x600
 
