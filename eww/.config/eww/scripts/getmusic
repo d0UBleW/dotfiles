@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 status="playerctl status 2>/dev/null"
-metadata="playerctl metadata --format '{{ artist }} - {{ title }}'"
+metadata="playerctl --player spotify \
+    metadata --format '{{ artist }} - {{ title }}'"
 
 zscroll -l 48 \
     --delay 0.2 \
