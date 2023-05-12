@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+status="playerctl status 2>/dev/null"
+metadata="playerctl metadata --format '{{ artist }} - {{ title }}'"
+
+zscroll -l 48 \
+    --delay 0.2 \
+    --match-command "${status}" \
+    --match-text "Playing" "--scroll 1" \
+    --match-text "Paused" "--scroll 0" \
+    --update-check true "${metadata}" &
+
+wait
