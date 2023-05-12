@@ -22,7 +22,7 @@ hc attr theme.background_color '#00000000'  # background when resizing
 hc attr theme.border_width 16
 hc attr theme.color $background
 hc attr theme.inner_color $color8
-hc attr theme.inner_width 4
+hc attr theme.inner_width 2
 hc attr theme.outer_color $color8
 hc attr theme.outer_width 0
 
@@ -32,12 +32,12 @@ hc attr theme.tab_color $color0
 hc attr theme.tab_title_color $foreground
 
 # hc attr theme.active.color $color8
-hc attr theme.active.inner_width 4
+hc attr theme.active.inner_width 2
 hc attr theme.active.inner_color $foreground
 hc attr theme.active.title_color $foreground
 # hc attr theme.active.color $color4
 
-hc attr theme.floating.inner_width 4
+hc attr theme.floating.inner_width 2
 hc attr theme.floating.inner_color $color2
 hc attr theme.floating.active.inner_color $color5
 hc attr theme.floating.title_color $foreground

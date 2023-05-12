@@ -55,9 +55,10 @@ function ws {
 
 ws
 
-herbstclient -i '(tag_changed|urgent)' | while read -r _; do
+# herbstclient -i '(tag_changed|urgent)' | while read -r _; do
+#     ws
+# done
+
+herbstclient -i | while read -r _; do
     ws
 done
-
-#
-# echo "${TRAILER}"

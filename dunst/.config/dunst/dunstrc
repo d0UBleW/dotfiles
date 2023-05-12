@@ -24,16 +24,16 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (100, 300)
+    width = (100, 500)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 300
+    height = 500
 
     # Position the notification in the top right corner
     origin = top-right
 
     # Offset from the origin
-    offset = 32x64
+    offset = 8x48
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -49,7 +49,7 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 1
+    progress_bar_height = 2
 
     # Set the frame width of the progress bar
     progress_bar_frame_width = 0
@@ -58,7 +58,7 @@
     progress_bar_min_width = 100
 
     # Set the maximum width for the progress bar
-    progress_bar_max_width = 200
+    progress_bar_max_width = 500
 
 
     # Show how many messages are currently hidden (because of
@@ -246,7 +246,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 10
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
