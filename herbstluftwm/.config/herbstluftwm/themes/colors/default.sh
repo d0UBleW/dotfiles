@@ -1,1 +1,0 @@
-/home/d0ublew/.config/herbstluftwm/themes/colors/tokyonight_day.sh

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+template='  (button :class "%s" :onclick "wmctrl -s %d" " ") '
+
+function is_urgent {
+    index=$1
+    [ $(herbstclient attr tags.${index}.client_count) -gt 0 ] && \
+        return 0
+    return 1
+}
+
+function is_occupied {
+    index=$1
+    [ $(herbstclient attr tags.${index}.client_count) -gt 0 ] && \
+        return 0
+    return 1
+}
+
+function tag_status {
+    index=$1
+    if [ $(herbstclient attr tags.focus.index) -eq $index ]; then
+        echo "focused"
+        return
+    fi
+
+    if [ $(herbstclient attr tags.${index}.urgent_count) -gt 0 ]; then
+        echo "urgent"
+        return
+    fi
+
+    if [ $(herbstclient attr tags.${index}.client_count) -gt 0 ]; then
+        echo "occupied"
+        return
+    fi
+
+    echo "empty"
+    return
+}
+
+function ws {
+    HEADER="(box :class \"workspaces\" \
+         :orientation \"h\" \
+         :space-evenly true \
+         :halign \"start\" \
+         :spacing 0"
+
+    printf "%s " "${HEADER}"
+
+    for i in $(seq 0 9); do
+        printf "${template}" $(tag_status $i) $i
+    done
+
+    printf " )\n"
+}
+
+ws
+
+# herbstclient -i '(tag_changed|urgent)' | while read -r _; do
+#     ws
+# done
+
+herbstclient -i | while read -r _; do
+    ws
+done
