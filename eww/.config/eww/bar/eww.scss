@@ -1,0 +1,398 @@
+*{
+    all: unset;
+    font-family: IosevkaTerm NFM;
+    border-radius: 0px;
+}
+
+/** General **/
+.bar_class {
+    background-color: #24283b;
+    border-radius: 16px;
+}
+.module {
+    margin: 0px 0px 0px 0px;
+    border-radius: 16px;
+}
+
+/** tooltip!! **/
+tooltip.background {
+    background-color: #24283b;
+    font-size: 18;
+    color: #c0caf5;
+}
+
+tooltip label {
+    margin: 8px;
+}
+
+
+/** Widgets **/
+
+.clock_time_sep {
+    font-size: 16;
+    color: #bfc9db;
+    margin: 0px 4px 0px 4px;
+}
+.clock_time_class, .clock_minute_class {
+    font-size: 20;
+}
+.clock_date_class {
+    font-size: 20;
+    margin: 4px 16px 0px 0px;
+    color: #bb9af7;
+}
+.clock_minute_class {
+    margin: 4px 16px 0px 0px;
+    color: #a9b1d6;
+}
+
+.clock_time_class {
+    color: #a9b1d6;
+    font-weight: bold;
+    margin: 4px 0px 0px 0px;
+}
+
+
+.membar {
+    color: #e0af68;
+    background-color: #414868;
+    border-radius: 10px;
+}
+.batbar {
+    color: #9ece6a;
+    background-color: #414868;
+    border-radius: 10px;
+}
+
+.volbar trough highlight {
+    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    border-radius: 10px;
+}
+.volume_icon {
+    font-size: 32;
+    color: #c0caf5;
+    margin: 2px 8px 0px 8px;
+}
+
+.iconmem {
+    color: #e0b089;
+}
+.iconbat {
+    color: #afbea2;
+}
+.iconbat, .iconmem {
+    font-size: 20;
+    margin: 0px 6px 0px 6px;
+}
+
+.separ {
+    color: #414868;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 4px 8px 0px 8px;
+}
+
+.mem_module {
+    background-color: #24283b;
+    border-radius: 16px;
+    margin: 0px 8px 0px 8px;
+}
+.bat_module {
+    background-color: #24283b;
+    border-radius: 16px;
+    margin: 0px 8px 0px 8px;
+}
+
+
+scale trough {
+    all: unset;
+    background-color: #414868;
+    border-radius: 16px;
+    min-height: 10px;
+    min-width: 70px;
+    margin: 0px 8px 0px 0px;
+}
+
+.workspaces {
+    font-size: 32px;
+    margin-top: 2px;
+    margin-left: 16px;
+    color: #414868;
+}
+
+.workspaces button {
+    margin: 0px -8px 0px 0px;
+}
+
+.workspaces button.focused {
+    color: #c0caf5;
+}
+
+.workspaces button.occupied {
+    color: #f7768e;
+}
+
+.workspaces button.urgent {
+    color: #e0af68;
+}
+
+.workspaces button:hover {
+    color: #7aa2f7;
+}
+
+// .song_cover_art {
+//     background-size: cover;	
+//     background-position: center;
+//     min-height: 16px;
+//     min-width: 16px;
+//     margin: 0px 16px 0px 0px;
+//     border-radius: 50%;
+// }
+
+.song_cover_art {
+    color: #c0caf5;
+    font-size: 24px;
+    margin: 0px 8px 0px 0px;
+}
+
+.song {
+    color: #c0caf5;
+    font-size : 16px;
+    font-weight : bold;
+    margin : 2px 4px 0px 0px;
+}
+
+.song_btn_play {
+    color: #c0caf5;
+    font-size : 20px;
+    margin : 4px 8px 0px 8px;
+}
+
+.song_btn_prev, .song_btn_next {
+    color: #c0caf5;
+    font-size : 24px;
+    font-weight: bold;
+    margin : 2px 0px 0px 0px;
+}
+
+.song_btn_play:hover,
+.song_btn_prev:hover,
+.song_btn_next:hover, {
+    color: #7aa2f7;
+}
+
+
+// Calendar
+.cal {
+    background-color: #24283b;
+    border-radius: 16px;
+    font-family: IosevkaTerm Nerd Font;
+    font-size: 18px;
+    font-weight: normal;
+
+    .cal-in {
+	border-radius: 16px;
+	border: 2px solid;
+	border-color: #c0caf5;
+	padding: 0px 8px 0px 8px;
+	color: #c0caf5;
+
+	.cal {
+	    &.highlight {
+		padding: 16px;
+	    }
+
+	    padding: 5px 5px 5px 5px;
+	    margin-left: 10px;
+	}
+    }
+}
+
+calender {
+    color: #c0caf5;
+}
+calendar:selected {
+    color: #7aa2f7;
+}
+
+calendar.header {
+    color: #7dcfff;
+    font-weight: bold;
+}
+
+calendar.button {
+    color: #c0caf5;
+}
+
+calendar.highlight {
+    color: #9ece6a;
+    font-weight: bold;
+}
+
+calendar:indeterminate {
+    color: #414868;
+}
+
+
+.sys_sep {
+    color: #414868;
+    font-size: 18;
+    margin: 0px 10px 0px 10px;
+}
+.sys_text_bat_sub, .sys_text_mem_sub {
+    font-size: 16;
+    color: #c0caf5;
+    margin: 5px 0px 0px 25px;
+}
+.sys_text_bat, .sys_text_mem {
+    font-size: 20;
+    font-weight: bold;
+    margin: 14px 0px 0px 25px;
+}
+.sys_icon_bat, .sys_icon_mem {
+    font-size: 48;
+    margin: 30px;
+}
+.sys_win {
+    background-color: #24283b;
+    border-radius: 16px;
+    border: 2px solid;
+    border-color: #c0caf5;
+}
+.sys_bat {
+    color: #9ece6a;
+    background-color: #414868;
+    border-radius: 10px;
+}
+.sys_mem {
+    color: #e0af68;
+    background-color: #414868;
+    border-radius: 10px;
+}
+.sys_icon_bat, .sys_text_bat {
+    color: #9ece6a;
+}
+.sys_icon_mem, .sys_text_mem {
+    color: #e0af68;
+}
+.sys_bat_box {
+    border-radius: 16px;
+    margin: 15px 10px 10px 20px;
+}
+.sys_mem_box {
+    border-radius: 16px;
+    margin: 10px 10px 15px 20px;
+}
+
+
+.music_pop {
+    background-color: #24283b;
+    border-radius: 16px;
+    border: 2px solid;
+    border-color: #c0caf5;
+}
+.music_cover_art {
+    background-size: cover;
+    background-position: center;
+    min-height: 100px;
+    // box-shadow: 5px 5px 5px 5px #06060b;
+    min-width: 170px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.music {
+    color: #c0caf5;
+    font-size : 20px;
+    font-weight : bold;
+    margin : 20px 0px 0px -15px;
+}
+
+.music_artist {
+    color: #c0caf5;
+    font-size : 16px;
+    font-weight : normal;
+    margin : 0px 0px 0px 0px;
+}
+
+.music_btn_prev, .music_btn_play, .music_btn_next {
+    font-family: JetBrainsMono;
+}
+.music_btn_prev {
+    color: #c0caf5;
+    font-size : 32px;
+    font-weight : normal;
+    margin: 0px 0px 0px 0px;
+}
+.music_btn_play {
+    color: #c0caf5;
+    font-size : 30px;
+    font-weight : normal;
+    margin: 0px 0px 0px 2px;
+}
+.music_btn_next {
+    color: #c0caf5;
+    font-size : 32px;
+    font-weight : normal;
+    margin: 0px 0px 0px 0px;
+}
+
+.music_bar scale trough highlight {
+    all: unset;
+    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    border-radius: 24px;
+}
+.music_bar scale trough {
+    all: unset;
+    background-color: #414868;
+    // box-shadow: 0 6px 5px 2px #06060b;
+    border-radius: 24px;
+    min-height: 13px;
+    min-width: 190px;
+    margin : -10px 10px 20px 0px;
+}
+
+.audio-box {
+    background-color: #24283b;
+    border-radius: 16px;
+    border: 2px solid;
+    border-color: #c0caf5;
+}
+.speaker_icon {
+    background-size: cover;
+    background-image: url('images/speaker.png');
+    background-position: center;
+    min-height: 70px;
+    min-width: 75px;
+    margin: 10px 20px 5px 20px;
+    border-radius: 12px;
+}
+
+.speaker_text {
+    color: #c0caf5;
+    font-size : 26px;
+    font-weight : bold;
+    margin: 20px 0px 0px 0px;
+}
+
+.speaker_bar scale trough highlight {
+    all: unset;
+    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    border-radius: 24px;
+}
+.speaker_bar scale trough {
+    all: unset;
+    background-color: #414868;
+    // box-shadow: 0 6px 5px 2px #06060b;
+    border-radius: 24px;
+    min-height: 13px;
+    min-width: 120px;
+    margin : 0px 0px 5px 0px;
+}
+
+
+.audio_sep {
+    color: #414868;
+    font-size: 18;
+    margin : 0px 0px 0px 0px;
+}

@@ -7,3 +7,5 @@ vim/.vim/sessions/default.vim
 #*#
 default.sh
 config.rasi
+power-menu.rasi
+color.conf
