@@ -1,3 +1,31 @@
+$radius: 16px;
+
+$f-size-s: 16px;
+$f-size-sm: 20px;
+$f-size-m: 24px;
+$f-size-l: 32px;
+$f-size-xl: 48px;
+
+// $foreground: #c0caf5;
+// $background: #24283b;
+// $yellow: #e0af68;
+// $green: #9ece6a;
+// $blue: #7aa2f7;
+// $cyan: #7dcfff;
+// $red: #f7768e;
+// $magenta: #bb9af7;
+// $gray: #414868;
+
+$foreground: #3760bd;
+$background: #e1e2e7;
+$green: #587539;
+$yellow: #8c6c3e;
+$blue: #2e7de9;
+$cyan: #007197;
+$red: #f52a65;
+$magenta: #9854f1;
+$gray: #a1a6c5;
+
 *{
     all: unset;
     font-family: IosevkaTerm NFM;
@@ -6,19 +34,19 @@
 
 /** General **/
 .bar_class {
-    background-color: #24283b;
-    border-radius: 16px;
+    background-color: $background;
+    border-radius: $radius;
 }
 .module {
     margin: 0px 0px 0px 0px;
-    border-radius: 16px;
+    border-radius: $radius;
 }
 
 /** tooltip!! **/
 tooltip.background {
-    background-color: #24283b;
-    font-size: 18;
-    color: #c0caf5;
+    background-color: $background;
+    font-size: $f-size-s;
+    color: $foreground;
 }
 
 tooltip label {
@@ -29,38 +57,38 @@ tooltip label {
 /** Widgets **/
 
 .clock_time_sep {
-    font-size: 16;
-    color: #bfc9db;
+    font-size: $f-size-s;
+    color: $foreground;
     margin: 0px 4px 0px 4px;
 }
 .clock_time_class, .clock_minute_class {
-    font-size: 20;
+    font-size: $f-size-sm;
 }
 .clock_date_class {
-    font-size: 20;
+    font-size: $f-size-sm;
     margin: 4px 16px 0px 0px;
-    color: #bb9af7;
+    color: $magenta;
 }
 .clock_minute_class {
     margin: 4px 16px 0px 0px;
-    color: #a9b1d6;
+    color: $foreground;
 }
 
 .clock_time_class {
-    color: #a9b1d6;
+    color: $foreground;
     font-weight: bold;
     margin: 4px 0px 0px 0px;
 }
 
 
 .membar {
-    color: #e0af68;
-    background-color: #414868;
+    color: $yellow;
+    background-color: $gray;
     border-radius: 10px;
 }
 .batbar {
-    color: #9ece6a;
-    background-color: #414868;
+    color: $green;
+    background-color: $gray;
     border-radius: 10px;
 }
 
@@ -69,55 +97,55 @@ tooltip label {
     border-radius: 10px;
 }
 .volume_icon {
-    font-size: 32;
-    color: #c0caf5;
+    font-size: $f-size-l;
+    color: $foreground;
     margin: 2px 8px 0px 8px;
 }
 
 .iconmem {
-    color: #e0b089;
+    color: $yellow;
 }
 .iconbat {
-    color: #afbea2;
+    color: $green;
 }
 .iconbat, .iconmem {
-    font-size: 20;
+    font-size: $f-size-sm;
     margin: 0px 6px 0px 6px;
 }
 
 .separ {
-    color: #414868;
+    color: $gray;
     font-weight: bold;
-    font-size: 24px;
+    font-size: $f-size-m;
     margin: 4px 8px 0px 8px;
 }
 
 .mem_module {
-    background-color: #24283b;
-    border-radius: 16px;
+    background-color: $background;
+    border-radius: $radius;
     margin: 0px 8px 0px 8px;
 }
 .bat_module {
-    background-color: #24283b;
-    border-radius: 16px;
+    background-color: $background;
+    border-radius: $radius;
     margin: 0px 8px 0px 8px;
 }
 
 
 scale trough {
     all: unset;
-    background-color: #414868;
-    border-radius: 16px;
+    background-color: $gray;
+    border-radius: $radius;
     min-height: 10px;
     min-width: 70px;
     margin: 0px 8px 0px 0px;
 }
 
 .workspaces {
-    font-size: 32px;
+    font-size: $f-size-l;
     margin-top: 2px;
     margin-left: 16px;
-    color: #414868;
+    color: $gray;
 }
 
 .workspaces button {
@@ -125,19 +153,19 @@ scale trough {
 }
 
 .workspaces button.focused {
-    color: #c0caf5;
+    color: $foreground;
 }
 
 .workspaces button.occupied {
-    color: #f7768e;
+    color: $red;
 }
 
 .workspaces button.urgent {
-    color: #e0af68;
+    color: $yellow;
 }
 
 .workspaces button:hover {
-    color: #7aa2f7;
+    color: $blue;
 }
 
 // .song_cover_art {
@@ -150,27 +178,27 @@ scale trough {
 // }
 
 .song_cover_art {
-    color: #c0caf5;
-    font-size: 24px;
+    color: $foreground;
+    font-size: $f-size-m;
     margin: 0px 8px 0px 0px;
 }
 
 .song {
-    color: #c0caf5;
-    font-size : 16px;
+    color: $foreground;
+    font-size : $f-size-s;
     font-weight : bold;
     margin : 2px 4px 0px 0px;
 }
 
 .song_btn_play {
-    color: #c0caf5;
-    font-size : 20px;
+    color: $foreground;
+    font-size: $f-size-sm;
     margin : 4px 8px 0px 8px;
 }
 
 .song_btn_prev, .song_btn_next {
-    color: #c0caf5;
-    font-size : 24px;
+    color: $foreground;
+    font-size : $f-size-m;
     font-weight: bold;
     margin : 2px 0px 0px 0px;
 }
@@ -178,28 +206,28 @@ scale trough {
 .song_btn_play:hover,
 .song_btn_prev:hover,
 .song_btn_next:hover, {
-    color: #7aa2f7;
+    color: $blue;
 }
 
 
 // Calendar
 .cal {
-    background-color: #24283b;
-    border-radius: 16px;
+    background-color: $background;
+    border-radius: $radius;
     font-family: IosevkaTerm Nerd Font;
-    font-size: 18px;
+    font-size: $f-size-s;
     font-weight: normal;
 
     .cal-in {
-	border-radius: 16px;
+	border-radius: $radius;
 	border: 2px solid;
-	border-color: #c0caf5;
+	border-color: $foreground;
 	padding: 0px 8px 0px 8px;
-	color: #c0caf5;
+	color: $foreground;
 
 	.cal {
 	    &.highlight {
-		padding: 16px;
+            padding: 16px;
 	    }
 
 	    padding: 5px 5px 5px 5px;
@@ -209,87 +237,87 @@ scale trough {
 }
 
 calender {
-    color: #c0caf5;
+    color: $foreground;
 }
 calendar:selected {
-    color: #7aa2f7;
+    color: $blue;
 }
 
 calendar.header {
-    color: #7dcfff;
+    color: $cyan;
     font-weight: bold;
 }
 
 calendar.button {
-    color: #c0caf5;
+    color: $foreground;
 }
 
 calendar.highlight {
-    color: #9ece6a;
+    color: $green;
     font-weight: bold;
 }
 
 calendar:indeterminate {
-    color: #414868;
+    color: $gray;
 }
 
 
 .sys_sep {
-    color: #414868;
-    font-size: 18;
+    color: $gray;
+    font-size: $f-size-s;
     margin: 0px 10px 0px 10px;
 }
 .sys_text_bat_sub, .sys_text_mem_sub {
-    font-size: 16;
-    color: #c0caf5;
+    font-size: $f-size-s;
+    color: $foreground;
     margin: 5px 0px 0px 25px;
 }
 .sys_text_bat, .sys_text_mem {
-    font-size: 20;
+    font-size: $f-size-sm;
     font-weight: bold;
     margin: 14px 0px 0px 25px;
 }
 .sys_icon_bat, .sys_icon_mem {
-    font-size: 48;
+    font-size: $f-size-xl;
     margin: 30px;
 }
 .sys_win {
-    background-color: #24283b;
-    border-radius: 16px;
+    background-color: $background;
+    border-radius: $radius;
     border: 2px solid;
-    border-color: #c0caf5;
+    border-color: $foreground;
 }
 .sys_bat {
-    color: #9ece6a;
-    background-color: #414868;
+    color: $green;
+    background-color: $gray;
     border-radius: 10px;
 }
 .sys_mem {
-    color: #e0af68;
-    background-color: #414868;
+    color: $yellow;
+    background-color: $gray;
     border-radius: 10px;
 }
 .sys_icon_bat, .sys_text_bat {
-    color: #9ece6a;
+    color: $green;
 }
 .sys_icon_mem, .sys_text_mem {
-    color: #e0af68;
+    color: $yellow;
 }
 .sys_bat_box {
-    border-radius: 16px;
+    border-radius: $radius;
     margin: 15px 10px 10px 20px;
 }
 .sys_mem_box {
-    border-radius: 16px;
+    border-radius: $radius;
     margin: 10px 10px 15px 20px;
 }
 
 
 .music_pop {
-    background-color: #24283b;
-    border-radius: 16px;
+    background-color: $background;
+    border-radius: $radius;
     border: 2px solid;
-    border-color: #c0caf5;
+    border-color: $foreground;
 }
 .music_cover_art {
     background-size: cover;
@@ -302,15 +330,15 @@ calendar:indeterminate {
 }
 
 .music {
-    color: #c0caf5;
+    color: $foreground;
     font-size : 20px;
     font-weight : bold;
     margin : 20px 0px 0px -15px;
 }
 
 .music_artist {
-    color: #c0caf5;
-    font-size : 16px;
+    color: $foreground;
+    font-size : $f-size-s;
     font-weight : normal;
     margin : 0px 0px 0px 0px;
 }
@@ -319,20 +347,20 @@ calendar:indeterminate {
     font-family: JetBrainsMono;
 }
 .music_btn_prev {
-    color: #c0caf5;
-    font-size : 32px;
+    color: $foreground;
+    font-size : $f-size-l;
     font-weight : normal;
     margin: 0px 0px 0px 0px;
 }
 .music_btn_play {
-    color: #c0caf5;
+    color: $foreground;
     font-size : 30px;
     font-weight : normal;
     margin: 0px 0px 0px 2px;
 }
 .music_btn_next {
-    color: #c0caf5;
-    font-size : 32px;
+    color: $foreground;
+    font-size : $f-size-l;
     font-weight : normal;
     margin: 0px 0px 0px 0px;
 }
@@ -340,11 +368,11 @@ calendar:indeterminate {
 .music_bar scale trough highlight {
     all: unset;
     background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
-    border-radius: 24px;
+    border-radius: $f-size-m;
 }
 .music_bar scale trough {
     all: unset;
-    background-color: #414868;
+    background-color: $gray;
     // box-shadow: 0 6px 5px 2px #06060b;
     border-radius: 24px;
     min-height: 13px;
@@ -353,10 +381,10 @@ calendar:indeterminate {
 }
 
 .audio-box {
-    background-color: #24283b;
-    border-radius: 16px;
+    background-color: $background;
+    border-radius: $radius;
     border: 2px solid;
-    border-color: #c0caf5;
+    border-color: $foreground;
 }
 .speaker_icon {
     background-size: cover;
@@ -369,8 +397,8 @@ calendar:indeterminate {
 }
 
 .speaker_text {
-    color: #c0caf5;
-    font-size : 26px;
+    color: $foreground;
+    font-size : $f-size-m;
     font-weight : bold;
     margin: 20px 0px 0px 0px;
 }
@@ -382,7 +410,7 @@ calendar:indeterminate {
 }
 .speaker_bar scale trough {
     all: unset;
-    background-color: #414868;
+    background-color: $gray;
     // box-shadow: 0 6px 5px 2px #06060b;
     border-radius: 24px;
     min-height: 13px;
@@ -392,7 +420,7 @@ calendar:indeterminate {
 
 
 .audio_sep {
-    color: #414868;
-    font-size: 18;
+    color: $gray;
+    font-size: $f-size-s;
     margin : 0px 0px 0px 0px;
 }
