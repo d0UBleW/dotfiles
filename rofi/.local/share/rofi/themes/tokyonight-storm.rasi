@@ -5,6 +5,6 @@
     fg: #A9B1D6;
     fg-sel: #9ECE6A;
     highlight: #7AA2F7;
-    border: #7AA2F7;
+    border: #c0caf5;
     width: 540;
 }
