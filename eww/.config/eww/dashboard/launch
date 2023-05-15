@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+FILE="$HOME/.cache/eww_dashboard_launch.xyz"
+EWW="$HOME/.local/bin/eww -c $HOME/.config/eww/dashboard"
+
+## Run eww daemon if not running already
+if [[ ! `pidof eww` ]]; then
+    ${EWW} daemon
+fi
+
+## Open widgets 
+run_eww() {
+    ${EWW} open-many \
+         dashboard
+}
+
+## Launch or close widgets accordingly
+if [[ ! -f "$FILE" ]]; then
+    run_eww && touch "$FILE"
+else
+    ${EWW} close-all && rm "$FILE"
+fi

@@ -1,34 +1,24 @@
-$radius: 16px;
+$radius: 20px;
 
-$f-size-s: 16px;
-$f-size-sm: 20px;
-$f-size-m: 24px;
-$f-size-l: 32px;
-$f-size-xl: 48px;
+$f-family: IosevkaTerm NFM;
 
-// $foreground: #c0caf5;
-// $background: #24283b;
-// $yellow: #e0af68;
-// $green: #9ece6a;
-// $blue: #7aa2f7;
-// $cyan: #7dcfff;
-// $red: #f7768e;
-// $magenta: #bb9af7;
-// $gray: #414868;
+// $f-size-s: 16px;
+// $f-size-sm: 20px;
+// $f-size-m: 24px;
+// $f-size-l: 32px;
+// $f-size-xl: 48px;
 
-$foreground: #3760bd;
-$background: #e1e2e7;
-$green: #587539;
-$yellow: #8c6c3e;
-$blue: #2e7de9;
-$cyan: #007197;
-$red: #f52a65;
-$magenta: #9854f1;
-$gray: #a1a6c5;
+$f-size-s: 12px;
+$f-size-sm: 14px;
+$f-size-m: 18px;
+$f-size-l: 24px;
+$f-size-xl: 30px;
+
+@import "colors/scheme"
 
 *{
     all: unset;
-    font-family: IosevkaTerm NFM;
+    font-family: $f-family;
     border-radius: 0px;
 }
 
@@ -43,63 +33,68 @@ $gray: #a1a6c5;
 }
 
 /** tooltip!! **/
-tooltip.background {
-    background-color: $background;
-    font-size: $f-size-s;
-    color: $foreground;
+tooltip {
+    all: unset;
 }
 
-tooltip label {
-    margin: 8px;
-}
+// tooltip.background {
+//     background-color: $background;
+//     font-size: $f-size-s;
+//     color: $foreground;
+// }
+//
+// tooltip label {
+//     margin: 8px;
+// }
 
 
 /** Widgets **/
 
 .clock_time_sep {
-    font-size: $f-size-s;
+    font-size: $f-size-sm;
     color: $foreground;
     margin: 0px 4px 0px 4px;
 }
 .clock_time_class, .clock_minute_class {
-    font-size: $f-size-sm;
+    font-size: $f-size-m;
 }
 .clock_date_class {
-    font-size: $f-size-sm;
-    margin: 4px 16px 0px 0px;
+    font-size: $f-size-m;
+    margin: 0px 16px 0px 0px;
     color: $magenta;
 }
 .clock_minute_class {
-    margin: 4px 16px 0px 0px;
+    margin: 0px 16px 0px 0px;
     color: $foreground;
 }
 
 .clock_time_class {
     color: $foreground;
-    font-weight: bold;
-    margin: 4px 0px 0px 0px;
+    font-weight: 900;
+    margin: 0px 0px 0px 0px;
 }
 
 
 .membar {
     color: $yellow;
     background-color: $gray;
-    border-radius: 10px;
+    border-radius: $radius;
 }
 .batbar {
     color: $green;
     background-color: $gray;
-    border-radius: 10px;
+    border-radius: $radius;
 }
 
 .volbar trough highlight {
-    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
-    border-radius: 10px;
+    // background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    background-color: $green;
+    border-radius: $radius;
 }
 .volume_icon {
     font-size: $f-size-l;
     color: $foreground;
-    margin: 2px 8px 0px 8px;
+    margin: 0px 8px 0px 8px;
 }
 
 .iconmem {
@@ -117,7 +112,7 @@ tooltip label {
     color: $gray;
     font-weight: bold;
     font-size: $f-size-m;
-    margin: 4px 8px 0px 8px;
+    margin: 0px 8px 0px 8px;
 }
 
 .mem_module {
@@ -136,20 +131,20 @@ scale trough {
     all: unset;
     background-color: $gray;
     border-radius: $radius;
-    min-height: 10px;
+    min-height: 8px;
     min-width: 70px;
     margin: 0px 8px 0px 0px;
 }
 
 .workspaces {
     font-size: $f-size-l;
-    margin-top: 2px;
+    margin-top: 0px;
     margin-left: 16px;
     color: $gray;
 }
 
 .workspaces button {
-    margin: 0px -8px 0px 0px;
+    margin: 0px -4px 0px 0px;
 }
 
 .workspaces button.focused {
@@ -174,18 +169,18 @@ scale trough {
 //     min-height: 16px;
 //     min-width: 16px;
 //     margin: 0px 16px 0px 0px;
-//     border-radius: 50%;
+//     border-radius: $radius;
 // }
 
 .song_cover_art {
     color: $foreground;
     font-size: $f-size-m;
-    margin: 0px 8px 0px 0px;
+    margin: 2px 8px 0px 0px;
 }
 
 .song {
     color: $foreground;
-    font-size : $f-size-s;
+    font-size : $f-size-sm;
     font-weight : bold;
     margin : 2px 4px 0px 0px;
 }
@@ -193,7 +188,7 @@ scale trough {
 .song_btn_play {
     color: $foreground;
     font-size: $f-size-sm;
-    margin : 4px 8px 0px 8px;
+    margin : 2px 8px 0px 8px;
 }
 
 .song_btn_prev, .song_btn_next {
@@ -214,8 +209,8 @@ scale trough {
 .cal {
     background-color: $background;
     border-radius: $radius;
-    font-family: IosevkaTerm Nerd Font;
-    font-size: $f-size-s;
+    font-family: $f-family;
+    font-size: $f-size-m;
     font-weight: normal;
 
     .cal-in {
@@ -227,7 +222,7 @@ scale trough {
 
 	.cal {
 	    &.highlight {
-            padding: 16px;
+		padding: 16px;
 	    }
 
 	    padding: 5px 5px 5px 5px;
@@ -240,7 +235,8 @@ calender {
     color: $foreground;
 }
 calendar:selected {
-    color: $blue;
+    color: $magenta;
+    font-weight: bold;
 }
 
 calendar.header {
@@ -264,16 +260,16 @@ calendar:indeterminate {
 
 .sys_sep {
     color: $gray;
-    font-size: $f-size-s;
+    font-size: $f-size-sm;
     margin: 0px 10px 0px 10px;
 }
 .sys_text_bat_sub, .sys_text_mem_sub {
-    font-size: $f-size-s;
+    font-size: $f-size-sm;
     color: $foreground;
     margin: 5px 0px 0px 25px;
 }
 .sys_text_bat, .sys_text_mem {
-    font-size: $f-size-sm;
+    font-size: $f-size-m;
     font-weight: bold;
     margin: 14px 0px 0px 25px;
 }
@@ -290,12 +286,12 @@ calendar:indeterminate {
 .sys_bat {
     color: $green;
     background-color: $gray;
-    border-radius: 10px;
+    border-radius: $radius;
 }
 .sys_mem {
     color: $yellow;
     background-color: $gray;
-    border-radius: 10px;
+    border-radius: $radius;
 }
 .sys_icon_bat, .sys_text_bat {
     color: $green;
@@ -326,7 +322,7 @@ calendar:indeterminate {
     // box-shadow: 5px 5px 5px 5px #06060b;
     min-width: 170px;
     margin: 20px;
-    border-radius: 20px;
+    border-radius: $radius;
 }
 
 .music {
@@ -338,7 +334,7 @@ calendar:indeterminate {
 
 .music_artist {
     color: $foreground;
-    font-size : $f-size-s;
+    font-size : $f-size-sm;
     font-weight : normal;
     margin : 0px 0px 0px 0px;
 }
@@ -356,7 +352,7 @@ calendar:indeterminate {
     color: $foreground;
     font-size : 30px;
     font-weight : normal;
-    margin: 0px 0px 0px 2px;
+    margin: 2px 0px 0px 0px;
 }
 .music_btn_next {
     color: $foreground;
@@ -365,17 +361,24 @@ calendar:indeterminate {
     margin: 0px 0px 0px 0px;
 }
 
+.music_btn_play:hover,
+.music_btn_next:hover,
+.music_btn_prev:hover {
+    color: $blue;
+}
+
 .music_bar scale trough highlight {
     all: unset;
-    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
-    border-radius: $f-size-m;
+    // background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    background-color: $green;
+    border-radius: $radius;
 }
 .music_bar scale trough {
     all: unset;
     background-color: $gray;
     // box-shadow: 0 6px 5px 2px #06060b;
-    border-radius: 24px;
-    min-height: 13px;
+    border-radius: $radius;
+    min-height: 8px;
     min-width: 190px;
     margin : -10px 10px 20px 0px;
 }
@@ -393,7 +396,7 @@ calendar:indeterminate {
     min-height: 70px;
     min-width: 75px;
     margin: 10px 20px 5px 20px;
-    border-radius: 12px;
+    border-radius: $radius;
 }
 
 .speaker_text {
@@ -405,14 +408,15 @@ calendar:indeterminate {
 
 .speaker_bar scale trough highlight {
     all: unset;
-    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
-    border-radius: 24px;
+    // background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    background-color: $green;
+    border-radius: $radius;
 }
 .speaker_bar scale trough {
     all: unset;
     background-color: $gray;
     // box-shadow: 0 6px 5px 2px #06060b;
-    border-radius: 24px;
+    border-radius: $radius;
     min-height: 13px;
     min-width: 120px;
     margin : 0px 0px 5px 0px;

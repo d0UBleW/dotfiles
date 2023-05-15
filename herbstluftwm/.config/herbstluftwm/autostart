@@ -97,8 +97,8 @@ for i in "${!tag_names[@]}" ; do
 done
 
 # cycle through tags
-# hc keybind $Mod-period use_index +1 --skip-visible
-# hc keybind $Mod-comma  use_index -1 --skip-visible
+hc keybind $Mod-period use_index +1 --skip-visible
+hc keybind $Mod-comma  use_index -1 --skip-visible
 
 # layouting
 hc keybind $Mod-r remove
@@ -151,8 +151,11 @@ hc keybind $Mod-F1 spawn /home/d0ublew/bin/volume.sh mute
 
 hc keybind $Mod-Shift-F1 spawn playerctl play-pause -p spotify
 
-hc keybind $Mod-b spawn /home/d0ublew/.local/bin/eww open bar
-hc keybind $Mod-Shift-b spawn /home/d0ublew/.local/bin/eww close bar
+hc keybind $Mod-b spawn /home/d0ublew/.config/eww/bar/launch_bar
+# hc keybind $Mod-b spawn /home/d0ublew/.local/bin/eww open bar
+# hc keybind $Mod-Shift-b spawn /home/d0ublew/.local/bin/eww close bar
+
+hc keybind $Mod-d spawn /home/d0ublew/.config/eww/dashboard/launch
 
 # theme
 [ -f $HOME/.config/herbstluftwm/themes/colors/default.sh ] && \
@@ -204,7 +207,7 @@ hc set tree_style '╾│ ├└╼─┐'
 # unlock, just to be sure
 hc unlock
 
-hc pad 0 32 8 8 8
+hc pad 0 40 8 8 8
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0

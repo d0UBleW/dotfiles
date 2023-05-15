@@ -1,0 +1,12 @@
+*{
+	all: unset;
+}
+
+.dashboard{
+    background-color: rgba(36, 40, 59, 0.66);
+    padding: 40rem;
+}
+
+button:hover{
+	color: $blue;
+}
