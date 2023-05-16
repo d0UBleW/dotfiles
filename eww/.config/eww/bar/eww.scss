@@ -12,7 +12,7 @@ $f-size-s: 12px;
 $f-size-sm: 14px;
 $f-size-m: 18px;
 $f-size-l: 24px;
-$f-size-xl: 30px;
+$f-size-xl: 42px;
 
 @import "colors/scheme"
 
@@ -60,18 +60,18 @@ tooltip {
 }
 .clock_date_class {
     font-size: $f-size-m;
-    margin: 0px 16px 0px 0px;
+    margin: 0px 8px 0px 8px;
     color: $magenta;
 }
 .clock_minute_class {
-    margin: 0px 16px 0px 0px;
+    margin: 0px 8px 0px 0px;
     color: $foreground;
 }
 
 .clock_time_class {
     color: $foreground;
     font-weight: 900;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 8px;
 }
 
 
@@ -104,7 +104,7 @@ tooltip {
     color: $green;
 }
 .iconbat, .iconmem {
-    font-size: $f-size-sm;
+    font-size: $f-size-l;
     margin: 0px 6px 0px 6px;
 }
 
@@ -134,6 +134,48 @@ scale trough {
     min-height: 8px;
     min-width: 70px;
     margin: 0px 8px 0px 0px;
+}
+
+.power-menu {
+    font-size: $f-size-l;
+    margin: 0 24px 2px 8px;
+    padding: 0;
+}
+
+.power-reveal {
+    margin-right: 16px;
+}
+
+.power-off-btn {
+    color: $red;
+}
+
+.power-reboot-btn {
+    color: $yellow;
+}
+
+.power-lock-btn {
+    color: $blue;
+}
+
+.prompt {
+    color: $foreground;
+    background-color: $background;
+    border: 2px solid;
+    border-color: $foreground;
+    border-radius: $radius;
+}
+
+.prompt-button {
+    font-size: $f-size-l;
+}
+
+.prompt-button-yes {
+    color: $green;
+}
+
+.prompt-button-no {
+    color: $red;
 }
 
 .workspaces {

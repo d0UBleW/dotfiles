@@ -11,7 +11,9 @@ calendar() {
 
     # Open widgets
     if [[ ! -f "$LOCK_FILE" ]]; then
-        ${EWW_BIN} -c $HOME/.config/eww/bar close system music_win audio_ctl
+        ${EWW_BIN} -c $HOME/.config/eww/bar close system music_win audio_ctl \
+            prompt_win_off prompt_win_reboot
+        rm $HOME/.cache/eww-*.lock
         touch "$LOCK_FILE"
         run && echo "ok good!"
     else
@@ -30,7 +32,9 @@ system() {
 
     # Open widgets
     if [[ ! -f "$LOCK_FILE_MEM" ]]; then
-        ${EWW_BIN} -c $HOME/.config/eww/bar close calendar music_win audio_ctl
+        ${EWW_BIN} -c $HOME/.config/eww/bar close calendar music_win audio_ctl \
+            prompt_win_reboot prompt_win_off
+        rm $HOME/.cache/eww-*.lock
         touch "$LOCK_FILE_MEM"
         run && echo "ok good!"
     else
@@ -49,7 +53,9 @@ music() {
 
     # Open widgets
     if [[ ! -f "$LOCK_FILE_SONG" ]]; then
-        ${EWW_BIN} -c $HOME/.config/eww/bar close system calendar
+        ${EWW_BIN} -c $HOME/.config/eww/bar close system calendar \
+            prompt_win_off prompt_win_reboot
+        rm $HOME/.cache/eww-*.lock
         touch "$LOCK_FILE_SONG"
         run && echo "ok good!"
     else
@@ -57,7 +63,6 @@ music() {
         rm "$LOCK_FILE_SONG" && echo "closed"
     fi
 }
-
 
 
 audio() {
@@ -69,12 +74,54 @@ audio() {
 
     # Open widgets
     if [[ ! -f "$LOCK_FILE_AUDIO" ]]; then
-        ${EWW_BIN} -c $HOME/.config/eww/bar close system calendar music
+        ${EWW_BIN} -c $HOME/.config/eww/bar close system calendar music \
+            prompt_win_reboot prompt_win_off
+        rm $HOME/.cache/eww-*.lock
         touch "$LOCK_FILE_AUDIO"
         run && echo "ok good!"
     else
         ${EWW_BIN} -c $HOME/.config/eww/bar close audio_ctl
         rm "$LOCK_FILE_AUDIO" && echo "closed"
+    fi
+}
+
+prompt_off() {
+    LOCK_FILE_PROMPT="$HOME/.cache/eww-prompt_off.lock"
+
+    run() {
+        ${EWW_BIN} -c $HOME/.config/eww/bar open prompt_win_off
+    }
+
+    # Open widgets
+    if [[ ! -f "$LOCK_FILE_PROMPT" ]]; then
+        ${EWW_BIN} -c $HOME/.config/eww/bar close system calendar music \
+            prompt_win_reboot
+        rm $HOME/.cache/eww-*.lock
+        touch "$LOCK_FILE_PROMPT"
+        run && echo "ok good!"
+    else
+        ${EWW_BIN} -c $HOME/.config/eww/bar close prompt_win_off
+        rm "$LOCK_FILE_PROMPT" && echo "closed"
+    fi
+}
+
+prompt_reboot() {
+    LOCK_FILE_PROMPT="$HOME/.cache/eww-prompt_reboot.lock"
+
+    run() {
+        ${EWW_BIN} -c $HOME/.config/eww/bar open prompt_win_reboot
+    }
+
+    # Open widgets
+    if [[ ! -f "$LOCK_FILE_PROMPT" ]]; then
+        ${EWW_BIN} -c $HOME/.config/eww/bar close system calendar music \
+            prompt_win_off
+        rm $HOME/.cache/eww-*.lock
+        touch "$LOCK_FILE_PROMPT"
+        run && echo "ok good!"
+    else
+        ${EWW_BIN} -c $HOME/.config/eww/bar close prompt_win_reboot
+        rm "$LOCK_FILE_PROMPT" && echo "closed"
     fi
 }
 
@@ -87,4 +134,8 @@ elif [ "$1" = "music" ]; then
     music
 elif [ "$1" = "audio" ]; then
     audio
+elif [ "$1" = "prompt_off" ]; then
+    prompt_off
+elif [ "$1" = "prompt_reboot" ]; then
+    prompt_reboot
 fi
