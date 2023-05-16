@@ -12,6 +12,7 @@
 (defvar vol_reveal false)
 (defvar music_reveal false)
 (defvar time_rev false)
+(defvar power_reveal false)
 (deflisten workspace "scripts/workspace")
 
 (defvar eww "$HOME/.local/bin/eww -c $HOME/.config/eww/bar")
@@ -45,7 +46,6 @@
   (box :class "mem_module" :vexpand "false" :hexpand "false" 
     (circular-progress :value memory :class "membar" :thickness 3
       (button :class "iconmem"
-              :limit-width 2
               :tooltip "using ${memory}% ram"
               :onclick "$HOME/.config/eww/bar/scripts/pop system"
               :show_truncated false
@@ -67,26 +67,52 @@
       (revealer :transition "slideleft"
                 :reveal time_rev
                 :duration "350ms"
-      (button :class "clock_date_class"
-              :onclick "$HOME/.config/eww/bar/scripts/pop calendar"
-              clock_date)))))
-  
+        (button :class "clock_date_class"
+                :onclick "$HOME/.config/eww/bar/scripts/pop calendar"
+                clock_date)))))
+
+(defwidget power_menu []
+  (eventbox :onhover "${eww} update power_reveal=true"
+            :onhoverlost "${eww} update power_reveal=false"
+    (box :class "power-menu"
+         :space-evenly "false"
+         :orientation "h"
+      (revealer :transition "slideleft"
+                :reveal power_reveal
+                :duration "350ms"
+        (box :orientation "h"
+             :class "power-reveal"
+             :space-evenly "true"
+             :spacing "16"
+          (button :class "power-lock-btn"
+                  :tooltip "Lock Screen"
+                  :onclick "betterlockscreen -l"
+                  "")
+          (button :class "power-reboot-btn"
+                  :tooltip "Reboot"
+                  :onclick "~/.config/eww/bar/scripts/pop prompt_reboot"
+                  "")))
+      (button :class "power-off-btn"
+              :tooltip "Shutdown"
+              :onclick "~/.config/eww/bar/scripts/pop prompt_off"
+              ""))))
+
 (defwidget volume []
-  (eventbox   :onhover "${eww} update vol_reveal=true"
-              :onhoverlost "${eww} update vol_reveal=false"
-  (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
-    (button   :onclick "scripts/pop audio"
-              :class "volume_icon" "󰕾")
-    (revealer :transition "slideleft"
-              :reveal vol_reveal
-              :duration "350ms"
-    (scale    :class "volbar"
-              :value volume_percent
-              :orientation "h"
-              :tooltip "${volume_percent}%"
-              :max 100
-              :min 0
-              :onchange "pamixer --set-volume {}" )))))
+  (eventbox     :onhover "${eww} update vol_reveal=true"
+                :onhoverlost "${eww} update vol_reveal=false"
+    (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
+      (button   :onclick "scripts/pop audio"
+                :class "volume_icon" "󰕾")
+      (revealer :transition "slideleft"
+                :reveal vol_reveal
+                :duration "350ms"
+      (scale    :class "volbar"
+                :value volume_percent
+                :orientation "h"
+                :tooltip "${volume_percent}%"
+                :max 100
+                :min 0
+                :onchange "pamixer --set-volume {}" )))))
 
 (defwidget music [] 
   (eventbox :onhover "${eww} update music_reveal=true"
@@ -133,7 +159,9 @@
     (bat)
     (mem)
     (sep)
-    (clock_module)))
+    (clock_module)
+    (sep)
+    (power_menu)))
 
 
 (defwidget left []
@@ -247,6 +275,23 @@
              :limit-width 22
              :show_truncated false
              :wrap false)))))
+
+(defwidget prompt [label]
+  (box :class "prompt" :orientation "v"
+    (label :text "Are you sure you want to ${label}?"
+           :halign "center")
+    (box :class "prompt-button"
+         :orientation "h"
+      (button :class "prompt-button-yes"
+              :onclick {label == "shutdown" ?
+                "~/.config/eww/bar/scripts/pop prompt_off && sudo /sbin/poweroff" :
+                "~/.config/eww/bar/scripts/pop prompt_reboot && sudo /sbin/reboot"}
+              "")
+      (button :class "prompt-button-no"
+              :onclick {label == "shutdown" ?
+                "~/.config/eww/bar/scripts/pop prompt_off" :
+                "~/.config/eww/bar/scripts/pop prompt_reboot"}
+              ""))))
 
 (defwidget cal []
   (box :class "cal" :orientation "v"
@@ -374,3 +419,19 @@
                       :height 104
                       :anchor "top center")
   (music_pop))
+
+(defwindow prompt_win_off
+  :geometry (geometry :x "-8px" 
+                      :y "4%" 
+                      :anchor "top right"
+                      :width "300px" 
+                      :height "60px")
+  (prompt :label "shutdown"))
+
+(defwindow prompt_win_reboot
+  :geometry (geometry :x "-8px" 
+                      :y "4%" 
+                      :anchor "top right"
+                      :width "300px" 
+                      :height "60px")
+  (prompt :label "reboot"))
