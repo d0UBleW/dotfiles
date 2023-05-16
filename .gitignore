@@ -11,3 +11,4 @@ config.rasi
 power-menu.rasi
 color.conf
 _scheme.scss
+variables.scss
