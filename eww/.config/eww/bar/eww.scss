@@ -104,8 +104,8 @@ tooltip {
     color: $green;
 }
 .iconbat, .iconmem {
-    font-size: $f-size-l;
-    margin: 0px 6px 0px 6px;
+    font-size: $f-size-m;
+    margin: 1px 6px 0px 6px;
 }
 
 .separ {
@@ -138,7 +138,7 @@ scale trough {
 
 .power-menu {
     font-size: $f-size-l;
-    margin: 0 24px 2px 8px;
+    margin: 0 8px 2px 8px;
     padding: 0;
 }
 
@@ -180,8 +180,7 @@ scale trough {
 
 .workspaces {
     font-size: $f-size-l;
-    margin-top: 0px;
-    margin-left: 16px;
+    margin: 0px -8px 0px 0px;
     color: $gray;
 }
 
