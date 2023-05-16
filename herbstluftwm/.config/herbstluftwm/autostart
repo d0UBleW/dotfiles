@@ -207,7 +207,7 @@ hc set tree_style '╾│ ├└╼─┐'
 # unlock, just to be sure
 hc unlock
 
-hc pad 0 40 8 8 8
+hc pad 0 44 8 8 8
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0

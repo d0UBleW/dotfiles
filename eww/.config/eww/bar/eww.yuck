@@ -32,10 +32,9 @@
   (literal :content workspace))
 
 (defwidget bat []
-  (box :class "bat_module" :vexpand "false" :hexpand "false" 
-    (circular-progress :value battery :class "batbar" :thickness 3
+  (box :class "bat_module" :vexpand "false" :hexpand "false"
+    (circular-progress :value battery :class "batbar" :thickness 4
       (button :class "iconbat"
-              :limit-width 2
               :tooltip "battery on ${battery}%"
               :show_truncated false
               :onclick "$HOME/.config/eww/bar/scripts/pop system"
@@ -43,8 +42,8 @@
               ""))))
 
 (defwidget mem []
-  (box :class "mem_module" :vexpand "false" :hexpand "false" 
-    (circular-progress :value memory :class "membar" :thickness 3
+  (box :class "mem_module" :vexpand "false" :hexpand "false"
+    (circular-progress :value memory :class "membar" :thickness 4
       (button :class "iconmem"
               :tooltip "using ${memory}% ram"
               :onclick "$HOME/.config/eww/bar/scripts/pop system"
@@ -60,7 +59,7 @@
 (defwidget clock_module []
   (eventbox :onhover "${eww} update time_rev=true"
             :onhoverlost "${eww} update time_rev=false"
-    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
       (label :text clock_time :class "clock_time_class" )
       (label :text ":" :class "clock_time_sep" )
       (label :text clock_minute :class "clock_minute_class")
@@ -100,7 +99,7 @@
 (defwidget volume []
   (eventbox     :onhover "${eww} update vol_reveal=true"
                 :onhoverlost "${eww} update vol_reveal=false"
-    (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
+    (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3"
       (button   :onclick "scripts/pop audio"
                 :class "volume_icon" "󰕾")
       (revealer :transition "slideleft"
@@ -114,7 +113,7 @@
                 :min 0
                 :onchange "pamixer --set-volume {}" )))))
 
-(defwidget music [] 
+(defwidget music []
   (eventbox :onhover "${eww} update music_reveal=true"
             :onhoverlost "${eww} update music_reveal=false"
     (box :class "module-2"
@@ -136,7 +135,7 @@
                 :duration "350ms"
         (box :vexpand "false"
               :hexpand "false"
-              :oreintation "h" 
+              :oreintation "h"
           (button :class "song_btn_prev"
                   :onclick "~/.config/eww/bar/scripts/music_info --prev"
                   "")
@@ -150,9 +149,9 @@
 
 
 (defwidget right []
-  (box :orientation "h" 
-       :space-evenly false  
-       :halign "end"
+  (box :orientation "h"
+       :space-evenly false
+       :halign "center"
        :class "right_modules"
     (volume)
     (sep)
@@ -165,16 +164,16 @@
 
 
 (defwidget left []
-  (box :orientation "h" 
-       :space-evenly false  
-       :halign "start"
+  (box :orientation "h"
+       :space-evenly "true"
+       :halign "center"
        :class "left_modules"
     (workspaces)))
 
 
 (defwidget center []
-  (box :orientation "h" 
-       :space-evenly false  
+  (box :orientation "h"
+       :space-evenly false
        :halign "center"
        :class "center_modules"
     (music)))
@@ -184,6 +183,21 @@
        :orientation "h"
     (left)
     (center)
+    (right)))
+
+(defwidget l_bar []
+  (box :class "bar_class"
+       :orientation "h"
+    (left)))
+
+(defwidget c_bar []
+  (box :class "bar_class"
+       :orientation "h"
+    (center)))
+
+(defwidget r_bar []
+  (box :class "bar_class"
+       :orientation "h"
     (right)))
 
 (defwindow bar
@@ -197,7 +211,43 @@
   :reserve (struts :side "top" :distance "40px")
   :stacking "fg"
   (bar_1))
-  
+
+(defwindow left_bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0.5%"
+                      :y "1%"
+                      :width "12%"
+                      :height "30px"
+                      :anchor "top left")
+  :reserve (struts :side "top" :distance "44px")
+  :stacking "fg"
+  (l_bar))
+
+(defwindow center_bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "1%"
+                      :width "15%"
+                      :height "30px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "44px")
+  :stacking "fg"
+  (c_bar))
+
+(defwindow right_bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "-0.5%"
+                      :y "1%"
+                      :width "20%"
+                      :height "30px"
+                      :anchor "top right")
+  :reserve (struts :side "top" :distance "44px")
+  :stacking "fg"
+  (r_bar))
+
 (defwidget system []
   (box :class "sys_win"
        :orientation "v"
@@ -296,15 +346,15 @@
 (defwidget cal []
   (box :class "cal" :orientation "v"
   (box :class "cal-in"
-    (calendar :class "cal" 
-              :day calendar_day 
+    (calendar :class "cal"
+              :day calendar_day
               :year calendar_year))))
 
 (defwindow calendar
-  :geometry (geometry :x "-8px" 
-                      :y "4%" 
+  :geometry (geometry :x "-8px"
+                      :y "5%"
                       :anchor "top right"
-                      :width "270px" 
+                      :width "270px"
                       :height "60px")
   (cal))
 
@@ -330,7 +380,7 @@
           (scale :value volume_percent
                  :space-evenly "false"
                  :orientation "h"
-                 :onchange "pamixer --set-volume {}" 
+                 :onchange "pamixer --set-volume {}"
                  :tooltip "volume on ${volume_percent}%"
                  :max 100
                  :min 0))))
@@ -338,19 +388,19 @@
   ))
 
 (defwindow audio_ctl
-  :geometry (geometry :x "-8px" 
-                      :y "4%" 
+  :geometry (geometry :x "-8px"
+                      :y "5%"
                       :anchor "top right"
-                      :width "280px" 
+                      :width "280px"
                       :height "60px")
   (audio))
 
 
 (defwindow system
-  :geometry (geometry :x "-8px" 
-                      :y "4%" 
+  :geometry (geometry :x "-8px"
+                      :y "5%"
                       :anchor "top right"
-                      :width "290px" 
+                      :width "290px"
                       :height "120px")
   (system))
 
@@ -414,24 +464,24 @@
   :focusable "false"
   :screen 1
   :geometry (geometry :x "0"
-                      :y "4%"
+                      :y "5%"
                       :width 428
                       :height 104
                       :anchor "top center")
   (music_pop))
 
 (defwindow prompt_win_off
-  :geometry (geometry :x "-8px" 
-                      :y "4%" 
+  :geometry (geometry :x "-8px"
+                      :y "5%"
                       :anchor "top right"
-                      :width "300px" 
+                      :width "300px"
                       :height "60px")
   (prompt :label "shutdown"))
 
 (defwindow prompt_win_reboot
-  :geometry (geometry :x "-8px" 
-                      :y "4%" 
+  :geometry (geometry :x "-8px"
+                      :y "5%"
                       :anchor "top right"
-                      :width "300px" 
+                      :width "300px"
                       :height "60px")
   (prompt :label "reboot"))
