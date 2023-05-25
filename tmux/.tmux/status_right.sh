@@ -16,25 +16,29 @@ function battery_meter() {
 
                 # From 100% to 75% display color grey.
                 100%|9[0-9]%|8[0-9]%|7[5-9]%)
-                fgcolor='#[fg=blue]' 
+                bgcolor='blue' 
+                fgcolor='#ffffff' 
                 icon=' '
                     ;;
 
                 # From 74% to 50% display color green.
                 7[0-4]%|6[0-9]%|5[0-9]%)
-                fgcolor='#[fg=green]' 
+                bgcolor='green' 
+                fgcolor='#ffffff' 
                 icon=' '
                     ;;
 
                 # From 49% to 25% display color yellow.
                 4[0-9]%|3[0-9]%|2[5-9]%)
-                fgcolor='#[fg=yellow]' 
+                bgcolor='yellow' 
+                fgcolor='#ffffff' 
                 icon=' '
                     ;;
 
                 # From 24% to 0% display color red.
                 2[0-4]%|1[0-9]%|[0-9]%)
-                fgcolor='#[fg=red]'
+                bgcolor='red'
+                fgcolor='#ffffff' 
                 icon=' '
                     ;;
             esac
@@ -44,7 +48,8 @@ function battery_meter() {
             fi
 
             # Display the percentage of charge the battery has.
-            printf "#[bg=brightblack,bold] %s #[default]" "${fgcolor}${icon}${batt0}"
+            printf "#[bg=%s,bold] #[fg=%s]%s #[default]" "${bgcolor}" \
+                "${fgcolor}" "${icon}${batt0}"
 
         fi
 
