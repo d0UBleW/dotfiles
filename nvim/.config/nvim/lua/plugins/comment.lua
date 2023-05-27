@@ -20,6 +20,12 @@ return {
 					location = location,
 				})
 			end,
+			ignore = "^$",
 		},
+		config = function()
+			require("Comment").setup()
+			local ft = require("Comment.ft")
+			ft.set("python", { "# %s", '""" %s """' })
+		end,
 	},
 }
