@@ -33,6 +33,30 @@ return {
 					mode = "n",
 					desc = "Trouble LSP definitions",
 				}),
+				lazy_keymap("]d", function()
+					require("trouble").next({ skip_groups = false, jump = true })
+				end, {
+					mode = "n",
+					desc = "Trouble next item",
+				}),
+				lazy_keymap("[d", function()
+					require("trouble").previous({ skip_groups = false, jump = true })
+				end, {
+					mode = "n",
+					desc = "Trouble previous item",
+				}),
+				lazy_keymap("]g", function()
+					require("trouble").next({ skip_groups = true, jump = true })
+				end, {
+					mode = "n",
+					desc = "Trouble next group",
+				}),
+				lazy_keymap("[g", function()
+					require("trouble").previous({ skip_groups = true, jump = true })
+				end, {
+					mode = "n",
+					desc = "Trouble previous group",
+				}),
 			}
 		end,
 	},

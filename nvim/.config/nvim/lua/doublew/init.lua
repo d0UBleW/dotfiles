@@ -4,8 +4,7 @@ require("doublew.remap")
 require("doublew.toggle")
 --[[ require("doublew.clipboard") ]]
 require("doublew.py3nvim")
---[[ require("doublew.packer") ]]
---[[ require("doublew.lsp") ]]
+require("doublew.colorscheme")
 
 local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
 

@@ -12,6 +12,16 @@ return {
 			},
 			{
 				"nvim-treesitter/nvim-treesitter-context",
+				keys = function()
+					local lazy_keymap = require("doublew.keymap").lazy_keymap
+					return {
+						lazy_keymap("<leader>tc", "<cmd>TSContextToggle<CR>", {
+							mode = "n",
+							desc = "[T]reesitter [C]ontext toggle",
+						}),
+					}
+				end,
+
 				config = function(_, opts)
 					require("treesitter-context").setup(opts)
 				end,
