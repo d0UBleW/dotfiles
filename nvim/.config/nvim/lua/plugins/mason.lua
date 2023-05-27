@@ -1,6 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = "Mason",
 		dependencies = {
 			"williamboman/nvim-lsp-installer",
@@ -9,6 +10,9 @@ return {
 				opts = {
 					ensure_installed = { "lua_ls", "rust_analyzer" },
 				},
+				config = function()
+					require("mason-lspconfig").setup()
+				end,
 			},
 		},
 		config = function()

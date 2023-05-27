@@ -4,6 +4,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"j-hui/fidget.nvim",
+			"williamboman/mason.nvim",
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -22,13 +23,13 @@ return {
 
 			--[[ lspconfig.pyright.setup(config(require("plugins.lsp.settings.pyright"))) ]]
 
-			lspconfig.pylsp.setup(config())
+			lspconfig.pylsp.setup(config(require("plugins.lsp.settings.pylsp")))
 
 			lspconfig.tsserver.setup(config(require("plugins.lsp.settings.tsserver")))
 
 			lspconfig.clangd.setup(config(require("plugins.lsp.settings.clangd")))
 
-			lspconfig.ansiblels.setup(config())
+			--[[ lspconfig.ansiblels.setup(config()) ]]
 
 			--[[ lspconfig.bashls.setup(config()) ]]
 
