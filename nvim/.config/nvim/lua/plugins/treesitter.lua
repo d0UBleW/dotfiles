@@ -129,18 +129,18 @@ return {
 			sync_install = false,
 			highlight = {
 				enable = true,
-				disable = function(lang, bufnr)
-					return vim.api.nvim_buf_line_count(bufnr) > 3000
+				disable = function(_, bufnr)
+					return vim.api.nvim_buf_line_count(bufnr) > 5000
 				end,
 				additional_vim_regex_highlighting = false,
 			},
 			incremental_selection = {
 				enable = true,
 				keymaps = {
-					init_selection = "<c-space>",
-					node_incremental = "<c-space>",
-					scope_incremental = "<c-S-s>",
-					node_decremental = "<c-k>",
+					init_selection = "<cr>",
+					node_incremental = "<cr>",
+					scope_incremental = "<c-space>",
+					node_decremental = "<bs>",
 				},
 			},
 			indent = { enable = true, disable = { "yaml" } },
@@ -210,10 +210,12 @@ return {
 				swap = {
 					enable = true,
 					swap_next = {
-						["<leader>a"] = "@parameter.inner",
+						["]a"] = "@parameter.inner",
+						["]A"] = "@parameter.outer",
 					},
 					swap_previous = {
-						["<leader>A"] = "@parameter.inner",
+						["[a"] = "@parameter.inner",
+						["[A"] = "@parameter.outer",
 					},
 				},
 			},
