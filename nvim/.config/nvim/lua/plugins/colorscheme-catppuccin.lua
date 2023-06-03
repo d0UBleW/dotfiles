@@ -3,11 +3,6 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		opts = function(_)
-			local time = os.date("*t").hour
-			vim.opt.background = "light"
-			if time > 17 or time < 8 then
-				vim.opt.background = "dark"
-			end
 			return {
 				-- flavour = "frappe", -- latte, frappe, macchiato, mocha
 				background = { -- :h background
@@ -53,7 +48,7 @@ return {
 		end,
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
-			vim.cmd([[ colorscheme catppuccin ]])
+			-- vim.cmd([[ colorscheme catppuccin ]])
 		end,
 	},
 }

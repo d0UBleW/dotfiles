@@ -2,11 +2,6 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		opts = function(_)
-			local time = os.date("*t").hour
-			vim.opt.background = "light"
-			if time > 17 or time < 6 then
-				vim.opt.background = "dark"
-			end
 			return {
 				style = "storm",
 				light_style = "day",
