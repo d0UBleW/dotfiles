@@ -211,11 +211,9 @@ return {
 					enable = true,
 					swap_next = {
 						["]a"] = "@parameter.inner",
-						["]A"] = "@parameter.outer",
 					},
 					swap_previous = {
 						["[a"] = "@parameter.inner",
-						["[A"] = "@parameter.outer",
 					},
 				},
 			},
