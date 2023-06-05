@@ -9,7 +9,7 @@ return {
 			end,
 		},
 		opts = {
-			history = true,
+			history = false,
 			delete_check_events = "TextChanged",
 		},
 		keys = {
