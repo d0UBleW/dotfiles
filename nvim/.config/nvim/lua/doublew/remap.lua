@@ -34,9 +34,12 @@ nnoremap("<leader>j", "<cmd>wincmd j<CR>")
 nnoremap("<leader>k", "<cmd>wincmd k<CR>")
 nnoremap("<leader>l", "<cmd>wincmd l<CR>")
 
-nnoremap("<S-l>", "<cmd>tabnext<CR>")
-nnoremap("<S-h>", "<cmd>tabprevious<CR>")
-nnoremap("te", "<cmd>tabedit<CR>")
+nnoremap("<S-l>", "$")
+nnoremap("<S-h>", "^")
+
+nnoremap("<tab>", "<cmd>tabnext<CR>")
+nnoremap("<S-tab>", "<cmd>tabprevious<CR>")
+nnoremap("<leader>te", "<cmd>tabedit<CR>")
 
 nnoremap("co", "<cmd>copen<CR>")
 nnoremap("cc", "<cmd>cclose<CR>")
@@ -57,6 +60,9 @@ vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
 vnoremap("<leader>p", '"_dP')
+
+vnoremap("<S-l>", "$")
+vnoremap("<S-h>", "^")
 
 vim.api.nvim_create_user_command("IDE", function(_)
 	require("doublew.ide")
