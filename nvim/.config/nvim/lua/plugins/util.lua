@@ -23,4 +23,9 @@ return {
 			require("colorizer").setup()
 		end,
 	},
+	{
+		"tpope/vim-dadbod",
+		lazy = true,
+		cmd = "DB",
+	},
 }
