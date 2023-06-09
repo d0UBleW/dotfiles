@@ -6,3 +6,5 @@ vim/.vim/sessions/default.vim
 *~
 #*#
 lazy-lock.json
+default.sh
+config.rasi
