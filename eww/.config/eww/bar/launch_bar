@@ -7,7 +7,6 @@ EWW="$HOME/.local/bin/eww -c $HOME/.config/eww/bar"
 ## Run eww daemon if not running already
 if [[ ! `pidof eww` ]]; then
 	${EWW} daemon
-	sleep 1
 fi
 
 ## Open widgets 
