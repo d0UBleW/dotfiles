@@ -5,3 +5,4 @@ vim/.vim/.netrwhist
 vim/.vim/sessions/default.vim
 *~
 #*#
+lazy-lock.json
