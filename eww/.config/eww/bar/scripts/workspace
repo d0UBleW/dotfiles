@@ -42,7 +42,7 @@ function ws {
          :orientation \"h\" \
          :space-evenly \"true\" \
          :halign \"center\" \
-         :spacing 0"
+         :spacing 8"
 
     printf "%s " "${HEADER}"
 

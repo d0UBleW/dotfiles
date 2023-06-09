@@ -33,7 +33,7 @@
 
 (defwidget bat []
   (box :class "bat_module" :vexpand "false" :hexpand "false"
-    (circular-progress :value battery :class "batbar" :thickness 4
+    (circular-progress :value battery :class "batbar" :thickness 3
       (button :class "iconbat"
               :tooltip "battery on ${battery}%"
               :show_truncated false
@@ -43,7 +43,7 @@
 
 (defwidget mem []
   (box :class "mem_module" :vexpand "false" :hexpand "false"
-    (circular-progress :value memory :class "membar" :thickness 4
+    (circular-progress :value memory :class "membar" :thickness 3
       (button :class "iconmem"
               :tooltip "using ${memory}% ram"
               :onclick "$HOME/.config/eww/bar/scripts/pop system"
@@ -217,7 +217,7 @@
   :windowtype "dock"
   :geometry (geometry :x "0.5%"
                       :y "1%"
-                      :width "12%"
+                      :width "11%"
                       :height "30px"
                       :anchor "top left")
   :reserve (struts :side "top" :distance "44px")
@@ -229,7 +229,7 @@
   :windowtype "dock"
   :geometry (geometry :x "0%"
                       :y "1%"
-                      :width "15%"
+                      :width "20%"
                       :height "30px"
                       :anchor "top center")
   :reserve (struts :side "top" :distance "44px")

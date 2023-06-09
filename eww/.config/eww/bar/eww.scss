@@ -1,6 +1,6 @@
 $radius: 20px;
 
-$f-family: IosevkaTerm NFM;
+$f-family: IosevkaTerm NFM, Noto Sans SC, Noto Sans TC;
 
 // $f-size-s: 16px;
 // $f-size-sm: 20px;
@@ -98,14 +98,16 @@ tooltip {
 }
 
 .iconmem {
-    color: $yellow;
+    // color: $yellow;
+    color: rgba(#ffffff, 0);
 }
 .iconbat {
-    color: $green;
+    // color: $green;
+    color: rgba(#ffffff, 0);
 }
 .iconbat, .iconmem {
-    font-size: $f-size-m;
-    margin: 1px 6px 0px 6px;
+    font-size: $f-size-s;
+    margin: 0px 6px 0px 6px;
 }
 
 .separ {
@@ -138,7 +140,7 @@ scale trough {
 
 .power-menu {
     font-size: $f-size-l;
-    margin: 0 8px 2px 8px;
+    margin: 0px 8px 0px 8px;
     padding: 0;
 }
 
@@ -179,8 +181,8 @@ scale trough {
 }
 
 .workspaces {
-    font-size: $f-size-l;
-    margin: 0px -8px 0px 0px;
+    font-size: $f-size-sm;
+    margin: 6px 0px 0px 0px;
     color: $gray;
 }
 
@@ -223,7 +225,7 @@ scale trough {
     color: $foreground;
     font-size : $f-size-sm;
     font-weight : bold;
-    margin : 2px 4px 0px 0px;
+    margin : 0px 4px 0px 0px;
 }
 
 .song_btn_play {
