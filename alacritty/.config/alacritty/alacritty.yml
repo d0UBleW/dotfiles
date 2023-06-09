@@ -3,7 +3,6 @@ window:
     x: 16
     y: 16
 
-  # opacity: 0.95
   opacity: 1
 
 font:
