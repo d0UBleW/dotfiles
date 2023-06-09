@@ -18,7 +18,7 @@ elif [[ "$1" == "--reddit" ]]; then
 	${EWW} close-all && rm -rf "$FILE" &&  $cmd "https://reddit.com" &
 
 elif [[ "$1" == "--code" ]]; then
-	${EWW} close-all && rm -rf "$FILE" && nvim &
+	${EWW} close-all && rm -rf "$FILE" && alacritty -e nvim &
 
 elif [[ "$1" == "--discord" ]]; then
 	${EWW} close-all && rm -rf "$FILE" && Discord &

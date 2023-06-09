@@ -3,11 +3,12 @@ window:
     x: 16
     y: 16
 
-  opacity: 0.95
+  # opacity: 0.95
+  opacity: 1
 
 font:
   normal:
-    family: IosevkaTerm Nerd Font
+    family: IosevkaTerm NFM
     # family: JetBrainsMono NF
     style: Medium
   size: 14.0
