@@ -1,12 +1,16 @@
-local time = os.date("*t").hour
-if time > 17 or time < 6 then
-	vim.opt.background = "dark"
-	-- vim.cmd([[ colorscheme github_dark ]])
-else
-	vim.opt.background = "light"
-	-- vim.cmd([[ colorscheme github_light ]])
+vim.opt.background = "light"
+
+local f = io.open('/home/d0ublew/.theme', 'rb')
+if (f ~= nil) then
+	local content = f:read("*all")
+	vim.opt.background = content:gsub("%s+", "")
+	f:close()
 end
 
--- vim.cmd([[ colorscheme kanagawa ]])
--- vim.cmd([[ colorscheme catppuccin ]])
+--[[ local time = os.date("*t").hour ]]
+--[[ vim.opt.background = "light" ]]
+--[[ if time > 17 or time < 6 then ]]
+--[[ 	vim.opt.background = "dark" ]]
+--[[ end ]]
+
 vim.cmd([[ colorscheme tokyonight ]])
