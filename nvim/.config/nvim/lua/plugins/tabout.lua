@@ -7,7 +7,7 @@ return {
 		},
 		event = "VeryLazy",
 		config = function()
-			require("tabout").setup()
+			-- require("tabout").setup()
 		end,
 	},
 }
