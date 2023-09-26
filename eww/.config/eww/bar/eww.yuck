@@ -83,18 +83,18 @@
              :class "power-reveal"
              :space-evenly "true"
              :spacing "16"
-          (button :class "power-lock-btn"
-                  :tooltip "Lock Screen"
-                  :onclick "betterlockscreen -l"
-                  "")
           (button :class "power-reboot-btn"
                   :tooltip "Reboot"
                   :onclick "~/.config/eww/bar/scripts/pop prompt_reboot"
-                  "")))
-      (button :class "power-off-btn"
-              :tooltip "Shutdown"
-              :onclick "~/.config/eww/bar/scripts/pop prompt_off"
-              ""))))
+                  "")
+          (button :class "power-off-btn"
+                  :tooltip "Shutdown"
+                  :onclick "~/.config/eww/bar/scripts/pop prompt_off"
+                  "")))
+      (button :class "power-lock-btn"
+              :tooltip "Lock Screen"
+              :onclick "betterlockscreen -l"
+              ""))))
 
 (defwidget volume []
   (eventbox     :onhover "${eww} update vol_reveal=true"
