@@ -51,6 +51,7 @@ return {
 					formatting.autopep8.with({
 						extra_args = { "--aggressive", "--aggressive", "--aggressive" },
 					}),
+					formatting.isort,
 					formatting.cmake_format,
 					formatting.stylua,
 					formatting.rubocop,
@@ -58,9 +59,9 @@ return {
 						extra_args = { "--disable", "MD014" },
 						filetypes = { "md" },
 					}),
-					formatting.prettierd.with({
-						--[[ disabled_filetypes = { "md", "markdown" }, ]]
-					}),
+					-- formatting.prettierd.with({
+					-- 	--[[ disabled_filetypes = { "md", "markdown" }, ]]
+					-- }),
 					formatting.gofumpt,
 					formatting.goimports,
 					formatting.goimports_reviser,
@@ -104,6 +105,7 @@ return {
 					diagnostics.cmake_lint,
 
 					code_actions.refactoring,
+					code_actions.gitsigns,
 				},
 			}
 		end,

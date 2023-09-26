@@ -6,18 +6,18 @@ require("doublew.toggle")
 require("doublew.py3nvim")
 require("doublew.colorscheme")
 
-local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
+-- local ansible_group = vim.api.nvim_create_augroup("AnsibleFt", { clear = true })
 
-vim.api.nvim_create_autocmd("BufRead", {
-	pattern = { "*.yaml", "*.yml" },
-	callback = function()
-		--[[ if vim.fn.search("hosts:\\|tasks:", "nw") > 0 then ]]
-		if vim.fn.search("ansible.", "nw") > 0 then
-			vim.api.nvim_command("set ft=yaml.ansible")
-		end
-	end,
-	group = ansible_group,
-})
+-- vim.api.nvim_create_autocmd("BufRead", {
+-- 	pattern = { "*.yaml", "*.yml" },
+-- 	callback = function()
+-- 		--[[ if vim.fn.search("hosts:\\|tasks:", "nw") > 0 then ]]
+-- 		if vim.fn.search("ansible.", "nw") > 0 then
+-- 			vim.api.nvim_command("set ft=yaml.ansible")
+-- 		end
+-- 	end,
+-- 	group = ansible_group,
+-- })
 
 local code_act_group = vim.api.nvim_create_augroup("CodeAction", { clear = true })
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {

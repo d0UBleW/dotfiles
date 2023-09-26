@@ -1,6 +1,7 @@
 local M = {}
 
 local buf_nnoremap = require("doublew.keymap").buf_nnoremap
+local buf_vnoremap = require("doublew.keymap").buf_vnoremap
 local buf_inoremap = require("doublew.keymap").buf_inoremap
 
 M.setup = function()
@@ -75,6 +76,7 @@ local function lsp_keymaps(bufnr)
 	buf_nnoremap(bufnr, "gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences" })
 	--[[ buf_nnoremap(bufnr, "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" }) ]]
 	buf_nnoremap(bufnr, "<leader>ca", vim.cmd.CodeActionMenu, { desc = "[C]ode [A]ction" })
+	buf_vnoremap(bufnr, "<leader>ca", vim.cmd.CodeActionMenu, { desc = "[C]ode [A]ction" })
 	buf_nnoremap(bufnr, "[D", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>")
 	buf_nnoremap(bufnr, "gl", "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<CR>")
 	buf_nnoremap(bufnr, "]D", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>")
@@ -94,6 +96,12 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
+	-- local navic_status_ok, navic = pcall(require, "nvim-navic")
+	-- if navic_status_ok then
+	-- 	if client.server_capabilities.documentSymbolProvider then
+	-- 		navic.attach(client, bufnr)
+	-- 	end
+	-- end
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client, bufnr)
 end
