@@ -51,16 +51,18 @@ if Util.has("bufferline.nvim") then
 	nnoremap("<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 	nnoremap("[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 	nnoremap("]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+	nnoremap("<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+	nnoremap("<tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 else
 	nnoremap("<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 	nnoremap("<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 	nnoremap("[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 	nnoremap("]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+	nnoremap("<tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+	nnoremap("<S-tab>", "<cmd>tabprevious<CR>", { desc = "Prev tab" })
 end
 
 nnoremap("<leader><tab>", "<cmd>e #<CR>", { desc = "Switch to last buffer" })
-nnoremap("<tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
-nnoremap("<S-tab>", "<cmd>tabprevious<CR>", { desc = "Prev tab" })
 nnoremap("<leader>te", "<cmd>tabedit<CR>", { desc = "New tab" })
 
 nnoremap("co", "<cmd>copen<CR>", { desc = "Open quickfix list" })
