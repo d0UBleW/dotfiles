@@ -1,3 +1,4 @@
+local Util = require("util.lazyvim")
 local status_ok_km, keymap = pcall(require, "util.keymaps")
 
 if not status_ok_km then
@@ -45,8 +46,17 @@ nnoremap("<leader>j", "<cmd>wincmd j<CR>", { desc = "Select lower window" })
 nnoremap("<leader>k", "<cmd>wincmd k<CR>", { desc = "Select upper window" })
 nnoremap("<leader>l", "<cmd>wincmd l<CR>", { desc = "Select right window" })
 
-nnoremap("<S-l>", "$")
-nnoremap("<S-h>", "^")
+if Util.has("bufferline.nvim") then
+	nnoremap("<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+	nnoremap("<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+	nnoremap("[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+	nnoremap("]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+else
+	nnoremap("<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+	nnoremap("<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+	nnoremap("[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+	nnoremap("]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+end
 
 nnoremap("<leader><tab>", "<cmd>e #<CR>", { desc = "Switch to last buffer" })
 nnoremap("<tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
