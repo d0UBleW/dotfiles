@@ -17,6 +17,7 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 		{ import = "plugins.extras.coding.spider" },
+		{ import = "plugins.extras.lang.clangd" },
 	},
 })
 require("config")

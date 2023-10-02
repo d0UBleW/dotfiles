@@ -53,9 +53,9 @@ return {
 			-- LSP Server Settings
 			---@type lspconfig.options
 			servers = {
-				clangd = {
-					cmd = { "clangd", "--offset-encoding=utf-16" },
-				},
+				-- clangd = {
+				-- 	cmd = { "clangd", "--offset-encoding=utf-16" },
+				-- },
 				-- pylsp = {
 				-- 	settings = {
 				-- 		pylsp = {
@@ -231,7 +231,7 @@ return {
 					nls.builtins.formatting.isort,
 					nls.builtins.formatting.clang_format.with({
 						extra_args = { "-style", "{IndentWidth: 4, AllowShortFunctionsOnASingleLine: Empty}" },
-						--[[ extra_filetypes = { "arduino" }, ]]
+						-- extra_filetypes = { "arduino" },
 					}),
 					nls.builtins.formatting.autopep8.with({
 						extra_args = { "--aggressive", "--aggressive", "--aggressive" },
