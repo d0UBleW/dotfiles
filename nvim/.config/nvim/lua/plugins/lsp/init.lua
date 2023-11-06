@@ -67,6 +67,7 @@ return {
 				-- 	},
 				-- },
 				jsonls = {},
+				dockerls = {},
 				lua_ls = {
 					-- mason = false, -- set to false if you don't want this server to be installed with mason
 					-- Use this to add any additional keymaps
@@ -218,7 +219,7 @@ return {
 
 	-- formatters
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "mason.nvim" },
 		opts = function()
@@ -230,7 +231,10 @@ return {
 					nls.builtins.formatting.shfmt,
 					nls.builtins.formatting.isort,
 					nls.builtins.formatting.clang_format.with({
-						extra_args = { "-style", "{IndentWidth: 4, AllowShortFunctionsOnASingleLine: Empty}" },
+						extra_args = {
+							"-style",
+							"{IndentWidth: 4, AllowShortFunctionsOnASingleLine: Empty, AlignAfterOpenBracket: Align, AlignConsecutiveDeclarations: Consecutive, AlignConsecutiveMacros: Consecutive, AllowShortIfStatementsOnASingleLine: WithoutElse, AllowShortLoopsOnASingleLine: true}",
+						},
 						-- extra_filetypes = { "arduino" },
 					}),
 					nls.builtins.formatting.autopep8.with({

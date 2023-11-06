@@ -1,7 +1,7 @@
 local options = {
 	termguicolors = true,
 	--[[ guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250", ]]
-	guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
+	guicursor = "n-v-c-sm:block,i-ci-ve:ver50,r-cr-o:hor20",
 	mouse = "a",
 
 	hidden = true,
@@ -22,7 +22,7 @@ local options = {
 	smartindent = true,
 	autoindent = true,
 
-	hlsearch = true,
+	hlsearch = false,
 	incsearch = true,
 
 	smartcase = true,

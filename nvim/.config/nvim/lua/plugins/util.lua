@@ -1,6 +1,35 @@
 return {
 	{ "ThePrimeagen/git-worktree.nvim", lazy = true },
-	{ "tpope/vim-vinegar" },
+	{
+		"stevearc/oil.nvim",
+		lazy = false,
+		-- opts = {
+		-- },
+		config = function()
+			require("oil").setup({
+				columns = {
+					-- "icon",
+				},
+				cleanup_delay_ms = 0,
+				keymaps = {
+					["<A-p>"] = "actions.preview",
+					["<A-u>"] = "actions.preview_scroll_up",
+					["<A-d>"] = "actions.preview_scroll_down",
+					["<A-y>"] = "actions.copy_entry_path",
+				},
+			})
+		end,
+		keys = function()
+			local lazy_keymap = require("util.keymaps").lazy_keymap
+			return {
+				lazy_keymap("-", "<cmd>Oil<cr>", {
+					mode = "n",
+					desc = "Open Oil File Explorer",
+				}),
+			}
+		end,
+	},
+	-- { "tpope/vim-vinegar" },
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired", event = "VeryLazy" },

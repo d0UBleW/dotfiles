@@ -1,5 +1,16 @@
 return {
 	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		opts = function(_)
+			return {
+				variant = "auto",
+				dark_variant = "moon",
+				disable_italics = true,
+			}
+		end,
+	},
+	{
 		"folke/tokyonight.nvim",
 		opts = function(_)
 			return {
