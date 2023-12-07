@@ -143,4 +143,26 @@ config.check_for_updates = true
 config.check_for_updates_interval_seconds = 86400
 config.show_update_window = true
 
+config.ssh_domains = {
+	{
+		name = "kali",
+		remote_address = "192.168.199.128",
+		multiplexing = "WezTerm",
+		username = "d0UBleW",
+		remote_wezterm_path = "/usr/local/bin/wezterm",
+		ssh_option = {
+			identityfile = "C:\\Users\\William\\.ssh\\kali",
+		},
+	},
+	{
+		name = "dojo",
+		remote_address = "dojo.pwn.college",
+		multiplexing = "None",
+		username = "hacker",
+		ssh_option = {
+			identityfile = "C:\\Users\\William\\.ssh\\pwn.college.key",
+		},
+	},
+}
+
 return config
