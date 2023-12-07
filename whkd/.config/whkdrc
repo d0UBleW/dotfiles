@@ -11,6 +11,7 @@ alt + shift + o         : komorebic reload-configuration
 # alt + b                 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
 alt + shift + s         : Start-Process "C:\Users\William\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Spotify.lnk"
 alt + shift + d         : Start-Process "C:\Users\William\AppData\Local\Discord\app-1.0.9013\Discord.exe"
+alt + shift + w         : Start-Process "C:\Users\William\shortcuts\wtwsl.lnk"
 
 # Focus windows
 ctrl + alt + h          : komorebic focus left
@@ -60,6 +61,11 @@ alt + 2                 : komorebic focus-workspace 1
 alt + 3                 : komorebic focus-workspace 2
 alt + 4                 : komorebic focus-workspace 3
 alt + 5                 : komorebic focus-workspace 4
+alt + 6                 : komorebic focus-workspace 5
+alt + 7                 : komorebic focus-workspace 6
+alt + 8                 : komorebic focus-workspace 7
+alt + 9                 : komorebic focus-workspace 8
+alt + 0                 : komorebic focus-workspace 9
 
 # Move windows across workspaces
 ctrl + alt + shift + 1  : komorebic move-to-workspace 0
@@ -67,3 +73,8 @@ ctrl + alt + shift + 2  : komorebic move-to-workspace 1
 ctrl + alt + shift + 3  : komorebic move-to-workspace 2
 ctrl + alt + shift + 4  : komorebic move-to-workspace 3
 ctrl + alt + shift + 5  : komorebic move-to-workspace 4
+ctrl + alt + shift + 6  : komorebic move-to-workspace 5
+ctrl + alt + shift + 7  : komorebic move-to-workspace 6
+ctrl + alt + shift + 8  : komorebic move-to-workspace 7
+ctrl + alt + shift + 9  : komorebic move-to-workspace 8
+ctrl + alt + shift + 0  : komorebic move-to-workspace 9

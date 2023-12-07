@@ -17,7 +17,7 @@ komorebic watch-configuration enable
 komorebic float-rule exe "Bitwarden.exe"
 
 # Create named workspaces I-V on monitor 0
-komorebic ensure-named-workspaces 0 I II III IV V
+komorebic ensure-named-workspaces 0 I II III IV V VI VII VIII IX X
 # You can do the same thing for secondary monitors too
 # komorebic ensure-named-workspaces 1 A B C D E F
 
@@ -25,15 +25,17 @@ komorebic ensure-named-workspaces 0 I II III IV V
 komorebic named-workspace-layout I bsp
 
 # Set the gaps around the edge of the screen for a workspace
-komorebic named-workspace-padding I 20
+komorebic named-workspace-padding I 10
 # Set the gaps between the containers for a workspace
-komorebic named-workspace-container-padding I 20
+komorebic named-workspace-container-padding I 10
 
 # You can assign specific apps to named workspaces
-komorebic named-workspace-rule exe "waterfox.exe" II
+komorebic named-workspace-rule exe "wezterm-gui.exe" I
+komorebic named-workspace-rule exe "Teams.exe" II
 komorebic named-workspace-rule exe "explorer.exe" III
 komorebic named-workspace-rule exe "discord.exe" IV
 komorebic named-workspace-rule exe "Spotify.exe" V
+komorebic named-workspace-rule exe "waterfox.exe" X
 
 # Configure the invisible border dimensions
 komorebic invisible-borders 7 0 14 7
