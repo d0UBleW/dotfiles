@@ -1,3 +1,6 @@
+scan_timeout = 10
+command_timeout = 250
+
 [aws]
 symbol = "  "
 
@@ -80,7 +83,7 @@ symbol = " "
 
 [shlvl]
 disabled = false
-threshold = 2
+threshold = 3
 
 [spack]
 symbol = "🅢 "
