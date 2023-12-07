@@ -214,6 +214,7 @@ return {
 	-- noicer ui
 	{
 		"folke/which-key.nvim",
+		lazy = true,
 		opts = function(_, opts)
 			if require("util.lazyvim").has("noice.nvim") then
 				opts.defaults["<leader>sn"] = { name = "+noice" }

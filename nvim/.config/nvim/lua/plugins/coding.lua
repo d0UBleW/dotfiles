@@ -94,7 +94,20 @@ return {
 	{
 		"echasnovski/mini.surround",
 		version = "*",
-		opts = {},
+		opts = {
+			mappings = {
+				add = "<leader>Sa", -- Add surrounding in Normal and Visual modes
+				delete = "<leader>Sd", -- Delete surrounding
+				find = "<leader>Sf", -- Find surrounding (to the right)
+				find_left = "<leader>SF", -- Find surrounding (to the left)
+				highlight = "<leader>Sh", -- Highlight surrounding
+				replace = "<leader>Sr", -- Replace surrounding
+				update_n_lines = "<leader>Sn", -- Update `n_lines`
+
+				suffix_last = "l", -- Suffix to search with "prev" method
+				suffix_next = "n", -- Suffix to search with "next" method
+			},
+		},
 		-- keys = function(_, keys)
 		-- 	-- Populate the keys based on the user's options
 		-- 	local plugin = require("lazy.core.config").spec.plugins["mini.surround"]

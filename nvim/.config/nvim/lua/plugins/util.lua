@@ -72,15 +72,15 @@ return {
 		keys = function()
 			local lazy_keymap = require("util.keymaps").lazy_keymap
 			return {
-				lazy_keymap("<leader>G", vim.cmd.Git, {
+				lazy_keymap("<leader>gg", vim.cmd.Git, {
 					mode = "n",
 					desc = "Open fugitive",
 				}),
-				lazy_keymap("<leader>Gh", "<cmd>diffget //2<CR>", {
+				lazy_keymap("<leader>gdh", "<cmd>diffget //2<CR>", {
 					mode = "n",
 					desc = "Get left",
 				}),
-				lazy_keymap("<leader>Gl", "<cmd>diffget //3<CR>", {
+				lazy_keymap("<leader>gdl", "<cmd>diffget //3<CR>", {
 					mode = "n",
 					desc = "Get right",
 				}),
