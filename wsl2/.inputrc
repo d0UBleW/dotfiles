@@ -12,6 +12,7 @@
 "\C-o": "> flag.txt"
 "\en": history-search-forward
 "\ep": history-search-backward
+"\C-x\C-u": universal-argument
 
 set completion-ignore-case on
 set meta-flag on

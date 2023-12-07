@@ -1,7 +1,7 @@
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/opt/exercism-cli/
 
-export JAVA_HOME=/usr/lib/jvm/jdk-12
+export JAVA_HOME=/nix/store/ch095in4hr481iqv11s55ks9ksl2c49i-openjdk-19.0.1+10/
 
 export PATH=$PATH:$JAVA_HOME/bin
 
@@ -61,3 +61,10 @@ export WINDOWS_HOME=/mnt/c/Users/William
 # export NODE_OPTIONS=--openssl-legacy-provider
 
 export GATEWAY_IP="$(awk '/nameserver/ {print $2}' /etc/resolv.conf)"
+
+export VAULT_PASSWORD=password
+export ANSIBLE_COW_SELECTION=random
+export ANSIBLE_NOCOWS=1
+
+export PATH=$PATH:/home/doublew/x-tools/bin
+# export CONTAINER_HOST=unix:///mnt/wsl/podman-sockets/podman-machine-default/podman-user.sock
