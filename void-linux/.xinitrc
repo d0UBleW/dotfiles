@@ -1,8 +1,12 @@
-[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
-xrandr -s 1920x1080
-
 $HOME/bin/mode $(cat $HOME/.theme)
 
-[ ! -s ~/.config/mpd/pid ] && mpd
+pamixer --set-volume 50
 
-exec dbus-run-session -- herbstluftwm --locked
+picom &
+
+/home/d0ublew/.config/eww/bar/launch_bar
+# /home/d0ublew/.local/bin/eww daemon
+# /home/d0ublew/.local/bin/eww open bar
+
+xrandr -s 1920x1080
+exec dbus-run-session -- /bin/herbstluftwm --locked

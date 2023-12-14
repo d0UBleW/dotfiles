@@ -15,8 +15,10 @@ alias hc='herbstclient'
 alias mpc='mpc --host=/home/d0ublew/.config/mpd/socket'
 alias py='python3'
 alias ipy='ipython3 --no-banner'
+alias tm='tmux'
 alias ta='tmux attach'
-alias docker='podman'
+# alias docker='podman'
+# alias docker-compose='podman-compose'
 # https://unix.stackexchange.com/a/690130 to get alias completion
 
 alias cfbrc="vim ~/.bashrc"
@@ -43,3 +45,6 @@ export VAULT_PASSWORD='password'
 # __docker_podman_comp=$(complete -p podman)
 # eval "${__docker_podman_comp% *} docker"
 # unset __docker_podman_comp
+
+
+eval "$(direnv hook bash)"

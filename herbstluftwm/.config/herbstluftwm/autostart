@@ -103,7 +103,8 @@ hc keybind $Mod-comma  use_index -1 --skip-visible
 # layouting
 hc keybind $Mod-r remove
 hc keybind $Mod-f floating toggle
-hc keybind $Mod-z fullscreen toggle
+hc keybind $Mod-z and . fullscreen toggle \
+                      . spawn /home/d0ublew/.config/eww/bar/launch_bar
 hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
 hc keybind $Mod-Shift-d set_attr clients.focus.decorated toggle
 hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
