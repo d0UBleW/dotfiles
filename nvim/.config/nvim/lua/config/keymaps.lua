@@ -35,16 +35,35 @@ nnoremap("<leader>.", function()
 	vim.notify("Set cwd to " .. basename)
 end, { desc = "Set cwd to current file basename" })
 
+vim.keymap.set({ "n", "v" }, "<leader>cf", function()
+	Util.format({ force = true })
+end, { desc = "Format" })
+
+-- stylua: ignore start
 nnoremap("<leader>U", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
-nnoremap("<leader>uw", "<cmd>set wrap!<CR>", { desc = "Toggle line wrap" })
-nnoremap("<leader>ul", "<cmd>set nu! rnu!<CR>", { desc = "Toggle line number" })
-nnoremap("<leader>uf", require("plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
-nnoremap("<leader>ud", require("util.lazyvim").toggle_diagnostics, { desc = "Toggle diagnostics" })
-if vim.lsp.inlay_hint then
+nnoremap("<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle line wrap" })
+nnoremap("<leader>ul", function() Util.toggle.number() end, { desc = "Toggle line number" })
+nnoremap("<leader>uL", function() Util.toggle("relativenmber") end, { desc = "Toggle relative line number" })
+nnoremap("<leader>uf", function() Util.format.toggle(true) end, { desc = "Toggle format on Save" })
+nnoremap("<leader>ud", function() Util.toggle.diagnostics() end, { desc = "Toggle diagnostics" })
+-- stylua: ignore start
+
+local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+nnoremap("<leader>uc", function()
+	Util.toggle("conceallevel", false, { 0, conceallevel })
+end, { desc = "Toggle Conceal" })
+if vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint then
 	nnoremap("<leader>uh", function()
-		vim.lsp.inlay_hint(0, nil)
+		Util.toggle.inlay_hints()
 	end, { desc = "Toggle Inlay Hints" })
 end
+nnoremap("<leader>uT", function()
+	if vim.b.ts_highlight then
+		vim.treesitter.stop()
+	else
+		vim.treesitter.start()
+	end
+end, { desc = "Toggle Treesitter Highlight" })
 
 nnoremap("<leader>h", "<cmd>wincmd h<CR>", { desc = "Select left window" })
 nnoremap("<leader>j", "<cmd>wincmd j<CR>", { desc = "Select lower window" })
@@ -99,3 +118,18 @@ onoremap("n", "'Nn'[v:searchforward] .. 'zzvv'", { expr = true, desc = "Next sea
 nnoremap("N", "'nN'[v:searchforward] .. 'zzvv'", { expr = true, desc = "Prev search result" })
 xnoremap("N", "'nN'[v:searchforward] .. 'zzvv'", { expr = true, desc = "Prev search result" })
 onoremap("N", "'nN'[v:searchforward] .. 'zzvv'", { expr = true, desc = "Prev search result" })
+
+-- diagnostic
+local diagnostic_goto = function(next, severity)
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	severity = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity })
+	end
+end
+nnoremap("]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+nnoremap("[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+nnoremap("]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+nnoremap("[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+nnoremap("]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+nnoremap("[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })

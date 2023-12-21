@@ -158,23 +158,12 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
+		main = "ibl",
 		opts = {
-			-- char = "▏",
-			char = "│",
-			filetype_exclude = {
-				"help",
-				"alpha",
-				"dashboard",
-				"neo-tree",
-				"Trouble",
-				"lazy",
-				"mason",
-				"notify",
-				"toggleterm",
-				"lazyterm",
+			indent = {
+				char = "│",
 			},
-			show_trailing_blankline_indent = false,
-			show_current_context = false,
+			scope = { enabled = false },
 		},
 	},
 
@@ -284,7 +273,7 @@ return {
 		lazy = true,
 		init = function()
 			vim.g.navic_silence = true
-			require("util.lazyvim").on_attach(function(client, buffer)
+			require("util.lazyvim").lsp.on_attach(function(client, buffer)
 				if client.server_capabilities.documentSymbolProvider then
 					require("nvim-navic").attach(client, buffer)
 				end

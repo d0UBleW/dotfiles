@@ -1,4 +1,4 @@
-local Util = require("util.lazyvim")
+local Util = require("util.lazyvim.telescope")
 
 return {
 
