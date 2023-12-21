@@ -45,6 +45,7 @@ nnoremap("<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle line
 nnoremap("<leader>ul", function() Util.toggle.number() end, { desc = "Toggle line number" })
 nnoremap("<leader>uL", function() Util.toggle("relativenmber") end, { desc = "Toggle relative line number" })
 nnoremap("<leader>uf", function() Util.format.toggle(true) end, { desc = "Toggle format on Save" })
+nnoremap("<leader>uF", function() Util.format.toggle() end, { desc = "Toggle format on Save (global)" })
 nnoremap("<leader>ud", function() Util.toggle.diagnostics() end, { desc = "Toggle diagnostics" })
 -- stylua: ignore start
 
