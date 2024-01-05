@@ -1,17 +1,16 @@
-function vpnStats
-{
-    $htbip = (/opt/vpnbash.sh)
-    if ($htbip -like '*10.*') {
-        $vpnserver = (/opt/vpnserver.sh)
-        return "`e[32m[`e[34m$vpnserver`e[32m]─[`e[37m$htbip`e[32m]─"
-    } else {
-        return ""
-    }
-}
+Invoke-Expression (&starship init powershell)
+$Env:KOMOREBI_CONFIG_HOME = 'C:\Users\William\.config\komorebi'
 
-function prompt
-{
-    Write-Host ("`e[1;32m┌─" + (vpnStats) + "`e[32m[`e[37m" + [Environment]::UserName + "`e[32m@`e[34m" + (hostname) + "`e[32m]─[`e[37m" + (Get-Location) + "`e[32m]")
-    Write-Host ("`e[32m└──╼ [`e[34mPS`e[32m]>") -nonewline
-    return " "
-}
+Set-PSReadLineOption -EditMode Emacs
+
+Set-PSReadlineKeyHandler -Key Alt+n -Function HistorySearchForward
+Set-PSReadlineKeyHandler -Key Alt+p -Function HistorySearchBackward
+
+# keep or reset to powershell default
+# Set-PSReadlineKeyHandler -Key Shift+Tab -Function TabCompletePrevious
+
+# define Ctrl+Tab like default Tab behavior
+# Set-PSReadlineKeyHandler -Key Ctrl+Tab -Function TabCompleteNext
+
+# define Tab like bash
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
