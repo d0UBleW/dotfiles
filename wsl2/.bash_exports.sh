@@ -55,6 +55,8 @@ export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 # export VAGRANT_DEFAULT_PROVIDER=hyperv
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+export VAGRANT_HOME=/mnt/e/vagrant.d
+export VAGRANT_DOTFILE_PATH=/mnt/e/vagrant.d
 
 export WINDOWS_HOME=/mnt/c/Users/William
 
