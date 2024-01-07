@@ -4,6 +4,17 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
+			{
+				"j-hui/fidget.nvim",
+				opts = {
+					notification = {
+						window = {
+							winblend = 0,
+						},
+					},
+				},
+			},
+
 			"mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			{
@@ -81,6 +92,9 @@ return {
 							},
 							completion = {
 								callSnippet = "Replace",
+							},
+							diagnostics = {
+								globals = { "vim" },
 							},
 						},
 					},
@@ -237,13 +251,14 @@ return {
 						},
 						-- extra_filetypes = { "arduino" },
 					}),
+					nls.builtins.formatting.rustfmt,
 					nls.builtins.formatting.autopep8.with({
 						extra_args = { "--aggressive", "--aggressive", "--aggressive" },
 					}),
 
 					-- nls.builtins.diagnostics.flake8,
 					nls.builtins.diagnostics.clang_check,
-					nls.builtins.diagnostics.mypy,
+					-- nls.builtins.diagnostics.mypy,
 				},
 			}
 		end,

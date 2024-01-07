@@ -42,6 +42,7 @@ return {
 				"luap",
 				"markdown",
 				"markdown_inline",
+				"nix",
 				"python",
 				"query",
 				"regex",
@@ -54,10 +55,53 @@ return {
 			incremental_selection = {
 				enable = true,
 				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
+					init_selection = "<cr>",
+					node_incremental = "<cr>",
 					scope_incremental = false,
 					node_decremental = "<bs>",
+				},
+			},
+			textobjects = {
+				select = {
+					enable = true,
+					lookahead = true,
+					keymaps = {
+						["aa"] = "@parameter.outer",
+						["ia"] = "@parameter.inner",
+						["af"] = "@function.outer",
+						["if"] = "@function.inner",
+						["ac"] = "@class.outer",
+						["ic"] = "@class.inner",
+					},
+				},
+				move = {
+					enable = true,
+					set_jumps = true, -- whether to set jumps in the jumplist
+					goto_next_start = {
+						["]m"] = "@function.outer",
+						["]k"] = "@class.outer",
+					},
+					goto_next_end = {
+						["]M"] = "@function.outer",
+						["]K"] = "@class.outer",
+					},
+					goto_previous_start = {
+						["[m"] = "@function.outer",
+						["[k"] = "@class.outer",
+					},
+					goto_previous_end = {
+						["[M"] = "@function.outer",
+						["[K"] = "@class.outer",
+					},
+				},
+				swap = {
+					enable = true,
+					swap_next = {
+						["]a"] = "@parameter.inner",
+					},
+					swap_previous = {
+						["[a"] = "@parameter.inner",
+					},
 				},
 			},
 		},
@@ -91,5 +135,27 @@ return {
 				end
 			end
 		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		enabled = true,
+		opts = { mode = "cursor", max_lines = 3 },
+		keys = {
+			{
+				"<leader>ut",
+				function()
+					local Util = require("util.lazyvim")
+					local tsc = require("treesitter-context")
+					tsc.toggle()
+					if Util.inject.get_upvalue(tsc.toggle, "enabled") then
+						Util.info("Enabled Treesitter Context", { title = "Option" })
+					else
+						Util.warn("Disabled Treesitter Context", { title = "Option" })
+					end
+				end,
+				desc = "Toggle Treesitter Context",
+			},
+		},
 	},
 }
