@@ -191,7 +191,7 @@ wezterm.on("toggle-opacity", function(window, _)
 	window:set_config_overrides(overrides)
 end)
 
-config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
+-- config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 
 config.keys = {
 	{
@@ -206,42 +206,42 @@ config.keys = {
 	},
 	{
 		key = "b",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.EmitEvent("toggle-opacity"),
 	},
 	{
 		key = "v",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "s",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "h",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.ActivatePaneDirection("Left"),
 	},
 	{
 		key = "l",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.ActivatePaneDirection("Right"),
 	},
 	{
 		key = "j",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.ActivatePaneDirection("Down"),
 	},
 	{
 		key = "k",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.ActivatePaneDirection("Up"),
 	},
 	{
 		key = "z",
-		mods = "LEADER",
+		mods = "CTRL|ALT",
 		action = wezterm.action.TogglePaneZoomState,
 	},
 }
@@ -281,7 +281,7 @@ config.ssh_domains = {
 	},
 	{
 		name = "kali-hyperv",
-		remote_address = "172.29.110.65",
+		remote_address = "172.21.95.220",
 		multiplexing = "None",
 		username = "kali",
 		ssh_option = {
