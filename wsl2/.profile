@@ -41,8 +41,11 @@ export PATH="$PATH:/home/doublew/.local/share/coursier/bin"
 # <<< coursier install directory <<<
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+# enable shims
+eval "$(pyenv init -)"
 
 # [ -s "$XDG_CONFIG_HOME/starship/bash_completion" ] && \. "$XDG_CONFIG_HOME/starship/bash_completion"
 
