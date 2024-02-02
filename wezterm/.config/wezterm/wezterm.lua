@@ -2,6 +2,22 @@ local wezterm = require("wezterm")
 local config = {}
 
 config.force_reverse_video_cursor = true
+config.default_prog = { "pwsh.exe", "-NoLogo" }
+
+
+config.launch_menu = {}
+for host, cfg in pairs(wezterm.enumerate_ssh_hosts()) do
+	table.insert(config.launch_menu, {
+		label = "ssh://" .. host,
+		args = { "ssh", host },
+	})
+end
+-- config.launch_menu = {
+-- 	{
+-- 		label = "kali hyperv",
+-- 		args = { "ssh", "kali-hyperv" },
+-- 	},
+-- }
 
 local rose_pine_dawn = require("rose-pine-dawn").colors()
 local rose_pine_moon = require("rose-pine-moon").colors()
@@ -167,6 +183,15 @@ config.use_dead_keys = false
 
 config.use_fancy_tab_bar = false
 
+-- Status bar is only visible with fancy tab bar
+wezterm.on("update-status", function(window, pane)
+	local leader = ""
+	if window:leader_is_active() then
+		leader = "LEADER"
+	end
+	window:set_right_status(leader)
+end)
+
 wezterm.on("toggle-mode", function(window, _)
 	local overrides = window:get_config_overrides() or {}
 
@@ -244,7 +269,20 @@ config.keys = {
 		mods = "CTRL|ALT",
 		action = wezterm.action.TogglePaneZoomState,
 	},
+	{
+		key = "r",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ReloadConfiguration,
+	},
 }
+
+for i = 1, 9 do
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "CTRL",
+		action = wezterm.action.ActivateTab(i - 1),
+	})
+end
 
 config.check_for_updates = true
 config.check_for_updates_interval_seconds = 86400
@@ -270,7 +308,16 @@ config.ssh_domains = {
 			identityfile = "C:\\Users\\William\\.ssh\\kali",
 		},
 	}, ]]
-	{
+	--[[ {
+		name = "kali-hyperv",
+		remote_address = "kali.local",
+		multiplexing = "None",
+		username = "kali",
+		ssh_option = {
+			identityfile = "C:\\Users\\William\\.ssh\\kali-hyperv",
+		},
+	}, ]]
+	--[[ {
 		name = "void",
 		remote_address = "192.168.37.166",
 		multiplexing = "None",
@@ -278,17 +325,8 @@ config.ssh_domains = {
 		ssh_option = {
 			identityfile = "C:\\Users\\William\\.ssh\\void",
 		},
-	},
-	{
-		name = "kali-hyperv",
-		remote_address = "172.21.95.220",
-		multiplexing = "None",
-		username = "kali",
-		ssh_option = {
-			identityfile = "C:\\Users\\William\\.ssh\\kali-hyperv",
-		},
-	},
-	{
+	}, ]]
+	--[[ {
 		name = "dojo",
 		remote_address = "dojo.pwn.college",
 		multiplexing = "None",
@@ -296,7 +334,7 @@ config.ssh_domains = {
 		ssh_option = {
 			identityfile = "C:\\Users\\William\\.ssh\\pwn.college.key",
 		},
-	},
+	}, ]]
 }
 
 return config
