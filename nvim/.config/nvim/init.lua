@@ -18,6 +18,8 @@ require("lazy").setup({
 		{ import = "plugins" },
 		{ import = "plugins.extras.coding.spider" },
 		{ import = "plugins.extras.lang.clangd" },
+		{ import = "plugins.extras.lang.go" },
+		{ import = "plugins.extras.lang.nim" },
 	},
 })
 require("config")
