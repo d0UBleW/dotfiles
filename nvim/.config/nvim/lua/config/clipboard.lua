@@ -1,6 +1,21 @@
 local inside_tmux = vim.fn.exists("$TMUX") == 1
 
-if vim.fn.executable("clip.exe") and not inside_tmux then
+if inside_tmux then
+	vim.cmd([[
+    let g:clipboard = {
+                \   'name': 'myClipboard',
+                \   'copy': {
+                \      '+': ['tmux', 'load-buffer', '-'],
+                \      '*': ['tmux', 'load-buffer', '-'],
+                \    },
+                \   'paste': {
+                \      '+': ['tmux', 'save-buffer', '-'],
+                \      '*': ['tmux', 'save-buffer', '-'],
+                \   },
+                \   'cache_enabled': 1,
+                \ }
+    ]])
+elseif vim.fn.executable("clip.exe") and not inside_tmux then
 	vim.cmd([[
     let g:clipboard = {
                 \   'name': 'WslClipboard',
