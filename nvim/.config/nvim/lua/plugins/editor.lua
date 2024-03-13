@@ -32,6 +32,7 @@ return {
 			{ "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 			{ "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+			{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
 			-- git
 			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
 			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
