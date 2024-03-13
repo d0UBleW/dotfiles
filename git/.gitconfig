@@ -32,6 +32,7 @@
 	helper = !/usr/bin/gh auth git-credential
 [alias]
 	a = "!git status --short | peco | awk '{print $2}' | xargs git add"
+    ap = add -i -p
 	st = status
 	sw = switch
 	sb = "!git branch -q | awk '{print $NF}' | peco | xargs git switch"
