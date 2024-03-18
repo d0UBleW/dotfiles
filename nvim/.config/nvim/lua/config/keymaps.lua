@@ -31,6 +31,9 @@ nnoremap("<C-u>", "<C-u>zz")
 -- nnoremap("-", vim.cmd.Ex, { desc = "Open NetRW" })
 nnoremap("<leader>.", function()
 	local basename = vim.fn.expand("%:p:h")
+	if vim.bo.filetype == "oil" then
+		basename = string.sub(basename, 7, -1)
+	end
 	vim.fn.chdir(basename)
 	vim.notify("Set cwd to " .. basename)
 end, { desc = "Set cwd to current file basename" })
