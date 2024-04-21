@@ -235,7 +235,7 @@ return {
 	{
 		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "mason.nvim" },
+		dependencies = { "nvimtools/none-ls-extras.nvim" },
 		opts = function()
 			local nls = require("null-ls")
 			return {
@@ -243,7 +243,9 @@ return {
 				sources = {
 					nls.builtins.formatting.stylua,
 					nls.builtins.formatting.shfmt,
-					nls.builtins.formatting.isort,
+					nls.builtins.formatting.ruff,
+					nls.builtins.formatting.ruff_format,
+					-- nls.builtins.formatting.isort,
 					nls.builtins.formatting.clang_format.with({
 						extra_args = {
 							"-style",
@@ -252,13 +254,14 @@ return {
 						-- extra_filetypes = { "arduino" },
 					}),
 					nls.builtins.formatting.rustfmt,
-					nls.builtins.formatting.autopep8.with({
-						extra_args = { "--aggressive", "--aggressive", "--aggressive" },
-					}),
+					-- nls.builtins.formatting.autopep8.with({
+					-- 	extra_args = { "--aggressive", "--aggressive", "--aggressive" },
+					-- }),
 
 					-- nls.builtins.diagnostics.flake8,
-					nls.builtins.diagnostics.clang_check,
+					-- nls.builtins.diagnostics.clang_check,
 					-- nls.builtins.diagnostics.mypy,
+					nls.builtins.diagnostics.ruff,
 				},
 			}
 		end,
