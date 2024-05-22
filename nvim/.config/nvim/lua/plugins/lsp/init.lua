@@ -245,7 +245,7 @@ return {
 					nls.builtins.formatting.shfmt,
 					nls.builtins.formatting.ruff,
 					nls.builtins.formatting.ruff_format,
-					-- nls.builtins.formatting.isort,
+					nls.builtins.formatting.isort,
 					nls.builtins.formatting.clang_format.with({
 						extra_args = {
 							"-style",

@@ -10,7 +10,7 @@ function battery_meter() {
 		# Check for existence of a battery.
 		if [ -x /sys/class/power_supply/BAT1 ]; then
 
-			local batt0=$(acpi -b 2>/dev/null | awk '/Battery 0/{print $4}' | cut -d, -f1)
+			local batt0=$(acpi -b 2>/dev/null | grep -oP '\d+%')
 
 			case $batt0 in
 
