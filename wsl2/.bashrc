@@ -166,7 +166,7 @@ eval "$(/home/doublew/.nix-profile/bin/direnv hook bash)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 complete -C '/usr/local/bin/aws_completer' aws
-source <(\kompose completion bash)
+source <(kompose completion bash)
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
