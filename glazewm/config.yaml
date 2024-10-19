@@ -32,14 +32,14 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: '4px'
+  inner_gap: '8px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '36px'
-    right: '4px'
-    bottom: '4px'
-    left: '4px'
+    top: '48px'
+    right: '8px'
+    bottom: '8px'
+    left: '8px'
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -87,7 +87,7 @@ window_behavior:
       centered: true
 
       # Whether to show floating windows as always on top.
-      shown_on_top: false
+      shown_on_top: true
 
     fullscreen:
       # Maximize the window if possible. If the window doesn't have a
@@ -109,6 +109,18 @@ workspaces:
   - name: '9'
 
 window_rules:
+  - commands: ["move --workspace 3"]
+    match:
+      # Move browsers to workspace 1.
+      - window_process: { regex: "msedge|firefox|chrome|waterfox" }
+  # - commands: ["move --workspace 2"]
+  #   match:
+  #     # Move browsers to workspace 1.
+  #     - window_process: { regex: "wezterm" }
+  - commands: ["move --workspace 1"]
+    match:
+      # Move spotify to workspace 1.
+      - window_process: { regex: "Spotify" }
   - commands: ['ignore']
     match:
       # Ignores any Zebar windows.
@@ -140,7 +152,7 @@ binding_modes:
         bindings: ['j', 'down']
       # Press enter/escape to return to default keybindings.
       - commands: ['wm-disable-binding-mode --name resize']
-        bindings: ['escape', 'enter']
+        bindings: ['escape', 'enter', 'alt+r']
 
   # When enabled, all keybindings are disabled except for alt+shift+p which
   # returns to default keybindings.
@@ -152,23 +164,23 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - commands: ['focus --direction left']
-    bindings: ['alt+h'] # , 'alt+left']
+    bindings: ['ctrl+alt+h'] # , 'alt+left']
   - commands: ['focus --direction right']
-    bindings: ['alt+l'] # , 'alt+right']
+    bindings: ['ctrl+alt+l'] # , 'alt+right']
   - commands: ['focus --direction up']
-    bindings: ['alt+k'] # , 'alt+up']
+    bindings: ['ctrl+alt+k'] # , 'alt+up']
   - commands: ['focus --direction down']
-    bindings: ['alt+j'] # , 'alt+down']
+    bindings: ['ctrl+alt+j'] # , 'alt+down']
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
-    bindings: ['alt+shift+h'] # , 'alt+shift+left']
+    bindings: ['ctrl+alt+shift+h'] # , 'alt+shift+left']
   - commands: ['move --direction right']
-    bindings: ['alt+shift+l'] # , 'alt+shift+right']
+    bindings: ['ctrl+alt+shift+l'] # , 'alt+shift+right']
   - commands: ['move --direction up']
-    bindings: ['alt+shift+k'] # , 'alt+shift+up']
+    bindings: ['ctrl+alt+shift+k'] # , 'alt+shift+up']
   - commands: ['move --direction down']
-    bindings: ['alt+shift+j'] # , 'alt+shift+down']
+    bindings: ['ctrl+alt+shift+j'] # , 'alt+shift+down']
 
   # Resize focused window by a percentage or pixel amount.
   - commands: ['resize --width -2%']
@@ -196,8 +208,8 @@ keybindings:
     bindings: ['alt+e']
 
   # Change focus from tiling windows -> floating -> fullscreen.
-  # - commands: ['wm-cycle-focus']
-  #   bindings: ['alt+;']
+  - commands: ['wm-cycle-focus']
+    bindings: ["alt+'"]
 
   # Change the focused window to be floating.
   - commands: ['toggle-floating --centered']
